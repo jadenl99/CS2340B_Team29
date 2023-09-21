@@ -17,11 +17,16 @@ color teal_200
 color teal_700
 color torch_flame_orange
 color white
+drawable background
 drawable ic_launcher_background
 drawable ic_launcher_foreground
+id configToGameBtn
 id exitButton
 id startButton
+id textView
 id title
+layout activity_config_screen
+layout activity_game
 layout activity_main
 mipmap ic_launcher
 mipmap ic_launcher_round

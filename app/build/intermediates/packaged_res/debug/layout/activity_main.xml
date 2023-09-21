@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/shadowy_charcoal"
+    android:background="@drawable/background"
     tools:context=".MainActivity">
 
     <Button
@@ -13,7 +13,7 @@
         android:layout_height="88dp"
         android:layout_marginStart="161dp"
         android:layout_marginEnd="162dp"
-        android:layout_marginBottom="140dp"
+        android:layout_marginBottom="144dp"
         android:background="@color/torch_flame_orange"
         android:backgroundTint="@color/black"
         android:shadowColor="@color/black"
@@ -23,6 +23,7 @@
         app:iconTint="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.482"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
@@ -48,15 +49,15 @@
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="100dp"
         android:fontFamily="sans-serif-black"
         android:shadowColor="@color/black"
         android:shadowRadius="10"
         android:text="Eternal Labyrinth: Conquest of the Abyss"
         android:textAlignment="center"
         android:textAllCaps="false"
-        android:textColor="@color/mystical_purple"
-        android:textSize="45sp"
+        android:textColor="@color/white"
+        android:textSize="50sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
