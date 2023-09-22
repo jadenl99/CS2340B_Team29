@@ -24,6 +24,10 @@
         "source": "C:\\Users\\jaden\\.gradle\\daemon\\8.0\\com.example.cs2340b_team29.app-main-30:\\layout\\activity_config_screen.xml"
     },
     {
+        "merged": "com.example.cs2340b_team29.app-merged_res-28:/layout_activity_config_screen.xml.flat",
+        "source": "com.example.cs2340b_team29.app-main-30:/layout/activity_config_screen.xml"
+    },
+    {
         "merged": "C:\\Users\\jaden\\.gradle\\daemon\\8.0\\com.example.cs2340b_team29.app-merged_res-28:\\mipmap-hdpi_ic_launcher.webp.flat",
         "source": "C:\\Users\\jaden\\.gradle\\daemon\\8.0\\com.example.cs2340b_team29.app-main-30:\\mipmap-hdpi\\ic_launcher.webp"
     },
@@ -64,10 +68,6 @@
         "source": "C:\\Users\\jaden\\.gradle\\daemon\\8.0\\com.example.cs2340b_team29.app-main-30:\\xml\\backup_rules.xml"
     },
     {
-        "merged": "com.example.cs2340b_team29.app-merged_res-28:/layout_activity_game.xml.flat",
-        "source": "com.example.cs2340b_team29.app-main-30:/layout/activity_game.xml"
-    },
-    {
         "merged": "C:\\Users\\jaden\\.gradle\\daemon\\8.0\\com.example.cs2340b_team29.app-merged_res-28:\\mipmap-mdpi_ic_launcher_round.webp.flat",
         "source": "C:\\Users\\jaden\\.gradle\\daemon\\8.0\\com.example.cs2340b_team29.app-main-30:\\mipmap-mdpi\\ic_launcher_round.webp"
     },
@@ -76,7 +76,15 @@
         "source": "C:\\Users\\jaden\\.gradle\\daemon\\8.0\\com.example.cs2340b_team29.app-main-30:\\layout\\activity_main.xml"
     },
     {
+        "merged": "C:\\Users\\jaden\\.gradle\\daemon\\8.0\\com.example.cs2340b_team29.app-merged_res-28:\\drawable_button_selector.xml.flat",
+        "source": "C:\\Users\\jaden\\.gradle\\daemon\\8.0\\com.example.cs2340b_team29.app-main-30:\\drawable\\button_selector.xml"
+    },
+    {
         "merged": "C:\\Users\\jaden\\.gradle\\daemon\\8.0\\com.example.cs2340b_team29.app-merged_res-28:\\mipmap-hdpi_ic_launcher_round.webp.flat",
         "source": "C:\\Users\\jaden\\.gradle\\daemon\\8.0\\com.example.cs2340b_team29.app-main-30:\\mipmap-hdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\jaden\\.gradle\\daemon\\8.0\\com.example.cs2340b_team29.app-merged_res-28:\\layout_activity_game.xml.flat",
+        "source": "C:\\Users\\jaden\\.gradle\\daemon\\8.0\\com.example.cs2340b_team29.app-main-30:\\layout\\activity_game.xml"
     }
 ]
