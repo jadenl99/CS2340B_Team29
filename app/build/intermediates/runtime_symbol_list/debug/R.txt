@@ -2837,6 +2837,7 @@ int drawable btn_radio_off_mtrl 0x7f07007f
 int drawable btn_radio_off_to_on_mtrl_animation 0x7f070080
 int drawable btn_radio_on_mtrl 0x7f070081
 int drawable btn_radio_on_to_off_mtrl_animation 0x7f070082
+int drawable button_selector 0x7f0700e0
 int drawable design_fab_background 0x7f070083
 int drawable design_ic_visibility 0x7f070084
 int drawable design_ic_visibility_off 0x7f070085
@@ -3011,6 +3012,12 @@ int id auto 0x7f08004d
 int id autoComplete 0x7f08004e
 int id autoCompleteToEnd 0x7f08004f
 int id autoCompleteToStart 0x7f080050
+int id avatarBtn1 0x7f0801d3
+int id avatarBtn2 0x7f0801d4
+int id avatarBtn3 0x7f0801d6
+int id avatarGroup 0x7f0801d7
+int id avatarText 0x7f0801d0
+int id avatarTxt 0x7f0801d5
 int id barrier 0x7f080051
 int id baseline 0x7f080052
 int id beginOnFirstDraw 0x7f080053
@@ -3062,6 +3069,11 @@ int id design_menu_item_action_area_stub 0x7f080080
 int id design_menu_item_text 0x7f080081
 int id design_navigation_view 0x7f080082
 int id dialog_button 0x7f080083
+<<<<<<< HEAD
+=======
+int id difficultyCGroup 0x7f0801c6
+int id difficultyTxt 0x7f0801cb
+>>>>>>> main
 int id dimensions 0x7f080084
 int id direct 0x7f080085
 int id disableHome 0x7f080086
@@ -3078,6 +3090,10 @@ int id dropdown_menu 0x7f080090
 int id easeIn 0x7f080091
 int id easeInOut 0x7f080092
 int id easeOut 0x7f080093
+<<<<<<< HEAD
+=======
+int id easyChip 0x7f0801c7
+>>>>>>> main
 int id edge 0x7f080094
 int id edit_query 0x7f080095
 int id elastic 0x7f080096
@@ -3113,6 +3129,10 @@ int id graph 0x7f0800b3
 int id graph_wrap 0x7f0800b4
 int id group_divider 0x7f0800b5
 int id groups 0x7f0800b6
+<<<<<<< HEAD
+=======
+int id hardChip 0x7f0801c8
+>>>>>>> main
 int id header_title 0x7f0800b7
 int id hideable 0x7f0800b8
 int id home 0x7f0800b9
@@ -3167,6 +3187,10 @@ int id material_timepicker_ok_button 0x7f0800e9
 int id material_timepicker_view 0x7f0800ea
 int id material_value_index 0x7f0800eb
 int id matrix 0x7f0800ec
+<<<<<<< HEAD
+=======
+int id mediumChip 0x7f0801c9
+>>>>>>> main
 int id message 0x7f0800ed
 int id middle 0x7f0800ee
 int id mini 0x7f0800ef
@@ -3201,6 +3225,11 @@ int id mtrl_picker_text_input_range_start 0x7f08010b
 int id mtrl_picker_title_text 0x7f08010c
 int id mtrl_view_tag_bottom_padding 0x7f08010d
 int id multiply 0x7f08010e
+<<<<<<< HEAD
+=======
+int id nameInput 0x7f0801ce
+int id nameTxt 0x7f0801cd
+>>>>>>> main
 int id navigation_bar_item_active_indicator_view 0x7f08010f
 int id navigation_bar_item_icon_container 0x7f080110
 int id navigation_bar_item_icon_view 0x7f080111
