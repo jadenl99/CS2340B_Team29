@@ -37,6 +37,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.example.cs2340b_team29.ConfigScreenActivity"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="com.example.cs2340b_team29.GameActivity"
+            android:label="@string/app_name" >
+        </activity>
 
         <provider
             android:name="androidx.startup.InitializationProvider"

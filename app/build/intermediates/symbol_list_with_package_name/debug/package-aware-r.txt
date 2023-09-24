@@ -2829,6 +2829,7 @@ drawable abc_textfield_search_material
 drawable abc_vector_test
 drawable avd_hide_password
 drawable avd_show_password
+drawable background
 drawable btn_checkbox_checked_mtrl
 drawable btn_checkbox_checked_to_unchecked_mtrl_animation
 drawable btn_checkbox_unchecked_mtrl
@@ -2837,6 +2838,7 @@ drawable btn_radio_off_mtrl
 drawable btn_radio_off_to_on_mtrl_animation
 drawable btn_radio_on_mtrl
 drawable btn_radio_on_to_off_mtrl_animation
+drawable button_selector
 drawable design_fab_background
 drawable design_ic_visibility
 drawable design_ic_visibility_off
@@ -3011,6 +3013,12 @@ id auto
 id autoComplete
 id autoCompleteToEnd
 id autoCompleteToStart
+id avatarBtn1
+id avatarBtn2
+id avatarBtn3
+id avatarGroup
+id avatarText
+id avatarTxt
 id barrier
 id baseline
 id beginOnFirstDraw
@@ -3037,6 +3045,7 @@ id clip_vertical
 id clockwise
 id collapseActionView
 id compress
+id configToGameBtn
 id confirm_button
 id container
 id content
@@ -3061,6 +3070,8 @@ id design_menu_item_action_area_stub
 id design_menu_item_text
 id design_navigation_view
 id dialog_button
+id difficultyCGroup
+id difficultyTxt
 id dimensions
 id direct
 id disableHome
@@ -3077,6 +3088,7 @@ id dropdown_menu
 id easeIn
 id easeInOut
 id easeOut
+id easyChip
 id edge
 id edit_query
 id elastic
@@ -3112,6 +3124,7 @@ id graph
 id graph_wrap
 id group_divider
 id groups
+id hardChip
 id header_title
 id hideable
 id home
@@ -3166,6 +3179,7 @@ id material_timepicker_ok_button
 id material_timepicker_view
 id material_value_index
 id matrix
+id mediumChip
 id message
 id middle
 id mini
@@ -3200,6 +3214,8 @@ id mtrl_picker_text_input_range_start
 id mtrl_picker_title_text
 id mtrl_view_tag_bottom_padding
 id multiply
+id nameInput
+id nameTxt
 id navigation_bar_item_active_indicator_view
 id navigation_bar_item_icon_container
 id navigation_bar_item_icon_view
@@ -3336,6 +3352,7 @@ id textSpacerNoButtons
 id textSpacerNoTitle
 id textStart
 id textTop
+id textView
 id text_input_end_icon
 id text_input_error_icon
 id text_input_start_icon
@@ -3491,6 +3508,8 @@ layout abc_search_dropdown_item_icons_2line
 layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
+layout activity_config_screen
+layout activity_game
 layout activity_main
 layout custom_dialog
 layout design_bottom_navigation_item
