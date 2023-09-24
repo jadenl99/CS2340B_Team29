@@ -27,14 +27,13 @@ public class ConfigScreenActivity extends AppCompatActivity {
         difficultyCGroup = findViewById(R.id.difficultyCGroup);
         nameInput = findViewById(R.id.nameInput);
         avatarGroup = findViewById(R.id.avatarGroup);
-
         configToGameBtn.setOnClickListener((View v) -> {
 
             // Accounts for invalid input
             // TODO add warning message
             String playerName = nameInput.getText().toString();
             if (playerName == null || playerName.trim().equals("")) {
-                return;
+                throw new NullPointerException("Your player's name cannot be empty");
             }
             // Data to pass on to the game screen
             Bundle extras = initializeGameData();
@@ -55,9 +54,9 @@ public class ConfigScreenActivity extends AppCompatActivity {
         String difficulty = "";
         //double difficultyMultiplier = 1.0;
         Bundle extras = new Bundle();
+        int avatarId = 1;
         for (int i = 0; i < difficultyCGroup.getChildCount(); i++) {
             Chip currChip = (Chip) difficultyCGroup.getChildAt(i);
-            int avatarId = 1;
             String chipText = currChip.getText().toString();
             if (currChip.isChecked()) {
                 switch (chipText) {
@@ -83,14 +82,14 @@ public class ConfigScreenActivity extends AppCompatActivity {
                 String currAvatar = avatar.getText().toString();
                 switch (currAvatar) {
                 case "Avatar 1":
-                    // TODO add logic and add avatar data to bundle to pass
-                    //  on to the Game screen. Also find sprites
+                   avatarId = 1;
                     break;
                 case "Avatar 2":
-                    // TODO add logic
+                    Log.d("Check", "Avatar 2 selected");
+                    avatarId = 2;
                     break;
                 default:
-                    // TODO add logic
+                    avatarId = 3;
                 }
             }
         }
