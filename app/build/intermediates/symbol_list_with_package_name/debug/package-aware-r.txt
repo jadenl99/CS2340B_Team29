@@ -3523,6 +3523,7 @@ layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_config_screen
+layout activity_end
 layout activity_game
 layout activity_main
 layout avatar_picker_screen

@@ -54,6 +54,7 @@ id textView
 id textView3
 id title
 layout activity_config_screen
+layout activity_end
 layout activity_game
 layout activity_main
 layout avatar_picker_screen

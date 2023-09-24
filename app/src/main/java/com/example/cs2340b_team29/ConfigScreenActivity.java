@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -33,7 +34,9 @@ public class ConfigScreenActivity extends AppCompatActivity {
             // TODO add warning message
             String playerName = nameInput.getText().toString();
             if (playerName == null || playerName.trim().equals("")) {
-                throw new NullPointerException("Your player's name cannot be empty");
+                Toast.makeText(getApplicationContext(),
+                        "Invalid name", Toast.LENGTH_LONG).show();
+                return;
             }
             // Data to pass on to the game screen
             Bundle extras = initializeGameData();
@@ -82,7 +85,7 @@ public class ConfigScreenActivity extends AppCompatActivity {
                 String currAvatar = avatar.getText().toString();
                 switch (currAvatar) {
                 case "Avatar 1":
-                   avatarId = 1;
+                    avatarId = 1;
                     break;
                 case "Avatar 2":
                     Log.d("Check", "Avatar 2 selected");
