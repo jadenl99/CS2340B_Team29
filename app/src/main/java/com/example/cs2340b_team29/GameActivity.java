@@ -2,6 +2,7 @@ package com.example.cs2340b_team29;
 
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.content.Intent;
 import android.widget.RadioGroup;
@@ -61,7 +62,10 @@ public class GameActivity extends AppCompatActivity {
             }
         }
 
-
-
+        //next button leads to end screen
+        nextButton.setOnClickListener((View v) -> {
+            Intent goToEndScreen = new Intent(GameActivity.this, EndingActivity.class);
+            startActivity(goToEndScreen);
+        });
     }
 }
