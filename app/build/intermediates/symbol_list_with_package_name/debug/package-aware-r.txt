@@ -2827,6 +2827,9 @@ drawable abc_textfield_search_activated_mtrl_alpha
 drawable abc_textfield_search_default_mtrl_alpha
 drawable abc_textfield_search_material
 drawable abc_vector_test
+drawable avatar1
+drawable avatar2
+drawable avatar3
 drawable avd_hide_password
 drawable avd_show_password
 drawable background
@@ -3013,12 +3016,12 @@ id auto
 id autoComplete
 id autoCompleteToEnd
 id autoCompleteToStart
+id avatar1
 id avatarBtn1
 id avatarBtn2
 id avatarBtn3
 id avatarGroup
 id avatarImage
-id avatarText
 id avatarTxt
 id barrier
 id baseline
@@ -3139,6 +3142,13 @@ id ifRoom
 id ignore
 id ignoreRequest
 id image
+id imageButton4
+id imageButton7
+id imageButton8
+id imageView2
+id imageView3
+id imageView4
+id imageView5
 id indeterminate
 id info
 id invisible
@@ -3257,6 +3267,9 @@ id pressed
 id progress_circular
 id progress_horizontal
 id radio
+id radioButton
+id radioButton2
+id radioButton3
 id ratio
 id rectangles
 id reverseSawtooth
@@ -3357,6 +3370,7 @@ id textSpacerNoButtons
 id textSpacerNoTitle
 id textStart
 id textTop
+id textView3
 id text_input_end_icon
 id text_input_error_icon
 id text_input_start_icon
@@ -3513,8 +3527,10 @@ layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_config_screen
+layout activity_end
 layout activity_game
 layout activity_main
+layout avatar_picker_screen
 layout custom_dialog
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog

@@ -1,5 +1,6 @@
 package com.example.cs2340b_team29;
 
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.widget.Button;
 import android.content.Intent;
@@ -34,12 +35,12 @@ public class GameActivity extends AppCompatActivity {
 
         if (extras != null) {
             String playerName = extras.getString("PLAYER_NAME");
-            String pNText = "Player name: " + playerName;
             String difficulty = extras.getString("DIFFICULTY");
-            String difficultyText = "Difficulty: " + difficulty;
+            int avatarChosen = extras.getInt("AVATAR_ID");
 
-            playerNameLabel.setText(pNText);
-            difficultyLabel.setText(difficultyText);
+            playerNameLabel.setText("Player: " + playerName);
+            difficultyLabel.setText("Difficulty: " + difficulty);
+
             if (difficulty.equals("Easy")) {
                 hpLevelLabel.setText("HP: 100");
             } else if (difficulty.equals("Medium")) {
@@ -47,9 +48,19 @@ public class GameActivity extends AppCompatActivity {
             } else if (difficulty.equals("Hard")) {
                 hpLevelLabel.setText("HP: 25");
             }
+
+            if (avatarChosen == 1) {
+                Drawable avatar1 = getDrawable(R.drawable.avatar1);
+                avatarImage.setBackground(avatar1);
+            } else if (avatarChosen == 2) {
+                Drawable avatar2 = getDrawable(R.drawable.avatar2);
+                avatarImage.setBackground(avatar2);
+            } else {
+                Drawable avatar3 = getDrawable(R.drawable.avatar3);
+                avatarImage.setBackground(avatar3);
+            }
         }
 
-       // avatarImage.setImageDrawable(@drawable/avatar1);
 
 
     }

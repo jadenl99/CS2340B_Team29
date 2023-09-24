@@ -2,12 +2,12 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/avatarText"
+    android:id="@+id/avatar1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:layout_editor_absoluteX="44dp"
-    tools:layout_editor_absoluteY="-2dp"
-    tools:context=".ConfigScreenActivity">
+    android:visibility="visible"
+    tools:layout_editor_absoluteX="0dp"
+    tools:layout_editor_absoluteY="0dp">
 
     <com.google.android.material.chip.ChipGroup
         android:id="@+id/difficultyCGroup"
@@ -62,11 +62,12 @@
         android:layout_width="212dp"
         android:layout_height="64dp"
         android:layout_marginStart="99dp"
-        android:layout_marginTop="488dp"
+        android:layout_marginTop="628dp"
         android:layout_marginEnd="100dp"
         android:background="@drawable/button_selector"
         android:text="Start Game"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -83,42 +84,48 @@
 
     <TextView
         android:id="@+id/avatarTxt"
-        android:layout_width="160dp"
-        android:layout_height="24dp"
+        android:layout_width="182dp"
+        android:layout_height="50dp"
         android:layout_marginStart="28dp"
-        android:layout_marginTop="252dp"
-        android:text="Select Avetar:"
+        android:layout_marginTop="196dp"
+        android:text="Select Avatar:"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <RadioGroup
         android:id="@+id/avatarGroup"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="173dp"
+        android:layout_height="273dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="336dp"
+        android:layout_marginTop="330dp"
         android:checkedButton="@id/avatarBtn1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <RadioButton
             android:id="@+id/avatarBtn1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Avatar 1" />
+            android:layout_width="179dp"
+            android:layout_height="86dp"
+            android:text="Avatar 1"
+            tools:layout_editor_absoluteX="32dp"
+            tools:layout_editor_absoluteY="336dp" />
 
         <RadioButton
             android:id="@+id/avatarBtn2"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Avatar 2" />
+            android:layout_height="74dp"
+            android:text="Avatar 2"
+            tools:layout_editor_absoluteX="32dp"
+            tools:layout_editor_absoluteY="422dp" />
 
         <RadioButton
             android:id="@+id/avatarBtn3"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Avatar 3" />
+            android:layout_height="100dp"
+            android:text="Avatar 3"
+            tools:layout_editor_absoluteX="32dp"
+            tools:layout_editor_absoluteY="496dp" />
 
     </RadioGroup>
 
@@ -131,6 +138,36 @@
         android:text="Difficulty:"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/imageButton4"
+        android:layout_width="112dp"
+        android:layout_height="117dp"
+        android:layout_marginTop="244dp"
+        android:layout_marginEnd="48dp"
+        android:background="@drawable/avatar1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/imageButton7"
+        android:layout_width="112dp"
+        android:layout_height="117dp"
+        android:layout_marginTop="372dp"
+        android:layout_marginEnd="48dp"
+        android:background="@drawable/avatar2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/imageButton8"
+        android:layout_width="112dp"
+        android:layout_height="117dp"
+        android:layout_marginTop="496dp"
+        android:layout_marginEnd="48dp"
+        android:background="@drawable/avatar3"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
