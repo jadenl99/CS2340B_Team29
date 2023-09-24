@@ -24,6 +24,13 @@ public class MainActivity extends AppCompatActivity {
         });
 
         Button exitBtn = findViewById(R.id.exitButton);
+
+        // handler to change from exit to end screen
+        exitBtn.setOnClickListener((View v) -> {
+            Intent goToEndScreen = new Intent(MainActivity.this, EndingActivity.class);
+            startActivity(goToEndScreen);
+        });
+
         TextView title = findViewById(R.id.title);
     }
 
