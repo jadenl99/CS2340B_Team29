@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:layout_editor_absoluteX="44dp"
-    tools:layout_editor_absoluteY="-2dp">
+    tools:layout_editor_absoluteY="-2dp"
+    tools:context=".ConfigScreenActivity">
 
     <com.google.android.material.chip.ChipGroup
         android:id="@+id/difficultyCGroup"

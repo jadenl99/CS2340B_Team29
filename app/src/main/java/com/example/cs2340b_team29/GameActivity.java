@@ -31,12 +31,25 @@ public class GameActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
-        String playerName = extras.getString("PLAYER_NAME");
-        String difficulty = extras.getString("DIFFICULTY");
-        //String hpLevel = extras.getString("HP_LEVEL");
 
-        playerNameLabel.setText(playerName);
-        difficultyLabel.setText(difficulty);
+        if (extras != null) {
+            String playerName = extras.getString("PLAYER_NAME");
+            String pNText = "Player name: " + playerName;
+            String difficulty = extras.getString("DIFFICULTY");
+            String difficultyText = "Difficulty: " + difficulty;
+
+            playerNameLabel.setText(pNText);
+            difficultyLabel.setText(difficultyText);
+            if (difficulty.equals("Easy")) {
+                hpLevelLabel.setText("HP: 100");
+            } else if (difficulty.equals("Medium")) {
+                hpLevelLabel.setText("HP: 50");
+            } else if (difficulty.equals("Hard")) {
+                hpLevelLabel.setText("HP: 25");
+            }
+        }
+
+       // avatarImage.setImageDrawable(@drawable/avatar1);
 
 
     }

@@ -3017,6 +3017,7 @@ id avatarBtn1
 id avatarBtn2
 id avatarBtn3
 id avatarGroup
+id avatarImage
 id avatarText
 id avatarTxt
 id barrier
@@ -3071,6 +3072,7 @@ id design_menu_item_text
 id design_navigation_view
 id dialog_button
 id difficultyCGroup
+id difficultyLabel
 id difficultyTxt
 id dimensions
 id direct
@@ -3130,6 +3132,7 @@ id hideable
 id home
 id homeAsUp
 id honorRequest
+id hpLevelLabel
 id icon
 id icon_group
 id ifRoom
@@ -3215,6 +3218,7 @@ id mtrl_picker_title_text
 id mtrl_view_tag_bottom_padding
 id multiply
 id nameInput
+id nameLabel
 id nameTxt
 id navigation_bar_item_active_indicator_view
 id navigation_bar_item_icon_container
@@ -3224,6 +3228,7 @@ id navigation_bar_item_large_label_view
 id navigation_bar_item_small_label_view
 id navigation_header_container
 id never
+id nextButton
 id noScroll
 id none
 id normal
@@ -3352,7 +3357,6 @@ id textSpacerNoButtons
 id textSpacerNoTitle
 id textStart
 id textTop
-id textView
 id text_input_end_icon
 id text_input_error_icon
 id text_input_start_icon
