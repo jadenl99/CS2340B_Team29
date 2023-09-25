@@ -57,6 +57,10 @@ public class ConfigScreenActivity extends AppCompatActivity {
         String difficulty = "";
         //double difficultyMultiplier = 1.0;
         Bundle extras = new Bundle();
+
+        for (int i = 0; i < difficultyCGroup.getChildCount(); i++) {
+            Chip currChip = (Chip) difficultyCGroup.getChildAt(i);
+        }
         int avatarId = 1;
         for (int i = 0; i < difficultyCGroup.getChildCount(); i++) {
             Chip currChip = (Chip) difficultyCGroup.getChildAt(i);
@@ -93,6 +97,7 @@ public class ConfigScreenActivity extends AppCompatActivity {
                     break;
                 default:
                     avatarId = 3;
+
                 }
             }
         }
@@ -100,7 +105,7 @@ public class ConfigScreenActivity extends AppCompatActivity {
 
         extras.putString("PLAYER_NAME", playerName);
         extras.putString("DIFFICULTY", difficulty);
-        //extras.putInt("AVATAR_ID", ID);
+        extras.putInt("AVATAR_ID", avatarId);
         return extras;
 
 
