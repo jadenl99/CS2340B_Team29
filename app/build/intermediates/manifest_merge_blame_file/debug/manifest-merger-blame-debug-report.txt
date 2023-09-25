@@ -20,7 +20,7 @@
 15-->[androidx.core:core:1.9.0] C:\Users\jaden\.gradle\caches\transforms-3\0bb5616a7558933ce9ef66db5210a361\transformed\core-1.9.0\AndroidManifest.xml:26:22-94
 16
 17    <application
-17-->C:\Users\jaden\Fall2023\CS2340\CS2340B_Team29\app\src\main\AndroidManifest.xml:5:5-32:19
+17-->C:\Users\jaden\Fall2023\CS2340\CS2340B_Team29\app\src\main\AndroidManifest.xml:5:5-51:19
 18        android:allowBackup="true"
 18-->C:\Users\jaden\Fall2023\CS2340\CS2340B_Team29\app\src\main\AndroidManifest.xml:6:9-35
 19        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
@@ -62,41 +62,84 @@
 38            </intent-filter>
 39        </activity>
 40        <activity
-40-->C:\Users\jaden\Fall2023\CS2340\CS2340B_Team29\app\src\main\AndroidManifest.xml:24:9-27:20
+40-->C:\Users\jaden\Fall2023\CS2340\CS2340B_Team29\app\src\main\AndroidManifest.xml:24:9-32:20
 41            android:name="com.example.cs2340b_team29.ConfigScreenActivity"
 41-->C:\Users\jaden\Fall2023\CS2340\CS2340B_Team29\app\src\main\AndroidManifest.xml:25:13-49
-42            android:label="@string/app_name" >
-42-->C:\Users\jaden\Fall2023\CS2340\CS2340B_Team29\app\src\main\AndroidManifest.xml:26:13-45
-43        </activity>
-44        <activity
-44-->C:\Users\jaden\Fall2023\CS2340\CS2340B_Team29\app\src\main\AndroidManifest.xml:28:9-31:20
-45            android:name="com.example.cs2340b_team29.GameActivity"
-45-->C:\Users\jaden\Fall2023\CS2340\CS2340B_Team29\app\src\main\AndroidManifest.xml:29:13-41
-46            android:label="@string/app_name" >
-46-->C:\Users\jaden\Fall2023\CS2340\CS2340B_Team29\app\src\main\AndroidManifest.xml:30:13-45
-47        </activity>
-48
-49        <provider
-49-->[androidx.emoji2:emoji2:1.2.0] C:\Users\jaden\.gradle\caches\transforms-3\316a02c860c73ab94686517a17339332\transformed\emoji2-1.2.0\AndroidManifest.xml:24:9-32:20
-50            android:name="androidx.startup.InitializationProvider"
-50-->[androidx.emoji2:emoji2:1.2.0] C:\Users\jaden\.gradle\caches\transforms-3\316a02c860c73ab94686517a17339332\transformed\emoji2-1.2.0\AndroidManifest.xml:25:13-67
-51            android:authorities="com.example.cs2340b_team29.androidx-startup"
-51-->[androidx.emoji2:emoji2:1.2.0] C:\Users\jaden\.gradle\caches\transforms-3\316a02c860c73ab94686517a17339332\transformed\emoji2-1.2.0\AndroidManifest.xml:26:13-68
-52            android:exported="false" >
-52-->[androidx.emoji2:emoji2:1.2.0] C:\Users\jaden\.gradle\caches\transforms-3\316a02c860c73ab94686517a17339332\transformed\emoji2-1.2.0\AndroidManifest.xml:27:13-37
-53            <meta-data
-53-->[androidx.emoji2:emoji2:1.2.0] C:\Users\jaden\.gradle\caches\transforms-3\316a02c860c73ab94686517a17339332\transformed\emoji2-1.2.0\AndroidManifest.xml:29:13-31:52
-54                android:name="androidx.emoji2.text.EmojiCompatInitializer"
-54-->[androidx.emoji2:emoji2:1.2.0] C:\Users\jaden\.gradle\caches\transforms-3\316a02c860c73ab94686517a17339332\transformed\emoji2-1.2.0\AndroidManifest.xml:30:17-75
-55                android:value="androidx.startup" />
-55-->[androidx.emoji2:emoji2:1.2.0] C:\Users\jaden\.gradle\caches\transforms-3\316a02c860c73ab94686517a17339332\transformed\emoji2-1.2.0\AndroidManifest.xml:31:17-49
-56            <meta-data
-56-->[androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\jaden\.gradle\caches\transforms-3\b53648139df62eed3ac1693b02c07adb\transformed\lifecycle-process-2.4.1\AndroidManifest.xml:31:13-33:52
-57                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
-57-->[androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\jaden\.gradle\caches\transforms-3\b53648139df62eed3ac1693b02c07adb\transformed\lifecycle-process-2.4.1\AndroidManifest.xml:32:17-78
-58                android:value="androidx.startup" />
-58-->[androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\jaden\.gradle\caches\transforms-3\b53648139df62eed3ac1693b02c07adb\transformed\lifecycle-process-2.4.1\AndroidManifest.xml:33:17-49
-59        </provider>
-60    </application>
-61
-62</manifest>
+42            android:exported="true"
+42-->C:\Users\jaden\Fall2023\CS2340\CS2340B_Team29\app\src\main\AndroidManifest.xml:27:13-36
+43            android:label="@string/app_name" >
+43-->C:\Users\jaden\Fall2023\CS2340\CS2340B_Team29\app\src\main\AndroidManifest.xml:26:13-45
+44            <intent-filter>
+44-->C:\Users\jaden\Fall2023\CS2340\CS2340B_Team29\app\src\main\AndroidManifest.xml:19:9-22:25
+45                <action android:name="android.intent.action.MAIN" />
+45-->C:\Users\jaden\Fall2023\CS2340\CS2340B_Team29\app\src\main\AndroidManifest.xml:20:13-65
+45-->C:\Users\jaden\Fall2023\CS2340\CS2340B_Team29\app\src\main\AndroidManifest.xml:20:21-62
+46
+47                <category android:name="android.intent.category.LAUNCHER" />
+47-->C:\Users\jaden\Fall2023\CS2340\CS2340B_Team29\app\src\main\AndroidManifest.xml:21:13-73
+47-->C:\Users\jaden\Fall2023\CS2340\CS2340B_Team29\app\src\main\AndroidManifest.xml:21:23-70
+48            </intent-filter>
+49        </activity>
+50        <activity
+50-->C:\Users\jaden\Fall2023\CS2340\CS2340B_Team29\app\src\main\AndroidManifest.xml:33:9-41:20
+51            android:name="com.example.cs2340b_team29.GameActivity"
+51-->C:\Users\jaden\Fall2023\CS2340\CS2340B_Team29\app\src\main\AndroidManifest.xml:34:13-41
+52            android:exported="true"
+52-->C:\Users\jaden\Fall2023\CS2340\CS2340B_Team29\app\src\main\AndroidManifest.xml:36:13-36
+53            android:label="@string/app_name" >
+53-->C:\Users\jaden\Fall2023\CS2340\CS2340B_Team29\app\src\main\AndroidManifest.xml:35:13-45
+54            <intent-filter>
+54-->C:\Users\jaden\Fall2023\CS2340\CS2340B_Team29\app\src\main\AndroidManifest.xml:19:9-22:25
+55                <action android:name="android.intent.action.MAIN" />
+55-->C:\Users\jaden\Fall2023\CS2340\CS2340B_Team29\app\src\main\AndroidManifest.xml:20:13-65
+55-->C:\Users\jaden\Fall2023\CS2340\CS2340B_Team29\app\src\main\AndroidManifest.xml:20:21-62
+56
+57                <category android:name="android.intent.category.LAUNCHER" />
+57-->C:\Users\jaden\Fall2023\CS2340\CS2340B_Team29\app\src\main\AndroidManifest.xml:21:13-73
+57-->C:\Users\jaden\Fall2023\CS2340\CS2340B_Team29\app\src\main\AndroidManifest.xml:21:23-70
+58            </intent-filter>
+59        </activity>
+60        <activity
+60-->C:\Users\jaden\Fall2023\CS2340\CS2340B_Team29\app\src\main\AndroidManifest.xml:42:9-50:20
+61            android:name="com.example.cs2340b_team29.EndingActivity"
+61-->C:\Users\jaden\Fall2023\CS2340\CS2340B_Team29\app\src\main\AndroidManifest.xml:43:13-43
+62            android:exported="true"
+62-->C:\Users\jaden\Fall2023\CS2340\CS2340B_Team29\app\src\main\AndroidManifest.xml:45:13-36
+63            android:label="@string/app_name" >
+63-->C:\Users\jaden\Fall2023\CS2340\CS2340B_Team29\app\src\main\AndroidManifest.xml:44:13-45
+64            <intent-filter>
+64-->C:\Users\jaden\Fall2023\CS2340\CS2340B_Team29\app\src\main\AndroidManifest.xml:19:9-22:25
+65                <action android:name="android.intent.action.MAIN" />
+65-->C:\Users\jaden\Fall2023\CS2340\CS2340B_Team29\app\src\main\AndroidManifest.xml:20:13-65
+65-->C:\Users\jaden\Fall2023\CS2340\CS2340B_Team29\app\src\main\AndroidManifest.xml:20:21-62
+66
+67                <category android:name="android.intent.category.LAUNCHER" />
+67-->C:\Users\jaden\Fall2023\CS2340\CS2340B_Team29\app\src\main\AndroidManifest.xml:21:13-73
+67-->C:\Users\jaden\Fall2023\CS2340\CS2340B_Team29\app\src\main\AndroidManifest.xml:21:23-70
+68            </intent-filter>
+69        </activity>
+70
+71        <provider
+71-->[androidx.emoji2:emoji2:1.2.0] C:\Users\jaden\.gradle\caches\transforms-3\316a02c860c73ab94686517a17339332\transformed\emoji2-1.2.0\AndroidManifest.xml:24:9-32:20
+72            android:name="androidx.startup.InitializationProvider"
+72-->[androidx.emoji2:emoji2:1.2.0] C:\Users\jaden\.gradle\caches\transforms-3\316a02c860c73ab94686517a17339332\transformed\emoji2-1.2.0\AndroidManifest.xml:25:13-67
+73            android:authorities="com.example.cs2340b_team29.androidx-startup"
+73-->[androidx.emoji2:emoji2:1.2.0] C:\Users\jaden\.gradle\caches\transforms-3\316a02c860c73ab94686517a17339332\transformed\emoji2-1.2.0\AndroidManifest.xml:26:13-68
+74            android:exported="false" >
+74-->[androidx.emoji2:emoji2:1.2.0] C:\Users\jaden\.gradle\caches\transforms-3\316a02c860c73ab94686517a17339332\transformed\emoji2-1.2.0\AndroidManifest.xml:27:13-37
+75            <meta-data
+75-->[androidx.emoji2:emoji2:1.2.0] C:\Users\jaden\.gradle\caches\transforms-3\316a02c860c73ab94686517a17339332\transformed\emoji2-1.2.0\AndroidManifest.xml:29:13-31:52
+76                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+76-->[androidx.emoji2:emoji2:1.2.0] C:\Users\jaden\.gradle\caches\transforms-3\316a02c860c73ab94686517a17339332\transformed\emoji2-1.2.0\AndroidManifest.xml:30:17-75
+77                android:value="androidx.startup" />
+77-->[androidx.emoji2:emoji2:1.2.0] C:\Users\jaden\.gradle\caches\transforms-3\316a02c860c73ab94686517a17339332\transformed\emoji2-1.2.0\AndroidManifest.xml:31:17-49
+78            <meta-data
+78-->[androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\jaden\.gradle\caches\transforms-3\b53648139df62eed3ac1693b02c07adb\transformed\lifecycle-process-2.4.1\AndroidManifest.xml:31:13-33:52
+79                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+79-->[androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\jaden\.gradle\caches\transforms-3\b53648139df62eed3ac1693b02c07adb\transformed\lifecycle-process-2.4.1\AndroidManifest.xml:32:17-78
+80                android:value="androidx.startup" />
+80-->[androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\jaden\.gradle\caches\transforms-3\b53648139df62eed3ac1693b02c07adb\transformed\lifecycle-process-2.4.1\AndroidManifest.xml:33:17-49
+81        </provider>
+82    </application>
+83
+84</manifest>

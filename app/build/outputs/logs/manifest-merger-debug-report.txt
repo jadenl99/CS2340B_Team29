@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\jaden\Fall2023\CS2340\CS2340B_Team29\app\src\main\AndroidManifest.xml:2:1-34:12
-INJECTED from C:\Users\jaden\Fall2023\CS2340\CS2340B_Team29\app\src\main\AndroidManifest.xml:2:1-34:12
-INJECTED from C:\Users\jaden\Fall2023\CS2340\CS2340B_Team29\app\src\main\AndroidManifest.xml:2:1-34:12
-INJECTED from C:\Users\jaden\Fall2023\CS2340\CS2340B_Team29\app\src\main\AndroidManifest.xml:2:1-34:12
+ADDED from C:\Users\jaden\Fall2023\CS2340\CS2340B_Team29\app\src\main\AndroidManifest.xml:2:1-53:12
+INJECTED from C:\Users\jaden\Fall2023\CS2340\CS2340B_Team29\app\src\main\AndroidManifest.xml:2:1-53:12
+INJECTED from C:\Users\jaden\Fall2023\CS2340\CS2340B_Team29\app\src\main\AndroidManifest.xml:2:1-53:12
+INJECTED from C:\Users\jaden\Fall2023\CS2340\CS2340B_Team29\app\src\main\AndroidManifest.xml:2:1-53:12
 MERGED from [com.google.android.material:material:1.9.0] C:\Users\jaden\.gradle\caches\transforms-3\f0d327b5fa71a05459955de625eeb703\transformed\material-1.9.0\AndroidManifest.xml:17:1-26:12
 MERGED from [androidx.appcompat:appcompat-resources:1.6.1] C:\Users\jaden\.gradle\caches\transforms-3\450e3e9efbbaefbad9e7b981dbd2ca51\transformed\appcompat-resources-1.6.1\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.constraintlayout:constraintlayout:2.0.1] C:\Users\jaden\.gradle\caches\transforms-3\a113de39c744218b939c9a53ce9a385f\transformed\constraintlayout-2.0.1\AndroidManifest.xml:2:1-11:12
@@ -55,8 +55,8 @@ MERGED from [androidx.annotation:annotation-experimental:1.3.0] C:\Users\jaden\.
 	xmlns:android
 		ADDED from C:\Users\jaden\Fall2023\CS2340\CS2340B_Team29\app\src\main\AndroidManifest.xml:2:11-69
 application
-ADDED from C:\Users\jaden\Fall2023\CS2340\CS2340B_Team29\app\src\main\AndroidManifest.xml:5:5-32:19
-INJECTED from C:\Users\jaden\Fall2023\CS2340\CS2340B_Team29\app\src\main\AndroidManifest.xml:5:5-32:19
+ADDED from C:\Users\jaden\Fall2023\CS2340\CS2340B_Team29\app\src\main\AndroidManifest.xml:5:5-51:19
+INJECTED from C:\Users\jaden\Fall2023\CS2340\CS2340B_Team29\app\src\main\AndroidManifest.xml:5:5-51:19
 MERGED from [com.google.android.material:material:1.9.0] C:\Users\jaden\.gradle\caches\transforms-3\f0d327b5fa71a05459955de625eeb703\transformed\material-1.9.0\AndroidManifest.xml:24:5-20
 MERGED from [com.google.android.material:material:1.9.0] C:\Users\jaden\.gradle\caches\transforms-3\f0d327b5fa71a05459955de625eeb703\transformed\material-1.9.0\AndroidManifest.xml:24:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.0.1] C:\Users\jaden\.gradle\caches\transforms-3\a113de39c744218b939c9a53ce9a385f\transformed\constraintlayout-2.0.1\AndroidManifest.xml:9:5-20
@@ -112,17 +112,29 @@ ADDED from C:\Users\jaden\Fall2023\CS2340\CS2340B_Team29\app\src\main\AndroidMan
 	android:name
 		ADDED from C:\Users\jaden\Fall2023\CS2340\CS2340B_Team29\app\src\main\AndroidManifest.xml:21:23-70
 activity#com.example.cs2340b_team29.ConfigScreenActivity
-ADDED from C:\Users\jaden\Fall2023\CS2340\CS2340B_Team29\app\src\main\AndroidManifest.xml:24:9-27:20
+ADDED from C:\Users\jaden\Fall2023\CS2340\CS2340B_Team29\app\src\main\AndroidManifest.xml:24:9-32:20
 	android:label
 		ADDED from C:\Users\jaden\Fall2023\CS2340\CS2340B_Team29\app\src\main\AndroidManifest.xml:26:13-45
+	android:exported
+		ADDED from C:\Users\jaden\Fall2023\CS2340\CS2340B_Team29\app\src\main\AndroidManifest.xml:27:13-36
 	android:name
 		ADDED from C:\Users\jaden\Fall2023\CS2340\CS2340B_Team29\app\src\main\AndroidManifest.xml:25:13-49
 activity#com.example.cs2340b_team29.GameActivity
-ADDED from C:\Users\jaden\Fall2023\CS2340\CS2340B_Team29\app\src\main\AndroidManifest.xml:28:9-31:20
+ADDED from C:\Users\jaden\Fall2023\CS2340\CS2340B_Team29\app\src\main\AndroidManifest.xml:33:9-41:20
 	android:label
-		ADDED from C:\Users\jaden\Fall2023\CS2340\CS2340B_Team29\app\src\main\AndroidManifest.xml:30:13-45
+		ADDED from C:\Users\jaden\Fall2023\CS2340\CS2340B_Team29\app\src\main\AndroidManifest.xml:35:13-45
+	android:exported
+		ADDED from C:\Users\jaden\Fall2023\CS2340\CS2340B_Team29\app\src\main\AndroidManifest.xml:36:13-36
 	android:name
-		ADDED from C:\Users\jaden\Fall2023\CS2340\CS2340B_Team29\app\src\main\AndroidManifest.xml:29:13-41
+		ADDED from C:\Users\jaden\Fall2023\CS2340\CS2340B_Team29\app\src\main\AndroidManifest.xml:34:13-41
+activity#com.example.cs2340b_team29.EndingActivity
+ADDED from C:\Users\jaden\Fall2023\CS2340\CS2340B_Team29\app\src\main\AndroidManifest.xml:42:9-50:20
+	android:label
+		ADDED from C:\Users\jaden\Fall2023\CS2340\CS2340B_Team29\app\src\main\AndroidManifest.xml:44:13-45
+	android:exported
+		ADDED from C:\Users\jaden\Fall2023\CS2340\CS2340B_Team29\app\src\main\AndroidManifest.xml:45:13-36
+	android:name
+		ADDED from C:\Users\jaden\Fall2023\CS2340\CS2340B_Team29\app\src\main\AndroidManifest.xml:43:13-43
 uses-sdk
 INJECTED from C:\Users\jaden\Fall2023\CS2340\CS2340B_Team29\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\jaden\Fall2023\CS2340\CS2340B_Team29\app\src\main\AndroidManifest.xml
