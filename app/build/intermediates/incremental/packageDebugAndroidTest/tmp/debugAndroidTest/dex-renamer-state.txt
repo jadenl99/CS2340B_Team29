@@ -1,8 +1,8 @@
-#Sun Sep 24 16:59:13 EDT 2023
-base.0=/Users/rosewen/Documents/college/sophomore/cs2340/sprint1/CS2340B_Team29/app/build/intermediates/dex/debugAndroidTest/mergeExtDexDebugAndroidTest/classes.dex
-base.1=/Users/rosewen/Documents/college/sophomore/cs2340/sprint1/CS2340B_Team29/app/build/intermediates/dex/debugAndroidTest/mergeProjectDexDebugAndroidTest/0/classes.dex
-base.2=/Users/rosewen/Documents/college/sophomore/cs2340/sprint1/CS2340B_Team29/app/build/intermediates/dex/debugAndroidTest/mergeProjectDexDebugAndroidTest/5/classes.dex
-base.3=/Users/rosewen/Documents/college/sophomore/cs2340/sprint1/CS2340B_Team29/app/build/intermediates/dex/debugAndroidTest/mergeProjectDexDebugAndroidTest/9/classes.dex
+#Sun Sep 24 20:17:59 EDT 2023
+base.0=C\:\\Users\\jaden\\Fall2023\\CS2340\\CS2340B_Team29\\app\\build\\intermediates\\dex\\debugAndroidTest\\mergeExtDexDebugAndroidTest\\classes.dex
+base.1=C\:\\Users\\jaden\\Fall2023\\CS2340\\CS2340B_Team29\\app\\build\\intermediates\\dex\\debugAndroidTest\\mergeProjectDexDebugAndroidTest\\0\\classes.dex
+base.2=C\:\\Users\\jaden\\Fall2023\\CS2340\\CS2340B_Team29\\app\\build\\intermediates\\dex\\debugAndroidTest\\mergeProjectDexDebugAndroidTest\\5\\classes.dex
+base.3=C\:\\Users\\jaden\\Fall2023\\CS2340\\CS2340B_Team29\\app\\build\\intermediates\\dex\\debugAndroidTest\\mergeProjectDexDebugAndroidTest\\9\\classes.dex
 path.0=classes.dex
 path.1=0/classes.dex
 path.2=5/classes.dex
