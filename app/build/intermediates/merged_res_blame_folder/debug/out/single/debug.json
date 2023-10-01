@@ -84,16 +84,16 @@
         "source": "C:\\Users\\jaden\\.gradle\\daemon\\8.0\\com.example.cs2340b_team29.app-main-30:\\layout\\activity_game.xml"
     },
     {
+        "merged": "com.example.cs2340b_team29.app-merged_res-28:/layout_activity_end.xml.flat",
+        "source": "com.example.cs2340b_team29.app-main-30:/layout/activity_end.xml"
+    },
+    {
         "merged": "C:\\Users\\jaden\\.gradle\\daemon\\8.0\\com.example.cs2340b_team29.app-merged_res-28:\\mipmap-xxhdpi_ic_launcher_round.webp.flat",
         "source": "C:\\Users\\jaden\\.gradle\\daemon\\8.0\\com.example.cs2340b_team29.app-main-30:\\mipmap-xxhdpi\\ic_launcher_round.webp"
     },
     {
         "merged": "C:\\Users\\jaden\\.gradle\\daemon\\8.0\\com.example.cs2340b_team29.app-merged_res-28:\\mipmap-anydpi-v26_ic_launcher.xml.flat",
         "source": "C:\\Users\\jaden\\.gradle\\daemon\\8.0\\com.example.cs2340b_team29.app-main-30:\\mipmap-anydpi-v26\\ic_launcher.xml"
-    },
-    {
-        "merged": "com.example.cs2340b_team29.app-merged_res-28:/layout_activity_config_screen.xml.flat",
-        "source": "com.example.cs2340b_team29.app-main-30:/layout/activity_config_screen.xml"
     },
     {
         "merged": "C:\\Users\\jaden\\.gradle\\daemon\\8.0\\com.example.cs2340b_team29.app-merged_res-28:\\drawable_avatar2.jpg.flat",
@@ -106,9 +106,5 @@
     {
         "merged": "C:\\Users\\jaden\\.gradle\\daemon\\8.0\\com.example.cs2340b_team29.app-merged_res-28:\\xml_backup_rules.xml.flat",
         "source": "C:\\Users\\jaden\\.gradle\\daemon\\8.0\\com.example.cs2340b_team29.app-main-30:\\xml\\backup_rules.xml"
-    },
-    {
-        "merged": "com.example.cs2340b_team29.app-merged_res-28:/layout_activity_game.xml.flat",
-        "source": "com.example.cs2340b_team29.app-main-30:/layout/activity_game.xml"
     }
 ]
