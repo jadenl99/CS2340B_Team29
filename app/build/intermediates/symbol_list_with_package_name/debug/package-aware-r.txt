@@ -3272,6 +3272,7 @@ id radioButton2
 id radioButton3
 id ratio
 id rectangles
+id restartBtn
 id reverseSawtooth
 id right
 id rightToLeft

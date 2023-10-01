@@ -54,6 +54,7 @@ id nextButton
 id radioButton
 id radioButton2
 id radioButton3
+id restartBtn
 id startButton
 id textView3
 id title
