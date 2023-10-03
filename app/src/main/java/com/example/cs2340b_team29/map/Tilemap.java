@@ -28,6 +28,7 @@ public class Tilemap {
 
     private void initializeTilemap() {
         int[][] layout = mapLayout.getLayout();
+        tilemap = new Tile[NUMBER_OF_ROW_TILES][NUMBER_OF_COL_TILES];
         for (int iRow = 0; iRow < NUMBER_OF_ROW_TILES; iRow++) {
             for (int iCol = 0; iCol < NUMBER_OF_COL_TILES; iCol++) {
                 tilemap[iRow][iCol] = Tile.getTile(
@@ -51,6 +52,8 @@ public class Tilemap {
                 tilemap[iRow][iCol].draw(mapCanvas);
             }
         }
+
+        System.out.println();
     }
 
     private Rect getRectByIndex(int idxRow, int idxCol) {
