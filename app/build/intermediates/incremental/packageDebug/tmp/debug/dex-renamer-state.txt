@@ -1,7 +1,7 @@
-#Tue Sep 19 20:22:28 EDT 2023
-base.0=/Users/gracemoussouri/Desktop/2340/CS2340B_Team29/app/build/intermediates/dex/debug/mergeExtDexDebug/classes.dex
-base.1=/Users/gracemoussouri/Desktop/2340/CS2340B_Team29/app/build/intermediates/dex/debug/mergeProjectDexDebug/0/classes.dex
-base.2=/Users/gracemoussouri/Desktop/2340/CS2340B_Team29/app/build/intermediates/dex/debug/mergeProjectDexDebug/9/classes.dex
+#Sat Sep 30 20:20:49 EDT 2023
+base.0=C\:\\Users\\jaden\\Fall2023\\CS2340\\CS2340B_Team29\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
+base.1=C\:\\Users\\jaden\\Fall2023\\CS2340\\CS2340B_Team29\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
+base.2=C\:\\Users\\jaden\\Fall2023\\CS2340\\CS2340B_Team29\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\9\\classes.dex
 path.0=classes.dex
 path.1=0/classes.dex
 path.2=9/classes.dex
