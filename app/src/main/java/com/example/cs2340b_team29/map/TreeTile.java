@@ -15,6 +15,6 @@ public class TreeTile extends Tile {
 
     @Override
     public void draw(Canvas canvas) {
-
+        sprite.draw(canvas, mapLocationRect.left, mapLocationRect.top);
     }
 }

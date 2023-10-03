@@ -33,6 +33,14 @@ public class SpriteSheet {
         return getSpriteByindex(0, 0);
     }
 
+    public Sprite getTreeSprite() {
+        return getSpriteByindex(0, 1);
+    }
+
+    public Sprite getBushSprite() {
+        return getSpriteByindex(0, 4);
+    }
+
     private Sprite getSpriteByindex(int idxRow, int idxCol) {
         return new Sprite(this, new Rect(
             idxCol*SPRITE_WIDTH_PIXELS,

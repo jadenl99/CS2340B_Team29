@@ -7,7 +7,7 @@ import com.example.cs2340b_team29.graphics.SpriteSheet;
 
 public abstract class Tile {
 
-    private final Rect mapLocationRect;
+    protected final Rect mapLocationRect;
     public Tile(Rect mapLocationRect) {
         this.mapLocationRect = mapLocationRect;
     }
