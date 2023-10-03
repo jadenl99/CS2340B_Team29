@@ -3,7 +3,6 @@
   <component name="AndroidLayouts">
     <shared>
       <config>
-        <device id="_android_virtual_device_id_Pixel_XL_API_30" />
         <device id="_device_class_phone" />
         <device id="_device_class_foldable" />
         <device id="_device_class_desktop" />
@@ -68,9 +67,6 @@
     <option name="RECENT_TEMPLATES">
       <list>
 
-
-        <option value="resourceFile" />
-        <option value="Class" />
       </list>
     </option>
   </component>

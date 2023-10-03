@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -27,13 +28,14 @@ public class ConfigScreenActivity extends AppCompatActivity {
         difficultyCGroup = findViewById(R.id.difficultyCGroup);
         nameInput = findViewById(R.id.nameInput);
         avatarGroup = findViewById(R.id.avatarGroup);
-
         configToGameBtn.setOnClickListener((View v) -> {
 
             // Accounts for invalid input
             // TODO add warning message
             String playerName = nameInput.getText().toString();
             if (playerName == null || playerName.trim().equals("")) {
+                Toast.makeText(getApplicationContext(),
+                        "Invalid name", Toast.LENGTH_LONG).show();
                 return;
             }
             // Data to pass on to the game screen
@@ -55,9 +57,13 @@ public class ConfigScreenActivity extends AppCompatActivity {
         String difficulty = "";
         //double difficultyMultiplier = 1.0;
         Bundle extras = new Bundle();
+
         for (int i = 0; i < difficultyCGroup.getChildCount(); i++) {
             Chip currChip = (Chip) difficultyCGroup.getChildAt(i);
-            int avatarId = 1;
+        }
+        int avatarId = 1;
+        for (int i = 0; i < difficultyCGroup.getChildCount(); i++) {
+            Chip currChip = (Chip) difficultyCGroup.getChildAt(i);
             String chipText = currChip.getText().toString();
             if (currChip.isChecked()) {
                 switch (chipText) {
@@ -83,14 +89,15 @@ public class ConfigScreenActivity extends AppCompatActivity {
                 String currAvatar = avatar.getText().toString();
                 switch (currAvatar) {
                 case "Avatar 1":
-                    // TODO add logic and add avatar data to bundle to pass
-                    //  on to the Game screen. Also find sprites
+                    avatarId = 1;
                     break;
                 case "Avatar 2":
-                    // TODO add logic
+                    Log.d("Check", "Avatar 2 selected");
+                    avatarId = 2;
                     break;
                 default:
-                    // TODO add logic
+                    avatarId = 3;
+
                 }
             }
         }
@@ -98,7 +105,7 @@ public class ConfigScreenActivity extends AppCompatActivity {
 
         extras.putString("PLAYER_NAME", playerName);
         extras.putString("DIFFICULTY", difficulty);
-        //extras.putInt("AVATAR_ID", ID);
+        extras.putInt("AVATAR_ID", avatarId);
         return extras;
 
 
