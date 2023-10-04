@@ -11,6 +11,8 @@ import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.cs2340b_team29.graphics.SpriteSheet;
+import com.example.cs2340b_team29.map.Tilemap;
 
 
 public class GameActivity extends AppCompatActivity {
@@ -20,6 +22,9 @@ public class GameActivity extends AppCompatActivity {
 
     private TextView hpLevelLabel;
     private ImageView avatarImage;
+    private final Tilemap tilemap;
+    private SpriteSheet spriteSheet;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,6 +66,9 @@ public class GameActivity extends AppCompatActivity {
                 avatarImage.setBackground(avatar3);
             }
         }
+        
+        // Initialize tilemap
+        tilemap = new Tilemap(spriteSheet);
 
         //next button leads to end screen
         nextButton.setOnClickListener((View v) -> {
