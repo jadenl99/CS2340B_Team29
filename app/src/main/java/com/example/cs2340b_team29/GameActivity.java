@@ -22,7 +22,7 @@ public class GameActivity extends AppCompatActivity {
 
     private TextView hpLevelLabel;
     private ImageView avatarImage;
-    private final Tilemap tilemap;
+    private Tilemap tilemap;
     private SpriteSheet spriteSheet;
 
     @Override
