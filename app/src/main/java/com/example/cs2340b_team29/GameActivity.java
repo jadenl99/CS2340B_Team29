@@ -70,6 +70,19 @@ public class GameActivity extends AppCompatActivity {
         // Initialize tilemap
         tilemap = new Tilemap(spriteSheet);
 
+        /*
+        //this might need to go in a GameView class not sure?
+        //to create tilemap
+        @Override
+        public void draw(Canvas canvas) {
+            super.draw(canvas);
+            canvas.drawColor(choose a color);
+            for (int i = 0; i < tilemap.size(); i++) {
+                canvas.drawBitmap(tilemap.get(i).getBm(),tilemap.get(i).getX(),tilemap.get(i).getY(),null);
+            }
+        }
+        */
+
         //next button leads to end screen
         nextButton.setOnClickListener((View v) -> {
             Intent goToEndScreen = new Intent(GameActivity.this, EndingActivity.class);
