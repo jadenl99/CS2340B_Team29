@@ -24,6 +24,7 @@ drawable background
 drawable button_selector
 drawable ic_launcher_background
 drawable ic_launcher_foreground
+drawable sprite_sheet
 id avatar1
 id avatarBtn1
 id avatarBtn2
