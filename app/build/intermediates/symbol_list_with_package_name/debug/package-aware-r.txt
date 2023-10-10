@@ -2960,6 +2960,8 @@ drawable m3_tabs_line_indicator
 drawable m3_tabs_rounded_line_indicator
 drawable m3_tabs_transparent_background
 drawable map1
+drawable map2
+drawable map3
 drawable material_cursor_drawable
 drawable material_ic_calendar_black_24dp
 drawable material_ic_clear_black_24dp
@@ -3213,6 +3215,7 @@ id end
 id endToStart
 id enterAlways
 id enterAlwaysCollapsed
+id exit
 id exitButton
 id exitUntilCollapsed
 id expand_activities_button
@@ -3278,6 +3281,9 @@ id layout
 id left
 id leftToRight
 id legacy
+id level1
+id level2
+id level3
 id line1
 id line3
 id linear
@@ -3358,7 +3364,6 @@ id never
 id neverCompleteToEnd
 id neverCompleteToStart
 id nextButton
-id nextLevel
 id noScroll
 id noState
 id none
@@ -3494,7 +3499,6 @@ id tag_transition_group
 id tag_unhandled_key_event_manager
 id tag_unhandled_key_listeners
 id tag_window_insets_animation_callback
-id testButton
 id text
 id text2
 id textEnd
@@ -3668,7 +3672,7 @@ layout activity_config_screen
 layout activity_end
 layout activity_game
 layout activity_main
-layout activity_test
+layout activity_pregame
 layout avatar_picker_screen
 layout custom_dialog
 layout design_bottom_navigation_item

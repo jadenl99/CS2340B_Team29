@@ -13,6 +13,7 @@ public class GameActivity extends AppCompatActivity {
 
     private L1View l1View;
     private L2View l2View;
+    private L3View l3View;
     private Point point = new Point();
 
     private Button level1Button;
@@ -35,9 +36,12 @@ public class GameActivity extends AppCompatActivity {
         L2Map l2Map = new L2Map(point.x, point.y, getResources());
         l2View = new L2View(this, point.x, point.y, l2Map);
 
+        L3Map l3Map = new L3Map(point.x, point.y, getResources());
+        l3View = new L3View(this, point.x, point.y, l3Map);
+
         setContentView(l1View);
 
-        level1Button.findViewById(R.id.level1);
+        /*level1Button.findViewById(R.id.level1);
         level1Button.setOnClickListener((View v) -> {
             setContentView(l1View);
         });
@@ -51,7 +55,7 @@ public class GameActivity extends AppCompatActivity {
         exitButton.setOnClickListener((View v) -> {
             Intent goToEndScreen = new Intent(GameActivity.this, EndingActivity.class);
             startActivity(goToEndScreen);
-        });
+        });*/
     }
 
 

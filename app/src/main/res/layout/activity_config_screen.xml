@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="136dp"
         android:layout_marginEnd="16dp"
-        android:l1Map="@drawable/button_selector"
+        android:background="@drawable/button_selector"
         app:checkedChip="@id/mediumChip"
         app:chipSpacingHorizontal="20dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -64,7 +64,7 @@
         android:layout_marginStart="99dp"
         android:layout_marginTop="628dp"
         android:layout_marginEnd="100dp"
-        android:l1Map="@drawable/button_selector"
+        android:background="@drawable/button_selector"
         android:text="Start Game"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -146,7 +146,7 @@
         android:layout_height="117dp"
         android:layout_marginTop="244dp"
         android:layout_marginEnd="48dp"
-        android:l1Map="@drawable/avatar1"
+        android:background="@drawable/avatar1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -156,7 +156,7 @@
         android:layout_height="117dp"
         android:layout_marginTop="372dp"
         android:layout_marginEnd="48dp"
-        android:l1Map="@drawable/avatar2"
+        android:background="@drawable/avatar2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -166,7 +166,7 @@
         android:layout_height="117dp"
         android:layout_marginTop="496dp"
         android:layout_marginEnd="48dp"
-        android:l1Map="@drawable/avatar3"
+        android:background="@drawable/avatar3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

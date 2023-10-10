@@ -24,10 +24,8 @@ public class PreGameActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_game);
+        setContentView(R.layout.activity_pregame);
 
-        //test
-        testButton = findViewById(R.id.testButton);
 
         nextButton = findViewById(R.id.nextButton);
         playerNameLabel = findViewById(R.id.nameLabel);
@@ -65,12 +63,6 @@ public class PreGameActivity extends AppCompatActivity {
                 avatarImage.setBackground(avatar3);
             }
         }
-
-       /* // test map button
-        testButton.setOnClickListener((View v) -> {
-            Intent goToTest = new Intent(PreGameActivity.this, GameActivity.class);
-            startActivity(goToTest);
-        }); */
 
         //next button leads to game screen
         nextButton.setOnClickListener((View v) -> {
