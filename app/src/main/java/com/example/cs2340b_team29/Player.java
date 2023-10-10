@@ -6,7 +6,7 @@ public class Player {
     private double y;
     private int score;
     private String playerName;
-    private int timeDatePlayed;
+    private long timeDatePlayed;
     private int idAvatar;
     private Player() {
         x = 0;
@@ -51,9 +51,9 @@ public class Player {
 
     public String getPlayerName() { return playerName;}
 
-    public void setTimeDatePlayed(int tdplayed) { timeDatePlayed = tdplayed;}
+    public void setTimeDatePlayed(long tdplayed) { timeDatePlayed = tdplayed;}
 
-    public int getTimeDatePlayed() { return timeDatePlayed;}
+    public long getTimeDatePlayed() { return timeDatePlayed;}
     public int getIdAvatar() { return idAvatar;}
 
     public void setIdAvatar(int id){ idAvatar = id;}
