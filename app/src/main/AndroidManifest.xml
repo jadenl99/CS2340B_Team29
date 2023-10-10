@@ -11,42 +11,35 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication"
-        tools:targetApi="31" >
-    <activity
-        android:name="com.example.cs2340b_team29.MainActivity"
-        android:label="Your App Label"
-        android:exported="true">
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
-    </activity>
+        tools:targetApi="31">
         <activity
-            android:name=".ConfigScreenActivity"
-            android:label="@string/app_name"
-            android:exported="true">
+            android:name=".GameActivity"
+            android:exported="false"
+            android:label="My Application">
+        </activity>
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:label="Your App Label">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".GameActivity"
-            android:label="@string/app_name"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            android:name=".ConfigScreenActivity"
+            android:exported="true"
+            android:label="@string/app_name">
+        </activity>
+        <activity
+            android:name=".PreGameActivity"
+            android:exported="true"
+            android:label="@string/app_name">
         </activity>
         <activity
             android:name=".EndingActivity"
-            android:label="@string/app_name"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            android:exported="true"
+            android:label="@string/app_name">
         </activity>
     </application>
 

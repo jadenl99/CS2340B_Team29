@@ -1,10 +1,13 @@
-#Sat Sep 30 20:20:49 EDT 2023
-base.0=C\:\\Users\\jaden\\Fall2023\\CS2340\\CS2340B_Team29\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
-base.1=C\:\\Users\\jaden\\Fall2023\\CS2340\\CS2340B_Team29\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
-base.2=C\:\\Users\\jaden\\Fall2023\\CS2340\\CS2340B_Team29\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\9\\classes.dex
+#Tue Oct 10 12:34:47 EDT 2023
+base.0=/Users/ananyajain/Documents/CS2340/CS2340B_Team29/app/build/intermediates/dex/debug/mergeExtDexDebug/classes.dex
+base.1=/Users/ananyajain/Documents/CS2340/CS2340B_Team29/app/build/intermediates/dex/debug/mergeProjectDexDebug/0/classes.dex
+base.2=/Users/ananyajain/Documents/CS2340/CS2340B_Team29/app/build/intermediates/dex/debug/mergeProjectDexDebug/9/classes.dex
+base.3=/Users/ananyajain/Documents/CS2340/CS2340B_Team29/app/build/intermediates/dex/debug/mergeExtDexDebug/classes2.dex
 path.0=classes.dex
 path.1=0/classes.dex
 path.2=9/classes.dex
+path.3=classes2.dex
 renamed.0=classes.dex
 renamed.1=classes2.dex
 renamed.2=classes3.dex
+renamed.3=classes4.dex

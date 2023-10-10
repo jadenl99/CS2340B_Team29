@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
+    android:l1Map="@drawable/l1Map"
     tools:context=".MainActivity">
 
     <Button
@@ -14,7 +14,7 @@
         android:layout_marginStart="161dp"
         android:layout_marginEnd="162dp"
         android:layout_marginBottom="144dp"
-        android:background="@color/torch_flame_orange"
+        android:l1Map="@color/torch_flame_orange"
         android:backgroundTint="@color/black"
         android:shadowColor="@color/black"
         android:shadowRadius="5"
@@ -33,7 +33,7 @@
         android:layout_marginStart="161dp"
         android:layout_marginEnd="162dp"
         android:layout_marginBottom="36dp"
-        android:background="@color/torch_flame_orange"
+        android:l1Map="@color/torch_flame_orange"
         android:backgroundTint="@color/black"
         android:shadowColor="#000000"
         android:shadowRadius="5"
