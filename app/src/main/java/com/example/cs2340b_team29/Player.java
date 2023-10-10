@@ -5,7 +5,9 @@ public class Player {
     private double x;
     private double y;
     private int score;
-
+    private String playerName;
+    private int timeDatePlayed;
+    private int idAvatar;
     private Player() {
         x = 0;
         y = 0;
@@ -44,4 +46,15 @@ public class Player {
     public void setScore(int score) {
         this.score = score;
     }
+
+    public void setPlayerName(String name) { playerName = name;}
+
+    public String getPlayerName() { return playerName;}
+
+    public void setTimeDatePlayed(int tdplayed) { timeDatePlayed = tdplayed;}
+
+    public int getTimeDatePlayed() { return timeDatePlayed;}
+    public int getIdAvatar() { return idAvatar;}
+
+    public void setIdAvatar(int id){ idAvatar = id;}
 }

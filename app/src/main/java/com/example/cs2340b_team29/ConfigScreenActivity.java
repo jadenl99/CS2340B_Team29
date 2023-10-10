@@ -53,6 +53,7 @@ public class ConfigScreenActivity extends AppCompatActivity {
     }
 
     private Bundle initializeGameData() {
+        int playerScore = 0;
         String playerName = nameInput.getText().toString();
         String difficulty = "";
         //double difficultyMultiplier = 1.0;
@@ -106,6 +107,7 @@ public class ConfigScreenActivity extends AppCompatActivity {
         extras.putString("PLAYER_NAME", playerName);
         extras.putString("DIFFICULTY", difficulty);
         extras.putInt("AVATAR_ID", avatarId);
+        extras.putInt("SCORE", playerScore);
         return extras;
 
 

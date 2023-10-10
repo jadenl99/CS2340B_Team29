@@ -44,7 +44,11 @@ public class GameActivity extends AppCompatActivity {
             String difficulty = extras.getString("DIFFICULTY");
             int avatarChosen = extras.getInt("AVATAR_ID");
 
-            playerNameLabel.setText("Player: " + playerName);
+            Player currentPlayer = Player.getPlayer();
+            currentPlayer.setPlayerName(playerName);
+            currentPlayer.setIdAvatar(avatarChosen);
+
+            playerNameLabel.setText("Player: " + currentPlayer.getPlayerName());
             difficultyLabel.setText("Difficulty: " + difficulty);
 
             if (difficulty.equals("Easy")) {
@@ -55,10 +59,10 @@ public class GameActivity extends AppCompatActivity {
                 hpLevelLabel.setText("HP: 25");
             }
 
-            if (avatarChosen == 1) {
+            if (currentPlayer.getIdAvatar() == 1) {
                 Drawable avatar1 = getDrawable(R.drawable.avatar1);
                 avatarImage.setBackground(avatar1);
-            } else if (avatarChosen == 2) {
+            } else if (currentPlayer.getIdAvatar() == 2) {
                 Drawable avatar2 = getDrawable(R.drawable.avatar2);
                 avatarImage.setBackground(avatar2);
             } else {
