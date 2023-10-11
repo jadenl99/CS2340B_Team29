@@ -24,7 +24,9 @@ drawable background
 drawable button_selector
 drawable ic_launcher_background
 drawable ic_launcher_foreground
-drawable sprite_sheet
+drawable map1
+drawable map2
+drawable map3
 id avatar1
 id avatarBtn1
 id avatarBtn2
@@ -37,7 +39,9 @@ id difficultyCGroup
 id difficultyLabel
 id difficultyTxt
 id easyChip
+id exit
 id exitButton
+id gameViewContainer
 id hardChip
 id hpLevelLabel
 id imageButton4
@@ -47,6 +51,8 @@ id imageView2
 id imageView3
 id imageView4
 id imageView5
+id level1
+id level2
 id mediumChip
 id nameInput
 id nameLabel
@@ -57,12 +63,14 @@ id radioButton2
 id radioButton3
 id restartBtn
 id startButton
+id textView
 id textView3
 id title
 layout activity_config_screen
 layout activity_end
 layout activity_game
 layout activity_main
+layout activity_pregame
 layout avatar_picker_screen
 mipmap ic_launcher
 mipmap ic_launcher_round

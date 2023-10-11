@@ -1,40 +1,37 @@
 package com.example.cs2340b_team29;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
+import android.graphics.Point;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
-import android.content.Intent;
-
-import android.widget.TextView;
-import android.widget.ImageView;
-
-import androidx.appcompat.app.AppCompatActivity;
-
-import com.example.cs2340b_team29.graphics.SpriteSheet;
-import com.example.cs2340b_team29.map.Tilemap;
-
+import android.widget.FrameLayout;
 
 public class GameActivity extends AppCompatActivity {
-    private Button nextButton;
-    private TextView playerNameLabel;
-    private TextView difficultyLabel;
 
-    private TextView hpLevelLabel;
-    private ImageView avatarImage;
-    private final Tilemap tilemap;
-    private SpriteSheet spriteSheet;
+    private L2View l2View;
+    private L3View l3View;
+    private Point point = new Point();
+
+    private Button level1Button;
+    private Button level2Button;
+    private Button exitButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_game);
 
-        nextButton = findViewById(R.id.nextButton);
-        playerNameLabel = findViewById(R.id.nameLabel);
-        difficultyLabel = findViewById(R.id.difficultyLabel);
-        hpLevelLabel = findViewById(R.id.hpLevelLabel);
-        avatarImage = findViewById(R.id.avatarImage);
+        View nextButton = findViewById(R.id.nextButton);
+        View playerNameLabel = findViewById(R.id.nameLabel);
+        View difficultyLabel = findViewById(R.id.difficultyLabel);
+        View hpLevelLabel = findViewById(R.id.hpLevelLabel);
+        View avatarImage = findViewById(R.id.avatarImage);
 
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
@@ -44,15 +41,15 @@ public class GameActivity extends AppCompatActivity {
             String difficulty = extras.getString("DIFFICULTY");
             int avatarChosen = extras.getInt("AVATAR_ID");
 
-            playerNameLabel.setText("Player: " + playerName);
-            difficultyLabel.setText("Difficulty: " + difficulty);
+            playerNameLabel.setTextDirection(Integer.parseInt("Player: " + playerName));
+            difficultyLabel.setTextDirection(Integer.parseInt("Difficulty: " + difficulty));
 
             if (difficulty.equals("Easy")) {
-                hpLevelLabel.setText("HP: 100");
+                hpLevelLabel.setTextDirection(Integer.parseInt("HP: 100"));
             } else if (difficulty.equals("Medium")) {
-                hpLevelLabel.setText("HP: 50");
+                hpLevelLabel.setTextDirection(Integer.parseInt("HP: 50"));
             } else if (difficulty.equals("Hard")) {
-                hpLevelLabel.setText("HP: 25");
+                hpLevelLabel.setTextDirection(Integer.parseInt("HP: 25"));
             }
 
             if (avatarChosen == 1) {
@@ -66,9 +63,9 @@ public class GameActivity extends AppCompatActivity {
                 avatarImage.setBackground(avatar3);
             }
         }
+    }
         
         // Initialize tilemap
-        tilemap = new Tilemap(spriteSheet);
 
         /*
         //this might need to go in a GameView class not sure?
@@ -83,10 +80,60 @@ public class GameActivity extends AppCompatActivity {
         }
         */
 
-        //next button leads to end screen
-        nextButton.setOnClickListener((View v) -> {
+        /*next button leads to end screen
+        nextButton.setOnClickListener((View v) -> { */
+
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+        getWindowManager().getDefaultDisplay().getSize(point);
+
+        FrameLayout gameViewContainer = (FrameLayout) findViewById(R.id.gameViewContainer);
+        private L1Map l1Map = new L1Map(point.x, point.y, getResources());
+        private L1View l1View = new L1View(this, point.x, point.y, l1Map);
+
+
+        gameViewContainer.addView(l1View);
+        /*
+        L1Map l1Map = new L1Map(point.x, point.y, getResources());
+        l1View = new L1View(this, point.x, point.y, l1Map);
+
+        L2Map l2Map = new L2Map(point.x, point.y, getResources());
+        l2View = new L2View(this, point.x, point.y, l2Map);
+
+        L3Map l3Map = new L3Map(point.x, point.y, getResources());
+        l3View = new L3View(this, point.x, point.y, l3Map);
+
+        setContentView(l1View);
+
+        level1Button.findViewById(R.id.level1);
+        level1Button.setOnClickListener((View v) -> {
+            setContentView(l1View);
+        });
+
+        level2Button.findViewById(R.id.level2);
+        level2Button.setOnClickListener((View v) -> {
+            setContentView(l2View);
+        });
+
+        exitButton.findViewById(R.id.exit);
+        exitButton.setOnClickListener((View v) -> {
             Intent goToEndScreen = new Intent(GameActivity.this, EndingActivity.class);
             startActivity(goToEndScreen);
         });
+    }
+    */
+
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        l1View.pause();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        l1View.resume();
     }
 }

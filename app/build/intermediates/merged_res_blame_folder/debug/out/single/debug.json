@@ -1,110 +1,126 @@
 [
     {
-        "merged": "com.example.cs2340b_team29.app-merged_res-28:/drawable_background.jpg.flat",
-        "source": "com.example.cs2340b_team29.app-main-30:/drawable/background.jpg"
+        "merged": "/Users/gracemoussouri/.gradle/daemon/8.0/com.example.cs2340b_team29.app-merged_res-28:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "/Users/gracemoussouri/.gradle/daemon/8.0/com.example.cs2340b_team29.app-main-30:/mipmap-anydpi-v26/ic_launcher.xml"
     },
     {
-        "merged": "com.example.cs2340b_team29.app-merged_res-28:/drawable_avatar2.jpg.flat",
-        "source": "com.example.cs2340b_team29.app-main-30:/drawable/avatar2.jpg"
+        "merged": "/Users/gracemoussouri/.gradle/daemon/8.0/com.example.cs2340b_team29.app-merged_res-28:/mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "/Users/gracemoussouri/.gradle/daemon/8.0/com.example.cs2340b_team29.app-main-30:/mipmap-hdpi/ic_launcher_round.webp"
     },
     {
-        "merged": "com.example.cs2340b_team29.app-merged_res-28:/mipmap-anydpi-v26_ic_launcher.xml.flat",
-        "source": "com.example.cs2340b_team29.app-main-30:/mipmap-anydpi-v26/ic_launcher.xml"
+        "merged": "/Users/gracemoussouri/.gradle/daemon/8.0/com.example.cs2340b_team29.app-merged_res-28:/drawable_ic_launcher_foreground.xml.flat",
+        "source": "/Users/gracemoussouri/.gradle/daemon/8.0/com.example.cs2340b_team29.app-main-30:/drawable/ic_launcher_foreground.xml"
     },
     {
-        "merged": "com.example.cs2340b_team29.app-merged_res-28:/mipmap-xxhdpi_ic_launcher_round.webp.flat",
-        "source": "com.example.cs2340b_team29.app-main-30:/mipmap-xxhdpi/ic_launcher_round.webp"
+        "merged": "/Users/gracemoussouri/.gradle/daemon/8.0/com.example.cs2340b_team29.app-merged_res-28:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "/Users/gracemoussouri/.gradle/daemon/8.0/com.example.cs2340b_team29.app-main-30:/mipmap-xxxhdpi/ic_launcher_round.webp"
     },
     {
-        "merged": "com.example.cs2340b_team29.app-merged_res-28:/xml_backup_rules.xml.flat",
-        "source": "com.example.cs2340b_team29.app-main-30:/xml/backup_rules.xml"
+        "merged": "/Users/gracemoussouri/.gradle/daemon/8.0/com.example.cs2340b_team29.app-merged_res-28:/xml_data_extraction_rules.xml.flat",
+        "source": "/Users/gracemoussouri/.gradle/daemon/8.0/com.example.cs2340b_team29.app-main-30:/xml/data_extraction_rules.xml"
     },
     {
-        "merged": "com.example.cs2340b_team29.app-merged_res-28:/drawable_ic_launcher_background.xml.flat",
-        "source": "com.example.cs2340b_team29.app-main-30:/drawable/ic_launcher_background.xml"
+        "merged": "/Users/gracemoussouri/.gradle/daemon/8.0/com.example.cs2340b_team29.app-merged_res-28:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "/Users/gracemoussouri/.gradle/daemon/8.0/com.example.cs2340b_team29.app-main-30:/mipmap-anydpi-v26/ic_launcher_round.xml"
     },
     {
-        "merged": "com.example.cs2340b_team29.app-merged_res-28:/mipmap-xhdpi_ic_launcher_round.webp.flat",
-        "source": "com.example.cs2340b_team29.app-main-30:/mipmap-xhdpi/ic_launcher_round.webp"
+        "merged": "/Users/gracemoussouri/.gradle/daemon/8.0/com.example.cs2340b_team29.app-merged_res-28:/drawable_map3.png.flat",
+        "source": "/Users/gracemoussouri/.gradle/daemon/8.0/com.example.cs2340b_team29.app-main-30:/drawable/map3.png"
     },
     {
-        "merged": "com.example.cs2340b_team29.app-merged_res-28:/xml_data_extraction_rules.xml.flat",
-        "source": "com.example.cs2340b_team29.app-main-30:/xml/data_extraction_rules.xml"
+        "merged": "/Users/gracemoussouri/.gradle/daemon/8.0/com.example.cs2340b_team29.app-merged_res-28:/drawable_avatar3.jpg.flat",
+        "source": "/Users/gracemoussouri/.gradle/daemon/8.0/com.example.cs2340b_team29.app-main-30:/drawable/avatar3.jpg"
     },
     {
-        "merged": "com.example.cs2340b_team29.app-merged_res-28:/layout_activity_end.xml.flat",
-        "source": "com.example.cs2340b_team29.app-main-30:/layout/activity_end.xml"
+        "merged": "/Users/gracemoussouri/.gradle/daemon/8.0/com.example.cs2340b_team29.app-merged_res-28:/layout_avatar_picker_screen.xml.flat",
+        "source": "/Users/gracemoussouri/.gradle/daemon/8.0/com.example.cs2340b_team29.app-main-30:/layout/avatar_picker_screen.xml"
     },
     {
-        "merged": "com.example.cs2340b_team29.app-merged_res-28:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
-        "source": "com.example.cs2340b_team29.app-main-30:/mipmap-anydpi-v26/ic_launcher_round.xml"
+        "merged": "/Users/gracemoussouri/.gradle/daemon/8.0/com.example.cs2340b_team29.app-merged_res-28:/mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "/Users/gracemoussouri/.gradle/daemon/8.0/com.example.cs2340b_team29.app-main-30:/mipmap-mdpi/ic_launcher_round.webp"
     },
     {
-        "merged": "com.example.cs2340b_team29.app-merged_res-28:/drawable_button_selector.xml.flat",
-        "source": "com.example.cs2340b_team29.app-main-30:/drawable/button_selector.xml"
+        "merged": "/Users/gracemoussouri/.gradle/daemon/8.0/com.example.cs2340b_team29.app-merged_res-28:/layout_activity_end.xml.flat",
+        "source": "/Users/gracemoussouri/.gradle/daemon/8.0/com.example.cs2340b_team29.app-main-30:/layout/activity_end.xml"
     },
     {
-        "merged": "com.example.cs2340b_team29.app-merged_res-28:/drawable_ic_launcher_foreground.xml.flat",
-        "source": "com.example.cs2340b_team29.app-main-30:/drawable/ic_launcher_foreground.xml"
+        "merged": "/Users/gracemoussouri/.gradle/daemon/8.0/com.example.cs2340b_team29.app-merged_res-28:/drawable_avatar2.jpg.flat",
+        "source": "/Users/gracemoussouri/.gradle/daemon/8.0/com.example.cs2340b_team29.app-main-30:/drawable/avatar2.jpg"
     },
     {
-        "merged": "com.example.cs2340b_team29.app-merged_res-28:/mipmap-hdpi_ic_launcher.webp.flat",
-        "source": "com.example.cs2340b_team29.app-main-30:/mipmap-hdpi/ic_launcher.webp"
+        "merged": "/Users/gracemoussouri/.gradle/daemon/8.0/com.example.cs2340b_team29.app-merged_res-28:/mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "/Users/gracemoussouri/.gradle/daemon/8.0/com.example.cs2340b_team29.app-main-30:/mipmap-xxhdpi/ic_launcher.webp"
     },
     {
-        "merged": "com.example.cs2340b_team29.app-merged_res-28:/drawable_avatar1.jpg.flat",
-        "source": "com.example.cs2340b_team29.app-main-30:/drawable/avatar1.jpg"
+        "merged": "/Users/gracemoussouri/.gradle/daemon/8.0/com.example.cs2340b_team29.app-merged_res-28:/drawable_button_selector.xml.flat",
+        "source": "/Users/gracemoussouri/.gradle/daemon/8.0/com.example.cs2340b_team29.app-main-30:/drawable/button_selector.xml"
     },
     {
-        "merged": "com.example.cs2340b_team29.app-merged_res-28:/mipmap-hdpi_ic_launcher_round.webp.flat",
-        "source": "com.example.cs2340b_team29.app-main-30:/mipmap-hdpi/ic_launcher_round.webp"
+        "merged": "/Users/gracemoussouri/.gradle/daemon/8.0/com.example.cs2340b_team29.app-merged_res-28:/mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "/Users/gracemoussouri/.gradle/daemon/8.0/com.example.cs2340b_team29.app-main-30:/mipmap-xxxhdpi/ic_launcher.webp"
     },
     {
-        "merged": "com.example.cs2340b_team29.app-merged_res-28:/drawable_avatar3.jpg.flat",
-        "source": "com.example.cs2340b_team29.app-main-30:/drawable/avatar3.jpg"
+        "merged": "/Users/gracemoussouri/.gradle/daemon/8.0/com.example.cs2340b_team29.app-merged_res-28:/layout_activity_pregame.xml.flat",
+        "source": "/Users/gracemoussouri/.gradle/daemon/8.0/com.example.cs2340b_team29.app-main-30:/layout/activity_pregame.xml"
     },
     {
-        "merged": "com.example.cs2340b_team29.app-merged_res-28:/layout_avatar_picker_screen.xml.flat",
-        "source": "com.example.cs2340b_team29.app-main-30:/layout/avatar_picker_screen.xml"
+        "merged": "/Users/gracemoussouri/.gradle/daemon/8.0/com.example.cs2340b_team29.app-merged_res-28:/drawable_map2.png.flat",
+        "source": "/Users/gracemoussouri/.gradle/daemon/8.0/com.example.cs2340b_team29.app-main-30:/drawable/map2.png"
     },
     {
-        "merged": "com.example.cs2340b_team29.app-merged_res-28:/mipmap-xxxhdpi_ic_launcher.webp.flat",
-        "source": "com.example.cs2340b_team29.app-main-30:/mipmap-xxxhdpi/ic_launcher.webp"
+        "merged": "/Users/gracemoussouri/.gradle/daemon/8.0/com.example.cs2340b_team29.app-merged_res-28:/drawable_ic_launcher_background.xml.flat",
+        "source": "/Users/gracemoussouri/.gradle/daemon/8.0/com.example.cs2340b_team29.app-main-30:/drawable/ic_launcher_background.xml"
     },
     {
-        "merged": "com.example.cs2340b_team29.app-merged_res-28:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
-        "source": "com.example.cs2340b_team29.app-main-30:/mipmap-xxxhdpi/ic_launcher_round.webp"
+        "merged": "/Users/gracemoussouri/.gradle/daemon/8.0/com.example.cs2340b_team29.app-merged_res-28:/xml_backup_rules.xml.flat",
+        "source": "/Users/gracemoussouri/.gradle/daemon/8.0/com.example.cs2340b_team29.app-main-30:/xml/backup_rules.xml"
     },
     {
-        "merged": "com.example.cs2340b_team29.app-merged_res-28:/mipmap-xhdpi_ic_launcher.webp.flat",
-        "source": "com.example.cs2340b_team29.app-main-30:/mipmap-xhdpi/ic_launcher.webp"
+        "merged": "/Users/gracemoussouri/.gradle/daemon/8.0/com.example.cs2340b_team29.app-merged_res-28:/mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "/Users/gracemoussouri/.gradle/daemon/8.0/com.example.cs2340b_team29.app-main-30:/mipmap-hdpi/ic_launcher.webp"
     },
     {
-        "merged": "com.example.cs2340b_team29.app-merged_res-28:/layout_activity_config_screen.xml.flat",
-        "source": "com.example.cs2340b_team29.app-main-30:/layout/activity_config_screen.xml"
+        "merged": "/Users/gracemoussouri/.gradle/daemon/8.0/com.example.cs2340b_team29.app-merged_res-28:/drawable_avatar1.jpg.flat",
+        "source": "/Users/gracemoussouri/.gradle/daemon/8.0/com.example.cs2340b_team29.app-main-30:/drawable/avatar1.jpg"
     },
     {
-        "merged": "com.example.cs2340b_team29.app-merged_res-28:/mipmap-mdpi_ic_launcher_round.webp.flat",
-        "source": "com.example.cs2340b_team29.app-main-30:/mipmap-mdpi/ic_launcher_round.webp"
+        "merged": "/Users/gracemoussouri/.gradle/daemon/8.0/com.example.cs2340b_team29.app-merged_res-28:/mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "/Users/gracemoussouri/.gradle/daemon/8.0/com.example.cs2340b_team29.app-main-30:/mipmap-mdpi/ic_launcher.webp"
     },
     {
-        "merged": "com.example.cs2340b_team29.app-merged_res-28:/layout_activity_main.xml.flat",
-        "source": "com.example.cs2340b_team29.app-main-30:/layout/activity_main.xml"
+        "merged": "/Users/gracemoussouri/.gradle/daemon/8.0/com.example.cs2340b_team29.app-merged_res-28:/mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "/Users/gracemoussouri/.gradle/daemon/8.0/com.example.cs2340b_team29.app-main-30:/mipmap-xhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "/Users/gracemoussouri/.gradle/daemon/8.0/com.example.cs2340b_team29.app-merged_res-28:/layout_activity_config_screen.xml.flat",
+        "source": "/Users/gracemoussouri/.gradle/daemon/8.0/com.example.cs2340b_team29.app-main-30:/layout/activity_config_screen.xml"
     },
     {
         "merged": "com.example.cs2340b_team29.app-merged_res-28:/layout_activity_game.xml.flat",
         "source": "com.example.cs2340b_team29.app-main-30:/layout/activity_game.xml"
     },
     {
-        "merged": "com.example.cs2340b_team29.app-merged_res-28:/drawable_sprite_sheet.png.flat",
-        "source": "com.example.cs2340b_team29.app-main-30:/drawable/sprite_sheet.png"
+        "merged": "/Users/gracemoussouri/.gradle/daemon/8.0/com.example.cs2340b_team29.app-merged_res-28:/drawable_background.jpg.flat",
+        "source": "/Users/gracemoussouri/.gradle/daemon/8.0/com.example.cs2340b_team29.app-main-30:/drawable/background.jpg"
     },
     {
-        "merged": "com.example.cs2340b_team29.app-merged_res-28:/mipmap-xxhdpi_ic_launcher.webp.flat",
-        "source": "com.example.cs2340b_team29.app-main-30:/mipmap-xxhdpi/ic_launcher.webp"
+        "merged": "/Users/gracemoussouri/.gradle/daemon/8.0/com.example.cs2340b_team29.app-merged_res-28:/mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "/Users/gracemoussouri/.gradle/daemon/8.0/com.example.cs2340b_team29.app-main-30:/mipmap-xhdpi/ic_launcher.webp"
     },
     {
-        "merged": "com.example.cs2340b_team29.app-merged_res-28:/mipmap-mdpi_ic_launcher.webp.flat",
-        "source": "com.example.cs2340b_team29.app-main-30:/mipmap-mdpi/ic_launcher.webp"
+        "merged": "/Users/gracemoussouri/.gradle/daemon/8.0/com.example.cs2340b_team29.app-merged_res-28:/mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "/Users/gracemoussouri/.gradle/daemon/8.0/com.example.cs2340b_team29.app-main-30:/mipmap-xxhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "/Users/gracemoussouri/.gradle/daemon/8.0/com.example.cs2340b_team29.app-merged_res-28:/drawable_map1.png.flat",
+        "source": "/Users/gracemoussouri/.gradle/daemon/8.0/com.example.cs2340b_team29.app-main-30:/drawable/map1.png"
+    },
+    {
+        "merged": "/Users/gracemoussouri/.gradle/daemon/8.0/com.example.cs2340b_team29.app-merged_res-28:/layout_activity_main.xml.flat",
+        "source": "/Users/gracemoussouri/.gradle/daemon/8.0/com.example.cs2340b_team29.app-main-30:/layout/activity_main.xml"
+    },
+    {
+        "merged": "/Users/gracemoussouri/.gradle/daemon/8.0/com.example.cs2340b_team29.app-merged_res-28:/layout_activity_game.xml.flat",
+        "source": "/Users/gracemoussouri/.gradle/daemon/8.0/com.example.cs2340b_team29.app-main-30:/layout/activity_game.xml"
     }
 ]

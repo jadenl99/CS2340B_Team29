@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         TextView title = findViewById(R.id.title);
+
     }
 
 
