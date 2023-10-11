@@ -62,6 +62,7 @@ id radioButton
 id radioButton2
 id radioButton3
 id restartBtn
+id scoreTextView
 id startButton
 id textView3
 id title
