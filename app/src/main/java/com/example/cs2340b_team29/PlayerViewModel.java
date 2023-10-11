@@ -35,8 +35,10 @@ public class PlayerViewModel extends ViewModel {
         return player;
     }
 
-    public void restartGamePlayerData() {
-        player.setScore(100);
+    public void setPlayerData(int score, String name, int avatarId) {
+        player.setScore(score);
+        player.setIdAvatar(avatarId);
+        player.setPlayerName(name);
     }
 
 

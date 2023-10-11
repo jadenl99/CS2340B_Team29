@@ -47,6 +47,7 @@ public class EndingActivity extends AppCompatActivity {
         long currentDateTime = System.currentTimeMillis();
         LeaderboardEntry latestAttempt = new LeaderboardEntry(playerName, score, currentDateTime);
 
+
         //add latest player to array
         leaderboardViewModel.addLatestAttempt(latestAttempt);
 
@@ -69,6 +70,7 @@ public class EndingActivity extends AppCompatActivity {
         if (leaderboard.getAttempts().size() > 4) {
             fifthPlace.setText(leaderboard.getAttempts().get(4).getName() + leaderboard.getAttempts().get(4).getScore() + leaderboard.getAttempts().get(4).getDateTime());
         }
+
 
         //set most recent attempt text
         mostRecentAttempt.setText("Most Recent Score: " + score);

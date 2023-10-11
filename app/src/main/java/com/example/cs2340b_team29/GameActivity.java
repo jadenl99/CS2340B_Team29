@@ -1,10 +1,15 @@
 package com.example.cs2340b_team29;
 
+
+
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModel;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
 import android.graphics.Point;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -20,8 +25,21 @@ public class GameActivity extends AppCompatActivity {
     private Button level2Button;
     private Button exitButton;
 
+    private Handler handler = new Handler();
+
+    private PlayerViewModel playerViewModel;
+
+    private Runnable myMethodRunnable = new Runnable() {
+
+        @Override
+        public void run() {
+            playerViewModel.changeScore(-1);
+            handler.postDelayed(this, 1000);
+        }
+    };
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        playerViewModel = new ViewModelProvider(this).get(PlayerViewModel.class);
         super.onCreate(savedInstanceState);
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
