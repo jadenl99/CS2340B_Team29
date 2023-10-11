@@ -13,13 +13,14 @@ import java.util.*;
 public class EndingActivity extends AppCompatActivity {
 
     private Button restartBtn;
-    private ArrayList<Player> players;
-
+    private Leaderboard leaderboard;
     private TextView firstPlace;
     private TextView secondPlace;
     private TextView thirdPlace;
     private TextView fourthPlace;
     private TextView fifthPlace;
+    private TextView mostRecentAttempt;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +31,7 @@ public class EndingActivity extends AppCompatActivity {
         thirdPlace = findViewById(R.id.thirdplace);
         fourthPlace = findViewById(R.id.fourthplace);
         fifthPlace = findViewById(R.id.fifthplace);
+        mostRecentAttempt = findViewById(R.id.mostRecentAttempt);
 
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
@@ -46,18 +48,20 @@ public class EndingActivity extends AppCompatActivity {
         currentPlayer.setTimeDatePlayed(currentDateTime);
 
         //add latest player to array
-        players.add(currentPlayer);
+        leaderboard.addLatestPlayer(currentPlayer);
 
-        //sort scores array in descending order
-        Collections.sort(players, Collections.reverseOrder());//how to sort based on each player's score attribute?
+        //sort player history in descending order
+        leaderboard.sortScores();
 
-        //update leaderBoard text
-        //format this correctly
-        firstPlace.setText(players.get(0).getPlayerName() + players.get(0).getScore() + players.get(0).getTimeDatePlayed());
-        secondPlace.setText(players.get(1).getPlayerName() + players.get(1).getScore() + players.get(1).getTimeDatePlayed());
-        thirdPlace.setText(players.get(2).getPlayerName() + players.get(2).getScore() + players.get(2).getTimeDatePlayed());
-        fourthPlace.setText(players.get(3).getPlayerName() + players.get(3).getScore() + players.get(3).getTimeDatePlayed());
-        fifthPlace.setText(players.get(4).getPlayerName() + players.get(4).getScore() + players.get(4).getTimeDatePlayed());
+        //update leaderBoard text (format this)
+        firstPlace.setText(leaderboard.getPlayers().get(0).getPlayerName() +leaderboard.getPlayers().get(0).getScore() + leaderboard.getPlayers().get(0).getTimeDatePlayed());
+        secondPlace.setText(leaderboard.getPlayers().get(1).getPlayerName() + leaderboard.getPlayers().get(1).getScore() + leaderboard.getPlayers().get(1).getTimeDatePlayed());
+        thirdPlace.setText(leaderboard.getPlayers().get(2).getPlayerName() + leaderboard.getPlayers().get(2).getScore() + leaderboard.getPlayers().get(2).getTimeDatePlayed());
+        fourthPlace.setText(leaderboard.getPlayers().get(3).getPlayerName() + leaderboard.getPlayers().get(3).getScore() + leaderboard.getPlayers().get(3).getTimeDatePlayed());
+        fifthPlace.setText(leaderboard.getPlayers().get(4).getPlayerName() + leaderboard.getPlayers().get(4).getScore() + leaderboard.getPlayers().get(4).getTimeDatePlayed());
+
+        //set most recent attempt
+        mostRecentAttempt.setText("Most Recent Score: " + score);
 
         restartBtn = findViewById(R.id.restartBtn);
 
