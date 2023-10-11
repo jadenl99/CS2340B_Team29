@@ -3215,7 +3215,6 @@ id end
 id endToStart
 id enterAlways
 id enterAlwaysCollapsed
-id exit
 id exitButton
 id exitUntilCollapsed
 id expand_activities_button
@@ -3237,6 +3236,7 @@ id forever
 id fragment_container_view_tag
 id frost
 id fullscreen_header
+id gameContainer
 id ghost_view
 id ghost_view_holder
 id gone
@@ -3281,9 +3281,7 @@ id layout
 id left
 id leftToRight
 id legacy
-id level1
-id level2
-id level3
+id level1Button
 id line1
 id line3
 id linear

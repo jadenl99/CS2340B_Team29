@@ -29,5 +29,15 @@ public class PlayerViewModelTest {
 
     }
 
+    @Test
+    public void testPause() {
+        L1View level1 = new L1View();
+
+    }
+
+    @Test
+    public void testDifficulty() {
+
+    }
 
 }

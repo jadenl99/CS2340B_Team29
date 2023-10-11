@@ -13,10 +13,10 @@ public class L2View extends SurfaceView implements Runnable{
     private Paint paint;
     private GameActivity activity;
     private L2Map l2Map;
+
     public L2View(GameActivity activity, int screenX, int screenY, L2Map l2Map) {
         super(activity);
         this.activity = activity;
-
         this.screenX = screenX;
         this.screenY = screenY;
         this.l2Map = l2Map;
@@ -34,7 +34,7 @@ public class L2View extends SurfaceView implements Runnable{
 
     private void draw() {
         if (getHolder().getSurface().isValid()) {
-
+            System.out.println("made it to draw"); // delete
             Canvas canvas = getHolder().lockCanvas();
             canvas.drawBitmap(l2Map.background, l2Map.x, l2Map.y, paint);
             getHolder().unlockCanvasAndPost(canvas);
@@ -51,7 +51,6 @@ public class L2View extends SurfaceView implements Runnable{
     }
 
     public void resume () {
-
         isPlaying = true;
         thread = new Thread(this);
         thread.start();

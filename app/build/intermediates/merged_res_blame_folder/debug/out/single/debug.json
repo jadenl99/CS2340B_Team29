@@ -100,12 +100,12 @@
         "source": "/Users/ananyajain/.gradle/daemon/8.0/com.example.cs2340b_team29.app-main-30:/layout/activity_config_screen.xml"
     },
     {
-        "merged": "com.example.cs2340b_team29.app-merged_res-28:/layout_activity_pregame.xml.flat",
-        "source": "com.example.cs2340b_team29.app-main-30:/layout/activity_pregame.xml"
-    },
-    {
         "merged": "/Users/ananyajain/.gradle/daemon/8.0/com.example.cs2340b_team29.app-merged_res-28:/drawable_avatar2.jpg.flat",
         "source": "/Users/ananyajain/.gradle/daemon/8.0/com.example.cs2340b_team29.app-main-30:/drawable/avatar2.jpg"
+    },
+    {
+        "merged": "com.example.cs2340b_team29.app-merged_res-28:/layout_activity_game.xml.flat",
+        "source": "com.example.cs2340b_team29.app-main-30:/layout/activity_game.xml"
     },
     {
         "merged": "/Users/ananyajain/.gradle/daemon/8.0/com.example.cs2340b_team29.app-merged_res-28:/layout_activity_game.xml.flat",
