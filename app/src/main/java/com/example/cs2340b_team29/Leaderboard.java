@@ -6,7 +6,7 @@ public class Leaderboard {
     private volatile static Leaderboard uniqueInstance;
     private ArrayList<LeaderboardEntry> attempts;
     private Leaderboard(){}
-    public static Leaderboard getInstance(){
+    public static Leaderboard getLeaderboard(){
         if (uniqueInstance == null) {
             synchronized (Leaderboard.class) {
                 if (uniqueInstance == null) {
@@ -21,12 +21,6 @@ public class Leaderboard {
     }
 
     public void addLatestEntry(LeaderboardEntry entry) {
-        //TODO
+        attempts.add(entry);
     }
-
-    public void sortScores() {
-
-    }
-
-
 }

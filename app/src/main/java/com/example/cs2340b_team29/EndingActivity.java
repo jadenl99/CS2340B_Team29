@@ -1,5 +1,7 @@
 package com.example.cs2340b_team29;
 
+import androidx.lifecycle.ViewModelProvider;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -19,10 +21,14 @@ public class EndingActivity extends AppCompatActivity {
     private TextView fifthPlace;
     private TextView mostRecentAttempt;
 
+    private LeaderboardViewModel leaderboardViewModel;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_end);
+
+        leaderboardViewModel = new ViewModelProvider(this).get(LeaderboardViewModel.class);
 
         firstPlace = findViewById(R.id.firstplace);
         secondPlace = findViewById(R.id.secondplace);
@@ -34,31 +40,37 @@ public class EndingActivity extends AppCompatActivity {
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
 
-        //create new player using last game's information
-        Player currentPlayer = Player.getPlayer();
+        //create new LeaderboardEntry using last game's information
         String playerName = extras.getString("PLAYER_NAME");
         int avatarChosen = extras.getInt("AVATAR_ID");
         int score = extras.getInt("SCORE");
-        currentPlayer.setPlayerName(playerName);
-        currentPlayer.setIdAvatar(avatarChosen);
-        currentPlayer.setScore(score);
         long currentDateTime = System.currentTimeMillis();
-        currentPlayer.setTimeDatePlayed(currentDateTime);
+        LeaderboardEntry latestAttempt = new LeaderboardEntry(playerName, score, currentDateTime);
 
         //add latest player to array
-        leaderboard.addLatestPlayer(currentPlayer);
+        leaderboardViewModel.addLatestAttempt(latestAttempt);
 
         //sort player history in descending order
-        leaderboard.sortScores();
+        leaderboardViewModel.sortAttempts();
 
-        //update leaderBoard text (format this)
-        firstPlace.setText(leaderboard.getAttempts().get(0).getPlayerName() +leaderboard.getAttempts().get(0).getScore() + leaderboard.getAttempts().get(0).getTimeDatePlayed());
-        secondPlace.setText(leaderboard.getAttempts().get(1).getPlayerName() + leaderboard.getAttempts().get(1).getScore() + leaderboard.getAttempts().get(1).getTimeDatePlayed());
-        thirdPlace.setText(leaderboard.getAttempts().get(2).getPlayerName() + leaderboard.getAttempts().get(2).getScore() + leaderboard.getAttempts().get(2).getTimeDatePlayed());
-        fourthPlace.setText(leaderboard.getAttempts().get(3).getPlayerName() + leaderboard.getAttempts().get(3).getScore() + leaderboard.getAttempts().get(3).getTimeDatePlayed());
-        fifthPlace.setText(leaderboard.getAttempts().get(4).getPlayerName() + leaderboard.getAttempts().get(4).getScore() + leaderboard.getAttempts().get(4).getTimeDatePlayed());
+        //update leaderBoard text
+        if (leaderboard.getAttempts().size() > 0) {
+            firstPlace.setText(leaderboard.getAttempts().get(0).getName() +leaderboard.getAttempts().get(0).getScore() + leaderboard.getAttempts().get(0).getDateTime());
+        }
+        if (leaderboard.getAttempts().size() > 1) {
+            secondPlace.setText(leaderboard.getAttempts().get(1).getName() + leaderboard.getAttempts().get(1).getScore() + leaderboard.getAttempts().get(1).getDateTime());
+        }
+        if (leaderboard.getAttempts().size() > 2) {
+            thirdPlace.setText(leaderboard.getAttempts().get(2).getName() + leaderboard.getAttempts().get(2).getScore() + leaderboard.getAttempts().get(2).getDateTime());
+        }
+        if (leaderboard.getAttempts().size() > 3) {
+            fourthPlace.setText(leaderboard.getAttempts().get(3).getName() + leaderboard.getAttempts().get(3).getScore() + leaderboard.getAttempts().get(3).getDateTime());
+        }
+        if (leaderboard.getAttempts().size() > 4) {
+            fifthPlace.setText(leaderboard.getAttempts().get(4).getName() + leaderboard.getAttempts().get(4).getScore() + leaderboard.getAttempts().get(4).getDateTime());
+        }
 
-        //set most recent attempt
+        //set most recent attempt text
         mostRecentAttempt.setText("Most Recent Score: " + score);
 
         restartBtn = findViewById(R.id.restartBtn);
