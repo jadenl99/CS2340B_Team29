@@ -21,5 +21,5 @@ public class LeaderboardEntry {
     }
     public long getDateTime() {
         return dateTime;
-    }g
+    }
 }

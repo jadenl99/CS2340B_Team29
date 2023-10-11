@@ -45,18 +45,18 @@ public class EndingActivity extends AppCompatActivity {
         long currentDateTime = System.currentTimeMillis();
         currentPlayer.setTimeDatePlayed(currentDateTime);
 
-        //add latest player to array
-        leaderboard.addLatestPlayer(currentPlayer);
-
-        //sort player history in descending order
-        leaderboard.sortScores();
-
-        //update leaderBoard text (format this)
-        firstPlace.setText(leaderboard.getAttempts().get(0).getPlayerName() +leaderboard.getAttempts().get(0).getScore() + leaderboard.getAttempts().get(0).getTimeDatePlayed());
-        secondPlace.setText(leaderboard.getAttempts().get(1).getPlayerName() + leaderboard.getAttempts().get(1).getScore() + leaderboard.getAttempts().get(1).getTimeDatePlayed());
-        thirdPlace.setText(leaderboard.getAttempts().get(2).getPlayerName() + leaderboard.getAttempts().get(2).getScore() + leaderboard.getAttempts().get(2).getTimeDatePlayed());
-        fourthPlace.setText(leaderboard.getAttempts().get(3).getPlayerName() + leaderboard.getAttempts().get(3).getScore() + leaderboard.getAttempts().get(3).getTimeDatePlayed());
-        fifthPlace.setText(leaderboard.getAttempts().get(4).getPlayerName() + leaderboard.getAttempts().get(4).getScore() + leaderboard.getAttempts().get(4).getTimeDatePlayed());
+//        //add latest player to array
+//        leaderboard.addLatestPlayer(currentPlayer);
+//
+//        //sort player history in descending order
+//        leaderboard.sortScores();
+//
+//        //update leaderBoard text (format this)
+//        firstPlace.setText(leaderboard.getAttempts().get(0).getPlayerName() +leaderboard.getAttempts().get(0).getScore() + leaderboard.getAttempts().get(0).getTimeDatePlayed());
+//        secondPlace.setText(leaderboard.getAttempts().get(1).getPlayerName() + leaderboard.getAttempts().get(1).getScore() + leaderboard.getAttempts().get(1).getTimeDatePlayed());
+//        thirdPlace.setText(leaderboard.getAttempts().get(2).getPlayerName() + leaderboard.getAttempts().get(2).getScore() + leaderboard.getAttempts().get(2).getTimeDatePlayed());
+//        fourthPlace.setText(leaderboard.getAttempts().get(3).getPlayerName() + leaderboard.getAttempts().get(3).getScore() + leaderboard.getAttempts().get(3).getTimeDatePlayed());
+//        fifthPlace.setText(leaderboard.getAttempts().get(4).getPlayerName() + leaderboard.getAttempts().get(4).getScore() + leaderboard.getAttempts().get(4).getTimeDatePlayed());
 
         //set most recent attempt
         mostRecentAttempt.setText("Most Recent Score: " + score);

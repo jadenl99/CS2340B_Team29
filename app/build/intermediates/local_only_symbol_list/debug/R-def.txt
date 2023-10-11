@@ -41,6 +41,9 @@ id difficultyTxt
 id easyChip
 id exit
 id exitButton
+id fifthplace
+id firstplace
+id fourthplace
 id hardChip
 id hpLevelLabel
 id imageButton4
@@ -50,10 +53,13 @@ id imageView2
 id imageView3
 id imageView4
 id imageView5
+id labels
+id leaderboard
 id level1
 id level2
 id level3
 id mediumChip
+id mostRecentAttempt
 id nameInput
 id nameLabel
 id nameTxt
@@ -62,8 +68,10 @@ id radioButton
 id radioButton2
 id radioButton3
 id restartBtn
+id secondplace
 id startButton
 id textView3
+id thirdplace
 id title
 layout activity_config_screen
 layout activity_end
