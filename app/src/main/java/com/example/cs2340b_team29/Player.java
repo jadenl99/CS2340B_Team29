@@ -11,7 +11,6 @@ public class Player {
         y = 0;
         // for now, will count down from score based on time
         score = 100;
-
     }
     public static synchronized Player getPlayer() {
         if (player == null) {

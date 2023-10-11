@@ -42,7 +42,7 @@ public class ConfigScreenActivity extends AppCompatActivity {
             Bundle extras = initializeGameData();
 
             //Transition to the Game screen
-            Intent toGameScreen = new Intent(ConfigScreenActivity.this, GameActivity.class);
+            Intent toGameScreen = new Intent(ConfigScreenActivity.this, PreGameActivity.class);
             toGameScreen.putExtras(extras);
             startActivity(toGameScreen);
         });
