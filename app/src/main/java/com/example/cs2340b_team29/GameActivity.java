@@ -63,15 +63,21 @@ public class GameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
-
+        // logic for countdown
         scoreCountDown = new Runnable() {
             @Override
             public void run() {
                 playerViewModel.changeScore(-1);
+                int currScore = playerViewModel.getPlayer().getScore();
+                playerScoreLabel.setText("Score: " +
+                        Integer.toString(currScore));
                 handler.postDelayed(this, 1000);
             }
         };
         handler.post(scoreCountDown);
+
+
+
         player1 = Player.getPlayer();
         room = 1;
         mapView = (ImageView) findViewById(R.id.map);
@@ -98,6 +104,7 @@ public class GameActivity extends AppCompatActivity {
             } else if (room == 3) {
                 mapView.setImageResource(R.drawable.map3);
             } else if (room > 3) {
+                handler.removeCallbacks(scoreCountDown);
                 Intent toEndScreen = new Intent(GameActivity.this, EndingActivity.class);
                 startActivity(toEndScreen);
             }
