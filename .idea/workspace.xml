@@ -169,7 +169,7 @@
       <recent name="com.example.cs2340b_team29" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Android App.app">
     <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App">
       <module name="CS2340B_Team29.app.main" />
       <option name="DEPLOY" value="true" />
@@ -259,6 +259,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.CS2340B_Team29 [copyAndroidNatives]" />
         <item itemvalue="Gradle.CS2340B_Team29 [copyAndroidNatives]" />
         <item itemvalue="Gradle.CS2340B_Team29 [copyAndroidNatives]" />
       </list>
