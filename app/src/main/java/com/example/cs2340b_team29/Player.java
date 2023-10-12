@@ -47,14 +47,26 @@ public class Player {
         this.score = score;
     }
 
-    public void setPlayerName(String name) { playerName = name;}
+    public void setPlayerName(String name) {
+        playerName = name;
+    }
 
-    public String getPlayerName() { return playerName;}
+    public String getPlayerName() {
+        return playerName;
+    }
 
-    public void setTimeDatePlayed(long tdplayed) { timeDatePlayed = tdplayed;}
+    public void setTimeDatePlayed(long tdplayed) {
+        timeDatePlayed = tdplayed;
+    }
 
-    public long getTimeDatePlayed() { return timeDatePlayed;}
-    public int getIdAvatar() { return idAvatar;}
+    public long getTimeDatePlayed() {
+        return timeDatePlayed;
+    }
+    public int getIdAvatar() {
+        return idAvatar;
+    }
 
-    public void setIdAvatar(int id){ idAvatar = id;}
+    public void setIdAvatar(int id) {
+        idAvatar = id;
+    }
 }
