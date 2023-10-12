@@ -71,6 +71,7 @@ public class EndingActivity extends AppCompatActivity {
         restartBtn = findViewById(R.id.restartBtn);
 
         restartBtn.setOnClickListener((View v) -> {
+
             Intent goToStartScreen = new Intent(EndingActivity.this,
                     MainActivity.class);
             startActivity(goToStartScreen);

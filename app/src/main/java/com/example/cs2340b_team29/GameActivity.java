@@ -54,21 +54,24 @@ public class GameActivity extends AppCompatActivity {
 
     private PlayerViewModel playerViewModel;
 
-    private Runnable myMethodRunnable = new Runnable() {
-
-        @Override
-        public void run() {
-            playerViewModel.changeScore(-1);
-            handler.postDelayed(this, 1000);
-        }
-    };
+    private Runnable scoreCountDown;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         playerViewModel = new ViewModelProvider(this).get(PlayerViewModel.class);
+        playerViewModel.setScore(1000);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
+
+        scoreCountDown = new Runnable() {
+            @Override
+            public void run() {
+                playerViewModel.changeScore(-1);
+                handler.postDelayed(this, 1000);
+            }
+        };
+        handler.post(scoreCountDown);
         player1 = Player.getPlayer();
         room = 1;
         mapView = (ImageView) findViewById(R.id.map);
