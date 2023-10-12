@@ -4,19 +4,21 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
+import java.util.Date;
+
 public class LeaderboardViewModelTest {
     @Test
     public void testAddAttempt() {
         LeaderboardViewModel leaderboardViewModel = new LeaderboardViewModel();
-        LeaderboardEntry newEntry = new LeaderboardEntry("Name", 100, 12345);
+        LeaderboardEntry newEntry = new LeaderboardEntry("Name", 100, new Date());
         leaderboardViewModel.addLatestAttempt(newEntry);
         assertEquals(1, leaderboardViewModel.getLeaderboard().getAttempts().size());
     }
     @Test
     public void testSortAttempts() {
-        LeaderboardEntry entry1 = new LeaderboardEntry("Name", 100, 12345);
-        LeaderboardEntry entry2 = new LeaderboardEntry("Name", 200, 12345);
-        LeaderboardEntry entry3 = new LeaderboardEntry("Name", 300, 12345);
+        LeaderboardEntry entry1 = new LeaderboardEntry("Name", 100, new Date());
+        LeaderboardEntry entry2 = new LeaderboardEntry("Name", 200, new Date());
+        LeaderboardEntry entry3 = new LeaderboardEntry("Name", 300, new Date());
         LeaderboardViewModel leaderboardViewModel = new LeaderboardViewModel();
         leaderboardViewModel.addLatestAttempt(entry1);
         leaderboardViewModel.addLatestAttempt(entry2);

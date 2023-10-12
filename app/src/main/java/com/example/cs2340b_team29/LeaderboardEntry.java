@@ -1,12 +1,16 @@
 package com.example.cs2340b_team29;
 
+import java.time.LocalDateTime;
+import java.util.Date;
+
 public class LeaderboardEntry {
     private String name;
     private int score;
-    private long dateTime;
+    private String date;
+    private Date dateTime;
     private int avatarId;
 
-    public LeaderboardEntry(String name, int score, long dateTime) {
+    public LeaderboardEntry(String name, int score, Date dateTime) {
         this.name = name;
         this.score = score;
         this.dateTime = dateTime;
@@ -19,7 +23,7 @@ public class LeaderboardEntry {
     public int getScore() {
         return score;
     }
-    public long getDateTime() {
+    public Date getDateTime() {
         return dateTime;
     }
 }
