@@ -4,6 +4,7 @@ public class Player {
     private static Player player;
     private double x;
     private double y;
+    private int hpLevel;
     private int score;
     private String playerName;
     private long timeDatePlayed;
@@ -37,6 +38,9 @@ public class Player {
     public double getY() {
         return y;
     }
+    public int getHP() {
+        return hpLevel;
+    }
 
     public int getScore() {
         return score;
@@ -64,6 +68,10 @@ public class Player {
     }
     public int getIdAvatar() {
         return idAvatar;
+    }
+
+    public void setHpLevel(int hp) {
+        hpLevel = hp;
     }
 
     public void setIdAvatar(int id) {
