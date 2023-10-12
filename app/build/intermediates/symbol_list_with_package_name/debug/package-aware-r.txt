@@ -3286,13 +3286,13 @@ id leaderboard
 id left
 id leftToRight
 id legacy
-id level1Button
 id line1
 id line3
 id linear
 id listMode
 id list_item
 id m3_side_sheet
+id map
 id marquee
 id masked
 id match_constraint
@@ -3417,6 +3417,7 @@ id save_non_transition_alpha
 id save_overlay_view
 id sawtooth
 id scale
+id scoreLabel
 id screen
 id scroll
 id scrollIndicatorDown

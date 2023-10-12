@@ -55,7 +55,7 @@ id imageView4
 id imageView5
 id labels
 id leaderboard
-id level1Button
+id map
 id mediumChip
 id mostRecentAttempt
 id nameInput
@@ -66,6 +66,7 @@ id radioButton
 id radioButton2
 id radioButton3
 id restartBtn
+id scoreLabel
 id secondplace
 id startButton
 id textView3
