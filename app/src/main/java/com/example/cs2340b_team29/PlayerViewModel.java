@@ -27,7 +27,7 @@ public class PlayerViewModel extends ViewModel {
 
 
     public void changeScore(int score) {
-        int newScore = (int)(Math.max(0, score + player.getScore()));
+        int newScore = (int) (Math.max(0, score + player.getScore()));
         player.setScore(newScore);
     }
 
@@ -39,6 +39,10 @@ public class PlayerViewModel extends ViewModel {
         player.setScore(score);
         player.setIdAvatar(avatarId);
         player.setPlayerName(name);
+    }
+
+    public void setScore(int score) {
+        player.setScore(score);
     }
 
 
