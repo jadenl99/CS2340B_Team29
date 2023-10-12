@@ -5,7 +5,9 @@ import java.util.*;
 public class Leaderboard {
     private volatile static Leaderboard uniqueInstance;
     private ArrayList<LeaderboardEntry> attempts;
-    private Leaderboard(){}
+    private Leaderboard(){
+        attempts = new ArrayList<>();
+    }
     public static Leaderboard getLeaderboard(){
         if (uniqueInstance == null) {
             synchronized (Leaderboard.class) {
