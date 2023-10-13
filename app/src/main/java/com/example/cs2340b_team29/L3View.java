@@ -5,9 +5,10 @@ import android.graphics.Paint;
 import android.view.SurfaceView;
 
 
-public class L3View extends SurfaceView implements Runnable{
+public class L3View extends SurfaceView implements Runnable {
 
-    private int screenX, screenY;
+    private int screenX;
+    private int screenY;
     private Thread thread;
     private boolean isPlaying = false;
     private Paint paint;
@@ -36,7 +37,8 @@ public class L3View extends SurfaceView implements Runnable{
         if (getHolder().getSurface().isValid()) {
 
             Canvas canvas = getHolder().lockCanvas();
-            canvas.drawBitmap(l3Map.background, l3Map.x, l3Map.y, paint);
+            canvas.drawBitmap(l3Map.getBackground(), l3Map.getX(), l3Map.getY(),
+                    paint);
             getHolder().unlockCanvasAndPost(canvas);
         }
     }
@@ -50,7 +52,7 @@ public class L3View extends SurfaceView implements Runnable{
         }
     }
 
-    public void resume () {
+    public void resume() {
 
         isPlaying = true;
         thread = new Thread(this);
@@ -58,7 +60,7 @@ public class L3View extends SurfaceView implements Runnable{
 
     }
 
-    public void pause () {
+    public void pause() {
 
         try {
             isPlaying = false;

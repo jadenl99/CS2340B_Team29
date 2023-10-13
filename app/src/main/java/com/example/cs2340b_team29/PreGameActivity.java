@@ -77,5 +77,5 @@ public class PreGameActivity extends AppCompatActivity {
             Intent goToGameScreen = new Intent(PreGameActivity.this, GameActivity.class);
             startActivity(goToGameScreen);
         });
-        }
+    }
 }

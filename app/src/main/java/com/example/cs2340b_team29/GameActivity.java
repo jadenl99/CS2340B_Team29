@@ -3,7 +3,7 @@ package com.example.cs2340b_team29;
 
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.ViewModel;
+
 import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
@@ -11,9 +11,9 @@ import android.graphics.Point;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.SurfaceView;
+
 import android.view.View;
-import android.view.WindowManager;
+
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -35,7 +35,7 @@ public class GameActivity extends AppCompatActivity {
     private TextView hpLevelLabel;
     private ImageView avatarImage;
     private ImageView mapView;
-    public static int room;
+    private static int room;
     private Button exitButton;
     private Button nextButton;
 
@@ -46,7 +46,7 @@ public class GameActivity extends AppCompatActivity {
 
     private String name;
 
-    public Player player1;
+    private Player player1;
 
     private FrameLayout gameContainer;
 
@@ -69,8 +69,8 @@ public class GameActivity extends AppCompatActivity {
             public void run() {
                 playerViewModel.changeScore(-1);
                 int currScore = playerViewModel.getPlayer().getScore();
-                playerScoreLabel.setText("Score: " +
-                        Integer.toString(currScore));
+                playerScoreLabel.setText("Score: "
+                        + Integer.toString(currScore));
                 handler.postDelayed(this, 1000);
             }
         };
@@ -176,7 +176,7 @@ public class GameActivity extends AppCompatActivity {
         gameContainer.addView(l1View);
 
         // implements button to toggle view
-        // TODO: each button should switch to its correspodning map
+        // TODO each button should switch to its correspodning map
         level1Button = findViewById(R.id.level1Button);
         level1Button.setOnClickListener((View v) -> {
             toggleView(l2View);

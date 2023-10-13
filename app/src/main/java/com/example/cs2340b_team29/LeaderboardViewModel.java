@@ -12,12 +12,12 @@ public class LeaderboardViewModel extends ViewModel {
         leaderboard = Leaderboard.getLeaderboard();
     }
 
-    public void addLatestAttempt(LeaderboardEntry newAttempt){
+    public void addLatestAttempt(LeaderboardEntry newAttempt) {
         leaderboard.getAttempts().add(newAttempt);
     }
 
-    public void sortAttempts(){
-        ArrayList <LeaderboardEntry> attempts = leaderboard.getAttempts();
+    public void sortAttempts() {
+        ArrayList<LeaderboardEntry> attempts = leaderboard.getAttempts();
         class ScoreComparator implements Comparator<LeaderboardEntry> {
             public int compare(LeaderboardEntry obj1, LeaderboardEntry obj2) {
                 return Integer.compare(obj1.getScore(), obj2.getScore());
@@ -27,7 +27,7 @@ public class LeaderboardViewModel extends ViewModel {
         Collections.reverse(attempts);
     }
 
-    public Leaderboard getLeaderboard(){
+    public Leaderboard getLeaderboard() {
         if (leaderboard.getAttempts().size() > 0) {
             return leaderboard;
         } else {
