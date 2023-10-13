@@ -12,7 +12,6 @@ import android.widget.TextView;
 
 
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -71,6 +70,7 @@ public class EndingActivity extends AppCompatActivity {
         restartBtn = findViewById(R.id.restartBtn);
 
         restartBtn.setOnClickListener((View v) -> {
+
             Intent goToStartScreen = new Intent(EndingActivity.this,
                     MainActivity.class);
             startActivity(goToStartScreen);
