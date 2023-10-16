@@ -26,6 +26,7 @@ public class PreGameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pregame);
 
+        Player activePlayer = Player.getPlayer();
 
         nextButton = findViewById(R.id.nextButton);
         playerNameLabel = findViewById(R.id.nameLabel);
@@ -42,25 +43,32 @@ public class PreGameActivity extends AppCompatActivity {
             int avatarChosen = extras.getInt("AVATAR_ID");
 
             playerNameLabel.setText("Player: " + playerName);
+            activePlayer.setPlayerName(playerName);
             difficultyLabel.setText("Difficulty: " + difficulty);
 
             if (difficulty.equals("Easy")) {
                 hpLevelLabel.setText("HP: 100");
+                activePlayer.setHpLevel(100);
             } else if (difficulty.equals("Medium")) {
                 hpLevelLabel.setText("HP: 50");
+                activePlayer.setHpLevel(50);
             } else if (difficulty.equals("Hard")) {
                 hpLevelLabel.setText("HP: 25");
+                activePlayer.setHpLevel(25);
             }
 
             if (avatarChosen == 1) {
                 Drawable avatar1 = getDrawable(R.drawable.avatar1);
                 avatarImage.setBackground(avatar1);
+                activePlayer.setIdAvatar(1);
             } else if (avatarChosen == 2) {
                 Drawable avatar2 = getDrawable(R.drawable.avatar2);
                 avatarImage.setBackground(avatar2);
+                activePlayer.setIdAvatar(2);
             } else {
                 Drawable avatar3 = getDrawable(R.drawable.avatar3);
                 avatarImage.setBackground(avatar3);
+                activePlayer.setIdAvatar(2);
             }
         }
 
@@ -69,5 +77,5 @@ public class PreGameActivity extends AppCompatActivity {
             Intent goToGameScreen = new Intent(PreGameActivity.this, GameActivity.class);
             startActivity(goToGameScreen);
         });
-        }
+    }
 }
