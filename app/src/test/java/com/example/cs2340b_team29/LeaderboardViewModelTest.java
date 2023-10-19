@@ -2,6 +2,9 @@ package com.example.cs2340b_team29;
 
 import static org.junit.Assert.assertEquals;
 
+import com.example.cs2340b_team29.model.LeaderboardEntry;
+import com.example.cs2340b_team29.viewmodel.LeaderboardViewModel;
+
 import org.junit.Test;
 
 import java.util.Date;

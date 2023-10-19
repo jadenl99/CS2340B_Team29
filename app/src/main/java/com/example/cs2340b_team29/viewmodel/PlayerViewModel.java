@@ -1,6 +1,8 @@
-package com.example.cs2340b_team29;
+package com.example.cs2340b_team29.viewmodel;
 
 import androidx.lifecycle.ViewModel;
+
+import com.example.cs2340b_team29.model.Player;
 
 public class PlayerViewModel extends ViewModel {
     private Player player;
