@@ -1,4 +1,4 @@
-package com.example.cs2340b_team29;
+package com.example.cs2340b_team29.model;
 
 import java.util.*;
 
