@@ -11,6 +11,8 @@ import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.cs2340b_team29.model.Player;
+
 
 public class PreGameActivity extends AppCompatActivity {
     private Button testButton;

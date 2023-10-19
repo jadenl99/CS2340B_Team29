@@ -1,4 +1,4 @@
-package com.example.cs2340b_team29;
+package com.example.cs2340b_team29.model;
 
 public class Player {
     private static Player player;
@@ -9,6 +9,7 @@ public class Player {
     private String playerName;
     private long timeDatePlayed;
     private int idAvatar;
+
     private Player() {
         x = 0;
         y = 0;

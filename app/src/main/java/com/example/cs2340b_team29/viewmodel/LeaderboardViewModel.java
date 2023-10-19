@@ -1,6 +1,10 @@
-package com.example.cs2340b_team29;
+package com.example.cs2340b_team29.viewmodel;
 import java.util.ArrayList;
 import androidx.lifecycle.ViewModel;
+
+import com.example.cs2340b_team29.model.LeaderboardEntry;
+import com.example.cs2340b_team29.model.Leaderboard;
+
 import java.util.Collections;
 import java.util.Comparator;
 
