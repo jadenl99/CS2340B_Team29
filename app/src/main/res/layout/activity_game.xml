@@ -6,19 +6,14 @@
     android:layout_height="match_parent"
     tools:context=".GameActivity">
 
+
+    <!--Game Container -->
     <FrameLayout
         android:id="@+id/gameContainer"
-        android:layout_width="450dp"
-        android:layout_height="894dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <ImageView
-            android:id="@+id/map"
-            android:layout_width="431dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="bottom|left"
-            app:srcCompat="@drawable/map1" />
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+        <!-- The GameView will be added here dynamically -->
     </FrameLayout>
 
     <RelativeLayout
@@ -34,7 +29,7 @@
         android:layout_alignParentTop="true"
         android:weightSum="3"
         android:orientation="horizontal"
-        android:background="@color/black">
+        android:background="@android:color/transparent">
 
         <!-- sprite element -->
         <RelativeLayout
@@ -107,7 +102,7 @@
         android:layout_gravity="bottom"
         android:weightSum="3"
         android:orientation="horizontal"
-        android:background="@color/black">
+        android:background="@android:color/transparent">
 
         <!-- hp text element -->
         <RelativeLayout

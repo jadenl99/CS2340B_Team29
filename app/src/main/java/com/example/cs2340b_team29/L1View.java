@@ -7,6 +7,7 @@ import android.view.SurfaceView;
 
 public class L1View extends SurfaceView implements Runnable {
 
+
     private int screenX;
     private int screenY;
     private Thread thread;
