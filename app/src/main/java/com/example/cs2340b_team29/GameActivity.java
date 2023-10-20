@@ -14,6 +14,7 @@ import android.os.Handler;
 
 import android.view.View;
 
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -161,13 +162,8 @@ public class GameActivity extends AppCompatActivity {
         };
         handler.post(scoreCountDown);
 
-
-
         player1 = Player.getPlayer();
-        room = 1;
-        mapView = (ImageView) findViewById(R.id.map);
-        mapView.setImageResource(R.drawable.map1);
-        nextButton = findViewById(R.id.nextButton);
+
         playerScoreLabel = findViewById(R.id.scoreLabel);
         //difficultyLabel = findViewById(R.id.difficultyLabel);
         hpLevelLabel = findViewById(R.id.hpLevelLabel);
@@ -180,19 +176,32 @@ public class GameActivity extends AppCompatActivity {
             startActivity(toEndScreen);
         });
 
+        // begin game screen config
+        setFullScreenMode();
+
+        // returns size of window to find where gameview should be placed
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getWindowManager().getDefaultDisplay().getSize(point);
+
+        // instantiates each game view
+        L1Map l1Map = new L1Map(point.x, point.y, getResources());
+        l1View = new L1View(this, point.x, point.y, l1Map);
+
+        L2Map l2Map = new L2Map(point.x, point.y, getResources());
+        l2View = new L2View(this, point.x, point.y, l2Map);
+
+        L3Map l3Map = new L3Map(point.x, point.y, getResources());
+        l3View = new L3View(this, point.x, point.y, l3Map);
+
+        // finds gameFrame and initializes to level 1
+        gameContainer = findViewById(R.id.gameContainer);
+        gameContainer.addView(l1View);
+
+        room = 1;
         nextButton = findViewById(R.id.nextButton);
         nextButton.setOnClickListener((View v) -> {
-            room++;
-            System.out.println(room);
-            if (room == 2) {
-                mapView.setImageResource(R.drawable.map2);
-            } else if (room == 3) {
-                mapView.setImageResource(R.drawable.map3);
-            } else if (room > 3) {
-                handler.removeCallbacks(scoreCountDown);
-                Intent toEndScreen = new Intent(GameActivity.this, EndingActivity.class);
-                startActivity(toEndScreen);
-            }
+            toggleView();
         });
 
         score = player1.getScore();
@@ -215,7 +224,51 @@ public class GameActivity extends AppCompatActivity {
             avatarImage.setBackground(avatar3);
         }
     }
+
+    private void setFullScreenMode() {
+        // Set the system UI visibility flags to enable full-screen mode
+        getWindow().getDecorView().setSystemUiVisibility(
+                View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                        | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                        | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION // hide navigation bar
+                        | View.SYSTEM_UI_FLAG_FULLSCREEN // hide status bar
+                        | View.SYSTEM_UI_FLAG_IMMERSIVE);
+    }
+
+    private void toggleView() {
+        room++;
+        System.out.println(room);
+        if (room == 2) {
+            gameContainer.removeView(l1View);
+            gameContainer.addView(l2View);
+        } else if (room == 3) {
+            gameContainer.removeView(l2View);
+            gameContainer.addView(l3View);
+        } else if (room > 3) {
+            //handler.removeCallbacks(scoreCountDown);
+            Intent toEndScreen = new Intent(GameActivity.this, EndingActivity.class);
+            startActivity(toEndScreen);
+        }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        l1View.pause();
+        l2View.pause();
+        l3View.pause();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        l1View.resume();
+        l2View.resume();
+        l3View.resume();
+    }
 }
+
 
 
 
