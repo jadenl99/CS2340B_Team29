@@ -14,21 +14,45 @@
         android:layout_height="match_parent">
     </FrameLayout>
 
+<<<<<<< HEAD
     <!--
     <com.example.cs2340b_team29.L3View
         android:id="@+id/gameView"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
     -->
+=======
+
+    <!--Game Container -->
+    <FrameLayout
+        android:id="@+id/gameContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+        <!-- The GameView will be added here dynamically -->
+    </FrameLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_centerHorizontal="true">
+>>>>>>> e055d801bbd02657eecf277be3edbb6d1a4b2b90
 
     <!-- top screen bar (also a container for name, sprite, elements) -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="75dp"
         android:layout_alignParentTop="true"
+<<<<<<< HEAD
         android:weightSum="4"
         android:orientation="horizontal"
         android:background="@color/cryptic_green">
+=======
+        android:weightSum="3"
+        android:orientation="horizontal"
+        android:background="@android:color/transparent">
+>>>>>>> e055d801bbd02657eecf277be3edbb6d1a4b2b90
 
         <!-- sprite element -->
         <RelativeLayout
@@ -54,7 +78,11 @@
             </LinearLayout>
         </RelativeLayout>
 
+<<<<<<< HEAD
         <!-- name element -->
+=======
+        <!-- player name element -->
+>>>>>>> e055d801bbd02657eecf277be3edbb6d1a4b2b90
         <RelativeLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -64,28 +92,65 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:orientation="horizontal">
+<<<<<<< HEAD
                 <TextView
                     android:id="@+id/nameLabel"
                     android:layout_width="200dp"
                     android:layout_height="35dp"
                     android:layout_marginEnd="16dp"
                     android:textSize="15dp"
+=======
+
+                <TextView
+                    android:id="@+id/nameLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_gravity="center"
+                    android:textSize="20dp"
+                    android:layout_centerInParent="true"
+                    android:textColor="@color/white"
+>>>>>>> e055d801bbd02657eecf277be3edbb6d1a4b2b90
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.12" />
             </LinearLayout>
         </RelativeLayout>
+<<<<<<< HEAD
     </LinearLayout>
 
     <!-- bottom screen bar (also a container for HP element) -->
+=======
+
+        <!-- next button element -->
+        <Button
+            android:id="@+id/nextButton"
+            android:layout_width="101dp"
+            android:layout_height="62dp"
+            android:layout_gravity="center"
+            android:background="@color/cryptic_green"
+            android:text="Next"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </LinearLayout>
+
+    <!-- bottom screen bar (also a container for HP & score elements) -->
+>>>>>>> e055d801bbd02657eecf277be3edbb6d1a4b2b90
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="75dp"
         android:layout_alignParentBottom="true"
+<<<<<<< HEAD
         android:weightSum="4"
         android:orientation="horizontal"
         android:background="@color/cryptic_green">
+=======
+        android:layout_gravity="bottom"
+        android:weightSum="3"
+        android:orientation="horizontal"
+        android:background="@android:color/transparent">
+>>>>>>> e055d801bbd02657eecf277be3edbb6d1a4b2b90
 
         <!-- hp text element -->
         <RelativeLayout
@@ -98,12 +163,22 @@
                 android:layout_centerInParent="true"
                 android:orientation="horizontal">
                 <TextView
+<<<<<<< HEAD
                     android:id="@+id/textView"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="HP:"
                     android:textAllCaps="true"
                     android:textSize="40sp"
+=======
+                    android:id="@+id/scoreLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerInParent="true"
+                    android:textColor="@color/white"
+                    android:textAllCaps="true"
+                    android:textSize="20dp"
+>>>>>>> e055d801bbd02657eecf277be3edbb6d1a4b2b90
                     tools:ignore="DuplicateIds" />
             </LinearLayout>
         </RelativeLayout>
@@ -112,7 +187,11 @@
         <RelativeLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
+<<<<<<< HEAD
             android:layout_weight="2">;
+=======
+            android:layout_weight="1">;
+>>>>>>> e055d801bbd02657eecf277be3edbb6d1a4b2b90
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -120,10 +199,19 @@
                 android:orientation="horizontal">
                 <TextView
                     android:id="@+id/hpLevelLabel"
+<<<<<<< HEAD
                     android:layout_width="215dp"
                     android:layout_height="35dp"
                     android:layout_marginEnd="8dp"
                     android:textSize="15dp"
+=======
+                    android:layout_width="wrap_content"
+                    android:textColor="@color/white"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:textSize="20dp"
+                    android:gravity="center"
+>>>>>>> e055d801bbd02657eecf277be3edbb6d1a4b2b90
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -131,6 +219,7 @@
             </LinearLayout>
         </RelativeLayout>
 
+<<<<<<< HEAD
         <!-- difficulty element-->
         <RelativeLayout
             android:layout_width="0dp"
@@ -215,5 +304,23 @@
         android:text="Exit"
         android:textSize="30sp"
         app:iconTint="#FFFFFF" />
+=======
+        <!-- exit button element-->
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1">;
+
+            <Button
+                android:id="@+id/exitButton"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:text="Exit" />
+        </RelativeLayout>
+    </LinearLayout>
+    </RelativeLayout>
+>>>>>>> e055d801bbd02657eecf277be3edbb6d1a4b2b90
 
 </RelativeLayout>

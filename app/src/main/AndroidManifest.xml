@@ -43,7 +43,15 @@
         <activity
             android:name=".EndingActivity"
             android:exported="true"
+<<<<<<< HEAD
             android:label="Ending Activity">
+=======
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+>>>>>>> e055d801bbd02657eecf277be3edbb6d1a4b2b90
         </activity>
     </application>
 

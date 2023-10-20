@@ -11,7 +11,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 
+import com.example.cs2340b_team29.viewmodel.PlayerViewModel;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
 
@@ -20,7 +22,7 @@ public class ConfigScreenActivity extends AppCompatActivity {
     private ChipGroup difficultyCGroup;
     private TextView nameInput;
     private RadioGroup avatarGroup;
-
+    private PlayerViewModel playerViewModel;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_config_screen);
@@ -101,6 +103,11 @@ public class ConfigScreenActivity extends AppCompatActivity {
                 }
             }
         }
+
+        playerViewModel = new ViewModelProvider(this).get(PlayerViewModel.class);
+        playerViewModel.setPlayerData(1000, playerName, avatarId);
+
+
 
 
         extras.putString("PLAYER_NAME", playerName);
