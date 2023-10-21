@@ -6,7 +6,8 @@ import android.graphics.Paint;
 import android.view.SurfaceView;
 
 
-public class L2View extends SurfaceView implements Runnable {
+public class LevelView extends SurfaceView implements Runnable {
+
 
     private int screenX;
     private int screenY;
@@ -15,7 +16,7 @@ public class L2View extends SurfaceView implements Runnable {
     private Paint paint;
     private GameActivity activity;
     private Bitmap background;
-    public L2View(GameActivity activity, int screenX, int screenY,
+    public LevelView(GameActivity activity, int screenX, int screenY,
                   Bitmap background) {
         super(activity);
         this.activity = activity;
@@ -23,6 +24,7 @@ public class L2View extends SurfaceView implements Runnable {
         this.screenX = screenX;
         this.screenY = screenY;
         this.background = background;
+
 
     }
 
