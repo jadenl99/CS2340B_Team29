@@ -4,6 +4,8 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Rect;
+import android.view.KeyEvent;
 import android.view.SurfaceView;
 import android.util.Log;
 
@@ -23,6 +25,7 @@ public class LevelView extends SurfaceView implements Runnable {
     private GameActivity activity;
     private Bitmap background;
     private double tileWidth;
+    private Rect destinationRect;
     private double tileHeight;
     private final int NUM_TILES_WIDE = 11;
     private final int NUM_TILES_LONG = 23;
@@ -51,6 +54,7 @@ public class LevelView extends SurfaceView implements Runnable {
      * @return an int array where coords[0] = x val and coords[1] = y val
      * expressed in terms of pixels
      */
+
     private int[] calcPixelsBasedOnIndices(int x, int y) {
         int[] coords = new int[2];
         coords[0] = (int) ((x) * tileWidth);
@@ -82,10 +86,17 @@ public class LevelView extends SurfaceView implements Runnable {
             // Just an example placing the top left part of the avatar on the
             // top left of map[8][10] (8 tiles down and 10 tiles right, of
             // course in 0-indexed terms).
+            int[] coords = calcPixelsBasedOnIndices(3, 1);
+            int intTileWidth = (int) tileWidth;
+            int intTileHeight = (int) tileHeight;
+            Bitmap playerBitMap = playerViewModel.getPlayer().getBitmapAvatar();
+            destinationRect = new Rect(coords[0], coords[1], coords[0] + intTileWidth, coords[1]+ intTileHeight);
+            Bitmap resizedBitmap = Bitmap.createScaledBitmap(playerBitMap, intTileWidth, intTileHeight, false);
+            canvas.drawBitmap(resizedBitmap, null, destinationRect, paint);
+            //canvas.drawBitmap(playerBitMap, coords[0], coords[1], paint);
             int[] coords = calcPixelsBasedOnIndices(8, 10);
             Bitmap playerBitMap = playerViewModel.getPlayer().getBitmapAvatar();
             canvas.drawBitmap(playerBitMap, coords[0], coords[1], paint);
-
             getHolder().unlockCanvasAndPost(canvas);
         }
     }

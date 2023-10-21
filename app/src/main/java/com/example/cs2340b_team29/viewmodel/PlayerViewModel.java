@@ -6,25 +6,16 @@ import com.example.cs2340b_team29.model.Player;
 
 public class PlayerViewModel extends ViewModel {
     private Player player;
+
+    private MoveStrategy moveStrategy;
+
     public PlayerViewModel() {
         player = Player.getPlayer();
 
     }
 
-    public void moveLeft() {
-
-    }
-
-    public void moveRight() {
-
-    }
-
-    public void moveUp() {
-
-    }
-
-    public void moveDown() {
-
+    public void move() {
+        moveStrategy.move();
     }
 
 
@@ -35,6 +26,14 @@ public class PlayerViewModel extends ViewModel {
 
     public Player getPlayer() {
         return player;
+    }
+
+    public MoveStrategy getMoveStrategy() {
+        return moveStrategy;
+    }
+
+    public void setMoveStrategy(MoveStrategy moveStrategy) {
+        this.moveStrategy = moveStrategy;
     }
 
     public void setPlayerData(int score, String name, int avatarId) {
