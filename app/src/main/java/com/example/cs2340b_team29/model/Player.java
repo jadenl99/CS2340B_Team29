@@ -1,5 +1,7 @@
 package com.example.cs2340b_team29.model;
 
+import android.graphics.Bitmap;
+
 public class Player {
     private static Player player;
     private double x;
@@ -9,6 +11,7 @@ public class Player {
     private String playerName;
     private long timeDatePlayed;
     private int idAvatar;
+    private Bitmap bitmapAvatar;
 
     private Player() {
         x = 0;
@@ -91,5 +94,12 @@ public class Player {
     public void setIdAvatar(int id) {
 
         idAvatar = id;
+    }
+    public void setBitmapAvatar(Bitmap avatar) {
+        bitmapAvatar = avatar;
+    }
+
+    public Bitmap getBitmapAvatar() {
+        return bitmapAvatar;
     }
 }
