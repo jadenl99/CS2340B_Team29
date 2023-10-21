@@ -25,7 +25,6 @@ public class LevelView extends SurfaceView implements Runnable {
     private GameActivity activity;
     private Bitmap background;
     private double tileWidth;
-
     private Rect destinationRect;
     private double tileHeight;
     private final int NUM_TILES_WIDE = 11;
@@ -55,7 +54,8 @@ public class LevelView extends SurfaceView implements Runnable {
      * @return an int array where coords[0] = x val and coords[1] = y val
      * expressed in terms of pixels
      */
-    public int[] calcPixelsBasedOnIndices(int x, int y) {
+
+    private int[] calcPixelsBasedOnIndices(int x, int y) {
         int[] coords = new int[2];
         coords[0] = (int) ((x) * tileWidth);
         coords[1] = (int) ((y) * tileHeight);
@@ -94,6 +94,9 @@ public class LevelView extends SurfaceView implements Runnable {
             Bitmap resizedBitmap = Bitmap.createScaledBitmap(playerBitMap, intTileWidth, intTileHeight, false);
             canvas.drawBitmap(resizedBitmap, null, destinationRect, paint);
             //canvas.drawBitmap(playerBitMap, coords[0], coords[1], paint);
+            int[] coords = calcPixelsBasedOnIndices(8, 10);
+            Bitmap playerBitMap = playerViewModel.getPlayer().getBitmapAvatar();
+            canvas.drawBitmap(playerBitMap, coords[0], coords[1], paint);
             getHolder().unlockCanvasAndPost(canvas);
         }
     }
