@@ -27,9 +27,9 @@ import com.example.cs2340b_team29.viewmodel.PlayerViewModel;
 
 public class GameActivity extends AppCompatActivity {
 
-    private L1View l1View;
-    private L2View l2View;
-    private L3View l3View;
+    private LevelView l1View;
+    private LevelView l2View;
+    private LevelView l3View;
     private Point point = new Point();
 
     private Button level1Button;
@@ -226,9 +226,9 @@ public class GameActivity extends AppCompatActivity {
         Bitmap l1Background = resizeBackground(R.drawable.map1);
         Bitmap l2Background = resizeBackground(R.drawable.map2);
         Bitmap l3Background = resizeBackground(R.drawable.map3);
-        l1View = new L1View(this, point.x, point.y, l1Background);
-        l2View = new L2View(this, point.x, point.y, l2Background);
-        l3View = new L3View(this, point.x, point.y, l3Background);
+        l1View = new LevelView(this, point.x, point.y, l1Background);
+        l2View = new LevelView(this, point.x, point.y, l2Background);
+        l3View = new LevelView(this, point.x, point.y, l3Background);
     }
 
     private Bitmap resizeBackground(int resID) {
