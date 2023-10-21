@@ -39,7 +39,7 @@ public class GameActivity extends AppCompatActivity {
     private TextView difficultyLabel;
 
     private TextView hpLevelLabel;
-    private ImageView avatarImage;
+    //private ImageView avatarImage;
     private ImageView mapView;
     private static int room;
     private Button exitButton;
@@ -169,7 +169,7 @@ public class GameActivity extends AppCompatActivity {
         playerScoreLabel = findViewById(R.id.scoreLabel);
         //difficultyLabel = findViewById(R.id.difficultyLabel);
         hpLevelLabel = findViewById(R.id.hpLevelLabel);
-        avatarImage = findViewById(R.id.avatarImage);
+        //avatarImage = findViewById(R.id.avatarImage);
         nameLabel = findViewById(R.id.nameLabel);
 
         exitButton = findViewById(R.id.exitButton);
@@ -202,13 +202,14 @@ public class GameActivity extends AppCompatActivity {
 
         score = player1.getScore();
         hpLevel = player1.getHP();
-        avatarChosen = player1.getIdAvatar();
+        //avatarChosen = player1.getIdAvatar();
         name = player1.getPlayerName();
 
         playerScoreLabel.setText("Score: " + Integer.toString(score));
         hpLevelLabel.setText("HP: " + Integer.toString(hpLevel));
         nameLabel.setText(name);
 
+        /*
         if (avatarChosen == 1) {
             Drawable avatar1 = getDrawable(R.drawable.avatar1);
             avatarImage.setBackground(avatar1);
@@ -219,6 +220,7 @@ public class GameActivity extends AppCompatActivity {
             Drawable avatar3 = getDrawable(R.drawable.avatar3);
             avatarImage.setBackground(avatar3);
         }
+         */
     }
 
     private void instantiateGameViews() {
