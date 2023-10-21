@@ -2,23 +2,31 @@ package com.example.cs2340b_team29.model;
 
 import android.graphics.Bitmap;
 
-public class Player {
+import com.example.cs2340b_team29.collision.CollisionObserver;
+import com.example.cs2340b_team29.collision.Collidable;
+
+
+import java.util.ArrayList;
+
+public class Player implements Collidable {
     private static Player player;
-    private double x;
-    private double y;
+    private int x;
+    private int y;
     private int hpLevel;
     private int score;
     private String playerName;
     private long timeDatePlayed;
     private int idAvatar;
     private Bitmap bitmapAvatar;
+    private ArrayList<CollisionObserver> observers;
+
 
     private Player() {
         x = 0;
         y = 0;
         // for now, will count down from score based on time
         score = 100;
-
+        observers = new ArrayList<>();
     }
     public static synchronized Player getPlayer() {
         if (player == null) {
@@ -27,22 +35,25 @@ public class Player {
         return player;
     }
 
-    public void setX(double x) {
+    @Override
+    public void setX(int x) {
 
         this.x = x;
     }
 
-    public void setY(double y) {
+    @Override
+    public void setY(int y) {
 
         this.y = y;
     }
 
-    public double getX() {
+    @Override
+    public int getX() {
 
         return x;
     }
-
-    public double getY() {
+    @Override
+    public int getY() {
 
         return y;
     }
@@ -101,5 +112,18 @@ public class Player {
 
     public Bitmap getBitmapAvatar() {
         return bitmapAvatar;
+    }
+
+    public void subscribe(CollisionObserver observer) {
+        observers.add(observer);
+    }
+    public void unsubscribe(CollisionObserver observer) {
+        observers.remove(observer);
+    }
+
+    public void notifyCollision(Collidable entity) {
+        for (CollisionObserver observer : observers) {
+            observer.onCollision(this, entity);
+        }
     }
 }
