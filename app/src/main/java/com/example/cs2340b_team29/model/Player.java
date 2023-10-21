@@ -20,6 +20,7 @@ public class Player implements Collidable {
     private int idAvatar;
     private Bitmap bitmapAvatar;
     private ArrayList<CollisionObserver> observers;
+    private int level;
 
 
     private Player() {
@@ -27,6 +28,7 @@ public class Player implements Collidable {
         y = 0;
         // for now, will count down from score based on time
         score = 100;
+        level = 1;
         observers = new ArrayList<>();
     }
     public static synchronized Player getPlayer() {
@@ -106,6 +108,14 @@ public class Player implements Collidable {
     public void setIdAvatar(int id) {
 
         idAvatar = id;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
     }
     public void setBitmapAvatar(Bitmap avatar) {
         bitmapAvatar = avatar;

@@ -178,9 +178,11 @@ public class GameActivity extends AppCompatActivity {
         if (room == 2) {
             gameContainer.removeView(l1View);
             gameContainer.addView(l2View);
+            playerViewModel.getPlayer().setLevel(2);
         } else if (room == 3) {
             gameContainer.removeView(l2View);
             gameContainer.addView(l3View);
+            playerViewModel.getPlayer().setLevel(3);
         } else if (room > 3) {
             gameContainer.removeAllViews();
             handler.removeCallbacks(scoreCountDown);
