@@ -7,6 +7,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Point;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -184,15 +186,9 @@ public class GameActivity extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getWindowManager().getDefaultDisplay().getSize(point);
 
-        // instantiates each game view
-        L1Map l1Map = new L1Map(point.x, point.y, getResources());
-        l1View = new L1View(this, point.x, point.y, l1Map);
 
-        L2Map l2Map = new L2Map(point.x, point.y, getResources());
-        l2View = new L2View(this, point.x, point.y, l2Map);
 
-        L3Map l3Map = new L3Map(point.x, point.y, getResources());
-        l3View = new L3View(this, point.x, point.y, l3Map);
+        instantiateGameViews();
 
         // finds gameFrame and initializes to level 1
         gameContainer = findViewById(R.id.gameContainer);
@@ -225,6 +221,22 @@ public class GameActivity extends AppCompatActivity {
         }
     }
 
+    private void instantiateGameViews() {
+        // instantiates each game view
+        Bitmap l1Background = resizeBackground(R.drawable.map1);
+        Bitmap l2Background = resizeBackground(R.drawable.map2);
+        Bitmap l3Background = resizeBackground(R.drawable.map3);
+        l1View = new L1View(this, point.x, point.y, l1Background);
+        l2View = new L2View(this, point.x, point.y, l2Background);
+        l3View = new L3View(this, point.x, point.y, l3Background);
+    }
+
+    private Bitmap resizeBackground(int resID) {
+        Bitmap background = BitmapFactory.decodeResource(getResources(), resID);
+        return Bitmap.createScaledBitmap(background, point.x, point.y,
+                false);
+    }
+
     private void setFullScreenMode() {
         // Set the system UI visibility flags to enable full-screen mode
         getWindow().getDecorView().setSystemUiVisibility(
@@ -246,7 +258,8 @@ public class GameActivity extends AppCompatActivity {
             gameContainer.removeView(l2View);
             gameContainer.addView(l3View);
         } else if (room > 3) {
-            //handler.removeCallbacks(scoreCountDown);
+            gameContainer.removeAllViews();
+            handler.removeCallbacks(scoreCountDown);
             Intent toEndScreen = new Intent(GameActivity.this, EndingActivity.class);
             startActivity(toEndScreen);
         }

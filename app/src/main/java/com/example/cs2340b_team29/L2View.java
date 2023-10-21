@@ -1,5 +1,6 @@
 package com.example.cs2340b_team29;
 
+import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.view.SurfaceView;
@@ -13,14 +14,15 @@ public class L2View extends SurfaceView implements Runnable {
     private boolean isPlaying = false;
     private Paint paint;
     private GameActivity activity;
-    private L2Map l2Map;
-    public L2View(GameActivity activity, int screenX, int screenY, L2Map l2Map) {
+    private Bitmap background;
+    public L2View(GameActivity activity, int screenX, int screenY,
+                  Bitmap background) {
         super(activity);
         this.activity = activity;
 
         this.screenX = screenX;
         this.screenY = screenY;
-        this.l2Map = l2Map;
+        this.background = background;
 
     }
 
@@ -37,7 +39,7 @@ public class L2View extends SurfaceView implements Runnable {
         if (getHolder().getSurface().isValid()) {
 
             Canvas canvas = getHolder().lockCanvas();
-            canvas.drawBitmap(l2Map.getBackground(), l2Map.getX(), l2Map.getY(),
+            canvas.drawBitmap(background, 0, 0,
                     paint);
             getHolder().unlockCanvasAndPost(canvas);
         }

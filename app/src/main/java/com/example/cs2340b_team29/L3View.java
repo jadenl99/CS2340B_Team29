@@ -1,5 +1,6 @@
 package com.example.cs2340b_team29;
 
+import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.view.SurfaceView;
@@ -13,14 +14,15 @@ public class L3View extends SurfaceView implements Runnable {
     private boolean isPlaying = false;
     private Paint paint;
     private GameActivity activity;
-    private L3Map l3Map;
-    public L3View(GameActivity activity, int screenX, int screenY, L3Map l3Map) {
+    private Bitmap background;
+    public L3View(GameActivity activity, int screenX, int screenY,
+                  Bitmap background) {
         super(activity);
         this.activity = activity;
 
         this.screenX = screenX;
         this.screenY = screenY;
-        this.l3Map = l3Map;
+        this.background = background;
 
     }
 
@@ -37,7 +39,7 @@ public class L3View extends SurfaceView implements Runnable {
         if (getHolder().getSurface().isValid()) {
 
             Canvas canvas = getHolder().lockCanvas();
-            canvas.drawBitmap(l3Map.getBackground(), l3Map.getX(), l3Map.getY(),
+            canvas.drawBitmap(background, 0, 0,
                     paint);
             getHolder().unlockCanvasAndPost(canvas);
         }
