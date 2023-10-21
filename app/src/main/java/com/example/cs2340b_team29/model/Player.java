@@ -4,6 +4,7 @@ import android.graphics.Bitmap;
 
 import com.example.cs2340b_team29.collision.CollisionObserver;
 import com.example.cs2340b_team29.collision.Collidable;
+import com.example.cs2340b_team29.viewmodel.MoveStrategy;
 
 
 import java.util.ArrayList;
@@ -121,9 +122,9 @@ public class Player implements Collidable {
         observers.remove(observer);
     }
 
-    public void notifyCollision(Collidable entity) {
+    public void notifyCollision(Collidable entity, MoveStrategy moveStrategy) {
         for (CollisionObserver observer : observers) {
-            observer.onCollision(this, entity);
+            observer.onCollision(this, entity, moveStrategy);
         }
     }
 }

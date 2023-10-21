@@ -46,5 +46,9 @@ public class PlayerViewModel extends ViewModel {
         player.setScore(score);
     }
 
+    public void checkForCollisions() {
+        int[][] currMap =
+    }
+
 
 }
