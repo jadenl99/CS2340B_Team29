@@ -6,7 +6,7 @@ public class Wall implements Collidable {
     private int x;
     private int y;
 
-    private Wall(int x, int y) {
+    public Wall(int x, int y) {
         this.x = x;
         this.y = y;
     }
