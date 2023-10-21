@@ -13,6 +13,7 @@ import android.graphics.Point;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.KeyEvent;
 
 import android.view.View;
 
@@ -222,6 +223,7 @@ public class GameActivity extends AppCompatActivity {
         }
          */
     }
+
 
     private void instantiateGameViews() {
         // instantiates each game view
