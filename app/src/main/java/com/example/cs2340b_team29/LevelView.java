@@ -4,6 +4,7 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Rect;
 import android.view.SurfaceView;
 import android.util.Log;
 
@@ -82,9 +83,14 @@ public class LevelView extends SurfaceView implements Runnable {
             // Just an example placing the top left part of the avatar on the
             // top left of map[8][10] (8 tiles down and 10 tiles right, of
             // course in 0-indexed terms).
-            int[] coords = calcPixelsBasedOnIndices(8, 10);
+            int[] coords = calcPixelsBasedOnIndices(3, 1);
+            int intTileWidth = (int) tileWidth;
+            int intTileHeight = (int) tileHeight;
             Bitmap playerBitMap = playerViewModel.getPlayer().getBitmapAvatar();
-            canvas.drawBitmap(playerBitMap, coords[0], coords[1], paint);
+            Rect destinationRect = new Rect(coords[0], coords[1], coords[0] + intTileWidth, coords[1]+ intTileHeight);
+            Bitmap resizedBitmap = Bitmap.createScaledBitmap(playerBitMap, intTileWidth, intTileHeight, false);
+            canvas.drawBitmap(resizedBitmap, null, destinationRect, paint);
+            //canvas.drawBitmap(playerBitMap, coords[0], coords[1], paint);
 
             getHolder().unlockCanvasAndPost(canvas);
         }
