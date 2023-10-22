@@ -114,6 +114,7 @@ public class MapData {
         walls2 = new ArrayList<>();
         walls3 = new ArrayList<>();
 
+        // put walls in each level
         for (int row = 0; row < MAP_HEIGHT; row++) {
             for (int col = 0; col < MAP_WIDTH; col++) {
                 if (L1ARRAY[row][col] == 0) {
@@ -124,7 +125,7 @@ public class MapData {
                     walls2.add(new Wall(col, row));
                 }
 
-                if (L1ARRAY[row][col] == 0) {
+                if (L3ARRAY[row][col] == 0) {
                     walls3.add(new Wall(col, row));
                 }
             }

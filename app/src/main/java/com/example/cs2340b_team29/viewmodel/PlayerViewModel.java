@@ -17,6 +17,7 @@ public class PlayerViewModel extends ViewModel {
 
     public PlayerViewModel() {
         player = Player.getPlayer();
+        mapData = MapData.getMapData();
 
     }
 

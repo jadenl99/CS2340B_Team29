@@ -23,6 +23,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.cs2340b_team29.collision.WallCollisionHandler;
 import com.example.cs2340b_team29.model.Player;
 import com.example.cs2340b_team29.viewmodel.PlayerViewModel;
 
@@ -62,6 +63,7 @@ public class GameActivity extends AppCompatActivity {
     private PlayerViewModel playerViewModel;
 
     private Runnable scoreCountDown;
+    private WallCollisionHandler wallCollisionHandler;
 
 
 
@@ -110,6 +112,8 @@ public class GameActivity extends AppCompatActivity {
 
 
         instantiateGameViews();
+        wallCollisionHandler = new WallCollisionHandler();
+        playerViewModel.getPlayer().subscribe(wallCollisionHandler);
 
         // finds gameFrame and initializes to level 1
         gameContainer = findViewById(R.id.gameContainer);
@@ -186,6 +190,7 @@ public class GameActivity extends AppCompatActivity {
         } else if (room > 3) {
             gameContainer.removeAllViews();
             handler.removeCallbacks(scoreCountDown);
+            playerViewModel.getPlayer().unsubscribe(wallCollisionHandler);
             Intent toEndScreen = new Intent(GameActivity.this, EndingActivity.class);
             startActivity(toEndScreen);
         }
