@@ -23,6 +23,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.cs2340b_team29.collision.WallCollisionHandler;
 import com.example.cs2340b_team29.model.Player;
 import com.example.cs2340b_team29.viewmodel.PlayerViewModel;
 
@@ -62,88 +63,9 @@ public class GameActivity extends AppCompatActivity {
     private PlayerViewModel playerViewModel;
 
     private Runnable scoreCountDown;
+    private WallCollisionHandler wallCollisionHandler;
 
-    // 0 stands for a "wall" (can't pass), 1 is a normal tile, and 2 is a
-    // tile that takes you to the next level
-    private int[][] l1Array = {
-            {0, 1, 2, 2, 2, 1, 1, 1, 0, 1, 1},
-            {1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1},
-            {1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1},
-            {0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0},
-            {1, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0},
-            {1, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0},
-            {1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0},
-            {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0},
-            {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-            {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0},
-            {1, 1, 0, 1, 1, 1, 1, 1, 0, 0, 1},
-            {1, 1, 1, 1, 1, 0, 1, 0, 0, 0, 0},
-            {1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0},
-            {1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1},
-            {1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1},
-            {0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1},
-            {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-            {0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0},
-            {0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0},
-            {0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1},
-            {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-            {1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1}
-    };
 
-    private int[][] l2Array = {
-            {1, 1, 1, 1, 1, 1, 2, 2, 2, 1, 1},
-            {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-            {0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1},
-            {0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1},
-            {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-            {1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0},
-            {1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0},
-            {0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-            {0, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1},
-            {1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1},
-            {1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1},
-            {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-            {0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0},
-            {0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0},
-            {0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-            {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-            {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-            {1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1},
-            {1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1},
-            {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-            {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-            {1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0},
-            {1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0}
-
-    };
-
-    private int[][] l3Array = {
-            {1, 1, 1, 1, 2, 2, 2, 1, 1, 1, 1},
-            {1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1},
-            {1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-            {1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1},
-            {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-            {1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0},
-            {1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0},
-            {1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0},
-            {1, 1, 0, 1, 1, 1, 1, 1, 0, 0, 0},
-            {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-            {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-            {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-            {1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-            {1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1},
-            {1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1},
-            {1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1},
-            {1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1},
-            {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-            {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-            {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-            {1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1},
-            {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-            {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-
-    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -190,6 +112,8 @@ public class GameActivity extends AppCompatActivity {
 
 
         instantiateGameViews();
+        wallCollisionHandler = new WallCollisionHandler();
+        playerViewModel.getPlayer().subscribe(wallCollisionHandler);
 
         // finds gameFrame and initializes to level 1
         gameContainer = findViewById(R.id.gameContainer);
@@ -258,12 +182,15 @@ public class GameActivity extends AppCompatActivity {
         if (room == 2) {
             gameContainer.removeView(l1View);
             gameContainer.addView(l2View);
+            playerViewModel.getPlayer().setLevel(2);
         } else if (room == 3) {
             gameContainer.removeView(l2View);
             gameContainer.addView(l3View);
+            playerViewModel.getPlayer().setLevel(3);
         } else if (room > 3) {
             gameContainer.removeAllViews();
             handler.removeCallbacks(scoreCountDown);
+            playerViewModel.getPlayer().unsubscribe(wallCollisionHandler);
             Intent toEndScreen = new Intent(GameActivity.this, EndingActivity.class);
             startActivity(toEndScreen);
         }
