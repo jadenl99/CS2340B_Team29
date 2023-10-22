@@ -94,8 +94,8 @@ public class LevelView extends SurfaceView implements Runnable {
             Bitmap resizedBitmap = Bitmap.createScaledBitmap(playerBitMap, intTileWidth, intTileHeight, false);
             canvas.drawBitmap(resizedBitmap, null, destinationRect, paint);
             //canvas.drawBitmap(playerBitMap, coords[0], coords[1], paint);
-            int[] coords = calcPixelsBasedOnIndices(8, 10);
-            Bitmap playerBitMap = playerViewModel.getPlayer().getBitmapAvatar();
+            coords = calcPixelsBasedOnIndices(8, 10);
+            playerBitMap = playerViewModel.getPlayer().getBitmapAvatar();
             canvas.drawBitmap(playerBitMap, coords[0], coords[1], paint);
             getHolder().unlockCanvasAndPost(canvas);
         }

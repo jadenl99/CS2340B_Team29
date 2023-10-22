@@ -2,15 +2,22 @@ package com.example.cs2340b_team29.viewmodel;
 
 import androidx.lifecycle.ViewModel;
 
+import com.example.cs2340b_team29.collision.Collidable;
+import com.example.cs2340b_team29.model.MapData;
 import com.example.cs2340b_team29.model.Player;
+import com.example.cs2340b_team29.model.Wall;
+
+import java.util.ArrayList;
 
 public class PlayerViewModel extends ViewModel {
     private Player player;
+    private MapData mapData;
 
     private MoveStrategy moveStrategy;
 
     public PlayerViewModel() {
         player = Player.getPlayer();
+        mapData = MapData.getMapData();
 
     }
 
@@ -45,6 +52,31 @@ public class PlayerViewModel extends ViewModel {
     public void setScore(int score) {
         player.setScore(score);
     }
+
+    public void checkForCollisions() {
+        ArrayList<Wall> borderWalls = mapData.getBorderWalls();
+        ArrayList<Wall> walls = mapData.getWallsInLevel(player.getLevel());
+
+        for (Wall wall : walls) {
+            if (checkCollision(player, wall)) {
+                player.notifyCollision(wall, moveStrategy);
+            }
+        }
+        for (Wall borderWall : borderWalls) {
+            if (checkCollision(player, borderWall)) {
+                player.notifyCollision(borderWall, moveStrategy);
+            }
+        }
+
+    }
+
+    private boolean checkCollision(Collidable e1, Collidable e2) {
+        if (e1.getX() == e2.getX() && e1.getY() == e2.getY()) {
+            return true;
+        }
+        return false;
+    }
+
 
 
 }
