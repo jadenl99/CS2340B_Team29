@@ -21,8 +21,8 @@ public class PlayerViewModel extends ViewModel {
 
     }
 
-    public void move() {
-        moveStrategy.move();
+    public void move(int currX, int currY) {
+        moveStrategy.move(currX, currY);
     }
 
 

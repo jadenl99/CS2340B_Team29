@@ -11,6 +11,7 @@ public class MoveUp implements MoveStrategy {
 
     private double playerY;
 
-    public void move() {
+    public void move(int currX, int currY) {
+        currY -= currY;
     }
 }

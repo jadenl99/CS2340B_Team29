@@ -9,7 +9,8 @@ public class MoveRight implements MoveStrategy {
 
     private double playerY;
 
-    public void move() {
+    public void move(int currX, int currY) {
+        currX += currX;
     }
 
 }
