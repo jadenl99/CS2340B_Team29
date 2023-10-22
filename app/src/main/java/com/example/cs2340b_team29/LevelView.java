@@ -98,12 +98,12 @@ public class LevelView extends SurfaceView implements Runnable, View.OnKeyListen
             // top left of map[8][10] (8 tiles down and 10 tiles right, of
             // course in 0-indexed terms).
             // payerViewModel.move(currX , currY);
-            int[] coords = calcPixelsBasedOnIndices(3,0);
+            int[] coords = calcPixelsBasedOnIndices(currX, currY);
 
-            if (drawCounter != 0) {
+           /* if (drawCounter != 0) {
                 playerViewModel.move(currX, currY);
                 coords = calcPixelsBasedOnIndices(currX, currY);
-            }
+            } */
 
             int intTileWidth = (int) tileWidth;
             int intTileHeight = (int) tileHeight;
@@ -154,21 +154,20 @@ public class LevelView extends SurfaceView implements Runnable, View.OnKeyListen
             case KeyEvent.KEYCODE_DPAD_LEFT:
                 MoveStrategy left = new MoveLeft();
                 playerViewModel.setMoveStrategy(left);
-                return true;
             case KeyEvent.KEYCODE_DPAD_RIGHT:
                 MoveStrategy right = new MoveRight();
                 playerViewModel.setMoveStrategy(right);
-                return true;
             case KeyEvent.KEYCODE_DPAD_UP:
                 MoveStrategy up = new MoveUp();
                 playerViewModel.setMoveStrategy(up);
-                return true;
             case KeyEvent.KEYCODE_DPAD_DOWN:
                 System.out.println("down arrow clicked");
                 MoveStrategy down = new MoveDown();
                 playerViewModel.setMoveStrategy(down);
-                return true;
         }
+        playerViewModel.move(currX, currY);
+        invalidate();
+        return true;
     }
 }
 
