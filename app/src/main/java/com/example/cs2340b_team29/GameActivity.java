@@ -74,6 +74,7 @@ public class GameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
+
         // logic for countdown
         scoreCountDown = new Runnable() {
             @Override
@@ -109,8 +110,6 @@ public class GameActivity extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getWindowManager().getDefaultDisplay().getSize(point);
 
-
-
         instantiateGameViews();
         wallCollisionHandler = new WallCollisionHandler();
         playerViewModel.getPlayer().subscribe(wallCollisionHandler);
@@ -118,6 +117,12 @@ public class GameActivity extends AppCompatActivity {
         // finds gameFrame and initializes to level 1
         gameContainer = findViewById(R.id.gameContainer);
         gameContainer.addView(l1View);
+        // request focus on view
+        l1View.setOnKeyListener(l1View);
+        l1View.setFocusable(true);
+        l1View.setFocusableInTouchMode(true);
+        l1View.requestFocus();
+
 
         room = 1;
         nextButton = findViewById(R.id.nextButton);
@@ -134,18 +139,6 @@ public class GameActivity extends AppCompatActivity {
         hpLevelLabel.setText("HP: " + Integer.toString(hpLevel));
         nameLabel.setText(name);
 
-        /*
-        if (avatarChosen == 1) {
-            Drawable avatar1 = getDrawable(R.drawable.avatar1);
-            avatarImage.setBackground(avatar1);
-        } else if (avatarChosen == 2) {
-            Drawable avatar2 = getDrawable(R.drawable.avatar2);
-            avatarImage.setBackground(avatar2);
-        } else {
-            Drawable avatar3 = getDrawable(R.drawable.avatar3);
-            avatarImage.setBackground(avatar3);
-        }
-         */
     }
 
 
@@ -158,6 +151,7 @@ public class GameActivity extends AppCompatActivity {
         l2View = new LevelView(this, point.x, point.y, l2Background);
         l3View = new LevelView(this, point.x, point.y, l3Background);
     }
+
 
     private Bitmap resizeBackground(int resID) {
         Bitmap background = BitmapFactory.decodeResource(getResources(), resID);
@@ -182,10 +176,16 @@ public class GameActivity extends AppCompatActivity {
         if (room == 2) {
             gameContainer.removeView(l1View);
             gameContainer.addView(l2View);
+            l1View.clearFocus();
+            l2View.setOnKeyListener(l2View);
+            l2View.requestFocus();
             playerViewModel.getPlayer().setLevel(2);
         } else if (room == 3) {
             gameContainer.removeView(l2View);
             gameContainer.addView(l3View);
+            l2View.clearFocus();
+            l3View.setOnKeyListener(l3View);
+            l3View.requestFocus();
             playerViewModel.getPlayer().setLevel(3);
         } else if (room > 3) {
             gameContainer.removeAllViews();

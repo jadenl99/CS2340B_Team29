@@ -8,13 +8,19 @@ import android.graphics.Rect;
 import android.view.KeyEvent;
 import android.view.SurfaceView;
 import android.util.Log;
+import android.view.View;
 
+import com.example.cs2340b_team29.viewmodel.MoveDown;
+import com.example.cs2340b_team29.viewmodel.MoveLeft;
+import com.example.cs2340b_team29.viewmodel.MoveRight;
+import com.example.cs2340b_team29.viewmodel.MoveStrategy;
+import com.example.cs2340b_team29.viewmodel.MoveUp;
 import com.example.cs2340b_team29.viewmodel.PlayerViewModel;
 
 /**
  * Responsible for displaying levels and the player avatar on the screen.
  */
-public class LevelView extends SurfaceView implements Runnable {
+public class LevelView extends SurfaceView implements Runnable, View.OnKeyListener {
 
 
     private int screenX;
@@ -30,6 +36,8 @@ public class LevelView extends SurfaceView implements Runnable {
     private final int NUM_TILES_WIDE = 11;
     private final int NUM_TILES_LONG = 23;
     private PlayerViewModel playerViewModel;
+    private int currX = 3;
+    private int currY = 0;
     public LevelView(GameActivity activity, int screenX, int screenY,
                   Bitmap background) {
         super(activity);
@@ -41,7 +49,7 @@ public class LevelView extends SurfaceView implements Runnable {
         this.tileWidth = (double) screenX / NUM_TILES_WIDE;
         this.tileHeight = (double) screenY / NUM_TILES_LONG;
         playerViewModel = new PlayerViewModel();
-
+        setOnKeyListener(this);
     }
 
 
@@ -86,17 +94,27 @@ public class LevelView extends SurfaceView implements Runnable {
             // Just an example placing the top left part of the avatar on the
             // top left of map[8][10] (8 tiles down and 10 tiles right, of
             // course in 0-indexed terms).
-            int[] coords = calcPixelsBasedOnIndices(3, 1);
+            // payerViewModel.move(currX , currY);
+            currX = playerViewModel.getPlayer().getX();
+            currY = playerViewModel.getPlayer().getY();
+            System.out.println(currX + " " + currY);
+            int[] coords = calcPixelsBasedOnIndices(currX, currY);
+
+           /* if (drawCounter != 0) {
+                playerViewModel.move(currX, currY);
+                coords = calcPixelsBasedOnIndices(currX, currY);
+            } */
+
             int intTileWidth = (int) tileWidth;
             int intTileHeight = (int) tileHeight;
             Bitmap playerBitMap = playerViewModel.getPlayer().getBitmapAvatar();
             destinationRect = new Rect(coords[0], coords[1], coords[0] + intTileWidth, coords[1]+ intTileHeight);
             Bitmap resizedBitmap = Bitmap.createScaledBitmap(playerBitMap, intTileWidth, intTileHeight, false);
             canvas.drawBitmap(resizedBitmap, null, destinationRect, paint);
-            //canvas.drawBitmap(playerBitMap, coords[0], coords[1], paint);
-            coords = calcPixelsBasedOnIndices(8, 10);
-            playerBitMap = playerViewModel.getPlayer().getBitmapAvatar();
-            canvas.drawBitmap(playerBitMap, coords[0], coords[1], paint);
+            drawCounter++;
+
+             // moved sample code to bottom!
+
             getHolder().unlockCanvasAndPost(canvas);
         }
     }
@@ -119,13 +137,59 @@ public class LevelView extends SurfaceView implements Runnable {
     }
 
     public void pause() {
-
         try {
             isPlaying = false;
             thread.join();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
 
+    @Override
+    public boolean onKey(View v, int keyCode, KeyEvent event) {
+        switch (keyCode) {
+            default:
+                System.out.println(super.onKeyDown(keyCode, event));
+                return super.onKeyDown(keyCode, event);
+            case KeyEvent.KEYCODE_DPAD_LEFT:
+                MoveStrategy left = new MoveLeft();
+                playerViewModel.setMoveStrategy(left);
+                playerViewModel.move(); // Update player position
+                invalidate(); // Request a redraw of the view
+                break;
+            case KeyEvent.KEYCODE_DPAD_RIGHT:
+                MoveStrategy right = new MoveRight();
+                playerViewModel.setMoveStrategy(right);
+                playerViewModel.move(); // Update player position
+                invalidate(); // Request a redraw of the view
+                break;
+            case KeyEvent.KEYCODE_DPAD_UP:
+                MoveStrategy up = new MoveUp();
+                playerViewModel.setMoveStrategy(up);
+                playerViewModel.move(); // Update player position
+                invalidate(); // Request a redraw of the view
+                break;
+            case KeyEvent.KEYCODE_DPAD_DOWN:
+                System.out.println("down arrow clicked");
+                MoveStrategy down = new MoveDown();
+                playerViewModel.setMoveStrategy(down);
+                playerViewModel.move(); // Update player position
+                System.out.println("onKey currY: " + currY);
+                invalidate(); // Request a redraw of the view
+                break;
+        };
+        return true;
     }
 }
+
+/*int[] coords = calcPixelsBasedOnIndices(3, 1);
+            int intTileWidth = (int) tileWidth;
+            int intTileHeight = (int) tileHeight;
+            Bitmap playerBitMap = playerViewModel.getPlayer().getBitmapAvatar();
+            destinationRect = new Rect(coords[0], coords[1], coords[0] + intTileWidth, coords[1]+ intTileHeight);
+            Bitmap resizedBitmap = Bitmap.createScaledBitmap(playerBitMap, intTileWidth, intTileHeight, false);
+            canvas.drawBitmap(resizedBitmap, null, destinationRect, paint);
+            //canvas.drawBitmap(playerBitMap, coords[0], coords[1], paint);
+            coords = calcPixelsBasedOnIndices(8, 10);
+            playerBitMap = playerViewModel.getPlayer().getBitmapAvatar();
+           // canvas.drawBitmap(playerBitMap, coords[0], coords[1], paint);*/
