@@ -17,22 +17,6 @@
         android:layout_weight="1">
         <!-- The GameView will be added here dynamically -->
 
-        <Button
-            android:id="@+id/exitButton"
-            android:layout_width="101dp"
-            android:layout_height="62dp"
-            android:layout_gravity="left"
-            android:text="Exit"
-            app:layout_constraintTop_toTopOf="parent"/>
-
-        <!-- next button element -->
-        <Button
-            android:id="@+id/nextButton"
-            android:layout_width="101dp"
-            android:layout_height="62dp"
-            android:layout_gravity="right"
-            android:text="Next"
-            app:layout_constraintTop_toTopOf="parent" />
     </FrameLayout>
 
     <!-- bottom screen bar (also a container for HP & score elements) -->
