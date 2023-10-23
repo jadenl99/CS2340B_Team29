@@ -21,27 +21,26 @@
         android:id="@+id/labels"
         android:layout_width="213dp"
         android:layout_height="44dp"
-        android:layout_marginEnd="96dp"
+        android:layout_marginEnd="92dp"
         android:text="LEADERBOARD"
         android:textSize="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.222" />
+        app:layout_constraintVertical_bias="0.211" />
 
     <TextView
         android:id="@+id/leaderboard"
         android:layout_width="306dp"
         android:layout_height="24dp"
         android:layout_gravity="center"
-        android:layout_marginEnd="52dp"
+        android:layout_marginEnd="48dp"
         android:text="Name                     Score                  Time/Date"
         android:textSize="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.284" />
-
+        app:layout_constraintVertical_bias="0.267" />
 
     <TextView
         android:id="@+id/youWon"
@@ -53,96 +52,95 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.115" />
+        app:layout_constraintVertical_bias="0.118" />
 
     <TextView
         android:id="@+id/firstplace"
-        android:layout_width="305dp"
-        android:layout_height="27dp"
+        android:layout_width="318dp"
+        android:layout_height="41dp"
         android:layout_gravity="center"
-        android:layout_marginEnd="52dp"
+        android:layout_marginEnd="40dp"
         android:text="1."
         android:textSize="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.317" />
+        app:layout_constraintVertical_bias="0.314" />
 
     <TextView
         android:id="@+id/secondplace"
-        android:layout_width="301dp"
-        android:layout_height="25dp"
+        android:layout_width="319dp"
+        android:layout_height="37dp"
         android:layout_gravity="center"
-        android:layout_marginEnd="56dp"
+        android:layout_marginEnd="40dp"
         android:text="2."
         android:textSize="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.352" />
-
+        app:layout_constraintVertical_bias="0.368" />
 
     <TextView
         android:id="@+id/thirdplace"
-        android:layout_width="299dp"
-        android:layout_height="26dp"
+        android:layout_width="330dp"
+        android:layout_height="34dp"
         android:layout_gravity="center"
-        android:layout_marginEnd="56dp"
+        android:layout_marginEnd="28dp"
         android:text="3."
         android:textSize="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.388" />
+        app:layout_constraintVertical_bias="0.42" />
 
     <TextView
         android:id="@+id/fourthplace"
-        android:layout_width="300dp"
-        android:layout_height="31dp"
+        android:layout_width="317dp"
+        android:layout_height="42dp"
         android:layout_gravity="center"
-        android:layout_marginEnd="56dp"
+        android:layout_marginEnd="40dp"
         android:text="4."
         android:textSize="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.428" />
+        app:layout_constraintVertical_bias="0.474" />
 
     <TextView
         android:id="@+id/fifthplace"
-        android:layout_width="299dp"
-        android:layout_height="30dp"
+        android:layout_width="318dp"
+        android:layout_height="43dp"
         android:layout_gravity="center"
-        android:layout_marginEnd="56dp"
+        android:layout_marginEnd="40dp"
         android:text="5."
         android:textSize="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.472" />
+        app:layout_constraintVertical_bias="0.536" />
 
     <TextView
         android:id="@+id/mostRecentAttempt"
-        android:layout_width="230dp"
-        android:layout_height="67dp"
-        android:layout_marginEnd="88dp"
+        android:layout_width="314dp"
+        android:layout_height="154dp"
+        android:layout_marginEnd="20dp"
         android:textSize="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.704" />
+        app:layout_constraintVertical_bias="0.823" />
 
     <TextView
         android:id="@+id/recentAttemptTitle"
-        android:layout_width="205dp"
-        android:layout_height="38dp"
-        android:layout_marginEnd="100dp"
+        android:layout_width="198dp"
+        android:layout_height="35dp"
+        android:layout_marginEnd="108dp"
         android:text="Most Recent Attempt:"
         android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.621" />
+        app:layout_constraintVertical_bias="0.632" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
