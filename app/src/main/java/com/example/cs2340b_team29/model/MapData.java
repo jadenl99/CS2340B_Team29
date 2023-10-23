@@ -13,6 +13,10 @@ public class MapData {
     private ArrayList<Wall> walls1;
     private ArrayList<Wall> walls2;
     private ArrayList<Wall> walls3;
+
+    private ArrayList<Door> doors1;
+    private ArrayList<Door> doors2;
+    private ArrayList<Door> doors3;
     private final int MAP_HEIGHT = 23;
     private final int MAP_WIDTH = 11;
     // 0 stands for a "wall" (can't pass), 1 is a normal tile, and 2 is a
@@ -114,6 +118,10 @@ public class MapData {
         walls2 = new ArrayList<>();
         walls3 = new ArrayList<>();
 
+        doors1 = new ArrayList<>();
+        doors2 = new ArrayList<>();
+        doors3 = new ArrayList<>();
+
         // put walls in each level
         for (int row = 0; row < MAP_HEIGHT; row++) {
             for (int col = 0; col < MAP_WIDTH; col++) {
@@ -130,7 +138,24 @@ public class MapData {
                 }
             }
         }
+
+    // put doors in each level
+        for (int row = 0; row < MAP_HEIGHT; row++) {
+        for (int col = 0; col < MAP_WIDTH; col++) {
+            if (L1ARRAY[row][col] == 2) {
+                doors1.add(new Door(col, row));
+            }
+
+            if (L2ARRAY[row][col] == 2) {
+                doors2.add(new Door(col, row));
+            }
+
+            if (L3ARRAY[row][col] == 2) {
+                doors3.add(new Door(col, row));
+            }
+        }
     }
+}
     public static synchronized MapData getMapData() {
         if (mapData == null) {
             mapData = new MapData();
@@ -149,6 +174,16 @@ public class MapData {
             return walls2;
         } else {
             return walls3;
+        }
+    }
+
+    public ArrayList<Door> getDoorsInLevel(int level) {
+        if (level == 1) {
+            return doors1;
+        } else if (level == 2) {
+            return doors2;
+        } else {
+            return doors3;
         }
     }
 }

@@ -101,11 +101,6 @@ public class GameActivity extends AppCompatActivity {
         //avatarImage = findViewById(R.id.avatarImage);
         nameLabel = findViewById(R.id.nameLabel);
 
-        exitButton = findViewById(R.id.exitButton);
-        exitButton.setOnClickListener((View v) -> {
-            Intent toEndScreen = new Intent(GameActivity.this, EndingActivity.class);
-            startActivity(toEndScreen);
-        });
 
         // begin game screen config
         setFullScreenMode();
@@ -128,12 +123,8 @@ public class GameActivity extends AppCompatActivity {
         l1View.setFocusableInTouchMode(true);
         l1View.requestFocus();
 
-
-        room = 1;
-        nextButton = findViewById(R.id.nextButton);
-        nextButton.setOnClickListener((View v) -> {
-            toggleView();
-        });
+        room = player1.getLevel();
+        //toggleView();
 
         score = player1.getScore();
         hpLevel = player1.getHP();
@@ -208,13 +199,18 @@ public class GameActivity extends AppCompatActivity {
                     break;
             }
             playerViewModel.checkForCollisions();
+            playerViewModel.checkForDoor();
+            if (playerViewModel.isChangeLevel()) {
+                toggleView();
+            }
+
         }
         return true;
     }
 
     private void toggleView() {
-        room++;
         System.out.println(room);
+        room = player1.getLevel();
         if (room == 2) {
             gameContainer.removeView(l1View);
             gameContainer.addView(l2View);
