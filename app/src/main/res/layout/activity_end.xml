@@ -32,8 +32,8 @@
 
     <TextView
         android:id="@+id/leaderboard"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="290dp"
+        android:layout_height="20dp"
         android:layout_gravity="center"
         android:layout_marginEnd="56dp"
         android:text="Name                     Score                  Time/Date"
@@ -42,7 +42,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.288" />
-
 
     <TextView
         android:id="@+id/youWon"
@@ -124,14 +123,14 @@
 
     <TextView
         android:id="@+id/mostRecentAttempt"
-        android:layout_width="286dp"
-        android:layout_height="33dp"
-        android:layout_marginEnd="56dp"
+        android:layout_width="242dp"
+        android:layout_height="43dp"
+        android:layout_marginEnd="76dp"
         android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.567" />
+        app:layout_constraintVertical_bias="0.556" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
