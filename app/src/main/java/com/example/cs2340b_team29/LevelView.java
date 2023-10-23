@@ -67,8 +67,6 @@ public class LevelView extends SurfaceView implements Runnable, View.OnKeyListen
         int[] coords = new int[2];
         coords[0] = (int) ((x) * tileWidth);
         coords[1] = (int) ((y) * tileHeight);
-        Log.d("WIDTH", Integer.toString(coords[0]));
-        Log.d("HEIGHT", Integer.toString(coords[1]));
         return coords;
     }
 
@@ -97,7 +95,6 @@ public class LevelView extends SurfaceView implements Runnable, View.OnKeyListen
             // payerViewModel.move(currX , currY);
             currX = playerViewModel.getPlayer().getX();
             currY = playerViewModel.getPlayer().getY();
-            System.out.println(currX + " " + currY);
             int[] coords = calcPixelsBasedOnIndices(currX, currY);
 
            /* if (drawCounter != 0) {
@@ -111,7 +108,7 @@ public class LevelView extends SurfaceView implements Runnable, View.OnKeyListen
             destinationRect = new Rect(coords[0], coords[1], coords[0] + intTileWidth, coords[1]+ intTileHeight);
             Bitmap resizedBitmap = Bitmap.createScaledBitmap(playerBitMap, intTileWidth, intTileHeight, false);
             canvas.drawBitmap(resizedBitmap, null, destinationRect, paint);
-            drawCounter++;
+            ///drawCounter++;
 
              // moved sample code to bottom!
 
@@ -121,7 +118,7 @@ public class LevelView extends SurfaceView implements Runnable, View.OnKeyListen
 
     private void sleep() {
         try {
-            Thread.sleep(8000);
+            Thread.sleep(5);
 
         } catch (InterruptedException ie) {
             ie.printStackTrace();
@@ -147,37 +144,36 @@ public class LevelView extends SurfaceView implements Runnable, View.OnKeyListen
 
     @Override
     public boolean onKey(View v, int keyCode, KeyEvent event) {
-        switch (keyCode) {
-            default:
-                System.out.println(super.onKeyDown(keyCode, event));
-                return super.onKeyDown(keyCode, event);
-            case KeyEvent.KEYCODE_DPAD_LEFT:
-                MoveStrategy left = new MoveLeft();
-                playerViewModel.setMoveStrategy(left);
-                playerViewModel.move(); // Update player position
-                invalidate(); // Request a redraw of the view
-                break;
-            case KeyEvent.KEYCODE_DPAD_RIGHT:
-                MoveStrategy right = new MoveRight();
-                playerViewModel.setMoveStrategy(right);
-                playerViewModel.move(); // Update player position
-                invalidate(); // Request a redraw of the view
-                break;
-            case KeyEvent.KEYCODE_DPAD_UP:
-                MoveStrategy up = new MoveUp();
-                playerViewModel.setMoveStrategy(up);
-                playerViewModel.move(); // Update player position
-                invalidate(); // Request a redraw of the view
-                break;
-            case KeyEvent.KEYCODE_DPAD_DOWN:
-                System.out.println("down arrow clicked");
-                MoveStrategy down = new MoveDown();
-                playerViewModel.setMoveStrategy(down);
-                playerViewModel.move(); // Update player position
-                System.out.println("onKey currY: " + currY);
-                invalidate(); // Request a redraw of the view
-                break;
-        };
+        if (event.getAction() == KeyEvent.ACTION_DOWN) {
+            switch (keyCode) {
+                default:
+                    System.out.println(super.onKeyDown(keyCode, event));
+                    return super.onKeyDown(keyCode, event);
+                case KeyEvent.KEYCODE_DPAD_LEFT:
+                    MoveStrategy left = new MoveLeft();
+                    playerViewModel.setMoveStrategy(left);
+                    playerViewModel.move(); // Update player position
+                    break;
+                case KeyEvent.KEYCODE_DPAD_RIGHT:
+                    MoveStrategy right = new MoveRight();
+                    playerViewModel.setMoveStrategy(right);
+                    playerViewModel.move(); // Update player position
+                    break;
+                case KeyEvent.KEYCODE_DPAD_UP:
+                    MoveStrategy up = new MoveUp();
+                    playerViewModel.setMoveStrategy(up);
+                    playerViewModel.move(); // Update player position
+                    break;
+                case KeyEvent.KEYCODE_DPAD_DOWN:
+                    System.out.println("down arrow clicked");
+                    MoveStrategy down = new MoveDown();
+                    playerViewModel.setMoveStrategy(down);
+                    playerViewModel.move(); // Update player position
+                    System.out.println("onKey currY: " + currY);
+                    break;
+            }
+            playerViewModel.checkForCollisions();
+        }
         return true;
     }
 }

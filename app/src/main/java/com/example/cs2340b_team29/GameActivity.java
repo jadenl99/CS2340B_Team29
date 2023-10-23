@@ -139,6 +139,9 @@ public class GameActivity extends AppCompatActivity {
         hpLevelLabel.setText("HP: " + Integer.toString(hpLevel));
         nameLabel.setText(name);
 
+        playerViewModel.getPlayer().setX(8);
+        playerViewModel.getPlayer().setY(22);
+
     }
 
 
@@ -180,6 +183,8 @@ public class GameActivity extends AppCompatActivity {
             l2View.setOnKeyListener(l2View);
             l2View.requestFocus();
             playerViewModel.getPlayer().setLevel(2);
+            playerViewModel.getPlayer().setX(2);
+            playerViewModel.getPlayer().setY(22);
         } else if (room == 3) {
             gameContainer.removeView(l2View);
             gameContainer.addView(l3View);
@@ -187,6 +192,8 @@ public class GameActivity extends AppCompatActivity {
             l3View.setOnKeyListener(l3View);
             l3View.requestFocus();
             playerViewModel.getPlayer().setLevel(3);
+            playerViewModel.getPlayer().setX(7);
+            playerViewModel.getPlayer().setY(22);
         } else if (room > 3) {
             gameContainer.removeAllViews();
             handler.removeCallbacks(scoreCountDown);
