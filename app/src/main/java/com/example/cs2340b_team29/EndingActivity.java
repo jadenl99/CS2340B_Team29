@@ -71,7 +71,7 @@ public class EndingActivity extends AppCompatActivity {
 
 
         // set most recent attempt text
-        mostRecentAttempt.setText("Most Recent Score: " + score);
+        mostRecentAttempt.setText("Score:" + score + "\n" + "Name: " + playerName + "\nDate/Time: " + currentDateTime);
 
         restartBtn = findViewById(R.id.restartBtn);
 
