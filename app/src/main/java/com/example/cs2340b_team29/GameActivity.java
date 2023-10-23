@@ -10,7 +10,6 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Point;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.KeyEvent;
@@ -182,30 +181,30 @@ public class GameActivity extends AppCompatActivity {
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (event.getAction() == KeyEvent.ACTION_DOWN) {
             switch (keyCode) {
-                default:
-                    System.out.println(super.onKeyDown(keyCode, event));
-                    return super.onKeyDown(keyCode, event);
-                case KeyEvent.KEYCODE_DPAD_LEFT:
-                    MoveStrategy left = new MoveLeft();
-                    playerViewModel.setMoveStrategy(left);
-                    playerViewModel.move(); // Update player position
-                    break;
-                case KeyEvent.KEYCODE_DPAD_RIGHT:
-                    MoveStrategy right = new MoveRight();
-                    playerViewModel.setMoveStrategy(right);
-                    playerViewModel.move(); // Update player position
-                    break;
-                case KeyEvent.KEYCODE_DPAD_UP:
-                    MoveStrategy up = new MoveUp();
-                    playerViewModel.setMoveStrategy(up);
-                    playerViewModel.move(); // Update player position
-                    break;
-                case KeyEvent.KEYCODE_DPAD_DOWN:
-                    System.out.println("down arrow clicked");
-                    MoveStrategy down = new MoveDown();
-                    playerViewModel.setMoveStrategy(down);
-                    playerViewModel.move(); // Update player position
-                    break;
+            case KeyEvent.KEYCODE_DPAD_LEFT:
+                MoveStrategy left = new MoveLeft();
+                playerViewModel.setMoveStrategy(left);
+                playerViewModel.move(); // Update player position
+                break;
+            case KeyEvent.KEYCODE_DPAD_RIGHT:
+                MoveStrategy right = new MoveRight();
+                playerViewModel.setMoveStrategy(right);
+                playerViewModel.move(); // Update player position
+                break;
+            case KeyEvent.KEYCODE_DPAD_UP:
+                MoveStrategy up = new MoveUp();
+                playerViewModel.setMoveStrategy(up);
+                playerViewModel.move(); // Update player position
+                break;
+            case KeyEvent.KEYCODE_DPAD_DOWN:
+                System.out.println("down arrow clicked");
+                MoveStrategy down = new MoveDown();
+                playerViewModel.setMoveStrategy(down);
+                playerViewModel.move(); // Update player position
+                break;
+            default:
+                System.out.println(super.onKeyDown(keyCode, event));
+                return super.onKeyDown(keyCode, event);
             }
             playerViewModel.checkForCollisions();
         }
