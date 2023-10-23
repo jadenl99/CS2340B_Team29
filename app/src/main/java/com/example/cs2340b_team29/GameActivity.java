@@ -25,6 +25,11 @@ import android.widget.TextView;
 
 import com.example.cs2340b_team29.collision.WallCollisionHandler;
 import com.example.cs2340b_team29.model.Player;
+import com.example.cs2340b_team29.viewmodel.MoveDown;
+import com.example.cs2340b_team29.viewmodel.MoveLeft;
+import com.example.cs2340b_team29.viewmodel.MoveRight;
+import com.example.cs2340b_team29.viewmodel.MoveStrategy;
+import com.example.cs2340b_team29.viewmodel.MoveUp;
 import com.example.cs2340b_team29.viewmodel.PlayerViewModel;
 
 public class GameActivity extends AppCompatActivity {
@@ -118,7 +123,7 @@ public class GameActivity extends AppCompatActivity {
         gameContainer = findViewById(R.id.gameContainer);
         gameContainer.addView(l1View);
         // request focus on view
-        l1View.setOnKeyListener(l1View);
+        //l1View.setOnKeyListener(l1View);
         l1View.setFocusable(true);
         l1View.setFocusableInTouchMode(true);
         l1View.requestFocus();
@@ -173,6 +178,40 @@ public class GameActivity extends AppCompatActivity {
                         | View.SYSTEM_UI_FLAG_IMMERSIVE);
     }
 
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (event.getAction() == KeyEvent.ACTION_DOWN) {
+            switch (keyCode) {
+                default:
+                    System.out.println(super.onKeyDown(keyCode, event));
+                    return super.onKeyDown(keyCode, event);
+                case KeyEvent.KEYCODE_DPAD_LEFT:
+                    MoveStrategy left = new MoveLeft();
+                    playerViewModel.setMoveStrategy(left);
+                    playerViewModel.move(); // Update player position
+                    break;
+                case KeyEvent.KEYCODE_DPAD_RIGHT:
+                    MoveStrategy right = new MoveRight();
+                    playerViewModel.setMoveStrategy(right);
+                    playerViewModel.move(); // Update player position
+                    break;
+                case KeyEvent.KEYCODE_DPAD_UP:
+                    MoveStrategy up = new MoveUp();
+                    playerViewModel.setMoveStrategy(up);
+                    playerViewModel.move(); // Update player position
+                    break;
+                case KeyEvent.KEYCODE_DPAD_DOWN:
+                    System.out.println("down arrow clicked");
+                    MoveStrategy down = new MoveDown();
+                    playerViewModel.setMoveStrategy(down);
+                    playerViewModel.move(); // Update player position
+                    break;
+            }
+            playerViewModel.checkForCollisions();
+        }
+        return true;
+    }
+
     private void toggleView() {
         room++;
         System.out.println(room);
@@ -180,7 +219,7 @@ public class GameActivity extends AppCompatActivity {
             gameContainer.removeView(l1View);
             gameContainer.addView(l2View);
             l1View.clearFocus();
-            l2View.setOnKeyListener(l2View);
+            //l2View.setOnKeyListener(l2View);
             l2View.requestFocus();
             playerViewModel.getPlayer().setLevel(2);
             playerViewModel.getPlayer().setX(2);
@@ -189,7 +228,7 @@ public class GameActivity extends AppCompatActivity {
             gameContainer.removeView(l2View);
             gameContainer.addView(l3View);
             l2View.clearFocus();
-            l3View.setOnKeyListener(l3View);
+            //l3View.setOnKeyListener(l3View);
             l3View.requestFocus();
             playerViewModel.getPlayer().setLevel(3);
             playerViewModel.getPlayer().setX(7);
