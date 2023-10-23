@@ -9,6 +9,7 @@ import com.example.cs2340b_team29.model.Player;
 import com.example.cs2340b_team29.viewmodel.MoveDown;
 import com.example.cs2340b_team29.viewmodel.MoveLeft;
 import com.example.cs2340b_team29.viewmodel.MoveRight;
+import com.example.cs2340b_team29.viewmodel.MoveUp;
 import com.example.cs2340b_team29.viewmodel.PlayerViewModel;
 
 import org.junit.Test;
@@ -67,7 +68,51 @@ public class PlayerViewModelTest {
         assertEquals(1, player.getIdAvatar());
     }
 
-    // NEW JUNITS
+
+    // NEW JUNITS for sprint 3
+
+    @Test
+    public void testMoveLeft() {
+        player.setX(100);
+        player.setY(100);
+        playerViewModel.setMoveStrategy(new MoveLeft());
+        playerViewModel.move();
+        assertEquals(100, player.getY());
+        assertEquals(99, player.getX());
+
+    }
+
+    @Test
+    public void testMoveDown() {
+        player.setX(100);
+        player.setY(100);
+        playerViewModel.setMoveStrategy(new MoveDown());
+        playerViewModel.move();
+        assertEquals(101, player.getY());
+        assertEquals(100, player.getX());
+
+    }
+
+    @Test
+    public void testMoveUp() {
+        player.setX(100);
+        player.setY(100);
+        playerViewModel.setMoveStrategy(new MoveUp());
+        playerViewModel.move();
+        assertEquals(99, player.getY());
+        assertEquals(100, player.getX());
+
+    }
+
+    @Test
+    public void testMoveRight() {
+        player.setX(100);
+        player.setY(100);
+        playerViewModel.setMoveStrategy(new MoveRight());
+        playerViewModel.move();
+        assertEquals(100, player.getY());
+        assertEquals(101, player.getX());
+    }
     @Test
     public void checkCollisionLevel1() {
         player.setLevel(1);
@@ -81,10 +126,22 @@ public class PlayerViewModelTest {
         playerViewModel.setMoveStrategy(new MoveDown());
         player.subscribe(wallCollisionHandler);
         playerViewModel.checkForCollisions();
-        assertEquals(3, player.getY());
+        assertEquals(2, player.getY());
         assertEquals(1, player.getX());
         player.unsubscribe(wallCollisionHandler);
 
+    }
+    @Test
+    public void checkNoCollisionLevel1() {
+        player.setX(4);
+        player.setY(4);
+        player.setLevel(1);
+        playerViewModel.setMoveStrategy(new MoveDown());
+        playerViewModel.move();
+        player.subscribe(wallCollisionHandler);
+        assertEquals(5, player.getY());
+        assertEquals(4, player.getX());
+        player.unsubscribe(wallCollisionHandler);
     }
 
     @Test
@@ -104,6 +161,61 @@ public class PlayerViewModelTest {
         player.unsubscribe(wallCollisionHandler);
 
     }
+
+    @Test
+    public void changeLevelFrom1To2AndCollision() {
+        player.setLevel(1);
+        player.setX(-1);
+        player.setY(4);
+
+        playerViewModel.setMoveStrategy(new MoveLeft());
+        player.subscribe(wallCollisionHandler);
+        playerViewModel.checkForCollisions();
+        assertEquals(4, player.getY());
+        assertEquals(0, player.getX());
+        player.setLevel(2);
+        player.setX(4);
+        player.setY(8);
+        playerViewModel.setMoveStrategy(new MoveDown());
+        playerViewModel.checkForCollisions();
+        assertEquals(7, player.getY());
+        assertEquals(4, player.getX());
+        player.unsubscribe(wallCollisionHandler);
+    }
+    @Test
+    public void changeLevelFrom2to3() {
+        player.setLevel(2);
+        player.setX(2);
+        player.setY(19);
+
+        playerViewModel.setMoveStrategy(new MoveLeft());
+        player.subscribe(wallCollisionHandler);
+        playerViewModel.checkForCollisions();
+        assertEquals(19, player.getY());
+        assertEquals(2, player.getX());
+        player.setLevel(3);
+        player.setX(1);
+        player.setY(12);
+        playerViewModel.setMoveStrategy(new MoveDown());
+        playerViewModel.checkForCollisions();
+        assertEquals(11, player.getY());
+        assertEquals(1, player.getX());
+        player.unsubscribe(wallCollisionHandler);
+    }
+
+    @Test
+    public void testOutOfBoundsRightSide() {
+        player.setLevel(3);
+        player.setX(11);
+        player.setY(0);
+        player.subscribe(wallCollisionHandler);
+        playerViewModel.setMoveStrategy(new MoveRight());
+        playerViewModel.checkForCollisions();
+        assertEquals(0, player.getY());
+        assertEquals(10, player.getX());
+    }
+
+
 
 
 
