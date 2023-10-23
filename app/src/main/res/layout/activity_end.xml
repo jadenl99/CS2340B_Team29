@@ -63,7 +63,6 @@
         android:layout_height="24dp"
         android:layout_gravity="center"
         android:layout_marginEnd="56dp"
-        android:text="FIRST PLACEHOLDER"
         android:textSize="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -77,7 +76,6 @@
         android:layout_height="24dp"
         android:layout_gravity="center"
         android:layout_marginEnd="56dp"
-        android:text="SECOND PLACEHOLDER"
         android:textSize="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -91,7 +89,6 @@
         android:layout_height="24dp"
         android:layout_gravity="center"
         android:layout_marginEnd="56dp"
-        android:text="THIRD PLACEHOLDER"
         android:textSize="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -105,7 +102,6 @@
         android:layout_height="24dp"
         android:layout_gravity="center"
         android:layout_marginEnd="56dp"
-        android:text="FOURTH PLACEHOLDER"
         android:textSize="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -119,7 +115,6 @@
         android:layout_height="24dp"
         android:layout_gravity="center"
         android:layout_marginEnd="56dp"
-        android:text="FIFTH PLACEHOLDER"
         android:textSize="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -129,15 +124,14 @@
 
     <TextView
         android:id="@+id/mostRecentAttempt"
-        android:layout_width="379dp"
-        android:layout_height="38dp"
-        android:layout_marginEnd="16dp"
-        android:text="MOST RECENT SCORE HOLDER"
+        android:layout_width="286dp"
+        android:layout_height="33dp"
+        android:layout_marginEnd="56dp"
         android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.568" />
+        app:layout_constraintVertical_bias="0.567" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
