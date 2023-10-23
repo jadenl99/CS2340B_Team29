@@ -20,7 +20,7 @@ import com.example.cs2340b_team29.viewmodel.PlayerViewModel;
 /**
  * Responsible for displaying levels and the player avatar on the screen.
  */
-public class LevelView extends SurfaceView implements Runnable, View.OnKeyListener {
+public class LevelView extends SurfaceView implements Runnable {
 
 
     private int screenX;
@@ -49,7 +49,7 @@ public class LevelView extends SurfaceView implements Runnable, View.OnKeyListen
         this.tileWidth = (double) screenX / NUM_TILES_WIDE;
         this.tileHeight = (double) screenY / NUM_TILES_LONG;
         playerViewModel = new PlayerViewModel();
-        setOnKeyListener(this);
+        //setOnKeyListener(this);
     }
 
 
@@ -142,40 +142,40 @@ public class LevelView extends SurfaceView implements Runnable, View.OnKeyListen
         }
     }
 
-    @Override
-    public boolean onKey(View v, int keyCode, KeyEvent event) {
-        if (event.getAction() == KeyEvent.ACTION_DOWN) {
-            switch (keyCode) {
-                default:
-                    System.out.println(super.onKeyDown(keyCode, event));
-                    return super.onKeyDown(keyCode, event);
-                case KeyEvent.KEYCODE_DPAD_LEFT:
-                    MoveStrategy left = new MoveLeft();
-                    playerViewModel.setMoveStrategy(left);
-                    playerViewModel.move(); // Update player position
-                    break;
-                case KeyEvent.KEYCODE_DPAD_RIGHT:
-                    MoveStrategy right = new MoveRight();
-                    playerViewModel.setMoveStrategy(right);
-                    playerViewModel.move(); // Update player position
-                    break;
-                case KeyEvent.KEYCODE_DPAD_UP:
-                    MoveStrategy up = new MoveUp();
-                    playerViewModel.setMoveStrategy(up);
-                    playerViewModel.move(); // Update player position
-                    break;
-                case KeyEvent.KEYCODE_DPAD_DOWN:
-                    System.out.println("down arrow clicked");
-                    MoveStrategy down = new MoveDown();
-                    playerViewModel.setMoveStrategy(down);
-                    playerViewModel.move(); // Update player position
-                    System.out.println("onKey currY: " + currY);
-                    break;
-            }
-            playerViewModel.checkForCollisions();
-        }
-        return true;
-    }
+//    @Override
+//    public boolean onKey(View v, int keyCode, KeyEvent event) {
+//        if (event.getAction() == KeyEvent.ACTION_DOWN) {
+//            switch (keyCode) {
+//                default:
+//                    System.out.println(super.onKeyDown(keyCode, event));
+//                    return super.onKeyDown(keyCode, event);
+//                case KeyEvent.KEYCODE_DPAD_LEFT:
+//                    MoveStrategy left = new MoveLeft();
+//                    playerViewModel.setMoveStrategy(left);
+//                    playerViewModel.move(); // Update player position
+//                    break;
+//                case KeyEvent.KEYCODE_DPAD_RIGHT:
+//                    MoveStrategy right = new MoveRight();
+//                    playerViewModel.setMoveStrategy(right);
+//                    playerViewModel.move(); // Update player position
+//                    break;
+//                case KeyEvent.KEYCODE_DPAD_UP:
+//                    MoveStrategy up = new MoveUp();
+//                    playerViewModel.setMoveStrategy(up);
+//                    playerViewModel.move(); // Update player position
+//                    break;
+//                case KeyEvent.KEYCODE_DPAD_DOWN:
+//                    System.out.println("down arrow clicked");
+//                    MoveStrategy down = new MoveDown();
+//                    playerViewModel.setMoveStrategy(down);
+//                    playerViewModel.move(); // Update player position
+//                    System.out.println("onKey currY: " + currY);
+//                    break;
+//            }
+//            playerViewModel.checkForCollisions();
+//        }
+//        return true;
+//    }
 }
 
 /*int[] coords = calcPixelsBasedOnIndices(3, 1);
