@@ -9,6 +9,11 @@ import com.example.cs2340b_team29.viewmodel.MoveUp;
 
 public class WallCollisionHandler implements CollisionObserver {
 
+    // Player - Enemy
+    // Enemy - Player
+    // Enemy - Wall
+    // Wall - Enemy
+
     public void onCollision(Collidable e1, Collidable e2, MoveStrategy moveStrategy) {
         if (e1 instanceof Player && e2 instanceof Wall) {
             Player player = (Player) e1;
@@ -22,6 +27,5 @@ public class WallCollisionHandler implements CollisionObserver {
                 player.setX(player.getX() + 1);
             }
         }
-
     }
 }
