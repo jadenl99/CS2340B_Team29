@@ -55,6 +55,10 @@ public class EndingActivity extends AppCompatActivity {
                 new ViewModelProvider(this).get(PlayerViewModel.class);
         Player player1 = playerViewModel.getPlayer();
         int hpLevel = player1.getHP();
+        if (hpLevel == 0) {
+            TextView status = findViewById(R.id.youWon);
+            status.setText("YOU LOST");
+        }
         int avatarChosen = player1.getIdAvatar();
         playerName = player1.getPlayerName();
         score = player1.getScore();
