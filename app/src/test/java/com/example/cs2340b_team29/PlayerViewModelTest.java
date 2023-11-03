@@ -69,7 +69,7 @@ public class PlayerViewModelTest {
     }
 
 
-    // NEW JUNITS for sprint 3
+    // NEW JUNITS for sprint 3git
 
     @Test
     public void testMoveLeft() {
