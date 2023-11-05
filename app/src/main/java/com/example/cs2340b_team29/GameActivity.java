@@ -25,6 +25,7 @@ import android.widget.TextView;
 
 import com.example.cs2340b_team29.collision.WallCollisionHandler;
 import com.example.cs2340b_team29.model.Player;
+import com.example.cs2340b_team29.viewmodel.MapDataViewModel;
 import com.example.cs2340b_team29.viewmodel.MoveDown;
 import com.example.cs2340b_team29.viewmodel.MoveLeft;
 import com.example.cs2340b_team29.viewmodel.MoveRight;
@@ -66,6 +67,7 @@ public class GameActivity extends AppCompatActivity {
     private Handler handler = new Handler();
 
     private PlayerViewModel playerViewModel;
+
 
     private Runnable scoreCountDown;
     private WallCollisionHandler wallCollisionHandler;

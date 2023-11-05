@@ -11,8 +11,11 @@ import android.widget.TextView;
 import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.example.cs2340b_team29.model.Player;
+import com.example.cs2340b_team29.viewmodel.MapDataViewModel;
+import com.example.cs2340b_team29.viewmodel.PlayerViewModel;
 
 
 public class PreGameActivity extends AppCompatActivity {
@@ -23,6 +26,7 @@ public class PreGameActivity extends AppCompatActivity {
 
     private TextView hpLevelLabel;
     private ImageView avatarImage;
+    private MapDataViewModel mapDataViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +34,7 @@ public class PreGameActivity extends AppCompatActivity {
         setContentView(R.layout.activity_pregame);
 
         Player activePlayer = Player.getPlayer();
-
+        mapDataViewModel = new ViewModelProvider(this).get(MapDataViewModel.class);
         nextButton = findViewById(R.id.nextButton);
         playerNameLabel = findViewById(R.id.nameLabel);
         difficultyLabel = findViewById(R.id.difficultyLabel);
@@ -52,12 +56,15 @@ public class PreGameActivity extends AppCompatActivity {
             if (difficulty.equals("Easy")) {
                 hpLevelLabel.setText("HP: 100");
                 activePlayer.setHpLevel(100);
+                mapDataViewModel.setMapData(1);
             } else if (difficulty.equals("Medium")) {
                 hpLevelLabel.setText("HP: 50");
                 activePlayer.setHpLevel(50);
+                mapDataViewModel.setMapData(2);
             } else if (difficulty.equals("Hard")) {
                 hpLevelLabel.setText("HP: 25");
                 activePlayer.setHpLevel(25);
+                mapDataViewModel.setMapData(3);
             }
 
             if (avatarChosen == 1) {
