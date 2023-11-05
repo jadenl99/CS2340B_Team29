@@ -11,6 +11,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Point;
 
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.KeyEvent;
@@ -24,6 +25,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.cs2340b_team29.collision.WallCollisionHandler;
+import com.example.cs2340b_team29.model.Enemy;
+import com.example.cs2340b_team29.model.EnemyFactory;
 import com.example.cs2340b_team29.model.Player;
 import com.example.cs2340b_team29.viewmodel.MoveDown;
 import com.example.cs2340b_team29.viewmodel.MoveLeft;
@@ -31,6 +34,8 @@ import com.example.cs2340b_team29.viewmodel.MoveRight;
 import com.example.cs2340b_team29.viewmodel.MoveStrategy;
 import com.example.cs2340b_team29.viewmodel.MoveUp;
 import com.example.cs2340b_team29.viewmodel.PlayerViewModel;
+
+import java.util.ArrayList;
 
 public class GameActivity extends AppCompatActivity {
 
@@ -78,6 +83,7 @@ public class GameActivity extends AppCompatActivity {
         playerViewModel.setScore(1000);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
+        setEnemyBitmaps();
 
 
         // logic for countdown
@@ -137,7 +143,10 @@ public class GameActivity extends AppCompatActivity {
 
         playerViewModel.getPlayer().setX(8);
         playerViewModel.getPlayer().setY(22);
-
+        playerViewModel.getEnemiesInLevel().get(0).setX(0);
+        playerViewModel.getEnemiesInLevel().get(0).setY(6);
+        playerViewModel.getEnemiesInLevel().get(1).setX(0);
+        playerViewModel.getEnemiesInLevel().get(1).setY(9);
     }
 
 
@@ -221,6 +230,10 @@ public class GameActivity extends AppCompatActivity {
             playerViewModel.getPlayer().setLevel(2);
             playerViewModel.getPlayer().setX(2);
             playerViewModel.getPlayer().setY(22);
+            playerViewModel.getEnemiesInLevel().get(0).setX(0);
+            playerViewModel.getEnemiesInLevel().get(0).setY(4);
+            playerViewModel.getEnemiesInLevel().get(1).setX(0);
+            playerViewModel.getEnemiesInLevel().get(1).setY(11);
         } else if (room == 3) {
             gameContainer.removeView(l2View);
             gameContainer.addView(l3View);
@@ -230,6 +243,10 @@ public class GameActivity extends AppCompatActivity {
             playerViewModel.getPlayer().setLevel(3);
             playerViewModel.getPlayer().setX(7);
             playerViewModel.getPlayer().setY(22);
+            playerViewModel.getEnemiesInLevel().get(0).setX(1);
+            playerViewModel.getEnemiesInLevel().get(0).setY(3);
+            playerViewModel.getEnemiesInLevel().get(1).setX(1);
+            playerViewModel.getEnemiesInLevel().get(1).setY(17);
         } else if (room > 3) {
             gameContainer.removeAllViews();
             handler.removeCallbacks(scoreCountDown);
@@ -238,6 +255,54 @@ public class GameActivity extends AppCompatActivity {
             startActivity(toEndScreen);
         }
     }
+
+    private void setEnemyBitmaps() {
+        ArrayList<Enemy> enemies = playerViewModel.getMapData().getAllEnemies();
+        for (Enemy enemy: enemies) {
+            if (enemy.getEnemyID() == 1) {
+                Drawable enemy1 = getDrawable(R.drawable.ninja);
+                enemy.setBitmap(
+                        BitmapFactory.decodeResource(getResources(), R.drawable.ninja));
+            } else if (enemy.getEnemyID() == 2) {
+                Drawable enemy2 = getDrawable(R.drawable.snake);
+                enemy.setBitmap(
+                        BitmapFactory.decodeResource(getResources(), R.drawable.snake));
+            } else if (enemy.getEnemyID() == 3) {
+                Drawable enemy3 = getDrawable(R.drawable.spider);
+                enemy.setBitmap(
+                        BitmapFactory.decodeResource(getResources(), R.drawable.spider));
+            } else {
+                Drawable enemy4 = getDrawable(R.drawable.wolf);
+                enemy.setBitmap(
+                        BitmapFactory.decodeResource(getResources(), R.drawable.wolf));
+            }
+        }
+    }
+    /*
+    private void setEnemyBitmaps() {
+        ArrayList<Enemy> enemies = playerViewModel.getEnemiesInLevel();
+        for (Enemy enemy: enemies) {
+            if (enemy.getEnemyID() == 1) {
+                Drawable enemy1 = getDrawable(R.drawable.ninja);
+                enemy.setBitmap(
+                        BitmapFactory.decodeResource(getResources(), R.drawable.ninja));
+            } else if (enemy.getEnemyID() == 2) {
+                Drawable enemy2 = getDrawable(R.drawable.snake);
+                enemy.setBitmap(
+                        BitmapFactory.decodeResource(getResources(), R.drawable.snake));
+            } else if (enemy.getEnemyID() == 3) {
+                Drawable enemy3 = getDrawable(R.drawable.spider);
+                enemy.setBitmap(
+                        BitmapFactory.decodeResource(getResources(), R.drawable.spider));
+            } else {
+                Drawable enemy4 = getDrawable(R.drawable.wolf);
+                enemy.setBitmap(
+                        BitmapFactory.decodeResource(getResources(), R.drawable.wolf));
+            }
+        }
+    }
+
+     */
 
     @Override
     protected void onPause() {

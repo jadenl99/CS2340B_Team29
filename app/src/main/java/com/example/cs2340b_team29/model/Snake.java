@@ -6,6 +6,8 @@ public class Snake implements Enemy {
     private int x;
     private int y;
     private Bitmap bitmap;
+
+    private int enemyID = 2;
     public Snake() {
 
     }
@@ -27,5 +29,18 @@ public class Snake implements Enemy {
     @Override
     public void setY(int y) {
         this.y = y;
+    }
+
+    public int getEnemyID () {
+        return enemyID;
+    }
+
+    @Override
+    public void setBitmap(Bitmap decodeResource) {
+        bitmap = decodeResource;
+    }
+
+    public Bitmap getBitmap() {
+        return bitmap;
     }
 }

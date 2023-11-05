@@ -1,9 +1,12 @@
 package com.example.cs2340b_team29.viewmodel;
 
+import android.graphics.Bitmap;
+
 import androidx.lifecycle.ViewModel;
 
 import com.example.cs2340b_team29.collision.Collidable;
 import com.example.cs2340b_team29.model.Door;
+import com.example.cs2340b_team29.model.Enemy;
 import com.example.cs2340b_team29.model.MapData;
 import com.example.cs2340b_team29.model.Player;
 import com.example.cs2340b_team29.model.Wall;
@@ -37,6 +40,8 @@ public class PlayerViewModel extends ViewModel {
     public Player getPlayer() {
         return player;
     }
+
+    public MapData getMapData() { return mapData; }
 
     public boolean isChangeLevel() {
         return changeLevel;
@@ -107,6 +112,21 @@ public class PlayerViewModel extends ViewModel {
         return false;
     }
 
+    public ArrayList<Enemy> getEnemiesInLevel() {
+        ArrayList<Enemy> enemiesInLevel = mapData.getEnemies(player.getLevel());
+        return enemiesInLevel;
+    }
 
+    public Enemy getEnemy1() {
+        ArrayList<Enemy> enemiesInLevel = mapData.getEnemies(player.getLevel());
+        Enemy enemy1 = enemiesInLevel.get(0);
+        return enemy1;
+    }
+
+    public Enemy getEnemy2() {
+        ArrayList<Enemy> enemiesInLevel = mapData.getEnemies(player.getLevel());
+        Enemy enemy2 = enemiesInLevel.get(1);
+        return enemy2;
+    }
 
 }

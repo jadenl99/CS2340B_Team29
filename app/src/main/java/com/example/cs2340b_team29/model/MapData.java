@@ -17,6 +17,16 @@ public class MapData {
     private ArrayList<Door> doors1;
     private ArrayList<Door> doors2;
     private ArrayList<Door> doors3;
+
+    private ArrayList<Enemy> enemies1;
+    private ArrayList<Enemy> enemies2;
+    private ArrayList<Enemy> enemies3;
+    private ArrayList<Enemy> allEnemies;
+
+    private Enemy ninja;
+    private Enemy spider;
+    private Enemy snake;
+    private Enemy wolf;
     private final int mapHeight = 23;
     private final int mapWidth = 11;
     // 0 stands for a "wall" (can't pass), 1 is a normal tile, and 2 is a
@@ -122,6 +132,17 @@ public class MapData {
         doors2 = new ArrayList<>();
         doors3 = new ArrayList<>();
 
+        enemies1 = new ArrayList<>();
+        enemies2 = new ArrayList<>();
+        enemies3 = new ArrayList<>();
+
+        allEnemies = new ArrayList<>();
+
+        wolf = EnemyFactory.createEnemy("wolf");
+        ninja = EnemyFactory.createEnemy("ninja");
+        snake = EnemyFactory.createEnemy("snake");
+        spider = EnemyFactory.createEnemy("spider");
+
         // put walls in each level
         for (int row = 0; row < mapHeight; row++) {
             for (int col = 0; col < mapWidth; col++) {
@@ -155,6 +176,22 @@ public class MapData {
                 }
             }
         }
+
+        //put enemies in each level
+        enemies1.add(spider);
+        enemies1.add(snake);
+
+        enemies2.add(ninja);
+        enemies2.add(snake);
+
+        enemies3.add(wolf);
+        enemies3.add(ninja);
+
+        allEnemies.add(spider);
+        allEnemies.add(ninja);
+        allEnemies.add(wolf);
+        allEnemies.add(snake);
+
     }
     public static synchronized MapData getMapData() {
         if (mapData == null) {
@@ -185,5 +222,19 @@ public class MapData {
         } else {
             return doors3;
         }
+    }
+
+    public ArrayList<Enemy> getEnemies(int level) {
+        if (level == 1) {
+            return enemies1;
+        } else if (level == 2) {
+            return enemies2;
+        } else {
+            return enemies3;
+        }
+    }
+
+    public ArrayList<Enemy> getAllEnemies() {
+        return allEnemies;
     }
 }
