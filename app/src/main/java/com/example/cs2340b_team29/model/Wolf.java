@@ -6,6 +6,8 @@ public class Wolf implements Enemy {
     private int x;
     private int y;
     private Bitmap bitmap;
+
+    private int enemyID = 4;
     public Wolf() {
 
     }
@@ -27,5 +29,18 @@ public class Wolf implements Enemy {
     @Override
     public void setY(int y) {
         this.y = y;
+    }
+
+    public Bitmap getBitmap () {
+        return bitmap;
+    }
+
+    public int getEnemyID () {
+        return enemyID;
+    }
+
+    @Override
+    public void setBitmap(Bitmap decodeResource) {
+        bitmap = decodeResource;
     }
 }

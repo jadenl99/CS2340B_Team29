@@ -2,10 +2,15 @@ package com.example.cs2340b_team29.model;
 
 import android.graphics.Bitmap;
 
+import com.example.cs2340b_team29.R;
+
 public class Spider implements Enemy {
     private int x;
     private int y;
     private Bitmap bitmap;
+
+    private int enemyID = 3;
+
     public Spider() {
 
     }
@@ -27,5 +32,18 @@ public class Spider implements Enemy {
     @Override
     public void setY(int y) {
         this.y = y;
+    }
+
+    public int getEnemyID () {
+        return enemyID;
+    }
+
+    @Override
+    public void setBitmap(Bitmap decodeResource) {
+        bitmap = decodeResource;
+    }
+
+    public Bitmap getBitmap() {
+        return bitmap;
     }
 }
