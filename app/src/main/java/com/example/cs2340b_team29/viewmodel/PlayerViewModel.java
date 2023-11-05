@@ -16,7 +16,7 @@ public class PlayerViewModel extends ViewModel {
 
     private boolean changeLevel;
 
-    private MoveStrategy moveStrategy;
+
 
     public PlayerViewModel() {
         player = Player.getPlayer();
@@ -25,7 +25,7 @@ public class PlayerViewModel extends ViewModel {
     }
 
     public void move() {
-        moveStrategy.move(player);
+        player.move();
     }
 
 
@@ -42,17 +42,12 @@ public class PlayerViewModel extends ViewModel {
         return changeLevel;
     }
 
-    public MoveStrategy getMoveStrategy() {
-        return moveStrategy;
-    }
+
 
     public void setChangeLevel(boolean changeLevel) {
         this.changeLevel = changeLevel;
     }
 
-    public void setMoveStrategy(MoveStrategy moveStrategy) {
-        this.moveStrategy = moveStrategy;
-    }
 
     public void setPlayerData(int score, String name, int avatarId) {
         player.setScore(score);
@@ -70,12 +65,12 @@ public class PlayerViewModel extends ViewModel {
 
         for (Wall wall : walls) {
             if (checkCollision(player, wall)) {
-                player.notifyCollision(wall, moveStrategy);
+                player.notifyCollision(wall, player.getMoveStrategy());
             }
         }
         for (Wall borderWall : borderWalls) {
             if (checkCollision(player, borderWall)) {
-                player.notifyCollision(borderWall, moveStrategy);
+                player.notifyCollision(borderWall, player.getMoveStrategy());
             }
         }
 

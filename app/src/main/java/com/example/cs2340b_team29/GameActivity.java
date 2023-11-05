@@ -176,23 +176,23 @@ public class GameActivity extends AppCompatActivity {
 
             case KeyEvent.KEYCODE_DPAD_LEFT:
                 MoveStrategy left = new MoveLeft();
-                playerViewModel.setMoveStrategy(left);
+                playerViewModel.getPlayer().setMoveStrategy(left);
                 playerViewModel.move(); // Update player position
                 break;
             case KeyEvent.KEYCODE_DPAD_RIGHT:
                 MoveStrategy right = new MoveRight();
-                playerViewModel.setMoveStrategy(right);
+                playerViewModel.getPlayer().setMoveStrategy(right);
                 playerViewModel.move(); // Update player position
                 break;
             case KeyEvent.KEYCODE_DPAD_UP:
                 MoveStrategy up = new MoveUp();
-                playerViewModel.setMoveStrategy(up);
+                playerViewModel.getPlayer().setMoveStrategy(up);
                 playerViewModel.move(); // Update player position
                 break;
             case KeyEvent.KEYCODE_DPAD_DOWN:
                 System.out.println("down arrow clicked");
                 MoveStrategy down = new MoveDown();
-                playerViewModel.setMoveStrategy(down);
+                playerViewModel.getPlayer().setMoveStrategy(down);
                 playerViewModel.move(); // Update player position
                 break;
             default:
