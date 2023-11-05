@@ -86,7 +86,7 @@ public class PreGameActivity extends AppCompatActivity {
                 activePlayer.setBitmapAvatar(
                         BitmapFactory.decodeResource(getResources(), R.drawable.avatar3));
             }
-            activePlayer.setLevel(1);
+            mapDataViewModel.getMapData().setLevel(1);
         }
 
         //next button leads to game screen

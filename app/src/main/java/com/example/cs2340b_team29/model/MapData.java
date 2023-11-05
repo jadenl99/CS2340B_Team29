@@ -105,7 +105,9 @@ public class MapData {
     private int difficulty;
 
     // adjust multipliers in setDifficulty()
-    private int difficultyMultiplier;
+    private double difficultyMultiplier;
+
+    private int level;
     private MapData() {
         // pad horizontally
         borderWalls = new ArrayList<>();
@@ -203,5 +205,21 @@ public class MapData {
         } else {
             // set
         }
+    }
+
+    public int getDifficulty() {
+        return difficulty;
+    }
+
+    public double getDifficultyMultiplier() {
+        return difficultyMultiplier;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
     }
 }

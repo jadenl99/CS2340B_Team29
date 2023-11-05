@@ -13,4 +13,8 @@ public class MapDataViewModel extends ViewModel {
 
     }
 
+    public MapData getMapData() {
+        return mapData;
+    }
+
 }

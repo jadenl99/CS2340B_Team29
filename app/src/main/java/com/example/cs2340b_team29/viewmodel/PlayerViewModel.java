@@ -60,8 +60,9 @@ public class PlayerViewModel extends ViewModel {
     }
 
     public void checkForCollisions() {
+        int currLevel = mapData.getLevel();
         ArrayList<Wall> borderWalls = mapData.getBorderWalls();
-        ArrayList<Wall> walls = mapData.getWallsInLevel(player.getLevel());
+        ArrayList<Wall> walls = mapData.getWallsInLevel(currLevel);
 
         for (Wall wall : walls) {
             if (checkCollision(player, wall)) {
@@ -85,11 +86,11 @@ public class PlayerViewModel extends ViewModel {
 
     public void checkForDoor() {
         changeLevel = false;
-        ArrayList<Door> doors = mapData.getDoorsInLevel(player.getLevel());
+        ArrayList<Door> doors = mapData.getDoorsInLevel(mapData.getLevel());
 
         for (Door door : doors) {
             if (playerAtDoor(player.getX(), player.getY(), door.getX(), door.getY())) {
-                player.setLevel(player.getLevel() + 1);
+                mapData.setLevel(mapData.getLevel() + 1);
                 changeLevel = true;
             }
         }

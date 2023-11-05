@@ -71,12 +71,14 @@ public class GameActivity extends AppCompatActivity {
 
     private Runnable scoreCountDown;
     private WallCollisionHandler wallCollisionHandler;
-
+    private MapDataViewModel mapDataViewModel;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         playerViewModel = new ViewModelProvider(this).get(PlayerViewModel.class);
+        mapDataViewModel =
+                new ViewModelProvider(this).get(MapDataViewModel.class);
         playerViewModel.setScore(1000);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
@@ -125,7 +127,7 @@ public class GameActivity extends AppCompatActivity {
         l1View.setFocusableInTouchMode(true);
         l1View.requestFocus();
 
-        room = player1.getLevel();
+        room = mapDataViewModel.getMapData().getLevel();
         //toggleView();
 
         score = player1.getScore();
@@ -212,15 +214,14 @@ public class GameActivity extends AppCompatActivity {
     }
 
     private void toggleView() {
-        System.out.println(room);
-        room = player1.getLevel();
+        room = mapDataViewModel.getMapData().getLevel();
         if (room == 2) {
             gameContainer.removeView(l1View);
             gameContainer.addView(l2View);
             l1View.clearFocus();
             //l2View.setOnKeyListener(l2View);
             l2View.requestFocus();
-            playerViewModel.getPlayer().setLevel(2);
+            mapDataViewModel.getMapData().setLevel(2);
             playerViewModel.getPlayer().setX(2);
             playerViewModel.getPlayer().setY(22);
         } else if (room == 3) {
@@ -229,7 +230,7 @@ public class GameActivity extends AppCompatActivity {
             l2View.clearFocus();
             //l3View.setOnKeyListener(l3View);
             l3View.requestFocus();
-            playerViewModel.getPlayer().setLevel(3);
+            mapDataViewModel.getMapData().setLevel(3);
             playerViewModel.getPlayer().setX(7);
             playerViewModel.getPlayer().setY(22);
         } else if (room > 3) {
