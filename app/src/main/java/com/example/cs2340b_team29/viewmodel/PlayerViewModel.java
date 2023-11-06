@@ -19,7 +19,7 @@ public class PlayerViewModel extends ViewModel {
 
     private boolean changeLevel;
 
-    private MoveStrategy moveStrategy;
+
 
     public PlayerViewModel() {
         player = Player.getPlayer();
@@ -28,7 +28,7 @@ public class PlayerViewModel extends ViewModel {
     }
 
     public void move() {
-        moveStrategy.move();
+        player.move();
     }
 
 
@@ -47,17 +47,12 @@ public class PlayerViewModel extends ViewModel {
         return changeLevel;
     }
 
-    public MoveStrategy getMoveStrategy() {
-        return moveStrategy;
-    }
+
 
     public void setChangeLevel(boolean changeLevel) {
         this.changeLevel = changeLevel;
     }
 
-    public void setMoveStrategy(MoveStrategy moveStrategy) {
-        this.moveStrategy = moveStrategy;
-    }
 
     public void setPlayerData(int score, String name, int avatarId) {
         player.setScore(score);
@@ -70,17 +65,18 @@ public class PlayerViewModel extends ViewModel {
     }
 
     public void checkForCollisions() {
+        int currLevel = mapData.getLevel();
         ArrayList<Wall> borderWalls = mapData.getBorderWalls();
-        ArrayList<Wall> walls = mapData.getWallsInLevel(player.getLevel());
+        ArrayList<Wall> walls = mapData.getWallsInLevel(currLevel);
 
         for (Wall wall : walls) {
             if (checkCollision(player, wall)) {
-                player.notifyCollision(wall, moveStrategy);
+                player.notifyCollision(wall, player.getMoveStrategy());
             }
         }
         for (Wall borderWall : borderWalls) {
             if (checkCollision(player, borderWall)) {
-                player.notifyCollision(borderWall, moveStrategy);
+                player.notifyCollision(borderWall, player.getMoveStrategy());
             }
         }
 
@@ -95,11 +91,11 @@ public class PlayerViewModel extends ViewModel {
 
     public void checkForDoor() {
         changeLevel = false;
-        ArrayList<Door> doors = mapData.getDoorsInLevel(player.getLevel());
+        ArrayList<Door> doors = mapData.getDoorsInLevel(mapData.getLevel());
 
         for (Door door : doors) {
             if (playerAtDoor(player.getX(), player.getY(), door.getX(), door.getY())) {
-                player.setLevel(player.getLevel() + 1);
+                mapData.setLevel(mapData.getLevel() + 1);
                 changeLevel = true;
             }
         }
@@ -113,18 +109,20 @@ public class PlayerViewModel extends ViewModel {
     }
 
     public ArrayList<Enemy> getEnemiesInLevel() {
-        ArrayList<Enemy> enemiesInLevel = mapData.getEnemies(player.getLevel());
+        ArrayList<Enemy> enemiesInLevel = mapData.getEnemies(mapData.getLevel());
         return enemiesInLevel;
     }
 
     public Enemy getEnemy1() {
-        ArrayList<Enemy> enemiesInLevel = mapData.getEnemies(player.getLevel());
+        ArrayList<Enemy> enemiesInLevel =
+                mapData.getEnemies(mapData.getLevel());
         Enemy enemy1 = enemiesInLevel.get(0);
         return enemy1;
     }
 
     public Enemy getEnemy2() {
-        ArrayList<Enemy> enemiesInLevel = mapData.getEnemies(player.getLevel());
+        ArrayList<Enemy> enemiesInLevel =
+                mapData.getEnemies(mapData.getLevel());
         Enemy enemy2 = enemiesInLevel.get(1);
         return enemy2;
     }

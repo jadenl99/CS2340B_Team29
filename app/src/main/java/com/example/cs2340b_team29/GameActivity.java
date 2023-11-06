@@ -28,6 +28,7 @@ import com.example.cs2340b_team29.collision.WallCollisionHandler;
 import com.example.cs2340b_team29.model.Enemy;
 import com.example.cs2340b_team29.model.EnemyFactory;
 import com.example.cs2340b_team29.model.Player;
+import com.example.cs2340b_team29.viewmodel.MapDataViewModel;
 import com.example.cs2340b_team29.viewmodel.MoveDown;
 import com.example.cs2340b_team29.viewmodel.MoveLeft;
 import com.example.cs2340b_team29.viewmodel.MoveRight;
@@ -72,14 +73,17 @@ public class GameActivity extends AppCompatActivity {
 
     private PlayerViewModel playerViewModel;
 
+
     private Runnable scoreCountDown;
     private WallCollisionHandler wallCollisionHandler;
-
+    private MapDataViewModel mapDataViewModel;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         playerViewModel = new ViewModelProvider(this).get(PlayerViewModel.class);
+        mapDataViewModel =
+                new ViewModelProvider(this).get(MapDataViewModel.class);
         playerViewModel.setScore(1000);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
@@ -129,7 +133,7 @@ public class GameActivity extends AppCompatActivity {
         l1View.setFocusableInTouchMode(true);
         l1View.requestFocus();
 
-        room = player1.getLevel();
+        room = mapDataViewModel.getMapData().getLevel();
         //toggleView();
 
         score = player1.getScore();
@@ -185,23 +189,23 @@ public class GameActivity extends AppCompatActivity {
 
             case KeyEvent.KEYCODE_DPAD_LEFT:
                 MoveStrategy left = new MoveLeft();
-                playerViewModel.setMoveStrategy(left);
+                playerViewModel.getPlayer().setMoveStrategy(left);
                 playerViewModel.move(); // Update player position
                 break;
             case KeyEvent.KEYCODE_DPAD_RIGHT:
                 MoveStrategy right = new MoveRight();
-                playerViewModel.setMoveStrategy(right);
+                playerViewModel.getPlayer().setMoveStrategy(right);
                 playerViewModel.move(); // Update player position
                 break;
             case KeyEvent.KEYCODE_DPAD_UP:
                 MoveStrategy up = new MoveUp();
-                playerViewModel.setMoveStrategy(up);
+                playerViewModel.getPlayer().setMoveStrategy(up);
                 playerViewModel.move(); // Update player position
                 break;
             case KeyEvent.KEYCODE_DPAD_DOWN:
                 System.out.println("down arrow clicked");
                 MoveStrategy down = new MoveDown();
-                playerViewModel.setMoveStrategy(down);
+                playerViewModel.getPlayer().setMoveStrategy(down);
                 playerViewModel.move(); // Update player position
                 break;
             default:
@@ -219,15 +223,14 @@ public class GameActivity extends AppCompatActivity {
     }
 
     private void toggleView() {
-        System.out.println(room);
-        room = player1.getLevel();
+        room = mapDataViewModel.getMapData().getLevel();
         if (room == 2) {
             gameContainer.removeView(l1View);
             gameContainer.addView(l2View);
             l1View.clearFocus();
             //l2View.setOnKeyListener(l2View);
             l2View.requestFocus();
-            playerViewModel.getPlayer().setLevel(2);
+            mapDataViewModel.getMapData().setLevel(2);
             playerViewModel.getPlayer().setX(2);
             playerViewModel.getPlayer().setY(22);
             playerViewModel.getEnemiesInLevel().get(0).setX(0);
@@ -240,7 +243,7 @@ public class GameActivity extends AppCompatActivity {
             l2View.clearFocus();
             //l3View.setOnKeyListener(l3View);
             l3View.requestFocus();
-            playerViewModel.getPlayer().setLevel(3);
+            mapDataViewModel.getMapData().setLevel(3);
             playerViewModel.getPlayer().setX(7);
             playerViewModel.getPlayer().setY(22);
             playerViewModel.getEnemiesInLevel().get(0).setX(1);
@@ -268,7 +271,7 @@ public class GameActivity extends AppCompatActivity {
                 enemy.setBitmap(
                         BitmapFactory.decodeResource(getResources(), R.drawable.snake));
             } else if (enemy.getEnemyID() == 3) {
-                Drawable enemy3 = getDrawable(R.drawable.spider);
+                Drawable enemy3 = getDrawable(R.drawable.ninja);
                 enemy.setBitmap(
                         BitmapFactory.decodeResource(getResources(), R.drawable.spider));
             } else {

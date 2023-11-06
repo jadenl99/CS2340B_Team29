@@ -12,10 +12,13 @@ import android.widget.TextView;
 import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.example.cs2340b_team29.model.Enemy;
 import com.example.cs2340b_team29.model.EnemyFactory;
 import com.example.cs2340b_team29.model.Player;
+import com.example.cs2340b_team29.viewmodel.MapDataViewModel;
+import com.example.cs2340b_team29.viewmodel.PlayerViewModel;
 
 import java.util.ArrayList;
 
@@ -28,6 +31,7 @@ public class PreGameActivity extends AppCompatActivity {
 
     private TextView hpLevelLabel;
     private ImageView avatarImage;
+    private MapDataViewModel mapDataViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +39,7 @@ public class PreGameActivity extends AppCompatActivity {
         setContentView(R.layout.activity_pregame);
 
         Player activePlayer = Player.getPlayer();
-
+        mapDataViewModel = new ViewModelProvider(this).get(MapDataViewModel.class);
         nextButton = findViewById(R.id.nextButton);
         playerNameLabel = findViewById(R.id.nameLabel);
         difficultyLabel = findViewById(R.id.difficultyLabel);
@@ -57,12 +61,15 @@ public class PreGameActivity extends AppCompatActivity {
             if (difficulty.equals("Easy")) {
                 hpLevelLabel.setText("HP: 100");
                 activePlayer.setHpLevel(100);
+                mapDataViewModel.setMapData(1);
             } else if (difficulty.equals("Medium")) {
                 hpLevelLabel.setText("HP: 50");
                 activePlayer.setHpLevel(50);
+                mapDataViewModel.setMapData(2);
             } else if (difficulty.equals("Hard")) {
                 hpLevelLabel.setText("HP: 25");
                 activePlayer.setHpLevel(25);
+                mapDataViewModel.setMapData(3);
             }
 
             if (avatarChosen == 1) {
@@ -84,7 +91,7 @@ public class PreGameActivity extends AppCompatActivity {
                 activePlayer.setBitmapAvatar(
                         BitmapFactory.decodeResource(getResources(), R.drawable.avatar3));
             }
-            activePlayer.setLevel(1);
+            mapDataViewModel.getMapData().setLevel(1);
         }
 
         //next button leads to game screen

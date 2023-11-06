@@ -9,7 +9,7 @@ import com.example.cs2340b_team29.viewmodel.MoveStrategy;
 
 import java.util.ArrayList;
 
-public class Player implements Collidable {
+public class Player extends Entity {
     private static Player player;
     private int x;
     private int y;
@@ -20,15 +20,15 @@ public class Player implements Collidable {
     private int idAvatar;
     private Bitmap bitmapAvatar;
     private ArrayList<CollisionObserver> observers;
-    private int level;
+
+    private MoveStrategy moveStrategy;
 
 
     private Player() {
-        x = 0;
-        y = 0;
+        super(0, 0);
         // for now, will count down from score based on time
         score = 100;
-        level = 1;
+
         observers = new ArrayList<>();
     }
     public static synchronized Player getPlayer() {
@@ -110,19 +110,21 @@ public class Player implements Collidable {
         idAvatar = id;
     }
 
-    public int getLevel() {
-        return level;
-    }
 
-    public void setLevel(int level) {
-        this.level = level;
-    }
     public void setBitmapAvatar(Bitmap avatar) {
         bitmapAvatar = avatar;
     }
 
     public Bitmap getBitmapAvatar() {
         return bitmapAvatar;
+    }
+
+    public MoveStrategy getMoveStrategy() {
+        return moveStrategy;
+    }
+
+    public void setMoveStrategy(MoveStrategy moveStrategy) {
+        this.moveStrategy = moveStrategy;
     }
 
     public void subscribe(CollisionObserver observer) {
@@ -136,5 +138,10 @@ public class Player implements Collidable {
         for (CollisionObserver observer : observers) {
             observer.onCollision(this, entity, moveStrategy);
         }
+    }
+
+    @Override
+    public void move() {
+        moveStrategy.move(this);
     }
 }

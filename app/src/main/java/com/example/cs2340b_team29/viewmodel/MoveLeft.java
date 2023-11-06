@@ -1,17 +1,13 @@
 package com.example.cs2340b_team29.viewmodel;
 
-import com.example.cs2340b_team29.model.Player;
+import com.example.cs2340b_team29.model.Entity;
+
 
 public class MoveLeft implements MoveStrategy {
-    private Player player1 = Player.getPlayer();
 
-    private double playerX;
-
-    private double playerY;
-
-    public void move() {
-        int currX = player1.getX();
+    public void move(Entity entity) {
+        int currX = entity.getX();
         currX = currX - 1;
-        player1.setX(currX);
+        entity.setX(currX);
     }
 }

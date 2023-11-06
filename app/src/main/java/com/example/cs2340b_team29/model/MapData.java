@@ -110,6 +110,14 @@ public class MapData {
             {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 
     };
+
+    // 1 is easy, 2 is medium, 3 is hard
+    private int difficulty;
+
+    // adjust multipliers in setDifficulty()
+    private double difficultyMultiplier;
+
+    private int level;
     private MapData() {
         // pad horizontally
         borderWalls = new ArrayList<>();
@@ -224,6 +232,34 @@ public class MapData {
         }
     }
 
+
+    public void setDifficulty(int difficulty) {
+        this.difficulty = difficulty;
+
+        if (difficulty == 1) {
+            // set mulitplier here
+        } else if (difficulty == 2) {
+            // set
+        } else {
+            // set
+        }
+    }
+
+    public int getDifficulty() {
+        return difficulty;
+    }
+
+    public double getDifficultyMultiplier() {
+        return difficultyMultiplier;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
+    }
     public ArrayList<Enemy> getEnemies(int level) {
         if (level == 1) {
             return enemies1;
@@ -236,5 +272,6 @@ public class MapData {
 
     public ArrayList<Enemy> getAllEnemies() {
         return allEnemies;
+
     }
 }
