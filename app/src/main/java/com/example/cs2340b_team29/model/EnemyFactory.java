@@ -10,7 +10,7 @@ public class EnemyFactory {
      * @param enemyType the type of enemy to create
      * @return the specific enemy
      */
-    public Enemy createEnemy(String enemyType) {
+    public static Enemy createEnemy(String enemyType) {
         // add parameters as needed as the program grows
         if (enemyType.equalsIgnoreCase("ninja")) {
             return new Ninja();

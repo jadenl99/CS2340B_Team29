@@ -5,7 +5,9 @@ package com.example.cs2340b_team29;
 import static org.junit.Assert.assertEquals;
 
 import com.example.cs2340b_team29.collision.WallCollisionHandler;
+import com.example.cs2340b_team29.model.MapData;
 import com.example.cs2340b_team29.model.Player;
+import com.example.cs2340b_team29.viewmodel.MapDataViewModel;
 import com.example.cs2340b_team29.viewmodel.MoveDown;
 import com.example.cs2340b_team29.viewmodel.MoveLeft;
 import com.example.cs2340b_team29.viewmodel.MoveRight;
@@ -18,6 +20,7 @@ public class PlayerViewModelTest {
     PlayerViewModel playerViewModel = new PlayerViewModel();
     Player player = playerViewModel.getPlayer();
     WallCollisionHandler wallCollisionHandler = new WallCollisionHandler();
+    MapDataViewModel mapDataViewModel = new MapDataViewModel();
 
     @Test
     public void testNegativeScore() {
@@ -115,7 +118,7 @@ public class PlayerViewModelTest {
     }
     @Test
     public void checkCollisionLevel1() {
-        player.setLevel(1);
+        mapDataViewModel.getMapData().setLevel(1);
         player.setX(1);
         player.setY(4);
         // After a move down action, Player bumps into a graveyard at (x=1,
@@ -135,7 +138,7 @@ public class PlayerViewModelTest {
     public void checkNoCollisionLevel1() {
         player.setX(4);
         player.setY(4);
-        player.setLevel(1);
+        mapDataViewModel.getMapData().setLevel(1);
         player.setMoveStrategy(new MoveDown());
         playerViewModel.move();
         player.subscribe(wallCollisionHandler);
@@ -146,7 +149,7 @@ public class PlayerViewModelTest {
 
     @Test
     public void checkCollisionLevel1OutOfBounds() {
-        player.setLevel(1);
+        mapDataViewModel.getMapData().setLevel(1);
         player.setX(-1);
         player.setY(4);
         // After a move left action, Player moves offscreen
@@ -164,7 +167,7 @@ public class PlayerViewModelTest {
 
     @Test
     public void changeLevelFrom1To2AndCollision() {
-        player.setLevel(1);
+        mapDataViewModel.getMapData().setLevel(1);
         player.setX(-1);
         player.setY(4);
 
@@ -173,7 +176,7 @@ public class PlayerViewModelTest {
         playerViewModel.checkForCollisions();
         assertEquals(4, player.getY());
         assertEquals(1, player.getX());
-        player.setLevel(2);
+        mapDataViewModel.getMapData().setLevel(2);
         player.setX(4);
         player.setY(8);
         player.setMoveStrategy(new MoveDown());
@@ -184,7 +187,7 @@ public class PlayerViewModelTest {
     }
     @Test
     public void changeLevelFrom2to3() {
-        player.setLevel(2);
+        mapDataViewModel.getMapData().setLevel(2);
         player.setX(2);
         player.setY(19);
 
@@ -193,7 +196,7 @@ public class PlayerViewModelTest {
         playerViewModel.checkForCollisions();
         assertEquals(19, player.getY());
         assertEquals(2, player.getX());
-        player.setLevel(3);
+        mapDataViewModel.getMapData().setLevel(3);
         player.setX(1);
         player.setY(12);
         player.setMoveStrategy(new MoveDown());
@@ -205,7 +208,7 @@ public class PlayerViewModelTest {
 
     @Test
     public void testOutOfBoundsRightSide() {
-        player.setLevel(3);
+        mapDataViewModel.getMapData().setLevel(3);
         player.setX(11);
         player.setY(0);
         player.subscribe(wallCollisionHandler);

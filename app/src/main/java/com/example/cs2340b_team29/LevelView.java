@@ -1,14 +1,21 @@
 package com.example.cs2340b_team29;
 
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 
 import android.graphics.Paint;
 import android.graphics.Rect;
 
+import android.graphics.drawable.Drawable;
 import android.view.SurfaceView;
 
+import com.example.cs2340b_team29.model.Enemy;
+import com.example.cs2340b_team29.viewmodel.MapDataViewModel;
 import com.example.cs2340b_team29.viewmodel.PlayerViewModel;
+
+
+import java.util.ArrayList;
 
 /**
  * Responsible for displaying levels and the player avatar on the screen.
@@ -25,10 +32,18 @@ public class LevelView extends SurfaceView implements Runnable {
     private Bitmap background;
     private double tileWidth;
     private Rect destinationRect;
+    private Rect enemy1DestinationRect;
+    private Rect enemy2DestinationRect;
     private double tileHeight;
     private final int numTilesWide = 11;
     private final int numTilesLong = 23;
     private PlayerViewModel playerViewModel;
+
+    private int enemy1X;
+    private int enemy1Y;
+
+    private int enemy2X;
+    private int enemy2Y;
     private int currX = 3;
     private int currY = 0;
     public LevelView(GameActivity activity, int screenX, int screenY,
@@ -72,6 +87,7 @@ public class LevelView extends SurfaceView implements Runnable {
         }
     }
 
+
     private void draw() {
         if (getHolder().getSurface().isValid()) {
 
@@ -85,15 +101,23 @@ public class LevelView extends SurfaceView implements Runnable {
             // Just an example placing the top left part of the avatar on the
             // top left of map[8][10] (8 tiles down and 10 tiles right, of
             // course in 0-indexed terms).
-            // payerViewModel.move(currX , currY);
+            // playerViewModel.move(currX , currY);
             currX = playerViewModel.getPlayer().getX();
             currY = playerViewModel.getPlayer().getY();
             int[] coords = calcPixelsBasedOnIndices(currX, currY);
 
+            enemy1X = playerViewModel.getEnemiesInLevel().get(0).getX();
+            enemy1Y = playerViewModel.getEnemiesInLevel().get(0).getY();
+            int[] enemy1coords = calcPixelsBasedOnIndices(enemy1X,enemy1Y);
 
+            enemy2X = playerViewModel.getEnemy2().getX();
+            enemy2Y = playerViewModel.getEnemy2().getY();
+            int[] enemy2coords = calcPixelsBasedOnIndices(enemy2X,enemy2Y);
 
             int intTileWidth = (int) tileWidth;
             int intTileHeight = (int) tileHeight;
+
+            //draw player
             Bitmap playerBitMap = playerViewModel.getPlayer().getBitmapAvatar();
             destinationRect = new Rect(
                     coords[0], coords[1], coords[0] + intTileWidth, coords[1]
@@ -101,6 +125,24 @@ public class LevelView extends SurfaceView implements Runnable {
             Bitmap resizedBitmap = Bitmap.createScaledBitmap(playerBitMap,
                     intTileWidth, intTileHeight, false);
             canvas.drawBitmap(resizedBitmap, null, destinationRect, paint);
+
+            //draw enemy1
+            Bitmap enemy1BitMap = playerViewModel.getEnemiesInLevel().get(0).getBitmap();
+            enemy1DestinationRect = new Rect(
+                    enemy1coords[0], enemy1coords[1], enemy1coords[0] + intTileWidth, enemy1coords[1]
+                    + intTileHeight);
+            Bitmap resizedEnemy1Bitmap = Bitmap.createScaledBitmap(enemy1BitMap,
+                    intTileWidth, intTileHeight, false);
+            canvas.drawBitmap(resizedEnemy1Bitmap, null, enemy1DestinationRect, paint);
+
+            //draw enemy2
+            Bitmap enemy2BitMap = playerViewModel.getEnemiesInLevel().get(1).getBitmap();
+            enemy2DestinationRect = new Rect(
+                    enemy2coords[0], enemy2coords[1], enemy2coords[0] + intTileWidth, enemy2coords[1]
+                    + intTileHeight);
+            Bitmap resizedEnemy2Bitmap = Bitmap.createScaledBitmap(enemy2BitMap,
+                    intTileWidth, intTileHeight, false);
+            canvas.drawBitmap(resizedEnemy2Bitmap, null, enemy2DestinationRect, paint);
 
 
             getHolder().unlockCanvasAndPost(canvas);
