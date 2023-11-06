@@ -66,6 +66,11 @@ public class GameActivity extends AppCompatActivity {
     private String name;
 
     private Player player1;
+    private int enemy1X;
+    private int enemy2X;
+
+    private String enemy1Move = "right";
+    private String enemy2Move;
 
     private FrameLayout gameContainer;
 
@@ -75,6 +80,7 @@ public class GameActivity extends AppCompatActivity {
 
 
     private Runnable scoreCountDown;
+    private Runnable enemyMovement;
     private WallCollisionHandler wallCollisionHandler;
     private MapDataViewModel mapDataViewModel;
 
@@ -102,6 +108,35 @@ public class GameActivity extends AppCompatActivity {
             }
         };
         handler.post(scoreCountDown);
+
+
+        enemyMovement = new Runnable() {
+            @Override
+            public void run() {
+                enemy1X = playerViewModel.getEnemy1().getX();
+                enemy2X = playerViewModel.getEnemy2().getX();
+                if (enemy1X < 10 && enemy1Move == "right") {
+                    playerViewModel.getEnemy1().setX(enemy1X + 1);
+                } else if (enemy1X == 0 && enemy1Move == "left" ) {
+                    enemy1Move = "right";
+                    playerViewModel.getEnemy1().setX(enemy1X + 1);
+                } else {
+                    playerViewModel.getEnemy1().setX(enemy1X - 1);
+                    enemy1Move = "left";
+                }
+                if (enemy2X < 10 && enemy2Move == "right") {
+                    playerViewModel.getEnemy2().setX(enemy2X + 1);
+                } else if (enemy2X == 0 && enemy2Move == "left" ) {
+                    enemy2Move = "right";
+                    playerViewModel.getEnemy2().setX(enemy2X + 1);
+                } else {
+                    playerViewModel.getEnemy2().setX(enemy1X - 1);
+                    enemy2Move = "left";
+                }
+                handler.postDelayed(this, 1000);
+            }
+        };
+        handler.post(enemyMovement);
 
         player1 = Player.getPlayer();
 
