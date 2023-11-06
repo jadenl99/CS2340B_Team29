@@ -76,19 +76,19 @@ public class PreGameActivity extends AppCompatActivity {
                 Drawable avatar1 = getDrawable(R.drawable.avatar1);
                 avatarImage.setBackground(avatar1);
                 activePlayer.setIdAvatar(1);
-                activePlayer.setBitmapAvatar(
+                activePlayer.setBitmap(
                         BitmapFactory.decodeResource(getResources(), R.drawable.avatar1));
             } else if (avatarChosen == 2) {
                 Drawable avatar2 = getDrawable(R.drawable.avatar2);
                 avatarImage.setBackground(avatar2);
                 activePlayer.setIdAvatar(2);
-                activePlayer.setBitmapAvatar(
+                activePlayer.setBitmap(
                         BitmapFactory.decodeResource(getResources(), R.drawable.avatar2));
             } else {
                 Drawable avatar3 = getDrawable(R.drawable.avatar3);
                 avatarImage.setBackground(avatar3);
                 activePlayer.setIdAvatar(2);
-                activePlayer.setBitmapAvatar(
+                activePlayer.setBitmap(
                         BitmapFactory.decodeResource(getResources(), R.drawable.avatar3));
             }
             mapDataViewModel.getMapData().setLevel(1);

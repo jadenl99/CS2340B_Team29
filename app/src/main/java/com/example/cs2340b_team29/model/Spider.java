@@ -4,46 +4,25 @@ import android.graphics.Bitmap;
 
 import com.example.cs2340b_team29.R;
 
-public class Spider implements Enemy {
-    private int x;
-    private int y;
-    private Bitmap bitmap;
+public class Spider extends Enemy {
+
 
     private int enemyID = 3;
 
     public Spider() {
-
+        super(0, 0);
     }
     @Override
-    public int getX() {
-        return x;
-    }
 
-    @Override
-    public int getY() {
-        return y;
-    }
 
-    @Override
-    public void setX(int x) {
-        this.x = x;
-    }
-
-    @Override
-    public void setY(int y) {
-        this.y = y;
-    }
-
-    public int getEnemyID () {
+    public int getEnemyID() {
         return enemyID;
     }
 
-    @Override
-    public void setBitmap(Bitmap decodeResource) {
-        bitmap = decodeResource;
-    }
 
-    public Bitmap getBitmap() {
-        return bitmap;
+
+    @Override
+    public void move() {
+        moveStrategy.move(this);
     }
 }

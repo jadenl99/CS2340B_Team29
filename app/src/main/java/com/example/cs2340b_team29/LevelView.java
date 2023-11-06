@@ -118,7 +118,7 @@ public class LevelView extends SurfaceView implements Runnable {
             int intTileHeight = (int) tileHeight;
 
             //draw player
-            Bitmap playerBitMap = playerViewModel.getPlayer().getBitmapAvatar();
+            Bitmap playerBitMap = playerViewModel.getPlayer().getBitmap();
             destinationRect = new Rect(
                     coords[0], coords[1], coords[0] + intTileWidth, coords[1]
                     + intTileHeight);

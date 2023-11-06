@@ -11,14 +11,11 @@ import java.util.ArrayList;
 
 public class Player extends Entity {
     private static Player player;
-    private int x;
-    private int y;
     private int hpLevel;
     private int score;
     private String playerName;
     private long timeDatePlayed;
     private int idAvatar;
-    private Bitmap bitmapAvatar;
     private ArrayList<CollisionObserver> observers;
 
     private MoveStrategy moveStrategy;
@@ -111,13 +108,7 @@ public class Player extends Entity {
     }
 
 
-    public void setBitmapAvatar(Bitmap avatar) {
-        bitmapAvatar = avatar;
-    }
 
-    public Bitmap getBitmapAvatar() {
-        return bitmapAvatar;
-    }
 
     public MoveStrategy getMoveStrategy() {
         return moveStrategy;

@@ -4,11 +4,12 @@ import android.graphics.Bitmap;
 
 import com.example.cs2340b_team29.collision.Collidable;
 // Should probably extend Entity
-public interface Enemy extends Collidable {
-    int getEnemyID();
+public abstract class Enemy extends Entity {
+    public Enemy(int x, int y) {
+        super(x, y);
+    }
 
-    void setBitmap(Bitmap decodeResource);
+    public abstract int getEnemyID();
 
-    Bitmap getBitmap();
     // TODO add common actions of enemies here like attack()
 }
