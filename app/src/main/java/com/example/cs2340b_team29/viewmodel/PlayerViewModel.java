@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel;
 
 import com.example.cs2340b_team29.collision.Collidable;
 import com.example.cs2340b_team29.model.Door;
+import com.example.cs2340b_team29.model.Enemy;
 import com.example.cs2340b_team29.model.MapData;
 import com.example.cs2340b_team29.model.Player;
 import com.example.cs2340b_team29.model.Wall;
@@ -65,6 +66,7 @@ public class PlayerViewModel extends ViewModel {
         int currLevel = mapData.getLevel();
         ArrayList<Wall> borderWalls = mapData.getBorderWalls();
         ArrayList<Wall> walls = mapData.getWallsInLevel(currLevel);
+        ArrayList<Enemy> enemies = mapData.getEnemies(currLevel);
 
         for (Wall wall : walls) {
             if (checkCollision(player, wall)) {
@@ -76,7 +78,12 @@ public class PlayerViewModel extends ViewModel {
                 player.notifyCollision(borderWall, player.getMoveStrategy());
             }
         }
+        for (Enemy enemy: enemies) {
+            if (checkCollision(player, enemy) || checkAdjacentCollision(player, enemy)) {
+                player.notifyCollision(enemy, player.getMoveStrategy());
+            }
 
+        }
     }
 
     private boolean checkCollision(Collidable e1, Collidable e2) {
@@ -84,6 +91,10 @@ public class PlayerViewModel extends ViewModel {
             return true;
         }
         return false;
+    }
+
+    private boolean checkAdjacentCollision(Player player, Enemy enemy) {
+        if (player.getX() == enemy.getX() + 1 || player.getX() == enemy.getX() - 1)
     }
 
     public void checkForDoor() {
