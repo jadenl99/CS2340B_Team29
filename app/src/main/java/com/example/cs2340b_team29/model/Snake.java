@@ -22,7 +22,13 @@ public class Snake extends Enemy {
     }
 
     @Override
-    public void attack() {
-
+    public void attack(Player player, int difficulty) {
+        if (difficulty == 1) {
+            player.setHpLevel(player.getHP() - 1);
+        } else if (difficulty == 2) {
+            player.setHpLevel(player.getHP() - 3);
+        } else {
+            player.setHpLevel(player.getHP() - 5);
+        }
     }
 }

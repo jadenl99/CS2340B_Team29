@@ -11,17 +11,12 @@ import com.example.cs2340b_team29.viewmodel.MoveUp;
 
 public class EnemyCollisionHandler implements CollisionObserver{
     @Override
-    public void onCollision(Collidable player1, Collidable enemy, MoveStrategy moveStrategy) {
+    public void onCollision(Collidable player1, Collidable enemy1, MoveStrategy moveStrategy) {
             Player player = (Player) player1;
-            //decrease HP
             int difficulty = MapData.getMapData().getDifficulty();
-            if (difficulty == 1) {
-                player.setHpLevel(player.getHP() - 1);
-            } else if (difficulty == 2) {
-                player.setHpLevel(player.getHP() - 3);
-            } else {
-                player.setHpLevel(player.getHP() - 5);
-            }
+            Enemy enemy = (Enemy) enemy1;
+            //decrease HP
+            enemy.attack(player, difficulty);
         }
     }
 

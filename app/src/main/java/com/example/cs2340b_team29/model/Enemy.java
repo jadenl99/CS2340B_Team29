@@ -11,8 +11,6 @@ public abstract class Enemy extends Entity {
 
     public abstract int getEnemyID();
     public abstract void attack(Player player, int difficulty);
-
-    public abstract void attack();
     //each enemy implements attack differently
 
 }
