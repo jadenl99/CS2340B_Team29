@@ -25,4 +25,10 @@ public class Ninja extends Enemy {
     public void move() {
         moveStrategy.move(this);
     }
+
+    @Override
+    public void attack() {
+
+    }
+
 }

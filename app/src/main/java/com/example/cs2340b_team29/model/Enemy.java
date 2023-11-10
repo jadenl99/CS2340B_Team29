@@ -10,6 +10,7 @@ public abstract class Enemy extends Entity {
     }
 
     public abstract int getEnemyID();
+    public abstract void attack();
+    //each enemy implements attack differently
 
-    // TODO add common actions of enemies here like attack()
 }

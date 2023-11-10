@@ -1,21 +1,14 @@
 package com.example.cs2340b_team29;
 
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 
 import android.graphics.Paint;
 import android.graphics.Rect;
 
-import android.graphics.drawable.Drawable;
 import android.view.SurfaceView;
 
-import com.example.cs2340b_team29.model.Enemy;
-import com.example.cs2340b_team29.viewmodel.MapDataViewModel;
 import com.example.cs2340b_team29.viewmodel.PlayerViewModel;
-
-
-import java.util.ArrayList;
 
 /**
  * Responsible for displaying levels and the player avatar on the screen.

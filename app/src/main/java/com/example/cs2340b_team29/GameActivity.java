@@ -25,8 +25,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.cs2340b_team29.collision.WallCollisionHandler;
-import com.example.cs2340b_team29.model.Enemy;
-import com.example.cs2340b_team29.model.EnemyFactory;
 import com.example.cs2340b_team29.model.Player;
 import com.example.cs2340b_team29.viewmodel.MapDataViewModel;
 import com.example.cs2340b_team29.viewmodel.MoveDown;
