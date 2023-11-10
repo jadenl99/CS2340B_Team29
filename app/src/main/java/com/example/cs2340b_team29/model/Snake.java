@@ -2,7 +2,7 @@ package com.example.cs2340b_team29.model;
 
 import android.graphics.Bitmap;
 
-public class Snake implements Enemy {
+public class Snake extends Enemy {
     private int x;
     private int y;
     private Bitmap bitmap;
@@ -42,5 +42,10 @@ public class Snake implements Enemy {
 
     public Bitmap getBitmap() {
         return bitmap;
+    }
+
+    @Override
+    public void attack() {
+
     }
 }

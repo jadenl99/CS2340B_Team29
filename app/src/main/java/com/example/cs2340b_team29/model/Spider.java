@@ -4,7 +4,7 @@ import android.graphics.Bitmap;
 
 import com.example.cs2340b_team29.R;
 
-public class Spider implements Enemy {
+public class Spider extends Enemy {
     private int x;
     private int y;
     private Bitmap bitmap;
@@ -45,5 +45,10 @@ public class Spider implements Enemy {
 
     public Bitmap getBitmap() {
         return bitmap;
+    }
+
+    @Override
+    public void attack() {
+
     }
 }

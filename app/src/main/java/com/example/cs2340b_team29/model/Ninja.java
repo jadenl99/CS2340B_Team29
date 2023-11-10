@@ -7,7 +7,7 @@ import android.content.Context;
 
 import com.example.cs2340b_team29.R;
 
-public class Ninja implements Enemy {
+public class Ninja extends Enemy {
 
     private int x;
     private int y;
@@ -49,4 +49,8 @@ public class Ninja implements Enemy {
         return bitmap;
     }
 
+    @Override
+    public void attack() {
+
+    }
 }

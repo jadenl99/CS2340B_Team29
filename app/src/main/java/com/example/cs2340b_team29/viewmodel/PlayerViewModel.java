@@ -1,12 +1,9 @@
 package com.example.cs2340b_team29.viewmodel;
 
-import android.graphics.Bitmap;
-
 import androidx.lifecycle.ViewModel;
 
 import com.example.cs2340b_team29.collision.Collidable;
 import com.example.cs2340b_team29.model.Door;
-import com.example.cs2340b_team29.model.Enemy;
 import com.example.cs2340b_team29.model.MapData;
 import com.example.cs2340b_team29.model.Player;
 import com.example.cs2340b_team29.model.Wall;
