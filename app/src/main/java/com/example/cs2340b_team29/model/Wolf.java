@@ -2,7 +2,7 @@ package com.example.cs2340b_team29.model;
 
 import android.graphics.Bitmap;
 
-public class Wolf implements Enemy {
+public class Wolf extends Enemy {
     private int x;
     private int y;
     private Bitmap bitmap;
@@ -42,5 +42,10 @@ public class Wolf implements Enemy {
     @Override
     public void setBitmap(Bitmap decodeResource) {
         bitmap = decodeResource;
+    }
+
+    @Override
+    public void attack() {
+
     }
 }
