@@ -94,7 +94,16 @@ public class PlayerViewModel extends ViewModel {
     }
 
     private boolean checkAdjacentCollision(Player player, Enemy enemy) {
-        if (player.getX() == enemy.getX() + 1 || player.getX() == enemy.getX() - 1)
+        if (player.getX() == enemy.getX() + 1 && player.getY() == enemy.getY()) {
+            return true;
+        } else if (player.getX() == enemy.getX() - 1 && player.getY() == enemy.getY()) {
+            return true;
+        } else if (player.getY() == enemy.getY() + 1 && player.getX() == enemy.getX()) {
+            return true;
+        } else if (player.getY() == enemy.getY() - 1 && player.getX() == enemy.getX()) {
+            return true;
+        }
+        return false;
     }
 
     public void checkForDoor() {
