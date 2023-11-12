@@ -268,6 +268,7 @@ public class GameActivity extends AppCompatActivity {
                 toggleView();
             }
             if (playerViewModel.getPlayer().getHP() == 0) {
+                playerViewModel.getPlayer().setScore(0);
                 endGame();
             }
 
