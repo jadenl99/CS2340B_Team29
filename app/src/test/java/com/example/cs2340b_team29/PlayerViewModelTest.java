@@ -65,7 +65,7 @@ public class PlayerViewModelTest {
     public void setPlayerData() {
         Player player = Player.getPlayer();
         PlayerViewModel playerViewModel = new PlayerViewModel();
-        playerViewModel.setPlayerData(1000, "hi", 1);
+        playerViewModel.setPlayerData(1000, "hi", 1,50);
         assertEquals(1000, player.getScore());
         assertEquals("hi", player.getPlayerName());
         assertEquals(1, player.getIdAvatar());

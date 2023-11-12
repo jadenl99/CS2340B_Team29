@@ -52,10 +52,12 @@ public class PlayerViewModel extends ViewModel {
     }
 
 
-    public void setPlayerData(int score, String name, int avatarId) {
+    public void setPlayerData(int score, String name, int avatarId, int hp, int diff) {
         player.setScore(score);
         player.setIdAvatar(avatarId);
         player.setPlayerName(name);
+        player.setHpLevel(hp);
+        player.setDifficulty(diff);
     }
 
     public void setScore(int score) {

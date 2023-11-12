@@ -21,6 +21,8 @@ public class ConfigScreenActivity extends AppCompatActivity {
     private Button configToGameBtn;
     private ChipGroup difficultyCGroup;
     private TextView nameInput;
+    private int hpStart;
+    private int playerDifficulty;
     private RadioGroup avatarGroup;
     private PlayerViewModel playerViewModel;
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,15 +74,21 @@ public class ConfigScreenActivity extends AppCompatActivity {
                 case "Easy":
                     //difficultyMultiplier = 0.85;
                     difficulty = "Easy";
+                    hpStart = 100;
+                    playerDifficulty = 1;
                     break;
                 case "Medium":
                     //difficultyMultiplier = 1.0;
                     difficulty = "Medium";
+                    hpStart = 50;
+                    playerDifficulty = 2;
                     break;
                 default:
                     //
                     //difficultyMultiplier = 1.25;
                     difficulty = "Hard";
+                    hpStart = 25;
+                    playerDifficulty = 3;
                 }
             }
         }
@@ -105,9 +113,7 @@ public class ConfigScreenActivity extends AppCompatActivity {
         }
 
         playerViewModel = new ViewModelProvider(this).get(PlayerViewModel.class);
-        playerViewModel.setPlayerData(1000, playerName, avatarId);
-
-
+        playerViewModel.setPlayerData(1000, playerName, avatarId, hpStart, playerDifficulty);
 
 
         extras.putString("PLAYER_NAME", playerName);
