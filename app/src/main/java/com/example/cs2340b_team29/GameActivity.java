@@ -67,10 +67,13 @@ public class GameActivity extends AppCompatActivity {
 
     private Player player1;
     private int enemy1X;
+    private int enemy1Y;
     private int enemy2X;
 
-    private String enemy1Move = "right";
-    private String enemy2Move;
+    private int enemy2Y;
+
+    private MoveStrategy enemy1Move;
+    private MoveStrategy enemy2Move;
 
     private FrameLayout gameContainer;
 
@@ -95,6 +98,12 @@ public class GameActivity extends AppCompatActivity {
         playerViewModel.setScore(1000);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
+
+        MoveStrategy down = new MoveDown();
+        MoveStrategy right = new MoveRight();
+        playerViewModel.getEnemy1().setMoveStrategy(down);
+        playerViewModel.getEnemy2().setMoveStrategy(right);
+
         setEnemyBitmaps();
 
 
@@ -112,42 +121,54 @@ public class GameActivity extends AppCompatActivity {
         handler.post(scoreCountDown);
 
 
+        //enemy 1 up and down movement logic on a timer
         enemy1Movement = new Runnable() {
             @Override
             public void run() {
-                enemy1X = playerViewModel.getEnemy1().getX();
+                MoveStrategy up = new MoveUp();
+                MoveStrategy down = new MoveDown();
+
+                enemy1Y = playerViewModel.getEnemy1().getY();
                 playerHP = playerViewModel.getPlayer().getHP();
-                if (enemy1X < 10 && enemy1Move == "right") {
-                    playerViewModel.getEnemy1().setX(enemy1X + 1);
-                } else if (enemy1X == 0 && enemy1Move == "left" ) {
-                    enemy1Move = "right";
-                    playerViewModel.getEnemy1().setX(enemy1X + 1);
+                enemy1Move = playerViewModel.getEnemy1().getMoveStrategy();
+
+                if (enemy1Y < 22 && enemy1Move instanceof MoveDown) {
+                    playerViewModel.getEnemy1().move();
+                } else if (enemy1Y == 0 && enemy1Move instanceof MoveUp) {
+                    playerViewModel.getEnemy1().setMoveStrategy(down);
+                    playerViewModel.getEnemy1().move();
                 } else {
-                    playerViewModel.getEnemy1().setX(enemy1X - 1);
-                    enemy1Move = "left";
+                    playerViewModel.getEnemy1().setMoveStrategy(up);
+                    playerViewModel.getEnemy1().move();
                 }
                 hpLevelLabel.setText("HP: " + Integer.toString(playerHP));
-                handler.postDelayed(this, 500);
+                handler.postDelayed(this, 1000);
             }
         };
         handler.post(enemy1Movement);
 
+        //enemy 2 left to right movement logic on a timer
         enemy2Movement = new Runnable() {
             @Override
             public void run() {
+                MoveStrategy left = new MoveLeft();
+                MoveStrategy right = new MoveRight();
+
                 enemy2X = playerViewModel.getEnemy2().getX();
                 playerHP = playerViewModel.getPlayer().getHP();
-                if (enemy2X < 10 && enemy2Move == "right") {
-                    playerViewModel.getEnemy2().setX(enemy2X + 1);
-                } else if (enemy2X == 0 && enemy2Move == "left" ) {
-                    enemy2Move = "right";
-                    playerViewModel.getEnemy2().setX(enemy2X + 1);
+                enemy2Move = playerViewModel.getEnemy2().getMoveStrategy();
+
+                if (enemy2X < 10 && enemy2Move instanceof MoveRight) {
+                    playerViewModel.getEnemy2().move();
+                } else if (enemy2X == 0 && enemy2Move instanceof MoveLeft) {
+                    playerViewModel.getEnemy2().setMoveStrategy(right);
+                    playerViewModel.getEnemy2().move();
                 } else {
-                    playerViewModel.getEnemy2().setX(enemy1X - 1);
-                    enemy2Move = "left";
+                    playerViewModel.getEnemy2().setMoveStrategy(left);
+                    playerViewModel.getEnemy2().move();
                 }
                 hpLevelLabel.setText("HP: " + Integer.toString(playerHP));
-                handler.postDelayed(this, 2000);
+                handler.postDelayed(this, 1000);
             }
         };
         handler.post(enemy2Movement);
@@ -174,6 +195,9 @@ public class GameActivity extends AppCompatActivity {
         enemyCollisionHandler = new EnemyCollisionHandler();
         playerViewModel.getPlayer().subscribe(wallCollisionHandler);
         playerViewModel.getPlayer().subscribe(enemyCollisionHandler);
+        for (Enemy enemy: playerViewModel.getEnemiesInLevel()) {
+            enemy.subscribe(wallCollisionHandler);
+        }
 
         // finds gameFrame and initializes to level 1
         gameContainer = findViewById(R.id.gameContainer);
@@ -197,8 +221,8 @@ public class GameActivity extends AppCompatActivity {
 
         playerViewModel.getPlayer().setX(8);
         playerViewModel.getPlayer().setY(22);
-        playerViewModel.getEnemiesInLevel().get(0).setX(0);
-        playerViewModel.getEnemiesInLevel().get(0).setY(6);
+        playerViewModel.getEnemiesInLevel().get(0).setX(3);
+        playerViewModel.getEnemiesInLevel().get(0).setY(2);
         playerViewModel.getEnemiesInLevel().get(1).setX(0);
         playerViewModel.getEnemiesInLevel().get(1).setY(9);
     }
@@ -283,8 +307,8 @@ public class GameActivity extends AppCompatActivity {
             mapDataViewModel.getMapData().setLevel(2);
             playerViewModel.getPlayer().setX(2);
             playerViewModel.getPlayer().setY(22);
-            playerViewModel.getEnemiesInLevel().get(0).setX(0);
-            playerViewModel.getEnemiesInLevel().get(0).setY(4);
+            playerViewModel.getEnemiesInLevel().get(0).setX(5);
+            playerViewModel.getEnemiesInLevel().get(0).setY(2);
             playerViewModel.getEnemiesInLevel().get(1).setX(0);
             playerViewModel.getEnemiesInLevel().get(1).setY(11);
         } else if (room == 3) {
@@ -296,8 +320,8 @@ public class GameActivity extends AppCompatActivity {
             mapDataViewModel.getMapData().setLevel(3);
             playerViewModel.getPlayer().setX(7);
             playerViewModel.getPlayer().setY(22);
-            playerViewModel.getEnemiesInLevel().get(0).setX(1);
-            playerViewModel.getEnemiesInLevel().get(0).setY(3);
+            playerViewModel.getEnemiesInLevel().get(0).setX(7);
+            playerViewModel.getEnemiesInLevel().get(0).setY(2);
             playerViewModel.getEnemiesInLevel().get(1).setX(1);
             playerViewModel.getEnemiesInLevel().get(1).setY(17);
         } else if (room > 3) {
