@@ -19,6 +19,7 @@ public class Player extends Entity {
     private ArrayList<CollisionObserver> observers;
 
     private MoveStrategy moveStrategy;
+    private int difficulty;
 
 
     private Player() {
@@ -67,6 +68,10 @@ public class Player extends Entity {
         return score;
     }
 
+    public int getDifficulty() {
+        return difficulty;
+    }
+
 
     public void setScore(int score) {
 
@@ -100,6 +105,10 @@ public class Player extends Entity {
     public void setHpLevel(int hp) {
 
         hpLevel = hp;
+    }
+
+    public void setDifficulty(int diff) {
+        difficulty = diff;
     }
 
     public void setIdAvatar(int id) {
