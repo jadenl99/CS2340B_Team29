@@ -23,7 +23,13 @@ public class Wolf extends Enemy {
     }
 
     @Override
-    public void attack() {
-
+    public void attack(Player player, int difficulty) {
+        if (difficulty == 1) {
+            player.setHpLevel(player.getHP() - 2);
+        } else if (difficulty == 2) {
+            player.setHpLevel(player.getHP() - 5);
+        } else {
+            player.setHpLevel(player.getHP() - 7);
+        }
     }
 }

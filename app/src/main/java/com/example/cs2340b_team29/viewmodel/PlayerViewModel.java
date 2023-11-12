@@ -66,6 +66,7 @@ public class PlayerViewModel extends ViewModel {
         int currLevel = mapData.getLevel();
         ArrayList<Wall> borderWalls = mapData.getBorderWalls();
         ArrayList<Wall> walls = mapData.getWallsInLevel(currLevel);
+        ArrayList<Enemy> enemies = mapData.getEnemies(currLevel);
 
         for (Wall wall : walls) {
             if (checkCollision(player, wall)) {
@@ -77,11 +78,29 @@ public class PlayerViewModel extends ViewModel {
                 player.notifyCollision(borderWall, player.getMoveStrategy());
             }
         }
+        for (Enemy enemy: enemies) {
+            if (checkCollision(player, enemy) || checkAdjacentCollision(player, enemy)) {
+                player.notifyCollision(enemy, player.getMoveStrategy());
+            }
 
+        }
     }
 
     private boolean checkCollision(Collidable e1, Collidable e2) {
         if (e1.getX() == e2.getX() && e1.getY() == e2.getY()) {
+            return true;
+        }
+        return false;
+    }
+
+    private boolean checkAdjacentCollision(Player player, Enemy enemy) {
+        if (player.getX() == enemy.getX() + 1 && player.getY() == enemy.getY()) {
+            return true;
+        } else if (player.getX() == enemy.getX() - 1 && player.getY() == enemy.getY()) {
+            return true;
+        } else if (player.getY() == enemy.getY() + 1 && player.getX() == enemy.getX()) {
+            return true;
+        } else if (player.getY() == enemy.getY() - 1 && player.getX() == enemy.getX()) {
             return true;
         }
         return false;
