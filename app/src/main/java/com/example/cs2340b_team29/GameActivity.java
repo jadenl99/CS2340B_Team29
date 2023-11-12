@@ -59,7 +59,7 @@ public class GameActivity extends AppCompatActivity {
     private Button nextButton;
 
     private int score;
-    private int hpLevel;
+    private int playerHP;
     private int avatarChosen;
     private TextView nameLabel;
 
@@ -80,7 +80,8 @@ public class GameActivity extends AppCompatActivity {
 
 
     private Runnable scoreCountDown;
-    private Runnable enemyMovement;
+    private Runnable enemy1Movement;
+    private Runnable enemy2Movement;
     private WallCollisionHandler wallCollisionHandler;
     private EnemyCollisionHandler enemyCollisionHandler;
     private MapDataViewModel mapDataViewModel;
@@ -111,11 +112,11 @@ public class GameActivity extends AppCompatActivity {
         handler.post(scoreCountDown);
 
 
-        enemyMovement = new Runnable() {
+        enemy1Movement = new Runnable() {
             @Override
             public void run() {
                 enemy1X = playerViewModel.getEnemy1().getX();
-                enemy2X = playerViewModel.getEnemy2().getX();
+                playerHP = playerViewModel.getPlayer().getHP();
                 if (enemy1X < 10 && enemy1Move == "right") {
                     playerViewModel.getEnemy1().setX(enemy1X + 1);
                 } else if (enemy1X == 0 && enemy1Move == "left" ) {
@@ -125,6 +126,17 @@ public class GameActivity extends AppCompatActivity {
                     playerViewModel.getEnemy1().setX(enemy1X - 1);
                     enemy1Move = "left";
                 }
+                hpLevelLabel.setText("HP: " + Integer.toString(playerHP));
+                handler.postDelayed(this, 500);
+            }
+        };
+        handler.post(enemy1Movement);
+
+        enemy2Movement = new Runnable() {
+            @Override
+            public void run() {
+                enemy2X = playerViewModel.getEnemy2().getX();
+                playerHP = playerViewModel.getPlayer().getHP();
                 if (enemy2X < 10 && enemy2Move == "right") {
                     playerViewModel.getEnemy2().setX(enemy2X + 1);
                 } else if (enemy2X == 0 && enemy2Move == "left" ) {
@@ -134,10 +146,11 @@ public class GameActivity extends AppCompatActivity {
                     playerViewModel.getEnemy2().setX(enemy1X - 1);
                     enemy2Move = "left";
                 }
-                handler.postDelayed(this, 1000);
+                hpLevelLabel.setText("HP: " + Integer.toString(playerHP));
+                handler.postDelayed(this, 2000);
             }
         };
-        handler.post(enemyMovement);
+        handler.post(enemy2Movement);
 
         player1 = Player.getPlayer();
 
@@ -175,12 +188,11 @@ public class GameActivity extends AppCompatActivity {
         //toggleView();
 
         score = player1.getScore();
-        hpLevel = player1.getHP();
+        //hpLevel = player1.getHP();
         //avatarChosen = player1.getIdAvatar();
         name = player1.getPlayerName();
 
         playerScoreLabel.setText("Score: " + Integer.toString(score));
-        hpLevelLabel.setText("HP: " + Integer.toString(hpLevel));
         nameLabel.setText(name);
 
         playerViewModel.getPlayer().setX(8);

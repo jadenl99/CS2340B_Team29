@@ -19,6 +19,7 @@ public class EnemyCollisionHandler implements CollisionObserver{
                 //decrease HP
                 enemy.attack(player, difficulty);
             }
+
         }
     }
 
