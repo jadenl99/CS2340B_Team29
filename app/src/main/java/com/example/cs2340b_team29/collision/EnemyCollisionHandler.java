@@ -13,9 +13,13 @@ public class EnemyCollisionHandler implements CollisionObserver{
     @Override
     public void onCollision(Collidable player1, Collidable enemy1, MoveStrategy moveStrategy) {
             Player player = (Player) player1;
-            int difficulty = ((Player) player1).getDifficulty();
-            Enemy enemy = (Enemy) enemy1;
-            enemy.attack(player, difficulty);
+            int difficulty = MapData.getMapData().getDifficulty();
+            if (enemy1 instanceof Enemy) {
+                Enemy enemy = (Enemy) enemy1;
+                //decrease HP
+                enemy.attack(player, difficulty);
+            }
+
         }
     }
 

@@ -11,7 +11,6 @@ public class EnemyFactory {
      * @return the specific enemy
      */
     public static Enemy createEnemy(String enemyType) {
-        // add parameters as needed as the program grows
         if (enemyType.equalsIgnoreCase("ninja")) {
             return new Ninja();
         } else if (enemyType.equalsIgnoreCase("snake")) {

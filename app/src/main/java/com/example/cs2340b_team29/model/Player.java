@@ -104,7 +104,7 @@ public class Player extends Entity {
 
     public void setHpLevel(int hp) {
 
-        hpLevel = hp;
+        hpLevel = Math.max(hp, 0);
     }
 
     public void setDifficulty(int diff) {

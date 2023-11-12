@@ -88,14 +88,14 @@ public class PlayerViewModel extends ViewModel {
         }
     }
 
-    private boolean checkCollision(Collidable e1, Collidable e2) {
+    public boolean checkCollision(Collidable e1, Collidable e2) {
         if (e1.getX() == e2.getX() && e1.getY() == e2.getY()) {
             return true;
         }
         return false;
     }
 
-    private boolean checkAdjacentCollision(Player player, Enemy enemy) {
+    public boolean checkAdjacentCollision(Player player, Enemy enemy) {
         if (player.getX() == enemy.getX() + 1 && player.getY() == enemy.getY()) {
             return true;
         } else if (player.getX() == enemy.getX() - 1 && player.getY() == enemy.getY()) {

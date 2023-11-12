@@ -267,6 +267,10 @@ public class GameActivity extends AppCompatActivity {
             if (playerViewModel.isChangeLevel()) {
                 toggleView();
             }
+            if (playerViewModel.getPlayer().getHP() == 0) {
+                playerViewModel.getPlayer().setScore(0);
+                endGame();
+            }
 
         }
         return true;
@@ -301,15 +305,18 @@ public class GameActivity extends AppCompatActivity {
             playerViewModel.getEnemiesInLevel().get(1).setX(1);
             playerViewModel.getEnemiesInLevel().get(1).setY(17);
         } else if (room > 3) {
-            gameContainer.removeAllViews();
-            handler.removeCallbacks(scoreCountDown);
-            playerViewModel.getPlayer().unsubscribe(wallCollisionHandler);
-            playerViewModel.getPlayer().unsubscribe(enemyCollisionHandler);
-            Intent toEndScreen = new Intent(GameActivity.this, EndingActivity.class);
-            startActivity(toEndScreen);
+            endGame();
         }
     }
 
+    private void endGame() {
+        gameContainer.removeAllViews();
+        handler.removeCallbacks(scoreCountDown);
+        playerViewModel.getPlayer().unsubscribe(wallCollisionHandler);
+        playerViewModel.getPlayer().unsubscribe(enemyCollisionHandler);
+        Intent toEndScreen = new Intent(GameActivity.this, EndingActivity.class);
+        startActivity(toEndScreen);
+    }
     private void setEnemyBitmaps() {
         ArrayList<Enemy> enemies = playerViewModel.getMapData().getAllEnemies();
         for (Enemy enemy: enemies) {
