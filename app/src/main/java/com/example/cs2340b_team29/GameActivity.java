@@ -167,6 +167,8 @@ public class GameActivity extends AppCompatActivity {
                     playerViewModel.getEnemy2().setMoveStrategy(left);
                     playerViewModel.getEnemy2().move();
                 }
+
+                playerViewModel.checkForCollisions();
                 hpLevelLabel.setText("HP: " + Integer.toString(playerHP));
                 handler.postDelayed(this, 1000);
             }
@@ -336,6 +338,8 @@ public class GameActivity extends AppCompatActivity {
     private void endGame() {
         gameContainer.removeAllViews();
         handler.removeCallbacks(scoreCountDown);
+        handler.removeCallbacks(enemy1Movement);
+        handler.removeCallbacks(enemy2Movement);
         playerViewModel.getPlayer().unsubscribe(wallCollisionHandler);
         playerViewModel.getPlayer().unsubscribe(enemyCollisionHandler);
         Intent toEndScreen = new Intent(GameActivity.this, EndingActivity.class);
