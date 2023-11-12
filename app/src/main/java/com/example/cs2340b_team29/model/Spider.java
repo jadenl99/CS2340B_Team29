@@ -1,8 +1,6 @@
 package com.example.cs2340b_team29.model;
 
-import android.graphics.Bitmap;
 
-import com.example.cs2340b_team29.R;
 import com.example.cs2340b_team29.collision.Collidable;
 import com.example.cs2340b_team29.collision.CollisionObserver;
 import com.example.cs2340b_team29.viewmodel.MoveStrategy;

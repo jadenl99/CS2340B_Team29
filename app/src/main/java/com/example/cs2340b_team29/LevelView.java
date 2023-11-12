@@ -101,11 +101,11 @@ public class LevelView extends SurfaceView implements Runnable {
 
             enemy1X = playerViewModel.getEnemiesInLevel().get(0).getX();
             enemy1Y = playerViewModel.getEnemiesInLevel().get(0).getY();
-            int[] enemy1coords = calcPixelsBasedOnIndices(enemy1X,enemy1Y);
+            int[] enemy1coords = calcPixelsBasedOnIndices(enemy1X, enemy1Y);
 
             enemy2X = playerViewModel.getEnemy2().getX();
             enemy2Y = playerViewModel.getEnemy2().getY();
-            int[] enemy2coords = calcPixelsBasedOnIndices(enemy2X,enemy2Y);
+            int[] enemy2coords = calcPixelsBasedOnIndices(enemy2X, enemy2Y);
 
             int intTileWidth = (int) tileWidth;
             int intTileHeight = (int) tileHeight;
@@ -121,8 +121,8 @@ public class LevelView extends SurfaceView implements Runnable {
 
             //draw enemy1
             Bitmap enemy1BitMap = playerViewModel.getEnemiesInLevel().get(0).getBitmap();
-            enemy1DestinationRect = new Rect(
-                    enemy1coords[0], enemy1coords[1], enemy1coords[0] + intTileWidth, enemy1coords[1]
+            enemy1DestinationRect = new Rect(enemy1coords[0], enemy1coords[1],
+                    enemy1coords[0] + intTileWidth, enemy1coords[1]
                     + intTileHeight);
             Bitmap resizedEnemy1Bitmap = Bitmap.createScaledBitmap(enemy1BitMap,
                     intTileWidth, intTileHeight, false);
@@ -131,8 +131,9 @@ public class LevelView extends SurfaceView implements Runnable {
             //draw enemy2
             Bitmap enemy2BitMap = playerViewModel.getEnemiesInLevel().get(1).getBitmap();
             enemy2DestinationRect = new Rect(
-                    enemy2coords[0], enemy2coords[1], enemy2coords[0] + intTileWidth, enemy2coords[1]
-                    + intTileHeight);
+                    enemy2coords[0], enemy2coords[1],
+                    enemy2coords[0] + intTileWidth,
+                    enemy2coords[1] + intTileHeight);
             Bitmap resizedEnemy2Bitmap = Bitmap.createScaledBitmap(enemy2BitMap,
                     intTileWidth, intTileHeight, false);
             canvas.drawBitmap(resizedEnemy2Bitmap, null, enemy2DestinationRect, paint);

@@ -39,7 +39,9 @@ public class PlayerViewModel extends ViewModel {
         return player;
     }
 
-    public MapData getMapData() { return mapData; }
+    public MapData getMapData() {
+        return mapData;
+    }
 
     public boolean isChangeLevel() {
         return changeLevel;

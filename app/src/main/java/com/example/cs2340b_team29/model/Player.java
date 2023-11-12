@@ -1,6 +1,5 @@
 package com.example.cs2340b_team29.model;
 
-import android.graphics.Bitmap;
 
 import com.example.cs2340b_team29.collision.CollisionObserver;
 import com.example.cs2340b_team29.collision.Collidable;
@@ -164,6 +163,9 @@ public class Player extends Entity {
                 timer.cancel();
             }
         }, 1000);
+    }
+    public void setIsInvincible(boolean i) {
+        isInvincible = i;
     }
 
 

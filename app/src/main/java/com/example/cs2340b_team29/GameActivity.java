@@ -27,6 +27,7 @@ import android.widget.TextView;
 import com.example.cs2340b_team29.collision.EnemyCollisionHandler;
 import com.example.cs2340b_team29.collision.WallCollisionHandler;
 import com.example.cs2340b_team29.model.Enemy;
+import com.example.cs2340b_team29.model.MapData;
 import com.example.cs2340b_team29.model.Player;
 import com.example.cs2340b_team29.viewmodel.MapDataViewModel;
 import com.example.cs2340b_team29.viewmodel.MoveDown;
@@ -131,8 +132,11 @@ public class GameActivity extends AppCompatActivity {
                 enemy1Y = playerViewModel.getEnemy1().getY();
                 playerHP = playerViewModel.getPlayer().getHP();
                 enemy1Move = playerViewModel.getEnemy1().getMoveStrategy();
-
-                if (enemy1Y < 22 && enemy1Move instanceof MoveDown) {
+                int level = MapData.getMapData().getLevel();
+                if (enemy1Y == 16 && level == 2) {
+                    playerViewModel.getEnemy1().setMoveStrategy(up);
+                    playerViewModel.getEnemy1().move();
+                } else if (enemy1Y < 22 && enemy1Move instanceof MoveDown) {
                     playerViewModel.getEnemy1().move();
                 } else if (enemy1Y == 0 && enemy1Move instanceof MoveUp) {
                     playerViewModel.getEnemy1().setMoveStrategy(down);
@@ -226,7 +230,7 @@ public class GameActivity extends AppCompatActivity {
         playerViewModel.getEnemiesInLevel().get(0).setX(3);
         playerViewModel.getEnemiesInLevel().get(0).setY(2);
         playerViewModel.getEnemiesInLevel().get(1).setX(0);
-        playerViewModel.getEnemiesInLevel().get(1).setY(9);
+        playerViewModel.getEnemiesInLevel().get(1).setY(8);
     }
 
 
