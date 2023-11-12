@@ -1,6 +1,5 @@
 package com.example.cs2340b_team29.model;
 
-import android.graphics.Bitmap;
 
 import com.example.cs2340b_team29.collision.CollisionObserver;
 import com.example.cs2340b_team29.collision.Collidable;
@@ -8,6 +7,8 @@ import com.example.cs2340b_team29.viewmodel.MoveStrategy;
 
 
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class Player extends Entity {
     private static Player player;
@@ -21,12 +22,14 @@ public class Player extends Entity {
     private MoveStrategy moveStrategy;
     private int difficulty;
 
+    private boolean isInvincible;
+
 
     private Player() {
         super(0, 0);
         // for now, will count down from score based on time
         score = 100;
-
+        isInvincible = false;
         observers = new ArrayList<>();
     }
     public static synchronized Player getPlayer() {
@@ -144,4 +147,27 @@ public class Player extends Entity {
     public void move() {
         moveStrategy.move(this);
     }
+    public boolean getIsInvincible() {
+        return isInvincible;
+    }
+
+    public void toggleIsInvincible() {
+        isInvincible = true;
+        Timer timer = new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                // Update the variable after the delay
+                isInvincible = false;
+                // Cancel the timer after the task is executed
+                timer.cancel();
+            }
+        }, 1000);
+    }
+    public void setIsInvincible(boolean i) {
+        isInvincible = i;
+    }
+
+
+
 }

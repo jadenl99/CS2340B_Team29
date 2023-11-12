@@ -236,13 +236,7 @@ public class MapData {
     public void setDifficulty(int difficulty) {
         this.difficulty = difficulty;
 
-        if (difficulty == 1) {
-            // set mulitplier here
-        } else if (difficulty == 2) {
-            // set
-        } else {
-            // set
-        }
+
     }
 
     public int getDifficulty() {

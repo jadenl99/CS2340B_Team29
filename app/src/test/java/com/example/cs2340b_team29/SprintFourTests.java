@@ -146,6 +146,7 @@ public class SprintFourTests {
         player.setHpLevel(100);
         player.setX(10);
         player.setY(10);
+        player.setIsInvincible(false);
         enemies.get(1).setX(10);
         enemies.get(1).setY(10);
 
@@ -170,6 +171,7 @@ public class SprintFourTests {
         player.setHpLevel(100);
         player.setX(10);
         player.setY(10);
+        player.setIsInvincible(false);
         enemies.get(1).setX(10);
         enemies.get(1).setY(10);
 

@@ -39,7 +39,9 @@ public class PlayerViewModel extends ViewModel {
         return player;
     }
 
-    public MapData getMapData() { return mapData; }
+    public MapData getMapData() {
+        return mapData;
+    }
 
     public boolean isChangeLevel() {
         return changeLevel;
@@ -80,11 +82,13 @@ public class PlayerViewModel extends ViewModel {
                 player.notifyCollision(borderWall, player.getMoveStrategy());
             }
         }
-        for (Enemy enemy: enemies) {
-            if (checkCollision(player, enemy) || checkAdjacentCollision(player, enemy)) {
-                player.notifyCollision(enemy, player.getMoveStrategy());
+        if (!player.getIsInvincible()) {
+            for (Enemy enemy: enemies) {
+                if (checkCollision(player, enemy) || checkAdjacentCollision(player, enemy)) {
+                    player.notifyCollision(enemy, player.getMoveStrategy());
+                    player.toggleIsInvincible();
+                }
             }
-
         }
     }
 
