@@ -39,8 +39,9 @@ public class LevelView extends SurfaceView implements Runnable {
     private int enemy2Y;
     private int currX = 3;
     private int currY = 0;
+
     public LevelView(GameActivity activity, int screenX, int screenY,
-                  Bitmap background) {
+                     Bitmap background) {
         super(activity);
         this.activity = activity;
 
@@ -169,52 +170,4 @@ public class LevelView extends SurfaceView implements Runnable {
         }
     }
 
-    //    @Override
-    //    public boolean onKey(View v, int keyCode, KeyEvent event) {
-    //        if (event.getAction() == KeyEvent.ACTION_DOWN) {
-    //            switch (keyCode) {
-    //                default:
-    //                    System.out.println(super.onKeyDown(keyCode, event));
-    //                    return super.onKeyDown(keyCode, event);
-    //                case KeyEvent.KEYCODE_DPAD_LEFT:
-    //                    MoveStrategy left = new MoveLeft();
-    //                    playerViewModel.setMoveStrategy(left);
-    //                    playerViewModel.move(); // Update player position
-    //                    break;
-    //                case KeyEvent.KEYCODE_DPAD_RIGHT:
-    //                    MoveStrategy right = new MoveRight();
-    //                    playerViewModel.setMoveStrategy(right);
-    //                    playerViewModel.move(); // Update player position
-    //                    break;
-    //                case KeyEvent.KEYCODE_DPAD_UP:
-    //                    MoveStrategy up = new MoveUp();
-    //                    playerViewModel.setMoveStrategy(up);
-    //                    playerViewModel.move(); // Update player position
-    //                    break;
-    //                case KeyEvent.KEYCODE_DPAD_DOWN:
-    //                    System.out.println("down arrow clicked");
-    //                    MoveStrategy down = new MoveDown();
-    //                    playerViewModel.setMoveStrategy(down);
-    //                    playerViewModel.move(); // Update player position
-    //                    System.out.println("onKey currY: " + currY);
-    //                    break;
-    //            }
-    //            playerViewModel.checkForCollisions();
-    //        }
-    //        return true;
-    //    }
 }
-
-/*int[] coords = calcPixelsBasedOnIndices(3, 1);
-            int intTileWidth = (int) tileWidth;
-            int intTileHeight = (int) tileHeight;
-            Bitmap playerBitMap = playerViewModel.getPlayer().getBitmapAvatar();
-            destinationRect = new Rect(coords[0], coords[1], coords[0]
-            + intTileWidth, coords[1]+ intTileHeight);
-            Bitmap resizedBitmap = Bitmap.createScaledBitmap(
-            , intTileWidth, intTileHeight, false);
-            canvas.drawBitmap(resizedBitmap, null, destinationRect, paint);
-            //canvas.drawBitmap(playerBitMap, coords[0], coords[1], paint);
-            coords = calcPixelsBasedOnIndices(8, 10);
-            playerBitMap = playerViewModel.getPlayer().getBitmapAvatar();
-           // canvas.drawBitmap(playerBitMap, coords[0], coords[1], paint);*/
