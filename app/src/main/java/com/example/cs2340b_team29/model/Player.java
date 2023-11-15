@@ -1,35 +1,40 @@
 package com.example.cs2340b_team29.model;
 
-import android.graphics.Bitmap;
 
 import com.example.cs2340b_team29.collision.CollisionObserver;
 import com.example.cs2340b_team29.collision.Collidable;
+import com.example.cs2340b_team29.powerup.BasePowerUpBox;
+import com.example.cs2340b_team29.powerup.PowerUpBox;
 import com.example.cs2340b_team29.viewmodel.MoveStrategy;
 
 
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 
-public class Player implements Collidable {
+public class Player extends Entity {
     private static Player player;
-    private int x;
-    private int y;
     private int hpLevel;
     private int score;
     private String playerName;
     private long timeDatePlayed;
     private int idAvatar;
-    private Bitmap bitmapAvatar;
     private ArrayList<CollisionObserver> observers;
-    private int level;
+
+    private MoveStrategy moveStrategy;
+    private int difficulty;
+    private boolean isInvincible;
+
+    private BasePowerUpBox powerUpBox;
 
 
     private Player() {
-        x = 0;
-        y = 0;
+        super(0, 0);
         // for now, will count down from score based on time
         score = 100;
-        level = 1;
+        isInvincible = false;
         observers = new ArrayList<>();
+        powerUpBox = new PowerUpBox();
     }
     public static synchronized Player getPlayer() {
         if (player == null) {
@@ -70,6 +75,10 @@ public class Player implements Collidable {
         return score;
     }
 
+    public int getDifficulty() {
+        return difficulty;
+    }
+
 
     public void setScore(int score) {
 
@@ -102,7 +111,11 @@ public class Player implements Collidable {
 
     public void setHpLevel(int hp) {
 
-        hpLevel = hp;
+        hpLevel = Math.max(hp, 0);
+    }
+
+    public void setDifficulty(int diff) {
+        difficulty = diff;
     }
 
     public void setIdAvatar(int id) {
@@ -110,19 +123,15 @@ public class Player implements Collidable {
         idAvatar = id;
     }
 
-    public int getLevel() {
-        return level;
+
+
+
+    public MoveStrategy getMoveStrategy() {
+        return moveStrategy;
     }
 
-    public void setLevel(int level) {
-        this.level = level;
-    }
-    public void setBitmapAvatar(Bitmap avatar) {
-        bitmapAvatar = avatar;
-    }
-
-    public Bitmap getBitmapAvatar() {
-        return bitmapAvatar;
+    public void setMoveStrategy(MoveStrategy moveStrategy) {
+        this.moveStrategy = moveStrategy;
     }
 
     public void subscribe(CollisionObserver observer) {
@@ -137,4 +146,44 @@ public class Player implements Collidable {
             observer.onCollision(this, entity, moveStrategy);
         }
     }
+
+    @Override
+    public void move() {
+        moveStrategy.move(this);
+    }
+    public boolean getIsInvincible() {
+        return isInvincible;
+    }
+
+    public void toggleIsInvincible() {
+        isInvincible = true;
+        Timer timer = new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                // Update the variable after the delay
+                isInvincible = false;
+                // Cancel the timer after the task is executed
+                timer.cancel();
+            }
+        }, 1000);
+    }
+    public void setIsInvincible(boolean i) {
+        isInvincible = i;
+    }
+
+    public BasePowerUpBox getPowerUpBox() {
+        return powerUpBox;
+    }
+
+    public void setPowerUpBox(BasePowerUpBox powerUpBox) {
+        this.powerUpBox = powerUpBox;
+    }
+
+    public void updateBuffs() {
+        powerUpBox.updateBuffsToPlayer(this);
+    }
+
+
+
 }
