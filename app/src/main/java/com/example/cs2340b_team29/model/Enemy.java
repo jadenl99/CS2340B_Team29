@@ -8,8 +8,10 @@ import com.example.cs2340b_team29.viewmodel.MoveStrategy;
 
 // Should probably extend Entity
 public abstract class Enemy extends Entity {
+    protected boolean isVisible;
     public Enemy(int x, int y) {
         super(x, y);
+        isVisible = true;
     }
 
     public abstract int getEnemyID();
@@ -21,4 +23,11 @@ public abstract class Enemy extends Entity {
 
     public abstract void notifyCollision(Collidable entity, MoveStrategy moveStrategy);
 
+    public void setVisible(boolean visible) {
+        isVisible = visible;
+    }
+
+    public boolean getVisible() {
+        return isVisible;
+    }
 }
