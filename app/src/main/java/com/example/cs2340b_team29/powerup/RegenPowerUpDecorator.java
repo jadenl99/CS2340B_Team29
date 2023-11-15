@@ -9,6 +9,7 @@ public class RegenPowerUpDecorator extends PowerUpDecorator {
 
     @Override
     public void updateBuffsToPlayer(Player player) {
+        super.updateBuffsToPlayer(player);
         player.setHpLevel(1 + player.getHP());
     }
 }

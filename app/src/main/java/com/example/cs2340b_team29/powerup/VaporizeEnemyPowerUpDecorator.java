@@ -20,9 +20,11 @@ public class VaporizeEnemyPowerUpDecorator extends PowerUpDecorator {
      */
     @Override
     public void updateBuffsToPlayer(Player player) {
+        super.updateBuffsToPlayer(player);
         if (isUsed) {
             return;
         }
+        isUsed = true;
         int level = MapData.getMapData().getLevel();
         ArrayList<Enemy> enemies = MapData.getMapData().getEnemies(level);
 
