@@ -105,6 +105,10 @@ public class SprintFiveTests {
     @Test
     public void test1() {
 
+<<<<<<< HEAD
 >>>>>>> 9618c62 (layout powerup classes)
+=======
+>>>>>>> a944f4f (pull from main)
+>>>>>>> 2784bdd (merge conflict)
     }
 }
