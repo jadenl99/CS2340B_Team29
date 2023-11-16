@@ -1,6 +1,7 @@
 package com.example.cs2340b_team29;
 import static org.junit.Assert.assertEquals;
 
+<<<<<<< HEAD
 
 import com.example.cs2340b_team29.collision.PowerUpCollisionHandler;
 import com.example.cs2340b_team29.model.Enemy;
@@ -94,5 +95,16 @@ public class SprintFiveTests {
         // the powerups
 
         assertEquals(player.getHP(), 122);
+=======
+import com.example.cs2340b_team29.model.Player;
+import com.example.cs2340b_team29.powerup.AttackPowerUpDecorator;
+import com.example.cs2340b_team29.powerup.BasePlayer;
+
+import org.junit.Test;
+public class SprintFiveTests {
+    @Test
+    public void test1() {
+
+>>>>>>> 9618c62 (layout powerup classes)
     }
 }

@@ -31,6 +31,7 @@ public class Player extends Entity {
     private BasePowerUpBox powerUpBox;
 
 
+
     private Player() {
         super(0, 0);
         // for now, will count down from score based on time
@@ -128,7 +129,6 @@ public class Player extends Entity {
         idAvatar = id;
     }
 
-<<<<<<< HEAD
     public void setHasGun(boolean bool) {
         this.hasGun = bool;
     }

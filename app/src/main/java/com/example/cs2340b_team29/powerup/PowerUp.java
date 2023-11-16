@@ -46,4 +46,5 @@ public abstract class PowerUp implements Collidable {
     public boolean getVisible() {
         return isVisible;
     }
+
 }
