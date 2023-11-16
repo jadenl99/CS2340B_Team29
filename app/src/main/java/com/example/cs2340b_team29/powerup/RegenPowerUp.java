@@ -26,7 +26,6 @@ public class RegenPowerUp extends PowerUp {
         this.x = x;
     }
 
-    @Override
     public void setY(int y) {
         this.y = y;
     }

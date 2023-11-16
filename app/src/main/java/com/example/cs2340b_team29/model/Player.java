@@ -45,6 +45,7 @@ public class Player extends Entity {
         powerUpBox = new PowerUpBox();
         hasGun = false;
         hasSword = false;
+        powerUpBox = new PowerUpBox();
     }
     public static synchronized Player getPlayer() {
         if (player == null) {
