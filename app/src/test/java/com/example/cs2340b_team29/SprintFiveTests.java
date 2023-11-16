@@ -1,5 +1,10 @@
 package com.example.cs2340b_team29;
 import static org.junit.Assert.assertEquals;
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 8440706 (resolve merge conflicts)
 import com.example.cs2340b_team29.collision.PowerUpCollisionHandler;
 import com.example.cs2340b_team29.model.Enemy;
 import com.example.cs2340b_team29.model.MapData;
@@ -12,6 +17,10 @@ import com.example.cs2340b_team29.powerup.VaporizeEnemyPowerUp;
 import com.example.cs2340b_team29.viewmodel.MoveDown;
 import com.example.cs2340b_team29.viewmodel.PlayerViewModel;
 import com.example.cs2340b_team29.powerup.AttackPowerUpDecorator;
+<<<<<<< HEAD
+=======
+//import com.example.cs2340b_team29.powerup.BasePlayer;
+>>>>>>> 8440706 (resolve merge conflicts)
 
 import org.junit.Test;
 
@@ -94,6 +103,7 @@ public class SprintFiveTests {
 
         assertEquals(player.getHP(), 122);
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 =======
 import com.example.cs2340b_team29.model.Player;
@@ -111,5 +121,7 @@ public class SprintFiveTests {
 >>>>>>> 9618c62 (layout powerup classes)
 >>>>>>> 592b7e1 (resolve merge conflicts)
 >>>>>>> 4f7b033 (resolve merge conflicts)
+=======
+>>>>>>> 8440706 (resolve merge conflicts)
     }
 }
