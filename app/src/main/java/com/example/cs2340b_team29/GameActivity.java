@@ -30,6 +30,7 @@ import com.example.cs2340b_team29.collision.WallCollisionHandler;
 import com.example.cs2340b_team29.model.Enemy;
 import com.example.cs2340b_team29.model.MapData;
 import com.example.cs2340b_team29.model.Player;
+import com.example.cs2340b_team29.model.Weapon;
 import com.example.cs2340b_team29.viewmodel.MapDataViewModel;
 import com.example.cs2340b_team29.viewmodel.MoveDown;
 import com.example.cs2340b_team29.viewmodel.MoveLeft;
@@ -109,6 +110,7 @@ public class GameActivity extends AppCompatActivity {
         playerViewModel.getEnemy2().setMoveStrategy(right);
 
         setEnemyBitmaps();
+        setWeaponBitmaps();
 
 
         // logic for countdown
@@ -387,6 +389,21 @@ public class GameActivity extends AppCompatActivity {
                 Drawable enemy4 = getDrawable(R.drawable.wolf);
                 enemy.setBitmap(
                         BitmapFactory.decodeResource(getResources(), R.drawable.wolf));
+            }
+        }
+    }
+
+    private void setWeaponBitmaps() {
+        ArrayList<Weapon> weapons = playerViewModel.getMapData().getAllWeapons();
+        for (Weapon weapon: weapons) {
+            if (weapon.getWeaponId() == 1) {
+                Drawable weapon1 = getDrawable(R.drawable.knife);
+                weapon.setBitmap(
+                        BitmapFactory.decodeResource(getResources(), R.drawable.knife));
+            } else {
+                Drawable weapon2 = getDrawable(R.drawable.sword);
+                weapon.setBitmap(
+                        BitmapFactory.decodeResource(getResources(), R.drawable.sword));
             }
         }
     }

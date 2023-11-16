@@ -27,6 +27,7 @@ public class LevelView extends SurfaceView implements Runnable {
     private Rect destinationRect;
     private Rect enemy1DestinationRect;
     private Rect enemy2DestinationRect;
+    private Rect weaponDestinationRect;
     private double tileHeight;
     private final int numTilesWide = 11;
     private final int numTilesLong = 23;
@@ -37,6 +38,8 @@ public class LevelView extends SurfaceView implements Runnable {
 
     private int enemy2X;
     private int enemy2Y;
+    private int weaponX;
+    private int weaponY;
     private int currX = 3;
     private int currY = 0;
 
@@ -108,6 +111,10 @@ public class LevelView extends SurfaceView implements Runnable {
             enemy2Y = playerViewModel.getEnemy2().getY();
             int[] enemy2coords = calcPixelsBasedOnIndices(enemy2X, enemy2Y);
 
+            weaponX = playerViewModel.getWeaponsInLevel().get(0).getX();
+            weaponY = playerViewModel.getEnemiesInLevel().get(0).getY();
+            int[] weaponCoords = calcPixelsBasedOnIndices(weaponX, weaponY);
+
             int intTileWidth = (int) tileWidth;
             int intTileHeight = (int) tileHeight;
 
@@ -139,6 +146,16 @@ public class LevelView extends SurfaceView implements Runnable {
                     intTileWidth, intTileHeight, false);
             canvas.drawBitmap(resizedEnemy2Bitmap, null, enemy2DestinationRect, paint);
 
+            //draw weapon
+            Bitmap weaponBitMap = playerViewModel.getWeaponsInLevel().get(0).getBitmap();
+            weaponDestinationRect = new Rect(
+                    weaponCoords[0], weaponCoords[1],
+                    weaponCoords[0] + intTileWidth,
+                    weaponCoords[1] + intTileHeight);
+            Bitmap resizedWeaponBitmap = Bitmap.createScaledBitmap(weaponBitMap,
+                    intTileWidth, intTileHeight, false);
+            canvas.drawBitmap(weaponBitMap, null, weaponDestinationRect, paint);
+
 
             getHolder().unlockCanvasAndPost(canvas);
         }
@@ -154,7 +171,6 @@ public class LevelView extends SurfaceView implements Runnable {
     }
 
     public void resume() {
-
         isPlaying = true;
         thread = new Thread(this);
         thread.start();
