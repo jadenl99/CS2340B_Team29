@@ -24,7 +24,6 @@ public class PowerUpCollisionHandler implements CollisionObserver {
         Player player = (Player) e1;
         PowerUp powerUp = (PowerUp) e2;
 
-
         BasePowerUpBox powerUpBox = player.getPowerUpBox();
         if (powerUp instanceof HealthPowerUp) {
             powerUpBox = new HealthPowerUpDecorator(powerUpBox);
@@ -39,6 +38,9 @@ public class PowerUpCollisionHandler implements CollisionObserver {
         // make visual powerUp invisible
         powerUp.setVisible(false);
 
+        if (powerUp instanceof AttackPowerUp) {
+
+        }
         if (powerUp instanceof AttackPowerUp) {
 
         }
