@@ -32,8 +32,6 @@ public class Player extends Entity {
     private BasePowerUpBox powerUpBox;
 
 
-    private BasePowerUpBox powerUpBox;
-
 
     private Player() {
         super(0, 0);

@@ -12,9 +12,5 @@ public class PowerUpDecorator implements BasePowerUpBox {
     @Override
     public void updateBuffsToPlayer(Player player) {
         powerUpBox.updateBuffsToPlayer(player);
-<<<<<<< HEAD
-        powerUpBox.updateBuffsToPlayer(player);
-=======
->>>>>>> ba194d6 (adds avatar with weapons bitmaps)
     }
 }
