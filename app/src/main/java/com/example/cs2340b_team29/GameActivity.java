@@ -30,6 +30,8 @@ import com.example.cs2340b_team29.collision.WallCollisionHandler;
 import com.example.cs2340b_team29.model.Enemy;
 import com.example.cs2340b_team29.model.MapData;
 import com.example.cs2340b_team29.model.Player;
+import com.example.cs2340b_team29.model.Weapon;
+import com.example.cs2340b_team29.powerup.PowerUp;
 import com.example.cs2340b_team29.viewmodel.MapDataViewModel;
 import com.example.cs2340b_team29.viewmodel.MoveDown;
 import com.example.cs2340b_team29.viewmodel.MoveLeft;
@@ -109,6 +111,8 @@ public class GameActivity extends AppCompatActivity {
         playerViewModel.getEnemy2().setMoveStrategy(right);
 
         setEnemyBitmaps();
+        setWeaponBitmaps();
+        setPowerupBitmaps();
 
 
         // logic for countdown
@@ -317,6 +321,7 @@ public class GameActivity extends AppCompatActivity {
             case KeyEvent.KEYCODE_ENTER:
                 if (event.isShiftPressed()) {
                     player1.attackEnemy();
+                    System.out.println("player attacked");
                 }
                 return true;
             default:
@@ -387,6 +392,40 @@ public class GameActivity extends AppCompatActivity {
                 Drawable enemy4 = getDrawable(R.drawable.wolf);
                 enemy.setBitmap(
                         BitmapFactory.decodeResource(getResources(), R.drawable.wolf));
+            }
+        }
+    }
+
+    private void setWeaponBitmaps() {
+        ArrayList<Weapon> weapons = playerViewModel.getMapData().getAllWeapons();
+        for (Weapon weapon: weapons) {
+            if (weapon.getWeaponId() == 1) {
+                Drawable weapon1 = getDrawable(R.drawable.knife);
+                weapon.setBitmap(
+                        BitmapFactory.decodeResource(getResources(), R.drawable.knife));
+            } else {
+                Drawable weapon2 = getDrawable(R.drawable.sword);
+                weapon.setBitmap(
+                        BitmapFactory.decodeResource(getResources(), R.drawable.sword));
+            }
+        }
+    }
+
+    private void setPowerupBitmaps() {
+        ArrayList<PowerUp> powerups = playerViewModel.getMapData().getAllPowerUps();
+        for (PowerUp powerup: powerups) {
+            if (powerup.getPowerUpId() == 1) {
+                Drawable powerup1 = getDrawable(R.drawable.bomb);
+                powerup.setBitmap(
+                        BitmapFactory.decodeResource(getResources(), R.drawable.bomb));
+            } else if (powerup.getPowerUpId() == 2) {
+                Drawable powerup2 = getDrawable(R.drawable.elixir);
+                powerup.setBitmap(
+                        BitmapFactory.decodeResource(getResources(), R.drawable.elixir));
+            } else {
+                Drawable powerup3 = getDrawable(R.drawable.health);
+                powerup.setBitmap(
+                        BitmapFactory.decodeResource(getResources(), R.drawable.health));
             }
         }
     }

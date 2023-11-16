@@ -9,6 +9,8 @@ import com.example.cs2340b_team29.model.MapData;
 import com.example.cs2340b_team29.model.Player;
 import com.example.cs2340b_team29.model.Wall;
 import com.example.cs2340b_team29.powerup.PowerUp;
+import com.example.cs2340b_team29.model.Weapon;
+
 
 import java.util.ArrayList;
 
@@ -140,6 +142,16 @@ public class PlayerViewModel extends ViewModel {
     public ArrayList<Enemy> getEnemiesInLevel() {
         ArrayList<Enemy> enemiesInLevel = mapData.getEnemies(mapData.getLevel());
         return enemiesInLevel;
+    }
+
+    public ArrayList<Weapon> getWeaponsInLevel() {
+        ArrayList<Weapon> weaponsInLevel = mapData.getWeapons(mapData.getLevel());
+        return weaponsInLevel;
+    }
+
+    public ArrayList<PowerUp> getPowerUpsInLevel() {
+        ArrayList<PowerUp> powerUpsInLevel = mapData.getPowerUp(mapData.getLevel());
+        return powerUpsInLevel;
     }
 
     public Enemy getEnemy1() {

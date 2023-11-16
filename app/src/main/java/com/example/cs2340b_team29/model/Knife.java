@@ -6,20 +6,35 @@ import com.example.cs2340b_team29.collision.Collidable;
 import com.example.cs2340b_team29.collision.CollisionObserver;
 import com.example.cs2340b_team29.viewmodel.MoveStrategy;
 
-public class Sword extends Weapon {
+public class Knife extends Weapon {
 
     private int x;
     private int y;
-    private int weaponId = 2;
+    private int weaponId = 1;
     private Bitmap bitmap;
 
-    public Sword() {
-        x = 8;
-        y = 16;
+    public Knife() {
+        x = 3;
+        y = 12;
+    }
+
+    @Override
+    public int getX() {
+        return 0;
     }
 
     public int getWeaponId() {
         return weaponId;
+    }
+
+    @Override
+    public Bitmap getBitmap() {
+        return bitmap;
+    }
+
+    @Override
+    public void setBitmap(Bitmap bitmap) {
+        this.bitmap = bitmap;
     }
 
     @Override
@@ -35,21 +50,6 @@ public class Sword extends Weapon {
     @Override
     public void notifyCollision(Collidable entity, MoveStrategy moveStrategy) {
 
-    }
-
-    @Override
-    public Bitmap getBitmap() {
-        return bitmap;
-    }
-
-    @Override
-    public void setBitmap(Bitmap bitmap) {
-        this.bitmap = bitmap;
-    }
-
-    @Override
-    public int getX() {
-        return 0;
     }
 
     @Override

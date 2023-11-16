@@ -25,4 +25,9 @@ public class AttackPowerUp extends PowerUp {
     public void setY(int y) {
 
     }
+
+    @Override
+    public int getPowerUpId() {
+        return 6;
+    }
 }

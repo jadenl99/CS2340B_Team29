@@ -31,10 +31,22 @@ public class MapData {
     private ArrayList<PowerUp> powerUps2;
     private ArrayList<PowerUp> powerUps3;
 
+    private ArrayList<PowerUp> allPowerUps;
+
+    private ArrayList<Weapon> weapons1;
+    private ArrayList<Weapon> weapons2;
+    private ArrayList<Weapon> weapons3;
+    private ArrayList<Weapon> allWeapons;
+
     private Enemy ninja;
     private Enemy spider;
     private Enemy snake;
     private Enemy wolf;
+    private Weapon knife;
+    private Weapon sword;
+    private PowerUp regenPowerUp;
+    private PowerUp vaporizeEnemyPowerUp;
+    private PowerUp healthPowerUp;
     private final int mapHeight = 23;
     private final int mapWidth = 11;
     // 0 stands for a "wall" (can't pass), 1 is a normal tile, and 2 is a
@@ -150,12 +162,30 @@ public class MapData {
         enemies2 = new ArrayList<>();
         enemies3 = new ArrayList<>();
 
+        weapons1 = new ArrayList<>();
+        weapons2 = new ArrayList<>();
+        weapons3 = new ArrayList<>();
+
+        powerUps1 = new ArrayList<>();
+        powerUps2 = new ArrayList<>();
+        powerUps3 = new ArrayList<>();
+
+        allWeapons = new ArrayList<>();
         allEnemies = new ArrayList<>();
+        allPowerUps = new ArrayList<>();
 
         wolf = EnemyFactory.createEnemy("wolf");
         ninja = EnemyFactory.createEnemy("ninja");
         snake = EnemyFactory.createEnemy("snake");
         spider = EnemyFactory.createEnemy("spider");
+
+        sword = new Sword();
+        knife = new Knife();
+
+        regenPowerUp = new RegenPowerUp(10,3);
+        vaporizeEnemyPowerUp = new VaporizeEnemyPowerUp(12,18);
+        healthPowerUp = new HealthPowerUp(6,12);
+
 
         // put walls in each level
         for (int row = 0; row < mapHeight; row++) {
@@ -206,11 +236,23 @@ public class MapData {
         allEnemies.add(wolf);
         allEnemies.add(snake);
 
-        // put powerups in each level
-//        powerUps1.add(whatever);
-//        powerUps2.add(whatever);
-//        powerUps3.add(whatever);
+        //put weapons in each level
+        weapons1.add(sword);
+        weapons2.add(knife);
+        weapons3.add(sword);
 
+        allWeapons.add(sword);
+        allWeapons.add(knife);
+
+
+        //put powerups in each level
+        powerUps1.add(healthPowerUp);
+        powerUps2.add(vaporizeEnemyPowerUp);
+        powerUps3.add(regenPowerUp);
+
+        allPowerUps.add(healthPowerUp);
+        allPowerUps.add(vaporizeEnemyPowerUp);
+        allPowerUps.add(regenPowerUp);
     }
     public static synchronized MapData getMapData() {
         if (mapData == null) {
@@ -275,19 +317,33 @@ public class MapData {
 
     public ArrayList<Enemy> getAllEnemies() {
         return allEnemies;
+    }
 
+    public ArrayList<Weapon> getAllWeapons() {
+        return allWeapons;
+    }
+
+    public ArrayList<PowerUp> getAllPowerUps() {
+        return allPowerUps;
     }
 
     public ArrayList<PowerUp> getPowerUp(int level) {
         if (level == 1) {
             return powerUps1;
         }
-
         if (level == 2) {
             return powerUps2;
         }
-
         return powerUps3;
+    }
 
+    public ArrayList<Weapon> getWeapons(int level) {
+        if (level == 1) {
+            return weapons1;
+        }
+        if (level == 2) {
+            return weapons2;
+        }
+        return weapons3;
     }
 }
