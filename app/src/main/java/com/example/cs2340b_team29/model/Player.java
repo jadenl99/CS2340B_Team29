@@ -5,6 +5,7 @@ import com.example.cs2340b_team29.collision.CollisionObserver;
 import com.example.cs2340b_team29.collision.Collidable;
 import com.example.cs2340b_team29.powerup.BasePowerUpBox;
 import com.example.cs2340b_team29.powerup.PowerUpBox;
+import com.example.cs2340b_team29.viewmodel.MoveOffScreen;
 import com.example.cs2340b_team29.viewmodel.MoveStrategy;
 
 
@@ -127,6 +128,7 @@ public class Player extends Entity {
         idAvatar = id;
     }
 
+<<<<<<< HEAD
     public void setHasGun(boolean bool) {
         this.hasGun = bool;
     }
@@ -196,6 +198,8 @@ public class Player extends Entity {
         powerUpBox.updateBuffsToPlayer(this);
     }
 
-
-
+    public void attackEnemy() {
+        //MoveStrategy offScreen = new MoveOffScreen();
+        //enemy.setMoveStrategy(offScreen);
+    }
 }

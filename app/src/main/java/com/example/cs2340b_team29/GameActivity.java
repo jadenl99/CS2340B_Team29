@@ -93,7 +93,6 @@ public class GameActivity extends AppCompatActivity {
     private MapDataViewModel mapDataViewModel;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         playerViewModel = new ViewModelProvider(this).get(PlayerViewModel.class);
@@ -309,6 +308,19 @@ public class GameActivity extends AppCompatActivity {
 
         }
         return true;
+    }
+
+    @Override
+    public boolean onKeyUp(int keyCode, KeyEvent event) {
+        switch (keyCode) {
+            case KeyEvent.KEYCODE_ENTER:
+                if (event.isShiftPressed()) {
+                    player1.attackEnemy();
+                }
+                return true;
+            default:
+                return super.onKeyUp(keyCode, event);
+        }
     }
 
     private void toggleView() {
