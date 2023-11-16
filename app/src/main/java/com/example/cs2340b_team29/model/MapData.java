@@ -1,5 +1,10 @@
 package com.example.cs2340b_team29.model;
 
+import com.example.cs2340b_team29.powerup.HealthPowerUp;
+import com.example.cs2340b_team29.powerup.PowerUp;
+import com.example.cs2340b_team29.powerup.RegenPowerUp;
+import com.example.cs2340b_team29.powerup.VaporizeEnemyPowerUp;
+
 import java.util.ArrayList;
 
 
@@ -22,6 +27,9 @@ public class MapData {
     private ArrayList<Enemy> enemies2;
     private ArrayList<Enemy> enemies3;
     private ArrayList<Enemy> allEnemies;
+    private ArrayList<PowerUp> powerUps1;
+    private ArrayList<PowerUp> powerUps2;
+    private ArrayList<PowerUp> powerUps3;
 
     private Enemy ninja;
     private Enemy spider;
@@ -114,8 +122,6 @@ public class MapData {
     // 1 is easy, 2 is medium, 3 is hard
     private int difficulty;
 
-    // adjust multipliers in setDifficulty()
-    private double difficultyMultiplier;
 
     private int level;
     private MapData() {
@@ -200,6 +206,11 @@ public class MapData {
         allEnemies.add(wolf);
         allEnemies.add(snake);
 
+        // put powerups in each level
+//        powerUps1.add(whatever);
+//        powerUps2.add(whatever);
+//        powerUps3.add(whatever);
+
     }
     public static synchronized MapData getMapData() {
         if (mapData == null) {
@@ -243,9 +254,7 @@ public class MapData {
         return difficulty;
     }
 
-    public double getDifficultyMultiplier() {
-        return difficultyMultiplier;
-    }
+
 
     public int getLevel() {
         return level;
@@ -266,6 +275,19 @@ public class MapData {
 
     public ArrayList<Enemy> getAllEnemies() {
         return allEnemies;
+
+    }
+
+    public ArrayList<PowerUp> getPowerUp(int level) {
+        if (level == 1) {
+            return powerUps1;
+        }
+
+        if (level == 2) {
+            return powerUps2;
+        }
+
+        return powerUps3;
 
     }
 }

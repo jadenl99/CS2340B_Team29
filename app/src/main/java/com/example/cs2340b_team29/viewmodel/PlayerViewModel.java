@@ -8,6 +8,7 @@ import com.example.cs2340b_team29.model.Enemy;
 import com.example.cs2340b_team29.model.MapData;
 import com.example.cs2340b_team29.model.Player;
 import com.example.cs2340b_team29.model.Wall;
+import com.example.cs2340b_team29.powerup.PowerUp;
 
 import java.util.ArrayList;
 
@@ -71,7 +72,7 @@ public class PlayerViewModel extends ViewModel {
         ArrayList<Wall> borderWalls = mapData.getBorderWalls();
         ArrayList<Wall> walls = mapData.getWallsInLevel(currLevel);
         ArrayList<Enemy> enemies = mapData.getEnemies(currLevel);
-
+        // ArrayList<PowerUp> powerUps = mapData.getPowerUp(currLevel);
         for (Wall wall : walls) {
             if (checkCollision(player, wall)) {
                 player.notifyCollision(wall, player.getMoveStrategy());
@@ -90,6 +91,12 @@ public class PlayerViewModel extends ViewModel {
                 }
             }
         }
+
+//        for (PowerUp powerUp : powerUps) {
+//            if (checkCollision(player, powerUp)) {
+//                player.notifyCollision(powerUp, player.getMoveStrategy());
+//            }
+//        }
     }
 
     public boolean checkCollision(Collidable e1, Collidable e2) {

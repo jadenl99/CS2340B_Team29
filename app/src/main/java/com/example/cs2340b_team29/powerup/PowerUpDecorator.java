@@ -11,5 +11,6 @@ public class PowerUpDecorator implements BasePowerUpBox {
     }
     @Override
     public void updateBuffsToPlayer(Player player) {
+        powerUpBox.updateBuffsToPlayer(player);
     }
 }

@@ -25,6 +25,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.cs2340b_team29.collision.EnemyCollisionHandler;
+import com.example.cs2340b_team29.collision.PowerUpCollisionHandler;
 import com.example.cs2340b_team29.collision.WallCollisionHandler;
 import com.example.cs2340b_team29.model.Enemy;
 import com.example.cs2340b_team29.model.MapData;
@@ -88,7 +89,9 @@ public class GameActivity extends AppCompatActivity {
     private Runnable enemy2Movement;
     private WallCollisionHandler wallCollisionHandler;
     private EnemyCollisionHandler enemyCollisionHandler;
+    private PowerUpCollisionHandler powerUpCollisionHandler;
     private MapDataViewModel mapDataViewModel;
+
 
 
     @Override
@@ -199,6 +202,8 @@ public class GameActivity extends AppCompatActivity {
         instantiateGameViews();
         wallCollisionHandler = new WallCollisionHandler();
         enemyCollisionHandler = new EnemyCollisionHandler();
+        // powerUpCollisionHandler = new PowerUpCollisionHandler();
+        // playerViewModel.getPlayer().subscribe(powerUpCollisionHandler);
         playerViewModel.getPlayer().subscribe(wallCollisionHandler);
         playerViewModel.getPlayer().subscribe(enemyCollisionHandler);
         for (Enemy enemy: playerViewModel.getEnemiesInLevel()) {
@@ -346,6 +351,7 @@ public class GameActivity extends AppCompatActivity {
         handler.removeCallbacks(enemy2Movement);
         playerViewModel.getPlayer().unsubscribe(wallCollisionHandler);
         playerViewModel.getPlayer().unsubscribe(enemyCollisionHandler);
+        // playerViewModel.getPlayer().unsubscribe(powerUpCollisionHandler);
         Intent toEndScreen = new Intent(GameActivity.this, EndingActivity.class);
         startActivity(toEndScreen);
     }

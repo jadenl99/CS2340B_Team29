@@ -12,9 +12,38 @@ public abstract class PowerUp implements Collidable {
     protected int x;
     protected int y;
     protected Bitmap bitmap;
-
+    protected boolean isVisible;
     public PowerUp(int x, int y) {
         this.x = x;
         this.y = y;
+        isVisible = true;
+    }
+
+    @Override
+    public int getX() {
+        return x;
+    }
+
+    @Override
+    public int getY() {
+        return 0;
+    }
+
+    @Override
+    public void setX(int x) {
+
+    }
+
+    @Override
+    public void setY(int y) {
+
+    }
+
+    public void setVisible(boolean isVisible) {
+        this.isVisible = isVisible;
+    }
+
+    public boolean getVisible() {
+        return isVisible;
     }
 }
