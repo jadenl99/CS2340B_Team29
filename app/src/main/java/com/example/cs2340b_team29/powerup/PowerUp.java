@@ -13,6 +13,7 @@ public abstract class PowerUp implements Collidable {
     protected int y;
     protected Bitmap bitmap;
     protected boolean isVisible;
+    protected int powerUpId;
     public PowerUp(int x, int y) {
         this.x = x;
         this.y = y;
@@ -46,4 +47,13 @@ public abstract class PowerUp implements Collidable {
     public boolean getVisible() {
         return isVisible;
     }
+
+    public Bitmap getBitmap() {
+        return bitmap;
+    }
+
+    public void setBitmap(Bitmap bitmap) {
+        this.bitmap = bitmap;
+    }
+    public abstract int getPowerUpId();
 }

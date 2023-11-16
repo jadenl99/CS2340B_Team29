@@ -44,6 +44,9 @@ public class MapData {
     private Enemy wolf;
     private Weapon knife;
     private Weapon sword;
+    private PowerUp regenPowerUp;
+    private PowerUp vaporizeEnemyPowerUp;
+    private PowerUp healthPowerUp;
     private final int mapHeight = 23;
     private final int mapWidth = 11;
     // 0 stands for a "wall" (can't pass), 1 is a normal tile, and 2 is a
@@ -163,6 +166,10 @@ public class MapData {
         weapons2 = new ArrayList<>();
         weapons3 = new ArrayList<>();
 
+        powerUps1 = new ArrayList<>();
+        powerUps2 = new ArrayList<>();
+        powerUps3 = new ArrayList<>();
+
         allWeapons = new ArrayList<>();
         allEnemies = new ArrayList<>();
         allPowerUps = new ArrayList<>();
@@ -174,6 +181,11 @@ public class MapData {
 
         sword = new Sword();
         knife = new Knife();
+
+        regenPowerUp = new RegenPowerUp(10,3);
+        vaporizeEnemyPowerUp = new VaporizeEnemyPowerUp(12,18);
+        healthPowerUp = new HealthPowerUp(6,12);
+
 
         // put walls in each level
         for (int row = 0; row < mapHeight; row++) {
@@ -233,11 +245,14 @@ public class MapData {
         allWeapons.add(knife);
 
 
-        // put powerups in each level
-//        powerUps1.add(whatever);
-//        powerUps2.add(whatever);
-//        powerUps3.add(whatever);
+        //put powerups in each level
+        powerUps1.add(healthPowerUp);
+        powerUps2.add(vaporizeEnemyPowerUp);
+        powerUps3.add(regenPowerUp);
 
+        allPowerUps.add(healthPowerUp);
+        allPowerUps.add(vaporizeEnemyPowerUp);
+        allPowerUps.add(regenPowerUp);
     }
     public static synchronized MapData getMapData() {
         if (mapData == null) {

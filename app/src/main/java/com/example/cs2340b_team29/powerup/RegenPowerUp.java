@@ -6,6 +6,7 @@ package com.example.cs2340b_team29.powerup;
  */
 
 public class RegenPowerUp extends PowerUp {
+    private int powerUpId = 3;
 
     public RegenPowerUp(int x, int y) {
         super(x, y);
@@ -27,5 +28,10 @@ public class RegenPowerUp extends PowerUp {
 
     public void setY(int y) {
         this.y = y;
+    }
+
+    @Override
+    public int getPowerUpId() {
+        return powerUpId;
     }
 }

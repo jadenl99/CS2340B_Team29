@@ -28,6 +28,8 @@ public class LevelView extends SurfaceView implements Runnable {
     private Rect enemy1DestinationRect;
     private Rect enemy2DestinationRect;
     private Rect weaponDestinationRect;
+    private Rect powerupDestinationRect;
+
     private double tileHeight;
     private final int numTilesWide = 11;
     private final int numTilesLong = 23;
@@ -40,6 +42,8 @@ public class LevelView extends SurfaceView implements Runnable {
     private int enemy2Y;
     private int weaponX;
     private int weaponY;
+    private int powerupX;
+    private int powerupY;
     private int currX = 3;
     private int currY = 0;
 
@@ -115,6 +119,10 @@ public class LevelView extends SurfaceView implements Runnable {
             weaponY = playerViewModel.getEnemiesInLevel().get(0).getY();
             int[] weaponCoords = calcPixelsBasedOnIndices(weaponX, weaponY);
 
+            powerupX = playerViewModel.getPowerUpsInLevel().get(0).getX();
+            powerupY = playerViewModel.getPowerUpsInLevel().get(0).getY();
+            int[] powerupCoords = calcPixelsBasedOnIndices(powerupX, powerupY);
+
             int intTileWidth = (int) tileWidth;
             int intTileHeight = (int) tileHeight;
 
@@ -155,6 +163,16 @@ public class LevelView extends SurfaceView implements Runnable {
             Bitmap resizedWeaponBitmap = Bitmap.createScaledBitmap(weaponBitMap,
                     intTileWidth, intTileHeight, false);
             canvas.drawBitmap(weaponBitMap, null, weaponDestinationRect, paint);
+
+            //draw powerup
+            Bitmap powerupBitMap = playerViewModel.getPowerUpsInLevel().get(0).getBitmap();
+            powerupDestinationRect = new Rect(
+                    powerupCoords[0], powerupCoords[1],
+                    powerupCoords[0] + intTileWidth,
+                    powerupCoords[1] + intTileHeight);
+            Bitmap resizedPowerupBitmap = Bitmap.createScaledBitmap(powerupBitMap,
+                    intTileWidth, intTileHeight, false);
+            canvas.drawBitmap(powerupBitMap, null, powerupDestinationRect, paint);
 
 
             getHolder().unlockCanvasAndPost(canvas);
