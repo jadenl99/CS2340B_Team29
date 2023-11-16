@@ -3,6 +3,8 @@ package com.example.cs2340b_team29.model;
 
 import com.example.cs2340b_team29.collision.CollisionObserver;
 import com.example.cs2340b_team29.collision.Collidable;
+import com.example.cs2340b_team29.powerup.BasePowerUpBox;
+import com.example.cs2340b_team29.powerup.PowerUpBox;
 import com.example.cs2340b_team29.viewmodel.MoveStrategy;
 
 
@@ -21,10 +23,11 @@ public class Player extends Entity {
 
     private MoveStrategy moveStrategy;
     private int difficulty;
-
     private boolean isInvincible;
     private boolean hasGun;
     private boolean hasSword;
+
+    private BasePowerUpBox powerUpBox;
 
 
     private Player() {
@@ -35,6 +38,7 @@ public class Player extends Entity {
         observers = new ArrayList<>();
         hasGun = false;
         hasSword = false;
+        powerUpBox = new PowerUpBox();
     }
     public static synchronized Player getPlayer() {
         if (player == null) {
@@ -178,6 +182,18 @@ public class Player extends Entity {
     }
     public void setIsInvincible(boolean i) {
         isInvincible = i;
+    }
+
+    public BasePowerUpBox getPowerUpBox() {
+        return powerUpBox;
+    }
+
+    public void setPowerUpBox(BasePowerUpBox powerUpBox) {
+        this.powerUpBox = powerUpBox;
+    }
+
+    public void updateBuffs() {
+        powerUpBox.updateBuffsToPlayer(this);
     }
 
 
