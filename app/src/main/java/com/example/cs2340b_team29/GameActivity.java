@@ -311,6 +311,19 @@ public class GameActivity extends AppCompatActivity {
         return true;
     }
 
+    @Override
+    public boolean onKeyUp(int keyCode, KeyEvent event) {
+        switch (keyCode) {
+            case KeyEvent.KEYCODE_ENTER:
+                if (event.isShiftPressed()) {
+                    player1.attackEnemy();
+                }
+                return true;
+            default:
+                return super.onKeyUp(keyCode, event);
+        }
+    }
+
     private void toggleView() {
         room = mapDataViewModel.getMapData().getLevel();
         if (room == 2) {

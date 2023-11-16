@@ -5,6 +5,7 @@ import com.example.cs2340b_team29.collision.CollisionObserver;
 import com.example.cs2340b_team29.collision.Collidable;
 import com.example.cs2340b_team29.powerup.BasePowerUpBox;
 import com.example.cs2340b_team29.powerup.PowerUpBox;
+import com.example.cs2340b_team29.viewmodel.MoveOffScreen;
 import com.example.cs2340b_team29.viewmodel.MoveStrategy;
 
 
@@ -24,6 +25,11 @@ public class Player extends Entity {
     private MoveStrategy moveStrategy;
     private int difficulty;
     private boolean isInvincible;
+    private boolean hasGun;
+    private boolean hasSword;
+
+    private BasePowerUpBox powerUpBox;
+
 
     private BasePowerUpBox powerUpBox;
 
@@ -34,6 +40,14 @@ public class Player extends Entity {
         score = 100;
         isInvincible = false;
         observers = new ArrayList<>();
+        hasGun = false;
+        hasSword = false;
+        powerUpBox = new PowerUpBox();
+        hasGun = false;
+        hasSword = false;
+        powerUpBox = new PowerUpBox();
+        hasGun = false;
+        hasSword = false;
         powerUpBox = new PowerUpBox();
     }
     public static synchronized Player getPlayer() {
@@ -123,8 +137,16 @@ public class Player extends Entity {
         idAvatar = id;
     }
 
+    public void setHasGun(boolean bool) {
+        this.hasGun = bool;
+    }
 
+    public void setHasSword(boolean bool) {
+        this.hasSword = bool;
+    }
 
+    public boolean getHasGun() { return hasGun; }
+    public boolean getHasSword() { return hasSword; }
 
     public MoveStrategy getMoveStrategy() {
         return moveStrategy;
@@ -184,6 +206,8 @@ public class Player extends Entity {
         powerUpBox.updateBuffsToPlayer(this);
     }
 
-
-
+    public void attackEnemy() {
+        //MoveStrategy offScreen = new MoveOffScreen();
+        //enemy.setMoveStrategy(offScreen);
+    }
 }

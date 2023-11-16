@@ -1,7 +1,5 @@
 package com.example.cs2340b_team29;
 import static org.junit.Assert.assertEquals;
-
-
 import com.example.cs2340b_team29.collision.PowerUpCollisionHandler;
 import com.example.cs2340b_team29.model.Enemy;
 import com.example.cs2340b_team29.model.MapData;
@@ -13,6 +11,8 @@ import com.example.cs2340b_team29.powerup.RegenPowerUp;
 import com.example.cs2340b_team29.powerup.VaporizeEnemyPowerUp;
 import com.example.cs2340b_team29.viewmodel.MoveDown;
 import com.example.cs2340b_team29.viewmodel.PlayerViewModel;
+import com.example.cs2340b_team29.powerup.AttackPowerUpDecorator;
+//import com.example.cs2340b_team29.powerup.BasePlayer;
 
 import org.junit.Test;
 

@@ -9,6 +9,10 @@ import com.example.cs2340b_team29.powerup.RegenPowerUp;
 import com.example.cs2340b_team29.powerup.RegenPowerUpDecorator;
 import com.example.cs2340b_team29.powerup.VaporizeEnemyPowerUp;
 import com.example.cs2340b_team29.powerup.VaporizeEnemyPowerUpDecorator;
+import com.example.cs2340b_team29.powerup.AttackPowerUp;
+import com.example.cs2340b_team29.powerup.PowerUp;
+import com.example.cs2340b_team29.powerup.AttackPowerUp;
+import com.example.cs2340b_team29.powerup.PowerUp;
 import com.example.cs2340b_team29.viewmodel.MoveStrategy;
 
 public class PowerUpCollisionHandler implements CollisionObserver {
@@ -19,7 +23,6 @@ public class PowerUpCollisionHandler implements CollisionObserver {
         }
         Player player = (Player) e1;
         PowerUp powerUp = (PowerUp) e2;
-
 
         BasePowerUpBox powerUpBox = player.getPowerUpBox();
         if (powerUp instanceof HealthPowerUp) {
@@ -35,5 +38,8 @@ public class PowerUpCollisionHandler implements CollisionObserver {
         // make visual powerUp invisible
         powerUp.setVisible(false);
 
+        if (powerUp instanceof AttackPowerUp) {
+
+        }
     }
 }
