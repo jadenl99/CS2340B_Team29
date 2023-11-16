@@ -11,7 +11,6 @@ import com.example.cs2340b_team29.model.Player;
  * updateBuffsToPlayer() is called
  */
 
-
 public class RegenPowerUpDecorator extends PowerUpDecorator {
 
     public RegenPowerUpDecorator(BasePowerUpBox powerUpBox) {

@@ -31,6 +31,7 @@ public class Player extends Entity {
     private BasePowerUpBox powerUpBox;
 
 
+
     private Player() {
         super(0, 0);
         // for now, will count down from score based on time
