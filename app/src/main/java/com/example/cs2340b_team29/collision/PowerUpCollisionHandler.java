@@ -41,8 +41,5 @@ public class PowerUpCollisionHandler implements CollisionObserver {
         if (powerUp instanceof AttackPowerUp) {
 
         }
-        if (powerUp instanceof AttackPowerUp) {
-
-        }
     }
 }

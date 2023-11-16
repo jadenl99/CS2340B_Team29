@@ -93,6 +93,7 @@ public class GameActivity extends AppCompatActivity {
     private MapDataViewModel mapDataViewModel;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         playerViewModel = new ViewModelProvider(this).get(PlayerViewModel.class);

@@ -11,9 +11,7 @@ public class PowerUpDecorator implements BasePowerUpBox {
     }
     @Override
     public void updateBuffsToPlayer(Player player) {
-<<<<<<< HEAD
         powerUpBox.updateBuffsToPlayer(player);
-=======
->>>>>>> a944f4f (pull from main)
+        powerUpBox.updateBuffsToPlayer(player);
     }
 }
