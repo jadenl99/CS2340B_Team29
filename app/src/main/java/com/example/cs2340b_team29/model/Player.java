@@ -43,6 +43,8 @@ public class Player extends Entity {
         hasGun = false;
         hasSword = false;
         powerUpBox = new PowerUpBox();
+        hasGun = false;
+        hasSword = false;
     }
     public static synchronized Player getPlayer() {
         if (player == null) {
