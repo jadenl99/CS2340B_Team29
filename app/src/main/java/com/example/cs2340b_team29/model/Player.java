@@ -23,6 +23,8 @@ public class Player extends Entity {
     private int difficulty;
 
     private boolean isInvincible;
+    private boolean hasGun;
+    private boolean hasSword;
 
 
     private Player() {
@@ -31,6 +33,8 @@ public class Player extends Entity {
         score = 100;
         isInvincible = false;
         observers = new ArrayList<>();
+        hasGun = false;
+        hasSword = false;
     }
     public static synchronized Player getPlayer() {
         if (player == null) {
@@ -119,8 +123,16 @@ public class Player extends Entity {
         idAvatar = id;
     }
 
+    public void setHasGun(boolean bool) {
+        this.hasGun = bool;
+    }
 
+    public void setHasSword(boolean bool) {
+        this.hasSword = bool;
+    }
 
+    public boolean getHasGun() { return hasGun; }
+    public boolean getHasSword() { return hasSword; }
 
     public MoveStrategy getMoveStrategy() {
         return moveStrategy;
