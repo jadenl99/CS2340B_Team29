@@ -73,7 +73,7 @@ public class PlayerViewModel extends ViewModel {
         ArrayList<Wall> borderWalls = mapData.getBorderWalls();
         ArrayList<Wall> walls = mapData.getWallsInLevel(currLevel);
         ArrayList<Enemy> enemies = mapData.getEnemies(currLevel);
-        // ArrayList<PowerUp> powerUps = mapData.getPowerUp(currLevel);
+        ArrayList<PowerUp> powerUps = mapData.getPowerUp(currLevel);
         for (Wall wall : walls) {
             if (checkCollision(player, wall)) {
                 player.notifyCollision(wall, player.getMoveStrategy());
@@ -86,18 +86,18 @@ public class PlayerViewModel extends ViewModel {
         }
         if (!player.getIsInvincible()) {
             for (Enemy enemy: enemies) {
-                if (checkCollision(player, enemy) || checkAdjacentCollision(player, enemy)) {
+                if (enemy.getVisible() && (checkCollision(player, enemy) || checkAdjacentCollision(player, enemy))) {
                     player.notifyCollision(enemy, player.getMoveStrategy());
                     player.toggleIsInvincible();
                 }
             }
         }
 
-//        for (PowerUp powerUp : powerUps) {
-//            if (checkCollision(player, powerUp)) {
-//                player.notifyCollision(powerUp, player.getMoveStrategy());
-//            }
-//        }
+        for (PowerUp powerUp : powerUps) {
+            if (powerUp.getVisible() && checkCollision(player, powerUp)) {
+                player.notifyCollision(powerUp, player.getMoveStrategy());
+            }
+        }
     }
 
     public boolean checkCollision(Collidable e1, Collidable e2) {

@@ -7,14 +7,19 @@ import com.badlogic.gdx.utils.compression.lzma.Base;
  */
 
 public class RegenPowerUpDecorator extends PowerUpDecorator {
+    private int hpRestored;
   
     public RegenPowerUpDecorator(BasePowerUpBox powerUpBox) {
         super(powerUpBox);
+        hpRestored = 0;
     }
 
     @Override
     public void updateBuffsToPlayer(Player player) {
         super.updateBuffsToPlayer(player);
-        player.setHpLevel(1 + player.getHP());
+        if (hpRestored < 10) {
+            player.setHpLevel(1 + player.getHP());
+            hpRestored++;
+        }
     }
 }
