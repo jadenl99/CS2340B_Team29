@@ -39,8 +39,10 @@ public class MapData {
     private ArrayList<Weapon> allWeapons;
 
     private Enemy ninja;
+    private Enemy ninja2;
     private Enemy spider;
     private Enemy snake;
+    private Enemy snake2;
     private Enemy wolf;
     private Weapon knife;
     private Weapon sword;
@@ -176,14 +178,16 @@ public class MapData {
 
         wolf = EnemyFactory.createEnemy("wolf");
         ninja = EnemyFactory.createEnemy("ninja");
+        ninja2 = EnemyFactory.createEnemy("ninja");
         snake = EnemyFactory.createEnemy("snake");
+        snake2 = EnemyFactory.createEnemy("snake");
         spider = EnemyFactory.createEnemy("spider");
 
         sword = new Sword();
         knife = new Knife();
 
-        regenPowerUp = new RegenPowerUp(10,3);
-        vaporizeEnemyPowerUp = new VaporizeEnemyPowerUp(12,18);
+        regenPowerUp = new RegenPowerUp(8,3);
+        vaporizeEnemyPowerUp = new VaporizeEnemyPowerUp(4,11);
         healthPowerUp = new HealthPowerUp(6,12);
 
 
@@ -226,15 +230,17 @@ public class MapData {
         enemies1.add(snake);
 
         enemies2.add(ninja);
-        enemies2.add(snake);
+        enemies2.add(snake2);
 
         enemies3.add(wolf);
-        enemies3.add(ninja);
+        enemies3.add(ninja2);
 
         allEnemies.add(spider);
         allEnemies.add(ninja);
         allEnemies.add(wolf);
         allEnemies.add(snake);
+        allEnemies.add(snake2);
+        allEnemies.add(ninja2);
 
         //put weapons in each level
         weapons1.add(sword);
@@ -246,9 +252,9 @@ public class MapData {
 
 
         //put powerups in each level
-        powerUps1.add(healthPowerUp);
+        powerUps1.add(regenPowerUp);
         powerUps2.add(vaporizeEnemyPowerUp);
-        powerUps3.add(regenPowerUp);
+        powerUps3.add(healthPowerUp);
 
         allPowerUps.add(healthPowerUp);
         allPowerUps.add(vaporizeEnemyPowerUp);

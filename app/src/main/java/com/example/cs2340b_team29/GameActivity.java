@@ -123,6 +123,7 @@ public class GameActivity extends AppCompatActivity {
                 int currScore = playerViewModel.getPlayer().getScore();
                 playerScoreLabel.setText("Score: "
                         + Integer.toString(currScore));
+                player1.updateBuffs();
                 handler.postDelayed(this, 1000);
             }
         };
@@ -145,7 +146,7 @@ public class GameActivity extends AppCompatActivity {
                     playerViewModel.getEnemy1().move();
                 } else if (enemy1Y < 22 && enemy1Move instanceof MoveDown) {
                     playerViewModel.getEnemy1().move();
-                } else if (enemy1Y == 0 && enemy1Move instanceof MoveUp) {
+                } else if (enemy1Y == 0) {
                     playerViewModel.getEnemy1().setMoveStrategy(down);
                     playerViewModel.getEnemy1().move();
                 } else {
@@ -171,7 +172,7 @@ public class GameActivity extends AppCompatActivity {
 
                 if (enemy2X < 10 && enemy2Move instanceof MoveRight) {
                     playerViewModel.getEnemy2().move();
-                } else if (enemy2X == 0 && enemy2Move instanceof MoveLeft) {
+                } else if (enemy2X == 0) {
                     playerViewModel.getEnemy2().setMoveStrategy(right);
                     playerViewModel.getEnemy2().move();
                 } else {
@@ -204,12 +205,8 @@ public class GameActivity extends AppCompatActivity {
         getWindowManager().getDefaultDisplay().getSize(point);
 
         instantiateGameViews();
-        wallCollisionHandler = new WallCollisionHandler();
-        enemyCollisionHandler = new EnemyCollisionHandler();
-        // powerUpCollisionHandler = new PowerUpCollisionHandler();
-        // playerViewModel.getPlayer().subscribe(powerUpCollisionHandler);
-        playerViewModel.getPlayer().subscribe(wallCollisionHandler);
-        playerViewModel.getPlayer().subscribe(enemyCollisionHandler);
+        attachPlayerHandlers();
+
         for (Enemy enemy: playerViewModel.getEnemiesInLevel()) {
             enemy.subscribe(wallCollisionHandler);
         }
@@ -233,13 +230,28 @@ public class GameActivity extends AppCompatActivity {
 
         playerScoreLabel.setText("Score: " + Integer.toString(score));
         nameLabel.setText(name);
-
+        mapDataViewModel.resetMapData();
         playerViewModel.getPlayer().setX(8);
         playerViewModel.getPlayer().setY(22);
         playerViewModel.getEnemiesInLevel().get(0).setX(3);
         playerViewModel.getEnemiesInLevel().get(0).setY(2);
         playerViewModel.getEnemiesInLevel().get(1).setX(0);
         playerViewModel.getEnemiesInLevel().get(1).setY(8);
+    }
+
+    private void attachPlayerHandlers() {
+        wallCollisionHandler = new WallCollisionHandler();
+        enemyCollisionHandler = new EnemyCollisionHandler();
+        powerUpCollisionHandler = new PowerUpCollisionHandler();
+        playerViewModel.getPlayer().subscribe(powerUpCollisionHandler);
+        playerViewModel.getPlayer().subscribe(wallCollisionHandler);
+        playerViewModel.getPlayer().subscribe(enemyCollisionHandler);
+    }
+
+    private void detachPlayerHandlers() {
+        playerViewModel.getPlayer().unsubscribe(wallCollisionHandler);
+        playerViewModel.getPlayer().unsubscribe(enemyCollisionHandler);
+        playerViewModel.getPlayer().unsubscribe(powerUpCollisionHandler);
     }
 
 
@@ -367,9 +379,8 @@ public class GameActivity extends AppCompatActivity {
         handler.removeCallbacks(scoreCountDown);
         handler.removeCallbacks(enemy1Movement);
         handler.removeCallbacks(enemy2Movement);
-        playerViewModel.getPlayer().unsubscribe(wallCollisionHandler);
-        playerViewModel.getPlayer().unsubscribe(enemyCollisionHandler);
-        // playerViewModel.getPlayer().unsubscribe(powerUpCollisionHandler);
+        detachPlayerHandlers();
+
         Intent toEndScreen = new Intent(GameActivity.this, EndingActivity.class);
         startActivity(toEndScreen);
     }
