@@ -9,11 +9,11 @@ import com.example.cs2340b_team29.viewmodel.MoveStrategy;
 public class Sword extends Weapon {
 
 
-    private int weaponId = 2;
-    private Bitmap bitmap;
 
-    public Sword() {
-        super(8, 16);
+
+    public Sword(int x, int y) {
+        super(x, y);
+        weaponId = 2;
     }
 
     public int getWeaponId() {

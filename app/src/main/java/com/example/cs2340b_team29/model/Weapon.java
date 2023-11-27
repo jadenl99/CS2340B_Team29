@@ -9,8 +9,8 @@ import com.example.cs2340b_team29.viewmodel.MoveStrategy;
 public abstract class Weapon implements Collidable {
     protected int x;
     protected int y;
-    Bitmap bitmap;
-    int weaponId;
+    protected Bitmap bitmap;
+    protected int weaponId;
     boolean isVisible;
     public Weapon(int x, int y) {
         this.x = x;

@@ -74,6 +74,7 @@ public class PlayerViewModel extends ViewModel {
         ArrayList<Wall> walls = mapData.getWallsInLevel(currLevel);
         ArrayList<Enemy> enemies = mapData.getEnemies(currLevel);
         ArrayList<PowerUp> powerUps = mapData.getPowerUp(currLevel);
+        ArrayList<Weapon> weapons = mapData.getWeapons(currLevel);
         for (Wall wall : walls) {
             if (checkCollision(player, wall)) {
                 player.notifyCollision(wall, player.getMoveStrategy());
@@ -96,6 +97,12 @@ public class PlayerViewModel extends ViewModel {
         for (PowerUp powerUp : powerUps) {
             if (powerUp.getVisible() && checkCollision(player, powerUp)) {
                 player.notifyCollision(powerUp, player.getMoveStrategy());
+            }
+        }
+
+        for (Weapon weapon : weapons) {
+            if (weapon.getVisible() && checkCollision(player, weapon)) {
+                player.notifyCollision(weapon, player.getMoveStrategy());
             }
         }
     }

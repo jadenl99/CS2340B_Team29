@@ -9,6 +9,7 @@ import android.graphics.Rect;
 import android.view.SurfaceView;
 
 import com.example.cs2340b_team29.model.Enemy;
+import com.example.cs2340b_team29.model.Weapon;
 import com.example.cs2340b_team29.powerup.PowerUp;
 import com.example.cs2340b_team29.viewmodel.PlayerViewModel;
 
@@ -118,7 +119,7 @@ public class LevelView extends SurfaceView implements Runnable {
             int[] enemy2coords = calcPixelsBasedOnIndices(enemy2X, enemy2Y);
 
             weaponX = playerViewModel.getWeaponsInLevel().get(0).getX();
-            weaponY = playerViewModel.getEnemiesInLevel().get(0).getY();
+            weaponY = playerViewModel.getWeaponsInLevel().get(0).getY();
             int[] weaponCoords = calcPixelsBasedOnIndices(weaponX, weaponY);
 
             powerupX = playerViewModel.getPowerUpsInLevel().get(0).getX();
@@ -162,15 +163,17 @@ public class LevelView extends SurfaceView implements Runnable {
             }
 
             //draw weapon
-            Bitmap weaponBitMap = playerViewModel.getWeaponsInLevel().get(0).getBitmap();
-            weaponDestinationRect = new Rect(
-                    weaponCoords[0], weaponCoords[1],
-                    weaponCoords[0] + intTileWidth,
-                    weaponCoords[1] + intTileHeight);
-            Bitmap resizedWeaponBitmap = Bitmap.createScaledBitmap(weaponBitMap,
-                    intTileWidth, intTileHeight, false);
-            canvas.drawBitmap(weaponBitMap, null, weaponDestinationRect, paint);
-
+            Weapon weapon = playerViewModel.getWeaponsInLevel().get(0);
+            if (weapon.getVisible()) {
+                Bitmap weaponBitMap = weapon.getBitmap();
+                weaponDestinationRect = new Rect(
+                        weaponCoords[0], weaponCoords[1],
+                        weaponCoords[0] + intTileWidth,
+                        weaponCoords[1] + intTileHeight);
+                Bitmap resizedWeaponBitmap = Bitmap.createScaledBitmap(weaponBitMap,
+                        intTileWidth, intTileHeight, false);
+                canvas.drawBitmap(weaponBitMap, null, weaponDestinationRect, paint);
+            }
             //draw powerup
             PowerUp powerUp = playerViewModel.getPowerUpsInLevel().get(0);
             if (powerUp.getVisible()) {

@@ -27,6 +27,7 @@ import android.widget.TextView;
 import com.example.cs2340b_team29.collision.EnemyCollisionHandler;
 import com.example.cs2340b_team29.collision.PowerUpCollisionHandler;
 import com.example.cs2340b_team29.collision.WallCollisionHandler;
+import com.example.cs2340b_team29.collision.WeaponCollisionHandler;
 import com.example.cs2340b_team29.model.Enemy;
 import com.example.cs2340b_team29.model.MapData;
 import com.example.cs2340b_team29.model.Player;
@@ -92,6 +93,7 @@ public class GameActivity extends AppCompatActivity {
     private WallCollisionHandler wallCollisionHandler;
     private EnemyCollisionHandler enemyCollisionHandler;
     private PowerUpCollisionHandler powerUpCollisionHandler;
+    private WeaponCollisionHandler weaponCollisionHandler;
     private MapDataViewModel mapDataViewModel;
 
 
@@ -243,15 +245,18 @@ public class GameActivity extends AppCompatActivity {
         wallCollisionHandler = new WallCollisionHandler();
         enemyCollisionHandler = new EnemyCollisionHandler();
         powerUpCollisionHandler = new PowerUpCollisionHandler();
+        weaponCollisionHandler = new WeaponCollisionHandler();
         playerViewModel.getPlayer().subscribe(powerUpCollisionHandler);
         playerViewModel.getPlayer().subscribe(wallCollisionHandler);
         playerViewModel.getPlayer().subscribe(enemyCollisionHandler);
+        playerViewModel.getPlayer().subscribe(weaponCollisionHandler);
     }
 
     private void detachPlayerHandlers() {
         playerViewModel.getPlayer().unsubscribe(wallCollisionHandler);
         playerViewModel.getPlayer().unsubscribe(enemyCollisionHandler);
         playerViewModel.getPlayer().unsubscribe(powerUpCollisionHandler);
+        playerViewModel.getPlayer().unsubscribe(weaponCollisionHandler);
     }
 
 

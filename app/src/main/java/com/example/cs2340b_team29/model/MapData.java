@@ -46,6 +46,7 @@ public class MapData {
     private Enemy wolf;
     private Weapon knife;
     private Weapon sword;
+    private Weapon sword2;
     private PowerUp regenPowerUp;
     private PowerUp vaporizeEnemyPowerUp;
     private PowerUp healthPowerUp;
@@ -183,8 +184,9 @@ public class MapData {
         snake2 = EnemyFactory.createEnemy("snake");
         spider = EnemyFactory.createEnemy("spider");
 
-        sword = new Sword();
-        knife = new Knife();
+        sword = new Sword(8, 16);
+        sword2 = new Sword(8, 16);
+        knife = new Knife(3, 12);
 
         regenPowerUp = new RegenPowerUp(8,3);
         vaporizeEnemyPowerUp = new VaporizeEnemyPowerUp(4,11);
@@ -245,9 +247,10 @@ public class MapData {
         //put weapons in each level
         weapons1.add(sword);
         weapons2.add(knife);
-        weapons3.add(sword);
+        weapons3.add(sword2);
 
         allWeapons.add(sword);
+        allWeapons.add(sword2);
         allWeapons.add(knife);
 
 

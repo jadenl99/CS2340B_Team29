@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel;
 import com.example.cs2340b_team29.model.Enemy;
 import com.example.cs2340b_team29.model.MapData;
 import com.example.cs2340b_team29.model.Player;
+import com.example.cs2340b_team29.model.Weapon;
 import com.example.cs2340b_team29.powerup.PowerUp;
 import com.example.cs2340b_team29.powerup.PowerUpBox;
 
@@ -54,6 +55,11 @@ public class MapDataViewModel extends ViewModel {
 
         for (Enemy enemy : enemy3) {
             enemy.setVisible(true);
+        }
+
+        ArrayList<Weapon> weapons = mapData.getAllWeapons();
+        for (Weapon weapon : weapons) {
+            weapon.setVisible(true);
         }
 
 
