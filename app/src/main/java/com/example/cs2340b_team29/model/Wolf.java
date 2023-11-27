@@ -45,10 +45,13 @@ public class Wolf extends Enemy {
     public void attack(Player player, int difficulty) {
         if (difficulty == 1) {
             player.setHpLevel(player.getHP() - 2);
+            player.setScore(player.getScore() - 20);
         } else if (difficulty == 2) {
             player.setHpLevel(player.getHP() - 5);
+            player.setScore(player.getScore() - 50);
         } else {
             player.setHpLevel(player.getHP() - 7);
+            player.setScore(player.getScore() - 70);
         }
     }
 }
