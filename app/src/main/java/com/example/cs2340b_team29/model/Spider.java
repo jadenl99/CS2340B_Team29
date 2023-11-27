@@ -45,10 +45,13 @@ public class Spider extends Enemy {
     public void attack(Player player, int difficulty) {
         if (difficulty == 1) {
             player.setHpLevel(player.getHP() - 2);
+            player.setScore(player.getScore() - 20);
         } else if (difficulty == 2) {
             player.setHpLevel(player.getHP() - 4);
+            player.setScore(player.getScore() - 40);
         } else {
             player.setHpLevel(player.getHP() - 6);
+            player.setScore(player.getScore() - 60);
         }
     }
 }
