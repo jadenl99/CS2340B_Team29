@@ -44,10 +44,14 @@ public class Ninja extends Enemy {
     public void attack(Player player, int difficulty) {
         if (difficulty == 1) {
             player.setHpLevel(player.getHP() - 1);
+            //decrease score based on hp decrease
+            player.setScore(player.getScore() - 10);
         } else if (difficulty == 2) {
             player.setHpLevel(player.getHP() - 2);
+            player.setScore(player.getScore() - 20);
         } else {
             player.setHpLevel(player.getHP() - 3);
+            player.setScore(player.getScore() - 30);
         }
     }
 }
