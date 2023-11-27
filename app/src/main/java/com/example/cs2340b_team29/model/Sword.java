@@ -8,14 +8,12 @@ import com.example.cs2340b_team29.viewmodel.MoveStrategy;
 
 public class Sword extends Weapon {
 
-    private int x;
-    private int y;
-    private int weaponId = 2;
-    private Bitmap bitmap;
 
-    public Sword() {
-        x = 8;
-        y = 16;
+
+
+    public Sword(int x, int y) {
+        super(x, y);
+        weaponId = 2;
     }
 
     public int getWeaponId() {
@@ -47,23 +45,5 @@ public class Sword extends Weapon {
         this.bitmap = bitmap;
     }
 
-    @Override
-    public int getX() {
-        return 0;
-    }
 
-    @Override
-    public int getY() {
-        return 0;
-    }
-
-    @Override
-    public void setX(int x) {
-        this.x = x;
-    }
-
-    @Override
-    public void setY(int y) {
-        this.y = y;
-    }
 }
