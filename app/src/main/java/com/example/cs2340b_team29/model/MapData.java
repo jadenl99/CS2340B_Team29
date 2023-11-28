@@ -1,5 +1,10 @@
 package com.example.cs2340b_team29.model;
 
+import com.example.cs2340b_team29.powerup.HealthPowerUp;
+import com.example.cs2340b_team29.powerup.PowerUp;
+import com.example.cs2340b_team29.powerup.RegenPowerUp;
+import com.example.cs2340b_team29.powerup.VaporizeEnemyPowerUp;
+
 import java.util.ArrayList;
 
 
@@ -22,11 +27,29 @@ public class MapData {
     private ArrayList<Enemy> enemies2;
     private ArrayList<Enemy> enemies3;
     private ArrayList<Enemy> allEnemies;
+    private ArrayList<PowerUp> powerUps1;
+    private ArrayList<PowerUp> powerUps2;
+    private ArrayList<PowerUp> powerUps3;
+
+    private ArrayList<PowerUp> allPowerUps;
+
+    private ArrayList<Weapon> weapons1;
+    private ArrayList<Weapon> weapons2;
+    private ArrayList<Weapon> weapons3;
+    private ArrayList<Weapon> allWeapons;
 
     private Enemy ninja;
+    private Enemy ninja2;
     private Enemy spider;
     private Enemy snake;
+    private Enemy snake2;
     private Enemy wolf;
+    private Weapon knife;
+    private Weapon sword;
+    private Weapon sword2;
+    private PowerUp regenPowerUp;
+    private PowerUp vaporizeEnemyPowerUp;
+    private PowerUp healthPowerUp;
     private final int mapHeight = 23;
     private final int mapWidth = 11;
     // 0 stands for a "wall" (can't pass), 1 is a normal tile, and 2 is a
@@ -114,8 +137,6 @@ public class MapData {
     // 1 is easy, 2 is medium, 3 is hard
     private int difficulty;
 
-    // adjust multipliers in setDifficulty()
-    private double difficultyMultiplier;
 
     private int level;
     private MapData() {
@@ -144,12 +165,33 @@ public class MapData {
         enemies2 = new ArrayList<>();
         enemies3 = new ArrayList<>();
 
+        weapons1 = new ArrayList<>();
+        weapons2 = new ArrayList<>();
+        weapons3 = new ArrayList<>();
+
+        powerUps1 = new ArrayList<>();
+        powerUps2 = new ArrayList<>();
+        powerUps3 = new ArrayList<>();
+
+        allWeapons = new ArrayList<>();
         allEnemies = new ArrayList<>();
+        allPowerUps = new ArrayList<>();
 
         wolf = EnemyFactory.createEnemy("wolf");
         ninja = EnemyFactory.createEnemy("ninja");
+        ninja2 = EnemyFactory.createEnemy("ninja");
         snake = EnemyFactory.createEnemy("snake");
+        snake2 = EnemyFactory.createEnemy("snake");
         spider = EnemyFactory.createEnemy("spider");
+
+        sword = new Sword(8, 16);
+        sword2 = new Sword(8, 16);
+        knife = new Knife(3, 12);
+
+        regenPowerUp = new RegenPowerUp(8,3);
+        vaporizeEnemyPowerUp = new VaporizeEnemyPowerUp(4,11);
+        healthPowerUp = new HealthPowerUp(6,12);
+
 
         // put walls in each level
         for (int row = 0; row < mapHeight; row++) {
@@ -190,16 +232,36 @@ public class MapData {
         enemies1.add(snake);
 
         enemies2.add(ninja);
-        enemies2.add(snake);
+        enemies2.add(snake2);
 
         enemies3.add(wolf);
-        enemies3.add(ninja);
+        enemies3.add(ninja2);
 
         allEnemies.add(spider);
         allEnemies.add(ninja);
         allEnemies.add(wolf);
         allEnemies.add(snake);
+        allEnemies.add(snake2);
+        allEnemies.add(ninja2);
 
+        //put weapons in each level
+        weapons1.add(sword);
+        weapons2.add(knife);
+        weapons3.add(sword2);
+
+        allWeapons.add(sword);
+        allWeapons.add(sword2);
+        allWeapons.add(knife);
+
+
+        //put powerups in each level
+        powerUps1.add(regenPowerUp);
+        powerUps2.add(vaporizeEnemyPowerUp);
+        powerUps3.add(healthPowerUp);
+
+        allPowerUps.add(healthPowerUp);
+        allPowerUps.add(vaporizeEnemyPowerUp);
+        allPowerUps.add(regenPowerUp);
     }
     public static synchronized MapData getMapData() {
         if (mapData == null) {
@@ -243,9 +305,7 @@ public class MapData {
         return difficulty;
     }
 
-    public double getDifficultyMultiplier() {
-        return difficultyMultiplier;
-    }
+
 
     public int getLevel() {
         return level;
@@ -266,6 +326,33 @@ public class MapData {
 
     public ArrayList<Enemy> getAllEnemies() {
         return allEnemies;
+    }
 
+    public ArrayList<Weapon> getAllWeapons() {
+        return allWeapons;
+    }
+
+    public ArrayList<PowerUp> getAllPowerUps() {
+        return allPowerUps;
+    }
+
+    public ArrayList<PowerUp> getPowerUp(int level) {
+        if (level == 1) {
+            return powerUps1;
+        }
+        if (level == 2) {
+            return powerUps2;
+        }
+        return powerUps3;
+    }
+
+    public ArrayList<Weapon> getWeapons(int level) {
+        if (level == 1) {
+            return weapons1;
+        }
+        if (level == 2) {
+            return weapons2;
+        }
+        return weapons3;
     }
 }

@@ -25,10 +25,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.cs2340b_team29.collision.EnemyCollisionHandler;
+import com.example.cs2340b_team29.collision.PowerUpCollisionHandler;
 import com.example.cs2340b_team29.collision.WallCollisionHandler;
+import com.example.cs2340b_team29.collision.WeaponCollisionHandler;
 import com.example.cs2340b_team29.model.Enemy;
 import com.example.cs2340b_team29.model.MapData;
 import com.example.cs2340b_team29.model.Player;
+import com.example.cs2340b_team29.model.Weapon;
+import com.example.cs2340b_team29.powerup.PowerUp;
 import com.example.cs2340b_team29.viewmodel.MapDataViewModel;
 import com.example.cs2340b_team29.viewmodel.MoveDown;
 import com.example.cs2340b_team29.viewmodel.MoveLeft;
@@ -88,7 +92,10 @@ public class GameActivity extends AppCompatActivity {
     private Runnable enemy2Movement;
     private WallCollisionHandler wallCollisionHandler;
     private EnemyCollisionHandler enemyCollisionHandler;
+    private PowerUpCollisionHandler powerUpCollisionHandler;
+    private WeaponCollisionHandler weaponCollisionHandler;
     private MapDataViewModel mapDataViewModel;
+
 
 
     @Override
@@ -106,6 +113,8 @@ public class GameActivity extends AppCompatActivity {
         playerViewModel.getEnemy2().setMoveStrategy(right);
 
         setEnemyBitmaps();
+        setWeaponBitmaps();
+        setPowerupBitmaps();
 
 
         // logic for countdown
@@ -116,6 +125,7 @@ public class GameActivity extends AppCompatActivity {
                 int currScore = playerViewModel.getPlayer().getScore();
                 playerScoreLabel.setText("Score: "
                         + Integer.toString(currScore));
+                player1.updateBuffs();
                 handler.postDelayed(this, 1000);
             }
         };
@@ -138,7 +148,7 @@ public class GameActivity extends AppCompatActivity {
                     playerViewModel.getEnemy1().move();
                 } else if (enemy1Y < 22 && enemy1Move instanceof MoveDown) {
                     playerViewModel.getEnemy1().move();
-                } else if (enemy1Y == 0 && enemy1Move instanceof MoveUp) {
+                } else if (enemy1Y == 0) {
                     playerViewModel.getEnemy1().setMoveStrategy(down);
                     playerViewModel.getEnemy1().move();
                 } else {
@@ -164,7 +174,7 @@ public class GameActivity extends AppCompatActivity {
 
                 if (enemy2X < 10 && enemy2Move instanceof MoveRight) {
                     playerViewModel.getEnemy2().move();
-                } else if (enemy2X == 0 && enemy2Move instanceof MoveLeft) {
+                } else if (enemy2X == 0) {
                     playerViewModel.getEnemy2().setMoveStrategy(right);
                     playerViewModel.getEnemy2().move();
                 } else {
@@ -197,10 +207,8 @@ public class GameActivity extends AppCompatActivity {
         getWindowManager().getDefaultDisplay().getSize(point);
 
         instantiateGameViews();
-        wallCollisionHandler = new WallCollisionHandler();
-        enemyCollisionHandler = new EnemyCollisionHandler();
-        playerViewModel.getPlayer().subscribe(wallCollisionHandler);
-        playerViewModel.getPlayer().subscribe(enemyCollisionHandler);
+        attachPlayerHandlers();
+
         for (Enemy enemy: playerViewModel.getEnemiesInLevel()) {
             enemy.subscribe(wallCollisionHandler);
         }
@@ -224,13 +232,31 @@ public class GameActivity extends AppCompatActivity {
 
         playerScoreLabel.setText("Score: " + Integer.toString(score));
         nameLabel.setText(name);
-
+        mapDataViewModel.resetMapData();
         playerViewModel.getPlayer().setX(8);
         playerViewModel.getPlayer().setY(22);
         playerViewModel.getEnemiesInLevel().get(0).setX(3);
         playerViewModel.getEnemiesInLevel().get(0).setY(2);
         playerViewModel.getEnemiesInLevel().get(1).setX(0);
         playerViewModel.getEnemiesInLevel().get(1).setY(8);
+    }
+
+    private void attachPlayerHandlers() {
+        wallCollisionHandler = new WallCollisionHandler();
+        enemyCollisionHandler = new EnemyCollisionHandler();
+        powerUpCollisionHandler = new PowerUpCollisionHandler();
+        weaponCollisionHandler = new WeaponCollisionHandler();
+        playerViewModel.getPlayer().subscribe(powerUpCollisionHandler);
+        playerViewModel.getPlayer().subscribe(wallCollisionHandler);
+        playerViewModel.getPlayer().subscribe(enemyCollisionHandler);
+        playerViewModel.getPlayer().subscribe(weaponCollisionHandler);
+    }
+
+    private void detachPlayerHandlers() {
+        playerViewModel.getPlayer().unsubscribe(wallCollisionHandler);
+        playerViewModel.getPlayer().unsubscribe(enemyCollisionHandler);
+        playerViewModel.getPlayer().unsubscribe(powerUpCollisionHandler);
+        playerViewModel.getPlayer().unsubscribe(weaponCollisionHandler);
     }
 
 
@@ -301,9 +327,23 @@ public class GameActivity extends AppCompatActivity {
                 playerViewModel.getPlayer().setScore(0);
                 endGame();
             }
-
+            setPlayerWithWeaponBitmaps();
         }
         return true;
+    }
+
+    @Override
+    public boolean onKeyUp(int keyCode, KeyEvent event) {
+        switch (keyCode) {
+            case KeyEvent.KEYCODE_ENTER:
+                if (event.isShiftPressed()) {
+                    player1.attackEnemy();
+                    System.out.println("player attacked");
+                }
+                return true;
+            default:
+                return super.onKeyUp(keyCode, event);
+        }
     }
 
     private void toggleView() {
@@ -321,6 +361,8 @@ public class GameActivity extends AppCompatActivity {
             playerViewModel.getEnemiesInLevel().get(0).setY(2);
             playerViewModel.getEnemiesInLevel().get(1).setX(0);
             playerViewModel.getEnemiesInLevel().get(1).setY(11);
+            player1.setHasKnife(false);
+            player1.setHasSword(false);
         } else if (room == 3) {
             gameContainer.removeView(l2View);
             gameContainer.addView(l3View);
@@ -334,6 +376,8 @@ public class GameActivity extends AppCompatActivity {
             playerViewModel.getEnemiesInLevel().get(0).setY(2);
             playerViewModel.getEnemiesInLevel().get(1).setX(1);
             playerViewModel.getEnemiesInLevel().get(1).setY(17);
+            player1.setHasKnife(false);
+            player1.setHasSword(false);
         } else if (room > 3) {
             endGame();
         }
@@ -344,8 +388,8 @@ public class GameActivity extends AppCompatActivity {
         handler.removeCallbacks(scoreCountDown);
         handler.removeCallbacks(enemy1Movement);
         handler.removeCallbacks(enemy2Movement);
-        playerViewModel.getPlayer().unsubscribe(wallCollisionHandler);
-        playerViewModel.getPlayer().unsubscribe(enemyCollisionHandler);
+        detachPlayerHandlers();
+
         Intent toEndScreen = new Intent(GameActivity.this, EndingActivity.class);
         startActivity(toEndScreen);
     }
@@ -368,6 +412,87 @@ public class GameActivity extends AppCompatActivity {
                 Drawable enemy4 = getDrawable(R.drawable.wolf);
                 enemy.setBitmap(
                         BitmapFactory.decodeResource(getResources(), R.drawable.wolf));
+            }
+        }
+    }
+
+    private void setWeaponBitmaps() {
+        ArrayList<Weapon> weapons = playerViewModel.getMapData().getAllWeapons();
+        for (Weapon weapon: weapons) {
+            if (weapon.getWeaponId() == 1) {
+                Drawable weapon1 = getDrawable(R.drawable.knife);
+                weapon.setBitmap(
+                        BitmapFactory.decodeResource(getResources(), R.drawable.knife));
+            } else {
+                Drawable weapon2 = getDrawable(R.drawable.sword);
+                weapon.setBitmap(
+                        BitmapFactory.decodeResource(getResources(), R.drawable.sword));
+            }
+        }
+    }
+
+    private void setPowerupBitmaps() {
+        ArrayList<PowerUp> powerups = playerViewModel.getMapData().getAllPowerUps();
+        for (PowerUp powerup: powerups) {
+            if (powerup.getPowerUpId() == 1) {
+                Drawable powerup1 = getDrawable(R.drawable.bomb);
+                powerup.setBitmap(
+                        BitmapFactory.decodeResource(getResources(), R.drawable.bomb));
+            } else if (powerup.getPowerUpId() == 2) {
+                Drawable powerup2 = getDrawable(R.drawable.elixir);
+                powerup.setBitmap(
+                        BitmapFactory.decodeResource(getResources(), R.drawable.elixir));
+            } else {
+                Drawable powerup3 = getDrawable(R.drawable.health);
+                powerup.setBitmap(
+                        BitmapFactory.decodeResource(getResources(), R.drawable.health));
+            }
+        }
+    }
+
+    private void setPlayerWithWeaponBitmaps() {
+        int playerId = player1.getIdAvatar();
+        if (playerId == 1) {
+            if (player1.getHasKnife()) {
+                Drawable avatar = getDrawable(R.drawable.avatar1knife);
+                player1.setBitmap(
+                        BitmapFactory.decodeResource(getResources(), R.drawable.avatar1knife));
+            } else if (player1.getHasSword()) {
+                Drawable avatar = getDrawable(R.drawable.avatar1sword);
+                player1.setBitmap(
+                        BitmapFactory.decodeResource(getResources(), R.drawable.avatar1sword));
+            } else {
+                Drawable avatar = getDrawable(R.drawable.avatar1);
+                player1.setBitmap(
+                        BitmapFactory.decodeResource(getResources(), R.drawable.avatar1));
+            }
+        } else if (playerId == 2) {
+            if (player1.getHasKnife()) {
+                Drawable avatar = getDrawable(R.drawable.avatar1knife);
+                player1.setBitmap(
+                        BitmapFactory.decodeResource(getResources(), R.drawable.avatar2knife));
+            } else if (player1.getHasSword()) {
+                Drawable avatar = getDrawable(R.drawable.avatar2sword);
+                player1.setBitmap(
+                        BitmapFactory.decodeResource(getResources(), R.drawable.avatar2sword));
+            } else {
+                Drawable avatar = getDrawable(R.drawable.avatar2);
+                player1.setBitmap(
+                        BitmapFactory.decodeResource(getResources(), R.drawable.avatar2));
+            }
+        } else {
+            if (player1.getHasKnife()) {
+                Drawable avatar = getDrawable(R.drawable.avatar3knife);
+                player1.setBitmap(
+                        BitmapFactory.decodeResource(getResources(), R.drawable.avatar3knife));
+            } else if (player1.getHasSword()) {
+                Drawable avatar = getDrawable(R.drawable.avatar3sword);
+                player1.setBitmap(
+                        BitmapFactory.decodeResource(getResources(), R.drawable.avatar3sword));
+            } else {
+                Drawable avatar = getDrawable(R.drawable.avatar3);
+                player1.setBitmap(
+                        BitmapFactory.decodeResource(getResources(), R.drawable.avatar3));
             }
         }
     }

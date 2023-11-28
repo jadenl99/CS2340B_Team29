@@ -8,6 +8,9 @@ import com.example.cs2340b_team29.model.Enemy;
 import com.example.cs2340b_team29.model.MapData;
 import com.example.cs2340b_team29.model.Player;
 import com.example.cs2340b_team29.model.Wall;
+import com.example.cs2340b_team29.powerup.PowerUp;
+import com.example.cs2340b_team29.model.Weapon;
+
 
 import java.util.ArrayList;
 
@@ -22,7 +25,6 @@ public class PlayerViewModel extends ViewModel {
     public PlayerViewModel() {
         player = Player.getPlayer();
         mapData = MapData.getMapData();
-
     }
 
     public void move() {
@@ -71,7 +73,8 @@ public class PlayerViewModel extends ViewModel {
         ArrayList<Wall> borderWalls = mapData.getBorderWalls();
         ArrayList<Wall> walls = mapData.getWallsInLevel(currLevel);
         ArrayList<Enemy> enemies = mapData.getEnemies(currLevel);
-
+        ArrayList<PowerUp> powerUps = mapData.getPowerUp(currLevel);
+        ArrayList<Weapon> weapons = mapData.getWeapons(currLevel);
         for (Wall wall : walls) {
             if (checkCollision(player, wall)) {
                 player.notifyCollision(wall, player.getMoveStrategy());
@@ -84,10 +87,22 @@ public class PlayerViewModel extends ViewModel {
         }
         if (!player.getIsInvincible()) {
             for (Enemy enemy: enemies) {
-                if (checkCollision(player, enemy) || checkAdjacentCollision(player, enemy)) {
+                if (enemy.getVisible() && (checkCollision(player, enemy) || checkAdjacentCollision(player, enemy))) {
                     player.notifyCollision(enemy, player.getMoveStrategy());
                     player.toggleIsInvincible();
                 }
+            }
+        }
+
+        for (PowerUp powerUp : powerUps) {
+            if (powerUp.getVisible() && checkCollision(player, powerUp)) {
+                player.notifyCollision(powerUp, player.getMoveStrategy());
+            }
+        }
+
+        for (Weapon weapon : weapons) {
+            if (weapon.getVisible() && checkCollision(player, weapon)) {
+                player.notifyCollision(weapon, player.getMoveStrategy());
             }
         }
     }
@@ -134,6 +149,16 @@ public class PlayerViewModel extends ViewModel {
     public ArrayList<Enemy> getEnemiesInLevel() {
         ArrayList<Enemy> enemiesInLevel = mapData.getEnemies(mapData.getLevel());
         return enemiesInLevel;
+    }
+
+    public ArrayList<Weapon> getWeaponsInLevel() {
+        ArrayList<Weapon> weaponsInLevel = mapData.getWeapons(mapData.getLevel());
+        return weaponsInLevel;
+    }
+
+    public ArrayList<PowerUp> getPowerUpsInLevel() {
+        ArrayList<PowerUp> powerUpsInLevel = mapData.getPowerUp(mapData.getLevel());
+        return powerUpsInLevel;
     }
 
     public Enemy getEnemy1() {

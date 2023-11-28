@@ -8,6 +8,9 @@ import android.graphics.Rect;
 
 import android.view.SurfaceView;
 
+import com.example.cs2340b_team29.model.Enemy;
+import com.example.cs2340b_team29.model.Weapon;
+import com.example.cs2340b_team29.powerup.PowerUp;
 import com.example.cs2340b_team29.viewmodel.PlayerViewModel;
 
 /**
@@ -27,6 +30,9 @@ public class LevelView extends SurfaceView implements Runnable {
     private Rect destinationRect;
     private Rect enemy1DestinationRect;
     private Rect enemy2DestinationRect;
+    private Rect weaponDestinationRect;
+    private Rect powerupDestinationRect;
+
     private double tileHeight;
     private final int numTilesWide = 11;
     private final int numTilesLong = 23;
@@ -37,6 +43,10 @@ public class LevelView extends SurfaceView implements Runnable {
 
     private int enemy2X;
     private int enemy2Y;
+    private int weaponX;
+    private int weaponY;
+    private int powerupX;
+    private int powerupY;
     private int currX = 3;
     private int currY = 0;
 
@@ -108,6 +118,14 @@ public class LevelView extends SurfaceView implements Runnable {
             enemy2Y = playerViewModel.getEnemy2().getY();
             int[] enemy2coords = calcPixelsBasedOnIndices(enemy2X, enemy2Y);
 
+            weaponX = playerViewModel.getWeaponsInLevel().get(0).getX();
+            weaponY = playerViewModel.getWeaponsInLevel().get(0).getY();
+            int[] weaponCoords = calcPixelsBasedOnIndices(weaponX, weaponY);
+
+            powerupX = playerViewModel.getPowerUpsInLevel().get(0).getX();
+            powerupY = playerViewModel.getPowerUpsInLevel().get(0).getY();
+            int[] powerupCoords = calcPixelsBasedOnIndices(powerupX, powerupY);
+
             int intTileWidth = (int) tileWidth;
             int intTileHeight = (int) tileHeight;
 
@@ -121,23 +139,53 @@ public class LevelView extends SurfaceView implements Runnable {
             canvas.drawBitmap(resizedBitmap, null, destinationRect, paint);
 
             //draw enemy1
-            Bitmap enemy1BitMap = playerViewModel.getEnemiesInLevel().get(0).getBitmap();
-            enemy1DestinationRect = new Rect(enemy1coords[0], enemy1coords[1],
-                    enemy1coords[0] + intTileWidth, enemy1coords[1]
-                    + intTileHeight);
-            Bitmap resizedEnemy1Bitmap = Bitmap.createScaledBitmap(enemy1BitMap,
-                    intTileWidth, intTileHeight, false);
-            canvas.drawBitmap(resizedEnemy1Bitmap, null, enemy1DestinationRect, paint);
+            Enemy enemy1 = playerViewModel.getEnemiesInLevel().get(0);
+            if (enemy1.getVisible()) {
+                Bitmap enemy1BitMap = enemy1.getBitmap();
+                enemy1DestinationRect = new Rect(enemy1coords[0], enemy1coords[1],
+                        enemy1coords[0] + intTileWidth, enemy1coords[1]
+                        + intTileHeight);
+                Bitmap resizedEnemy1Bitmap = Bitmap.createScaledBitmap(enemy1BitMap,
+                        intTileWidth, intTileHeight, false);
+                canvas.drawBitmap(resizedEnemy1Bitmap, null, enemy1DestinationRect, paint);
+            }
 
-            //draw enemy2
-            Bitmap enemy2BitMap = playerViewModel.getEnemiesInLevel().get(1).getBitmap();
-            enemy2DestinationRect = new Rect(
-                    enemy2coords[0], enemy2coords[1],
-                    enemy2coords[0] + intTileWidth,
-                    enemy2coords[1] + intTileHeight);
-            Bitmap resizedEnemy2Bitmap = Bitmap.createScaledBitmap(enemy2BitMap,
-                    intTileWidth, intTileHeight, false);
-            canvas.drawBitmap(resizedEnemy2Bitmap, null, enemy2DestinationRect, paint);
+            Enemy enemy2 = playerViewModel.getEnemiesInLevel().get(1);
+            if (enemy2.getVisible()) {
+                Bitmap enemy2BitMap = enemy2.getBitmap();
+                enemy2DestinationRect = new Rect(
+                        enemy2coords[0], enemy2coords[1],
+                        enemy2coords[0] + intTileWidth,
+                        enemy2coords[1] + intTileHeight);
+                Bitmap resizedEnemy2Bitmap = Bitmap.createScaledBitmap(enemy2BitMap,
+                        intTileWidth, intTileHeight, false);
+                canvas.drawBitmap(resizedEnemy2Bitmap, null, enemy2DestinationRect, paint);
+            }
+
+            //draw weapon
+            Weapon weapon = playerViewModel.getWeaponsInLevel().get(0);
+            if (weapon.getVisible()) {
+                Bitmap weaponBitMap = weapon.getBitmap();
+                weaponDestinationRect = new Rect(
+                        weaponCoords[0], weaponCoords[1],
+                        weaponCoords[0] + intTileWidth,
+                        weaponCoords[1] + intTileHeight);
+                Bitmap resizedWeaponBitmap = Bitmap.createScaledBitmap(weaponBitMap,
+                        intTileWidth, intTileHeight, false);
+                canvas.drawBitmap(weaponBitMap, null, weaponDestinationRect, paint);
+            }
+            //draw powerup
+            PowerUp powerUp = playerViewModel.getPowerUpsInLevel().get(0);
+            if (powerUp.getVisible()) {
+                Bitmap powerupBitMap = powerUp.getBitmap();
+                powerupDestinationRect = new Rect(
+                        powerupCoords[0], powerupCoords[1],
+                        powerupCoords[0] + intTileWidth,
+                        powerupCoords[1] + intTileHeight);
+                Bitmap resizedPowerupBitmap = Bitmap.createScaledBitmap(powerupBitMap,
+                        intTileWidth, intTileHeight, false);
+                canvas.drawBitmap(powerupBitMap, null, powerupDestinationRect, paint);
+            }
 
 
             getHolder().unlockCanvasAndPost(canvas);
@@ -154,7 +202,6 @@ public class LevelView extends SurfaceView implements Runnable {
     }
 
     public void resume() {
-
         isPlaying = true;
         thread = new Thread(this);
         thread.start();
