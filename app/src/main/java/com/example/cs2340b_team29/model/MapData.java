@@ -37,7 +37,7 @@ public class MapData {
     private ArrayList<Weapon> weapons2;
     private ArrayList<Weapon> weapons3;
     private ArrayList<Weapon> allWeapons;
-
+    private ArrayList<Key> keys;
     private Enemy ninja;
     private Enemy ninja2;
     private Enemy spider;
@@ -262,6 +262,8 @@ public class MapData {
         allPowerUps.add(healthPowerUp);
         allPowerUps.add(vaporizeEnemyPowerUp);
         allPowerUps.add(regenPowerUp);
+
+        createKeys();
     }
     public static synchronized MapData getMapData() {
         if (mapData == null) {
@@ -354,5 +356,18 @@ public class MapData {
             return weapons2;
         }
         return weapons3;
+    }
+
+    public ArrayList<Key> getKeys() {
+        return keys;
+    }
+    public Key getKey() {
+        return keys.get(Math.min(2, level - 1));
+    }
+    private void createKeys() {
+        keys = new ArrayList<>();
+        keys.add(new Key(7, 10));
+        keys.add(new Key(8, 3));
+        keys.add(new Key(8, 2));
     }
 }

@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel;
 import com.example.cs2340b_team29.collision.Collidable;
 import com.example.cs2340b_team29.model.Door;
 import com.example.cs2340b_team29.model.Enemy;
+import com.example.cs2340b_team29.model.Key;
 import com.example.cs2340b_team29.model.MapData;
 import com.example.cs2340b_team29.model.Player;
 import com.example.cs2340b_team29.model.Wall;
@@ -75,6 +76,8 @@ public class PlayerViewModel extends ViewModel {
         ArrayList<Enemy> enemies = mapData.getEnemies(currLevel);
         ArrayList<PowerUp> powerUps = mapData.getPowerUp(currLevel);
         ArrayList<Weapon> weapons = mapData.getWeapons(currLevel);
+        Key key = mapData.getKey();
+        System.out.println(key.getX());
         for (Wall wall : walls) {
             if (checkCollision(player, wall)) {
                 player.notifyCollision(wall, player.getMoveStrategy());
@@ -105,6 +108,9 @@ public class PlayerViewModel extends ViewModel {
                 player.notifyCollision(weapon, player.getMoveStrategy());
             }
         }
+        if (key.getVisible() && checkCollision(player, key)) {
+            player.notifyCollision(key, player.getMoveStrategy());
+        }
     }
 
     public boolean checkCollision(Collidable e1, Collidable e2) {
@@ -129,6 +135,10 @@ public class PlayerViewModel extends ViewModel {
 
     public void checkForDoor() {
         changeLevel = false;
+        Key key = mapData.getKey();
+        if (key.getVisible()) {
+            return;
+        }
         ArrayList<Door> doors = mapData.getDoorsInLevel(mapData.getLevel());
 
         for (Door door : doors) {

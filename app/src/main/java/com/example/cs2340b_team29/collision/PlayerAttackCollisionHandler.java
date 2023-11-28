@@ -14,34 +14,14 @@ import com.example.cs2340b_team29.model.Weapon;
 import com.example.cs2340b_team29.viewmodel.MoveOffScreen;
 import com.example.cs2340b_team29.viewmodel.MoveStrategy;
 
-public class PlayerAttackCollisionHandler implements Collidable {
+public class PlayerAttackCollisionHandler implements CollisionObserver {
 
     public void onCollision(Collidable e1, Collidable e2, MoveStrategy strategy) {
         if (e1 instanceof Player && e2 instanceof Enemy) {
-            MoveStrategy offScreen = new MoveOffScreen();
             Player player = (Player) e1;
             Enemy enemy = (Enemy) e2;
-            enemy.setMoveStrategy(offScreen);
+            enemy.setVisible(false);
         }
     }
 
-    @Override
-    public int getX() {
-        return 0;
-    }
-
-    @Override
-    public int getY() {
-        return 0;
-    }
-
-    @Override
-    public void setX(int x) {
-
-    }
-
-    @Override
-    public void setY(int y) {
-
-    }
 }
