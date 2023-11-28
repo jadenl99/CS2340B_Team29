@@ -2,6 +2,7 @@ package com.example.cs2340b_team29;
 
 
 
+import androidx.annotation.ColorInt;
 import androidx.appcompat.app.AppCompatActivity;
 
 import androidx.lifecycle.ViewModelProvider;
@@ -25,6 +26,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.cs2340b_team29.collision.EnemyCollisionHandler;
+import com.example.cs2340b_team29.collision.PlayerAttackCollisionHandler;
 import com.example.cs2340b_team29.collision.PowerUpCollisionHandler;
 import com.example.cs2340b_team29.collision.WallCollisionHandler;
 import com.example.cs2340b_team29.collision.WeaponCollisionHandler;
@@ -38,6 +40,7 @@ import com.example.cs2340b_team29.viewmodel.MoveDown;
 import com.example.cs2340b_team29.viewmodel.MoveLeft;
 import com.example.cs2340b_team29.viewmodel.MoveRight;
 import com.example.cs2340b_team29.viewmodel.MoveStrategy;
+import com.example.cs2340b_team29.viewmodel.MoveOffScreen;
 import com.example.cs2340b_team29.viewmodel.MoveUp;
 import com.example.cs2340b_team29.viewmodel.PlayerViewModel;
 
@@ -94,6 +97,7 @@ public class GameActivity extends AppCompatActivity {
     private EnemyCollisionHandler enemyCollisionHandler;
     private PowerUpCollisionHandler powerUpCollisionHandler;
     private WeaponCollisionHandler weaponCollisionHandler;
+    private PlayerAttackCollisionHandler playerAttackCollisionHandler;
     private MapDataViewModel mapDataViewModel;
 
 
@@ -239,17 +243,33 @@ public class GameActivity extends AppCompatActivity {
         playerViewModel.getEnemiesInLevel().get(0).setY(2);
         playerViewModel.getEnemiesInLevel().get(1).setX(0);
         playerViewModel.getEnemiesInLevel().get(1).setY(8);
+
+        Button attackButton = findViewById(R.id.attackButton);
+        attackButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                attackButton.setBackgroundColor(4);
+                for (Enemy enemy: playerViewModel.getEnemiesInLevel()) {
+                    if (playerViewModel.checkAdjacentCollision(player1,enemy)) {
+                        player1.notifyCollision(enemy,player1.getMoveStrategy());
+                    }
+                }
+            }
+        });
     }
+
 
     private void attachPlayerHandlers() {
         wallCollisionHandler = new WallCollisionHandler();
         enemyCollisionHandler = new EnemyCollisionHandler();
         powerUpCollisionHandler = new PowerUpCollisionHandler();
         weaponCollisionHandler = new WeaponCollisionHandler();
+        playerAttackCollisionHandler = new PlayerAttackCollisionHandler();
         playerViewModel.getPlayer().subscribe(powerUpCollisionHandler);
         playerViewModel.getPlayer().subscribe(wallCollisionHandler);
         playerViewModel.getPlayer().subscribe(enemyCollisionHandler);
         playerViewModel.getPlayer().subscribe(weaponCollisionHandler);
+        playerViewModel.getPlayer().subscribe(playerAttackCollisionHandler);
     }
 
     private void detachPlayerHandlers() {
@@ -257,6 +277,7 @@ public class GameActivity extends AppCompatActivity {
         playerViewModel.getPlayer().unsubscribe(enemyCollisionHandler);
         playerViewModel.getPlayer().unsubscribe(powerUpCollisionHandler);
         playerViewModel.getPlayer().unsubscribe(weaponCollisionHandler);
+        playerViewModel.getPlayer().subscribe(playerAttackCollisionHandler);
     }
 
 
@@ -332,19 +353,18 @@ public class GameActivity extends AppCompatActivity {
         return true;
     }
 
-    @Override
+    /*@Override
     public boolean onKeyUp(int keyCode, KeyEvent event) {
         switch (keyCode) {
             case KeyEvent.KEYCODE_ENTER:
                 if (event.isShiftPressed()) {
-                    player1.attackEnemy();
-                    System.out.println("player attacked");
+                    player1.setIsAttacking(true);
                 }
                 return true;
             default:
                 return super.onKeyUp(keyCode, event);
         }
-    }
+    } */
 
     private void toggleView() {
         room = mapDataViewModel.getMapData().getLevel();

@@ -17,6 +17,12 @@
         android:layout_weight="1">
         <!-- The GameView will be added here dynamically -->
 
+        <Button
+            android:id="@+id/attackButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:text="Attack" />
     </FrameLayout>
 
     <!-- bottom screen bar (also a container for HP & score elements) -->
