@@ -30,6 +30,7 @@ public class Player extends Entity {
     private boolean hasSword;
 
     private BasePowerUpBox powerUpBox;
+    private boolean isAttacking;
 
 
 
@@ -81,6 +82,9 @@ public class Player extends Entity {
 
         return score;
     }
+    public boolean getIsAttacking() {
+        return isAttacking;
+    }
 
     public int getDifficulty() {
         return difficulty;
@@ -95,6 +99,11 @@ public class Player extends Entity {
     public void setPlayerName(String name) {
 
         playerName = name;
+    }
+
+    public void setIsAttacking(boolean bool) {
+
+        isAttacking = bool;
     }
 
     public String getPlayerName() {
