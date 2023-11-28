@@ -2,7 +2,7 @@ package com.example.cs2340b_team29;
 
 
 
-import androidx.annotation.ColorInt;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import androidx.lifecycle.ViewModelProvider;
@@ -45,7 +45,7 @@ import com.example.cs2340b_team29.viewmodel.MoveDown;
 import com.example.cs2340b_team29.viewmodel.MoveLeft;
 import com.example.cs2340b_team29.viewmodel.MoveRight;
 import com.example.cs2340b_team29.viewmodel.MoveStrategy;
-import com.example.cs2340b_team29.viewmodel.MoveOffScreen;
+
 import com.example.cs2340b_team29.viewmodel.MoveUp;
 import com.example.cs2340b_team29.viewmodel.PlayerViewModel;
 
@@ -202,20 +202,11 @@ public class GameActivity extends AppCompatActivity {
             }
         };
         handler.post(enemy2Movement);
-
         player1 = Player.getPlayer();
-
         playerScoreLabel = findViewById(R.id.scoreLabel);
-        //difficultyLabel = findViewById(R.id.difficultyLabel);
         hpLevelLabel = findViewById(R.id.hpLevelLabel);
-        //avatarImage = findViewById(R.id.avatarImage);
         nameLabel = findViewById(R.id.nameLabel);
-
-
-        // begin game screen config
         setFullScreenMode();
-
-        // returns size of window to find where gameview should be placed
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getWindowManager().getDefaultDisplay().getSize(point);
@@ -227,11 +218,10 @@ public class GameActivity extends AppCompatActivity {
             enemy.subscribe(wallCollisionHandler);
         }
 
-        // finds gameFrame and initializes to level 1
+
         gameContainer = findViewById(R.id.gameContainer);
         gameContainer.addView(l1View);
-        // request focus on view
-        //l1View.setOnKeyListener(l1View);
+
         l1View.setFocusable(true);
         l1View.setFocusableInTouchMode(true);
         l1View.requestFocus();
@@ -259,10 +249,12 @@ public class GameActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 for (Enemy enemy: playerViewModel.getEnemiesInLevel()) {
-                    if (playerViewModel.checkAdjacentCollision(player1,enemy)) {
+                    if (playerViewModel.checkAdjacentCollision(player1,
+                            enemy)) {
                         playerAttackCollisionHandler = new PlayerAttackCollisionHandler();
                         playerViewModel.getPlayer().subscribe(playerAttackCollisionHandler);
-                        player1.notifyCollision(enemy,player1.getMoveStrategy());
+                        player1.notifyCollision(enemy,
+                                player1.getMoveStrategy());
                         playerViewModel.getPlayer().unsubscribe(playerAttackCollisionHandler);
                     }
                 }
@@ -490,6 +482,8 @@ public class GameActivity extends AppCompatActivity {
             key.setBitmap(
                     BitmapFactory.decodeResource(getResources(), R.drawable.key)
             );
+        }
+    }
 
     private void setPlayerWithWeaponBitmaps() {
         int playerId = player1.getIdAvatar();

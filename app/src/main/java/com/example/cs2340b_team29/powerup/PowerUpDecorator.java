@@ -5,7 +5,7 @@ import com.example.cs2340b_team29.model.Player;
 
 public class PowerUpDecorator implements BasePowerUpBox {
 
-    public BasePowerUpBox powerUpBox;
+    private BasePowerUpBox powerUpBox;
     public PowerUpDecorator(BasePowerUpBox powerUpBox) {
         this.powerUpBox = powerUpBox;
     }

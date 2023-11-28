@@ -2,17 +2,11 @@ package com.example.cs2340b_team29.collision;
 
 import com.example.cs2340b_team29.model.Enemy;
 import com.example.cs2340b_team29.model.Player;
-import com.example.cs2340b_team29.model.Wall;
-import com.example.cs2340b_team29.viewmodel.MoveDown;
+
 import com.example.cs2340b_team29.viewmodel.MoveOffScreen;
-import com.example.cs2340b_team29.viewmodel.MoveRight;
+
 import com.example.cs2340b_team29.viewmodel.MoveStrategy;
-import com.example.cs2340b_team29.viewmodel.MoveUp;
-import com.example.cs2340b_team29.model.Knife;
-import com.example.cs2340b_team29.model.Player;
-import com.example.cs2340b_team29.model.Weapon;
-import com.example.cs2340b_team29.viewmodel.MoveOffScreen;
-import com.example.cs2340b_team29.viewmodel.MoveStrategy;
+
 
 public class PlayerAttackCollisionHandler implements CollisionObserver {
 
@@ -23,8 +17,8 @@ public class PlayerAttackCollisionHandler implements CollisionObserver {
             if (player.getHasSword() || player.getHasKnife()) {
                 MoveStrategy offScreen = new MoveOffScreen();
                 Enemy enemy = (Enemy) e2;
-                enemy.setMoveStrategy(offScreen);
-                enemy.move();
+                player.setScore(player.getScore() + 100);
+                enemy.setVisible(false);
             }
         }
     }

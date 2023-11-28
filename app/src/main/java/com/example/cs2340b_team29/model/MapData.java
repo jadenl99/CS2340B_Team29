@@ -188,9 +188,9 @@ public class MapData {
         sword2 = new Sword(8, 16);
         knife = new Knife(3, 12);
 
-        regenPowerUp = new RegenPowerUp(8,3);
-        vaporizeEnemyPowerUp = new VaporizeEnemyPowerUp(4,11);
-        healthPowerUp = new HealthPowerUp(6,12);
+        regenPowerUp = new RegenPowerUp(8, 3);
+        vaporizeEnemyPowerUp = new VaporizeEnemyPowerUp(4, 11);
+        healthPowerUp = new HealthPowerUp(6, 12);
 
 
         // put walls in each level

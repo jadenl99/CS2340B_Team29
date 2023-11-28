@@ -3,10 +3,10 @@ package com.example.cs2340b_team29.model;
 
 import com.example.cs2340b_team29.collision.CollisionObserver;
 import com.example.cs2340b_team29.collision.Collidable;
-import com.example.cs2340b_team29.collision.PlayerAttackCollisionHandler;
+
 import com.example.cs2340b_team29.powerup.BasePowerUpBox;
 import com.example.cs2340b_team29.powerup.PowerUpBox;
-import com.example.cs2340b_team29.viewmodel.MoveOffScreen;
+
 import com.example.cs2340b_team29.viewmodel.MoveStrategy;
 
 
@@ -93,7 +93,7 @@ public class Player extends Entity {
 
     public void setScore(int score) {
 
-        this.score = score;
+        this.score = Math.max(score, 0);
     }
 
     public void setPlayerName(String name) {
@@ -147,8 +147,12 @@ public class Player extends Entity {
         this.hasSword = bool;
     }
 
-    public boolean getHasKnife() { return hasKnife; }
-    public boolean getHasSword() { return hasSword; }
+    public boolean getHasKnife() {
+        return hasKnife;
+    }
+    public boolean getHasSword() {
+        return hasSword;
+    }
 
     public MoveStrategy getMoveStrategy() {
         return moveStrategy;

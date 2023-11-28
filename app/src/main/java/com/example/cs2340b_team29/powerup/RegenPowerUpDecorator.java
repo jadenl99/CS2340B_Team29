@@ -1,6 +1,6 @@
 package com.example.cs2340b_team29.powerup;
 import com.example.cs2340b_team29.model.Player;
-import com.badlogic.gdx.utils.compression.lzma.Base;
+
 /**
  * Continuously increments player health by one every time
  * updateBuffsToPlayer() is called

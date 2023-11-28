@@ -11,7 +11,7 @@ import com.example.cs2340b_team29.powerup.PowerUp;
 import com.example.cs2340b_team29.powerup.PowerUpBox;
 
 import java.util.ArrayList;
-import java.util.Map;
+
 
 public class MapDataViewModel extends ViewModel {
     private MapData mapData = MapData.getMapData();
@@ -68,6 +68,9 @@ public class MapDataViewModel extends ViewModel {
         for (Key key : keys) {
             key.setVisible(true);
         }
+
+        player.setHasKnife(false);
+        player.setHasSword(false);
 
 
 
