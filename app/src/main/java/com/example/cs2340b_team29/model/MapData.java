@@ -362,7 +362,7 @@ public class MapData {
         return keys;
     }
     public Key getKey() {
-        return keys.get(level - 1);
+        return keys.get(Math.min(2, level - 1));
     }
     private void createKeys() {
         keys = new ArrayList<>();
