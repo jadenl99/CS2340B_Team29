@@ -334,7 +334,7 @@ public class GameActivity extends AppCompatActivity {
                 playerViewModel.getPlayer().setScore(0);
                 endGame();
             }
-
+            setPlayerWithWeaponBitmaps();
         }
         return true;
     }
@@ -369,6 +369,8 @@ public class GameActivity extends AppCompatActivity {
             playerViewModel.getEnemiesInLevel().get(0).setY(2);
             playerViewModel.getEnemiesInLevel().get(1).setX(0);
             playerViewModel.getEnemiesInLevel().get(1).setY(11);
+            player1.setHasKnife(false);
+            player1.setHasSword(false);
         } else if (room == 3) {
             gameContainer.removeView(l2View);
             gameContainer.addView(l3View);
@@ -382,6 +384,8 @@ public class GameActivity extends AppCompatActivity {
             playerViewModel.getEnemiesInLevel().get(0).setY(2);
             playerViewModel.getEnemiesInLevel().get(1).setX(1);
             playerViewModel.getEnemiesInLevel().get(1).setY(17);
+            player1.setHasKnife(false);
+            player1.setHasSword(false);
         } else if (room > 3) {
             endGame();
         }
@@ -454,12 +458,59 @@ public class GameActivity extends AppCompatActivity {
         }
     }
 
+
     private void setKeyBitmaps() {
         ArrayList<Key> keys = mapDataViewModel.getMapData().getKeys();
         for (Key key : keys) {
             key.setBitmap(
                     BitmapFactory.decodeResource(getResources(), R.drawable.key)
             );
+
+    private void setPlayerWithWeaponBitmaps() {
+        int playerId = player1.getIdAvatar();
+        if (playerId == 1) {
+            if (player1.getHasKnife()) {
+                Drawable avatar = getDrawable(R.drawable.avatar1knife);
+                player1.setBitmap(
+                        BitmapFactory.decodeResource(getResources(), R.drawable.avatar1knife));
+            } else if (player1.getHasSword()) {
+                Drawable avatar = getDrawable(R.drawable.avatar1sword);
+                player1.setBitmap(
+                        BitmapFactory.decodeResource(getResources(), R.drawable.avatar1sword));
+            } else {
+                Drawable avatar = getDrawable(R.drawable.avatar1);
+                player1.setBitmap(
+                        BitmapFactory.decodeResource(getResources(), R.drawable.avatar1));
+            }
+        } else if (playerId == 2) {
+            if (player1.getHasKnife()) {
+                Drawable avatar = getDrawable(R.drawable.avatar1knife);
+                player1.setBitmap(
+                        BitmapFactory.decodeResource(getResources(), R.drawable.avatar2knife));
+            } else if (player1.getHasSword()) {
+                Drawable avatar = getDrawable(R.drawable.avatar2sword);
+                player1.setBitmap(
+                        BitmapFactory.decodeResource(getResources(), R.drawable.avatar2sword));
+            } else {
+                Drawable avatar = getDrawable(R.drawable.avatar2);
+                player1.setBitmap(
+                        BitmapFactory.decodeResource(getResources(), R.drawable.avatar2));
+            }
+        } else {
+            if (player1.getHasKnife()) {
+                Drawable avatar = getDrawable(R.drawable.avatar3knife);
+                player1.setBitmap(
+                        BitmapFactory.decodeResource(getResources(), R.drawable.avatar3knife));
+            } else if (player1.getHasSword()) {
+                Drawable avatar = getDrawable(R.drawable.avatar3sword);
+                player1.setBitmap(
+                        BitmapFactory.decodeResource(getResources(), R.drawable.avatar3sword));
+            } else {
+                Drawable avatar = getDrawable(R.drawable.avatar3);
+                player1.setBitmap(
+                        BitmapFactory.decodeResource(getResources(), R.drawable.avatar3));
+            }
+
         }
     }
 
