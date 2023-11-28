@@ -248,10 +248,12 @@ public class GameActivity extends AppCompatActivity {
         attackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                attackButton.setBackgroundColor(4);
                 for (Enemy enemy: playerViewModel.getEnemiesInLevel()) {
                     if (playerViewModel.checkAdjacentCollision(player1,enemy)) {
+                        playerAttackCollisionHandler = new PlayerAttackCollisionHandler();
+                        playerViewModel.getPlayer().subscribe(playerAttackCollisionHandler);
                         player1.notifyCollision(enemy,player1.getMoveStrategy());
+                        playerViewModel.getPlayer().unsubscribe(playerAttackCollisionHandler);
                     }
                 }
             }
@@ -264,12 +266,10 @@ public class GameActivity extends AppCompatActivity {
         enemyCollisionHandler = new EnemyCollisionHandler();
         powerUpCollisionHandler = new PowerUpCollisionHandler();
         weaponCollisionHandler = new WeaponCollisionHandler();
-        playerAttackCollisionHandler = new PlayerAttackCollisionHandler();
         playerViewModel.getPlayer().subscribe(powerUpCollisionHandler);
         playerViewModel.getPlayer().subscribe(wallCollisionHandler);
         playerViewModel.getPlayer().subscribe(enemyCollisionHandler);
         playerViewModel.getPlayer().subscribe(weaponCollisionHandler);
-        playerViewModel.getPlayer().subscribe(playerAttackCollisionHandler);
     }
 
     private void detachPlayerHandlers() {
@@ -277,7 +277,6 @@ public class GameActivity extends AppCompatActivity {
         playerViewModel.getPlayer().unsubscribe(enemyCollisionHandler);
         playerViewModel.getPlayer().unsubscribe(powerUpCollisionHandler);
         playerViewModel.getPlayer().unsubscribe(weaponCollisionHandler);
-        playerViewModel.getPlayer().subscribe(playerAttackCollisionHandler);
     }
 
 
