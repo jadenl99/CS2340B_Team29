@@ -19,7 +19,7 @@ public class PlayerAttackCollisionHandler implements CollisionObserver {
     public void onCollision(Collidable e1, Collidable e2, MoveStrategy strategy) {
         if (e1 instanceof Player && e2 instanceof Enemy) {
             Player player = (Player) e1;
-            if (player.getHasSword() || player.getHasKnife() && player.getIsAttacking()) {
+            if (player.getHasSword() || player.getHasKnife()) {
                 MoveStrategy offScreen = new MoveOffScreen();
                 Enemy enemy = (Enemy) e2;
                 enemy.setMoveStrategy(offScreen);
