@@ -9,6 +9,7 @@ import android.graphics.Rect;
 import android.view.SurfaceView;
 
 import com.example.cs2340b_team29.model.Enemy;
+import com.example.cs2340b_team29.model.Key;
 import com.example.cs2340b_team29.model.Weapon;
 import com.example.cs2340b_team29.powerup.PowerUp;
 import com.example.cs2340b_team29.viewmodel.PlayerViewModel;
@@ -32,6 +33,7 @@ public class LevelView extends SurfaceView implements Runnable {
     private Rect enemy2DestinationRect;
     private Rect weaponDestinationRect;
     private Rect powerupDestinationRect;
+    private Rect keyDestinationRect;
 
     private double tileHeight;
     private final int numTilesWide = 11;
@@ -187,6 +189,8 @@ public class LevelView extends SurfaceView implements Runnable {
                 canvas.drawBitmap(powerupBitMap, null, powerupDestinationRect, paint);
             }
 
+            drawKey(canvas);
+
 
             getHolder().unlockCanvasAndPost(canvas);
         }
@@ -214,6 +218,19 @@ public class LevelView extends SurfaceView implements Runnable {
             thread.join();
         } catch (InterruptedException e) {
             e.printStackTrace();
+        }
+    }
+
+    private void drawKey(Canvas canvas) {
+        Key key = playerViewModel.getMapData().getKey();
+        if (key.getVisible()) {
+            Bitmap keyBitmap = key.getBitmap();
+            int[] coords = calcPixelsBasedOnIndices(key.getX(), key.getY());
+            keyDestinationRect = new Rect(
+                    coords[0], coords[1],
+                    coords[0] + (int) tileWidth,
+                    coords[1] + (int) tileHeight);
+            canvas.drawBitmap(keyBitmap, null, keyDestinationRect, paint);
         }
     }
 

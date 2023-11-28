@@ -26,11 +26,16 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.cs2340b_team29.collision.EnemyCollisionHandler;
+
 import com.example.cs2340b_team29.collision.PlayerAttackCollisionHandler;
+
+import com.example.cs2340b_team29.collision.KeyCollisionHandler;
+
 import com.example.cs2340b_team29.collision.PowerUpCollisionHandler;
 import com.example.cs2340b_team29.collision.WallCollisionHandler;
 import com.example.cs2340b_team29.collision.WeaponCollisionHandler;
 import com.example.cs2340b_team29.model.Enemy;
+import com.example.cs2340b_team29.model.Key;
 import com.example.cs2340b_team29.model.MapData;
 import com.example.cs2340b_team29.model.Player;
 import com.example.cs2340b_team29.model.Weapon;
@@ -97,7 +102,11 @@ public class GameActivity extends AppCompatActivity {
     private EnemyCollisionHandler enemyCollisionHandler;
     private PowerUpCollisionHandler powerUpCollisionHandler;
     private WeaponCollisionHandler weaponCollisionHandler;
+
     private PlayerAttackCollisionHandler playerAttackCollisionHandler;
+
+    private KeyCollisionHandler keyCollisionHandler;
+
     private MapDataViewModel mapDataViewModel;
 
 
@@ -119,6 +128,7 @@ public class GameActivity extends AppCompatActivity {
         setEnemyBitmaps();
         setWeaponBitmaps();
         setPowerupBitmaps();
+        setKeyBitmaps();
 
 
         // logic for countdown
@@ -266,10 +276,12 @@ public class GameActivity extends AppCompatActivity {
         enemyCollisionHandler = new EnemyCollisionHandler();
         powerUpCollisionHandler = new PowerUpCollisionHandler();
         weaponCollisionHandler = new WeaponCollisionHandler();
+        keyCollisionHandler = new KeyCollisionHandler();
         playerViewModel.getPlayer().subscribe(powerUpCollisionHandler);
         playerViewModel.getPlayer().subscribe(wallCollisionHandler);
         playerViewModel.getPlayer().subscribe(enemyCollisionHandler);
         playerViewModel.getPlayer().subscribe(weaponCollisionHandler);
+        playerViewModel.getPlayer().subscribe(keyCollisionHandler);
     }
 
     private void detachPlayerHandlers() {
@@ -277,6 +289,7 @@ public class GameActivity extends AppCompatActivity {
         playerViewModel.getPlayer().unsubscribe(enemyCollisionHandler);
         playerViewModel.getPlayer().unsubscribe(powerUpCollisionHandler);
         playerViewModel.getPlayer().unsubscribe(weaponCollisionHandler);
+        playerViewModel.getPlayer().unsubscribe(keyCollisionHandler);
     }
 
 
@@ -367,6 +380,7 @@ public class GameActivity extends AppCompatActivity {
 
     private void toggleView() {
         room = mapDataViewModel.getMapData().getLevel();
+
         if (room == 2) {
             gameContainer.removeView(l1View);
             gameContainer.addView(l2View);
@@ -469,6 +483,14 @@ public class GameActivity extends AppCompatActivity {
         }
     }
 
+
+    private void setKeyBitmaps() {
+        ArrayList<Key> keys = mapDataViewModel.getMapData().getKeys();
+        for (Key key : keys) {
+            key.setBitmap(
+                    BitmapFactory.decodeResource(getResources(), R.drawable.key)
+            );
+
     private void setPlayerWithWeaponBitmaps() {
         int playerId = player1.getIdAvatar();
         if (playerId == 1) {
@@ -513,6 +535,7 @@ public class GameActivity extends AppCompatActivity {
                 player1.setBitmap(
                         BitmapFactory.decodeResource(getResources(), R.drawable.avatar3));
             }
+
         }
     }
 

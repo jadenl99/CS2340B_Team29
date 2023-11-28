@@ -18,7 +18,7 @@ public class WeaponCollisionHandler implements CollisionObserver {
             if (e2 instanceof Knife) {
                 player.setHasKnife(true);
             } else {
-                player.setHasSword(true);;
+                player.setHasSword(true);
             }
             weapon.setVisible(false);
         }
