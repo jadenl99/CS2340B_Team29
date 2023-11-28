@@ -4,7 +4,7 @@ import com.example.cs2340b_team29.model.Player;
 
 
 /**
- * Increase Player's HP by 20. A one time event.
+ * Increase Player's HP by 20. A one time event.    
  */
 public class HealthPowerUpDecorator extends PowerUpDecorator {
     private boolean isUsed;

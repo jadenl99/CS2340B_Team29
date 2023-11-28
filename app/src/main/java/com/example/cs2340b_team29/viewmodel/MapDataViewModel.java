@@ -3,6 +3,7 @@ package com.example.cs2340b_team29.viewmodel;
 import androidx.lifecycle.ViewModel;
 
 import com.example.cs2340b_team29.model.Enemy;
+import com.example.cs2340b_team29.model.Key;
 import com.example.cs2340b_team29.model.MapData;
 import com.example.cs2340b_team29.model.Player;
 import com.example.cs2340b_team29.model.Weapon;
@@ -10,6 +11,7 @@ import com.example.cs2340b_team29.powerup.PowerUp;
 import com.example.cs2340b_team29.powerup.PowerUpBox;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 public class MapDataViewModel extends ViewModel {
     private MapData mapData = MapData.getMapData();
@@ -60,6 +62,11 @@ public class MapDataViewModel extends ViewModel {
         ArrayList<Weapon> weapons = mapData.getAllWeapons();
         for (Weapon weapon : weapons) {
             weapon.setVisible(true);
+        }
+
+        ArrayList<Key> keys = mapData.getKeys();
+        for (Key key : keys) {
+            key.setVisible(true);
         }
 
 
