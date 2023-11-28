@@ -90,7 +90,8 @@ public class PlayerViewModel extends ViewModel {
         }
         if (!player.getIsInvincible()) {
             for (Enemy enemy: enemies) {
-                if (enemy.getVisible() && (checkCollision(player, enemy) || checkAdjacentCollision(player, enemy))) {
+                if (enemy.getVisible() && (checkCollision(player, enemy)
+                        || checkAdjacentCollision(player, enemy))) {
                     player.notifyCollision(enemy, player.getMoveStrategy());
                     player.toggleIsInvincible();
                 }

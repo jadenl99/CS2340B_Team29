@@ -11,7 +11,7 @@ public abstract class Weapon implements Collidable {
     protected int y;
     protected Bitmap bitmap;
     protected int weaponId;
-    boolean isVisible;
+    protected boolean isVisible;
     public Weapon(int x, int y) {
         this.x = x;
         this.y = y;

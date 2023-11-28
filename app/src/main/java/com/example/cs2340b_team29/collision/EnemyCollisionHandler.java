@@ -4,7 +4,7 @@ import com.example.cs2340b_team29.model.Enemy;
 import com.example.cs2340b_team29.model.MapData;
 import com.example.cs2340b_team29.model.Player;
 
-import com.example.cs2340b_team29.viewmodel.MoveOffScreen;
+
 import com.example.cs2340b_team29.viewmodel.MoveStrategy;
 
 
